@@ -1,0 +1,817 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Speaking Test Runner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap">
+<style>
+/* Layout: single centred exam column; fixed status rail on top carrying clock + record state. */
+:root{
+  --paper:#f3f4f6;
+  --card:#ffffff;
+  --ink:#15181d;
+  --muted:#5b6370;
+  --line:#d7dae1;
+  --accent:#0d5b55;
+  --accent-soft:#e3efed;
+  --rec:#b5352b;
+  --warn:#9a6107;
+  --ui:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  --display:"Instrument Serif","Iowan Old Style",Georgia,serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#101215; --card:#191c21; --ink:#e8eaee; --muted:#98a0ac;
+    --line:#2a2f37; --accent:#55cdbd; --accent-soft:#17302e; --rec:#ee6054; --warn:#d99a2b;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#101215; --card:#191c21; --ink:#e8eaee; --muted:#98a0ac;
+  --line:#2a2f37; --accent:#55cdbd; --accent-soft:#17302e; --rec:#ee6054; --warn:#d99a2b;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{
+  background:var(--paper); color:var(--ink);
+  font-family:var(--ui); font-size:16px; line-height:1.5;
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));
+  padding-block:0 48px;
+}
+.wrap{max-width:720px;margin:0 auto}
+h1,h2,h3{text-wrap:balance;margin:0}
+h1{font-family:var(--display);font-weight:400;font-size:2.1rem;line-height:1.1}
+h2{font-size:1.05rem;font-weight:600;letter-spacing:.01em}
+.eyebrow{font-size:.72rem;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--muted)}
+p{margin:.6rem 0}
+.lede{color:var(--muted);margin-top:.5rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px}
+.stack{display:flex;flex-direction:column;gap:18px}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.grow{flex:1 1 200px;min-width:0}
+
+/* status rail */
+.rail{
+  position:sticky;top:env(safe-area-inset-top,0px);z-index:9;
+  background:var(--paper);border-bottom:1px solid var(--line);
+  margin-left:calc(-1 * max(16px,env(safe-area-inset-left,0px)));
+  margin-right:calc(-1 * max(16px,env(safe-area-inset-right,0px)));
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));
+}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+.rail-in{max-width:720px;margin:0 auto;display:flex;align-items:center;gap:14px;padding-block:10px}
+.clock{font-variant-numeric:tabular-nums;font-size:1.9rem;font-weight:600;letter-spacing:-.01em;line-height:1}
+.clock.low{color:var(--rec)}
+.stage{font-size:.8rem;color:var(--muted);flex:1 1 auto;min-width:0}
+.dot{display:inline-flex;align-items:center;gap:6px;font-size:.74rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--rec)}
+.dot b{width:9px;height:9px;border-radius:50%;background:var(--rec);display:block;animation:pulse 1.6s infinite}
+@keyframes pulse{50%{opacity:.25}}
+@media (prefers-reduced-motion:reduce){.dot b{animation:none}}
+.bar{height:3px;background:var(--line);border-radius:2px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent);width:100%;transition:width .25s linear}
+
+/* question */
+.qnum{font-size:.72rem;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--muted)}
+.question{font-family:var(--display);font-size:1.8rem;line-height:1.22;margin:.4rem 0 0}
+.cue{background:var(--accent-soft);border:1px solid var(--accent);border-radius:10px;padding:18px}
+.cue .question{font-size:1.5rem}
+.cue ul{margin:.7rem 0 0;padding-left:1.1rem;font-family:var(--ui);font-size:.98rem}
+.cue li{margin:.2rem 0}
+
+button{font:inherit;font-weight:500;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:10px 16px;cursor:pointer}
+button:hover{border-color:var(--accent)}
+button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+button[disabled]{opacity:.45;cursor:not-allowed}
+.primary{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+:root[data-theme="dark"] .primary,:root:not([data-theme="light"]) .primary{color:#06201e}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]) .primary{color:#fff}}
+.big{padding:16px 26px;font-size:1.05rem}
+
+label{display:block;font-size:.8rem;font-weight:600;color:var(--muted);margin-bottom:5px}
+input,select,textarea{font:inherit;width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink)}
+textarea{min-height:120px;resize:vertical;font-size:.95rem}
+.hint{font-size:.82rem;color:var(--muted)}
+.rules{margin:0;padding-left:1.15rem;font-size:.95rem;color:var(--muted)}
+.rules li{margin:.35rem 0}
+.warnbox{border-left:3px solid var(--warn);padding:2px 0 2px 12px;font-size:.9rem;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.stat{border:1px solid var(--line);border-radius:8px;padding:12px}
+.stat b{display:block;font-size:1.45rem;font-variant-numeric:tabular-nums;font-weight:600;line-height:1.1}
+.stat span{font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+pre{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px;overflow-x:auto;font-size:.82rem;line-height:1.5;max-height:340px}
+a.dl{display:inline-block;text-decoration:none;font-weight:600;color:var(--accent);border:1px solid var(--accent);border-radius:8px;padding:10px 16px}
+a.dl[aria-disabled="true"]{opacity:.4;pointer-events:none}
+.live{font-size:.9rem;color:var(--muted);min-height:3.2em;border-top:1px dashed var(--line);padding-top:10px;margin-top:16px}
+.live em{font-style:normal;color:var(--ink)}
+hr{border:0;border-top:1px solid var(--line);margin:0}
+footer{margin-top:28px;font-size:.78rem;color:var(--muted)}
+</style>
+</head>
+<body>
+
+<div class="rail" id="rail" hidden>
+  <div class="rail-in">
+    <div class="clock" id="clock">0:00</div>
+    <div class="stage" id="stage">Part 1</div>
+    <div class="dot" id="recdot" hidden><b></b>Recording</div>
+  </div>
+  <div class="bar" style="margin-bottom:10px"><i id="barfill"></i></div>
+</div>
+
+<div class="wrap">
+
+<!-- ===== SETUP ===== -->
+<section id="scr-setup" class="stack" style="padding-block:34px">
+  <div>
+    <div class="eyebrow">Homework — full test</div>
+    <h1>IELTS Speaking Test</h1>
+    <p class="lede">Fifteen minutes, three parts, one take. The questions are read out to you and the clock runs on its own. Nothing can be paused, replayed or re-recorded.</p>
+  </div>
+
+  <div class="card stack">
+    <div class="row">
+      <div class="grow">
+        <label for="f-name">Full name</label>
+        <input id="f-name" autocomplete="off" placeholder="Nguyễn Văn A">
+      </div>
+      <div class="grow">
+        <label for="f-cohort">Cohort</label>
+        <select id="f-cohort">
+          <option>Mon/Thu 19:00</option>
+          <option>Tue/Fri 19:00</option>
+          <option>Wed/Sat 19:00</option>
+          <option>Sat/Sun 09:00</option>
+          <option>Private</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="grow">
+        <label for="f-test">Test set (as assigned)</label>
+        <select id="f-test"></select>
+      </div>
+    </div>
+    <div class="row">
+      <label style="display:flex;align-items:center;gap:8px;font-weight:500;color:var(--ink);margin:0">
+        <input type="checkbox" id="f-sr" checked style="width:auto">
+        Capture a live transcript
+      </label>
+      <span class="hint">Leave this on. Turn it off only if the microphone meter stays flat while you speak.</span>
+    </div>
+    <div id="support" class="hint"></div>
+  </div>
+
+  <div class="card stack">
+    <h2>Rules</h2>
+    <ul class="rules">
+      <li>Use Chrome on a laptop with headphones. Phones and Safari will not record properly.</li>
+      <li>Each question is read once. You get one repeat for the whole test.</li>
+      <li>When the clock reaches zero the next question starts, even mid-sentence.</li>
+      <li>In Part 2 you get one minute to make notes, then two minutes to speak.</li>
+      <li>Leaving this tab is recorded in the report. Do not open a dictionary or another window.</li>
+      <li>At the end you download four files and upload them to the homework form.</li>
+    </ul>
+    <div class="warnbox">Stay on this page until the download buttons appear. If you close the tab early, the recording is lost and the test counts as not submitted.</div>
+  </div>
+
+  <div class="row">
+    <button id="btn-mic" class="primary big">Check microphone</button>
+    <button id="btn-start" class="big" disabled>Start test</button>
+  </div>
+  <div id="mic-msg" class="hint"></div>
+  <div id="meter-wrap" hidden>
+    <label for="meter">Microphone level — say a sentence and watch it move</label>
+    <div class="bar" style="height:10px"><i id="meter" style="width:0%;background:var(--rec);transition:width .08s linear"></i></div>
+  </div>
+</section>
+
+<!-- ===== PART INTRO ===== -->
+<section id="scr-intro" class="stack" hidden style="padding-block:40px">
+  <div>
+    <div class="eyebrow" id="intro-eyebrow">Part 1</div>
+    <h1 id="intro-title">Introduction and interview</h1>
+    <p class="lede" id="intro-text"></p>
+  </div>
+  <div><button id="btn-partgo" class="primary big">Begin</button></div>
+</section>
+
+<!-- ===== QUESTION ===== -->
+<section id="scr-q" hidden style="padding-block:26px">
+  <div class="qnum" id="q-label">Part 1 · question 1 of 9</div>
+  <h2 class="question" id="q-text">—</h2>
+  <div class="row" style="margin-top:22px">
+    <button id="btn-repeat">Repeat the question (<span id="rep-left">1</span> left)</button>
+    <button id="btn-next">Finished answering</button>
+  </div>
+  <div class="live" id="live"><em>Listening…</em></div>
+</section>
+
+<!-- ===== PART 2 PREP ===== -->
+<section id="scr-prep" hidden style="padding-block:26px">
+  <div class="qnum">Part 2 · one minute to prepare</div>
+  <div class="cue" style="margin-top:10px">
+    <h2 class="question" id="cue-text">—</h2>
+    <ul id="cue-bullets"></ul>
+  </div>
+  <div style="margin-top:18px">
+    <label for="f-notes">Notes (optional, kept in the report)</label>
+    <textarea id="f-notes" placeholder="Write single words only, not sentences." spellcheck="false"></textarea>
+  </div>
+  <div class="row" style="margin-top:14px">
+    <button id="btn-speak-now">I am ready, start speaking</button>
+    <span class="hint">Speaking starts on its own when the minute ends.</span>
+  </div>
+</section>
+
+<!-- ===== PART 2 SPEECH ===== -->
+<section id="scr-talk" hidden style="padding-block:26px">
+  <div class="qnum">Part 2 · speak for two minutes</div>
+  <div class="cue" style="margin-top:10px">
+    <h2 class="question" id="talk-text">—</h2>
+    <ul id="talk-bullets"></ul>
+  </div>
+  <div class="live" id="live2"><em>Listening…</em></div>
+</section>
+
+<!-- ===== DONE ===== -->
+<section id="scr-done" class="stack" hidden style="padding-block:34px">
+  <div>
+    <div class="eyebrow">Test complete</div>
+    <h1>Download all four files</h1>
+    <p class="lede">Upload every file to the homework form. A missing part is marked as not submitted.</p>
+  </div>
+  <div class="row">
+    <a class="dl" id="dl-r" aria-disabled="true">Report (.txt)</a>
+    <a class="dl" id="dl-1" aria-disabled="true">Part 1 audio</a>
+    <a class="dl" id="dl-2" aria-disabled="true">Part 2 audio</a>
+    <a class="dl" id="dl-3" aria-disabled="true">Part 3 audio</a>
+  </div>
+  <div class="grid" id="statgrid"></div>
+  <div class="card stack">
+    <h2>Report</h2>
+    <p class="hint">This is what your teacher receives. Copy it if the download is blocked.</p>
+    <pre id="report">—</pre>
+    <div><button id="btn-copy">Copy report</button></div>
+  </div>
+</section>
+
+<footer>Practice tool for classroom use. Not an official IELTS service and it cannot issue a recognised score.</footer>
+</div>
+
+<script>
+"use strict";
+/* =====================================================================
+   QUESTION BANK — edit freely. Logic below never reads anything else.
+   Add a set by copying one block and changing the id. Bump `v` when you
+   change the wording of a set that students have already sat.
+   ===================================================================== */
+const TESTS = [
+{
+  id:"NOV-A", v:1,
+  p1:[
+    {topic:"Introduction", qs:["Do you work, or are you a student?","Why did you choose that job or that subject?"]},
+    {topic:"Your hometown", qs:["Where are you from?","What do you like most about living there?","Has it changed much in the last few years?","Would you like to live there in the future?"]},
+    {topic:"Reading", qs:["Do you read much in your free time?","What kind of books do you prefer?","Did you read a lot when you were a child?"]}
+  ],
+  p2:{
+    card:"Describe a skill you would like to learn.",
+    bullets:["what the skill is","how you would learn it","why you want to learn it"],
+    explain:"and explain how it would be useful to you.",
+    followup:"Do many people in your country learn this skill?"
+  },
+  p3:[
+    "Why do you think some people find it harder than others to learn a new skill?",
+    "Should schools spend more time on practical skills than on academic subjects?",
+    "What is the best age to start learning a difficult skill?",
+    "How has technology changed the way people learn skills?",
+    "Do employers value qualifications or practical ability more?",
+    "Will self-taught learning replace formal courses in the future?"
+  ]
+},
+{
+  id:"NOV-B", v:1,
+  p1:[
+    {topic:"Introduction", qs:["Do you work, or are you a student?","Is that something you plan to continue with?"]},
+    {topic:"Food", qs:["What kind of food do you usually eat?","Do you prefer eating at home or eating out?","Have your eating habits changed in recent years?","Is cooking a common skill among people your age?"]},
+    {topic:"Phones", qs:["How often do you use your phone each day?","What do you mainly use it for?","Could you manage a week without it?"]}
+  ],
+  p2:{
+    card:"Describe a place you often go to in your free time.",
+    bullets:["where it is","how often you go there","what you do there"],
+    explain:"and explain why you keep going back.",
+    followup:"Do many people of your age go to places like this?"
+  },
+  p3:[
+    "Why do cities need public spaces that cost nothing to use?",
+    "Who should pay for parks and libraries, the government or the people who use them?",
+    "Have shopping centres replaced public spaces in modern cities?",
+    "What makes a public place feel safe to spend time in?",
+    "Do people spend less time outdoors than they did in the past?",
+    "How might public spaces need to change in the next twenty years?"
+  ]
+},
+{
+  id:"NOV-C", v:1,
+  p1:[
+    {topic:"Introduction", qs:["Do you work, or are you a student?","What is the busiest part of your week?"]},
+    {topic:"Weather", qs:["What is the weather usually like where you live?","Which season do you prefer?","Does the weather affect how you spend your day?","Has the weather in your area changed over the years?"]},
+    {topic:"Music", qs:["What kind of music do you listen to?","When do you usually listen to it?","Did you learn an instrument at school?"]}
+  ],
+  p2:{
+    card:"Describe a time you helped someone.",
+    bullets:["who you helped","what the situation was","what you did"],
+    explain:"and explain how you felt about it afterwards.",
+    followup:"Is it common for strangers to help each other where you live?"
+  },
+  p3:[
+    "Why are some people more willing to help strangers than others?",
+    "Should helping others be taught as part of the school curriculum?",
+    "Do people in large cities help each other less than people in small towns?",
+    "Is it the responsibility of the government or of individuals to help those in need?",
+    "Has social media made people more willing to help, or only more willing to appear helpful?",
+    "Will communities become more supportive or less supportive in the future?"
+  ]
+}
+];
+
+/* ===== timing, in seconds. Mirrors the real test. ===== */
+const T = { p1:30, p2prep:60, p2talk:120, p2follow:25, p3:50 };
+
+/* ===== elements ===== */
+const $ = id => document.getElementById(id);
+const screens = ["scr-setup","scr-intro","scr-q","scr-prep","scr-talk","scr-done"];
+function show(name){ screens.forEach(s => $(s).hidden = (s !== name)); }
+
+/* ===== state ===== */
+const S = {
+  name:"", cohort:"", test:null,
+  plan:[],            // flat list of steps
+  i:0,
+  repeats:1,
+  notes:"",
+  started:null,
+  segments:[],        // {part, qid, question, text, seconds, started}
+  blobs:{1:null,2:null,3:null},
+  integrity:{ blur:0, hiddenMs:0, hiddenFrom:null, pasted:0, recErrors:[], srUnavailable:false },
+  stream:null, rec:null, chunks:[], recPart:null,
+  sr:null, srWanted:false, srBuffer:"", srFinal:"",
+  tick:null, deadline:0, paused:false, onExpire:null, limit:0
+};
+
+/* ===== populate test picker + support notice ===== */
+TESTS.forEach(t => {
+  const o = document.createElement("option");
+  o.value = t.id; o.textContent = t.id + " (v" + t.v + ")";
+  $("f-test").appendChild(o);
+});
+(function support(){
+  const ua = navigator.userAgent;
+  const chromeLike = /Chrome\//.test(ua) && !/Edg\//.test(ua) && !/OPR\//.test(ua);
+  const sr = ("webkitSpeechRecognition" in window) || ("SpeechRecognition" in window);
+  const mr = typeof MediaRecorder !== "undefined" && navigator.mediaDevices;
+  const msgs = [];
+  if(!mr) msgs.push("This browser cannot record audio. Use Chrome on a laptop.");
+  if(!sr){ S.integrity.srUnavailable = true; msgs.push("No live transcript in this browser. The audio still records, but your teacher gets no text."); }
+  if(mr && sr && !chromeLike) msgs.push("Chrome is strongly recommended. Other browsers may stop recording without warning.");
+  if(location.protocol === "file:") msgs.push("Opened as a local file. If the microphone is refused, open the hosted link instead.");
+  $("support").textContent = msgs.join(" ");
+})();
+
+/* ===== clock ===== */
+function fmt(s){ s = Math.max(0, Math.round(s)); return Math.floor(s/60) + ":" + String(s%60).padStart(2,"0"); }
+function startClock(seconds, onExpire){
+  stopClock();
+  S.limit = seconds; S.deadline = Date.now() + seconds*1000; S.onExpire = onExpire; S.paused = false;
+  paint();
+  S.tick = setInterval(paint, 200);
+}
+function paint(){
+  const left = (S.deadline - Date.now())/1000;
+  $("clock").textContent = fmt(left);
+  $("clock").classList.toggle("low", left <= 10);
+  $("barfill").style.width = Math.max(0, Math.min(100, left/S.limit*100)) + "%";
+  if(left <= 0){ const f = S.onExpire; stopClock(); if(f) f(); }
+}
+function stopClock(){ if(S.tick){ clearInterval(S.tick); S.tick = null; } S.onExpire = null; }
+function pauseClock(){ if(S.tick && !S.paused){ S.paused = true; S.remain = S.deadline - Date.now(); clearInterval(S.tick); S.tick = null; } }
+function resumeClock(){ if(S.paused){ S.paused = false; S.deadline = Date.now() + S.remain; S.tick = setInterval(paint, 200); paint(); } }
+
+/* ===== speech synthesis ===== */
+let voice = null;
+function pickVoice(){
+  const vs = speechSynthesis.getVoices();
+  voice = vs.find(v => /en-GB/i.test(v.lang) && /Google|Daniel|Serena|Kate/i.test(v.name))
+       || vs.find(v => /en-GB/i.test(v.lang))
+       || vs.find(v => /^en/i.test(v.lang)) || null;
+}
+if(window.speechSynthesis){ pickVoice(); speechSynthesis.onvoiceschanged = pickVoice; }
+function say(text){
+  return new Promise(res => {
+    if(!window.speechSynthesis){ setTimeout(res, 400); return; }
+    srStop();
+    try{ speechSynthesis.cancel(); }catch(e){}
+    let done = false;
+    const finish = () => { if(done) return; done = true; res(); };
+    setTimeout(finish, Math.max(4500, text.length * 95) + 200); // safety net: Chrome sometimes never fires onend
+    setTimeout(() => {                                          // speak() right after cancel() is swallowed in Chrome
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = "en-GB"; u.rate = 0.95; if(voice) u.voice = voice;
+      u.onend = finish; u.onerror = finish;
+      try{ speechSynthesis.speak(u); }catch(e){ finish(); }
+    }, 140);
+  });
+}
+
+/* ===== recognition ===== */
+function srInit(){
+  const C = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if(!C) return;
+  const r = new C();
+  r.lang = "en-GB"; r.continuous = true; r.interimResults = true; r.maxAlternatives = 1;
+  r.onresult = e => {
+    let interim = "";
+    for(let k = e.resultIndex; k < e.results.length; k++){
+      const t = e.results[k][0].transcript;
+      if(e.results[k].isFinal) S.srFinal += t.trim() + " "; else interim += t;
+    }
+    const txt = (S.srFinal + interim).trim();
+    const tail = txt.length > 220 ? "…" + txt.slice(-220) : txt;
+    $("live").innerHTML = $("live2").innerHTML = tail ? "<em>" + esc(tail) + "</em>" : "<em>Listening…</em>";
+  };
+  r.onerror = e => {
+    if(e.error === "no-speech" || e.error === "aborted") return;
+    S.integrity.recErrors.push(e.error);
+  };
+  r.onend = () => { if(S.srWanted){ try{ r.start(); }catch(e){} } };
+  S.sr = r;
+}
+function srStart(){
+  if(!S.sr || !$("f-sr").checked) return;
+  S.srWanted = true; try{ S.sr.start(); }catch(e){}
+}
+function srStop(){ if(!S.sr) return; S.srWanted = false; try{ S.sr.stop(); }catch(e){} }
+function srTake(){ const t = S.srFinal.trim(); S.srFinal = ""; return t; }
+function esc(s){ return s.replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c])); }
+
+/* ===== recording ===== */
+function pickMime(){
+  const c = ["audio/webm;codecs=opus","audio/webm","audio/mp4","audio/ogg;codecs=opus"];
+  for(const m of c){ if(window.MediaRecorder && MediaRecorder.isTypeSupported && MediaRecorder.isTypeSupported(m)) return m; }
+  return "";
+}
+function recStart(part){
+  if(!S.stream) return;
+  S.chunks = []; S.recPart = part;
+  const mime = pickMime();
+  try{ S.rec = mime ? new MediaRecorder(S.stream, {mimeType:mime, audioBitsPerSecond:48000}) : new MediaRecorder(S.stream); }
+  catch(e){ S.integrity.recErrors.push("recorder:" + e.name); return; }
+  S.rec.ondataavailable = e => { if(e.data && e.data.size) S.chunks.push(e.data); };
+  S.rec.onerror = e => S.integrity.recErrors.push("recorder:" + (e.error && e.error.name));
+  S.rec.start(2000);
+  $("recdot").hidden = false;
+}
+function recStop(){
+  return new Promise(res => {
+    if(!S.rec || S.rec.state === "inactive"){ res(); return; }
+    const part = S.recPart, rec = S.rec;
+    rec.onstop = () => {
+      const type = rec.mimeType || "audio/webm";
+      S.blobs[part] = S.chunks.length ? new Blob(S.chunks, {type}) : null;
+      S.chunks = []; S.rec = null; $("recdot").hidden = true; res();
+    };
+    try{ rec.stop(); }catch(e){ S.rec = null; res(); }
+  });
+}
+
+/* ===== mic level meter (setup screen only) ===== */
+function startMeter(){
+  const AC = window.AudioContext || window.webkitAudioContext;
+  if(!AC || !S.stream) return;
+  try{
+    const ctx = new AC();
+    const an = ctx.createAnalyser();
+    an.fftSize = 512;
+    ctx.createMediaStreamSource(S.stream).connect(an);
+    const buf = new Uint8Array(an.fftSize);
+    $("meter-wrap").hidden = false;
+    S.meter = setInterval(() => {
+      an.getByteTimeDomainData(buf);
+      let peak = 0;
+      for(let k = 0; k < buf.length; k++){ const d = Math.abs(buf[k] - 128); if(d > peak) peak = d; }
+      $("meter").style.width = Math.min(100, Math.round(peak / 70 * 100)) + "%";
+    }, 80);
+    S.meterStop = () => { clearInterval(S.meter); try{ ctx.close(); }catch(e){} $("meter-wrap").hidden = true; };
+  }catch(e){}
+}
+
+/* ===== integrity watchers ===== */
+document.addEventListener("visibilitychange", () => {
+  if(!S.started) return;
+  if(document.hidden){ S.integrity.blur++; S.integrity.hiddenFrom = Date.now(); }
+  else if(S.integrity.hiddenFrom){ S.integrity.hiddenMs += Date.now() - S.integrity.hiddenFrom; S.integrity.hiddenFrom = null; }
+});
+window.addEventListener("beforeunload", e => {
+  if(S.started && $("scr-done").hidden){ e.preventDefault(); e.returnValue = ""; }
+});
+$("f-notes").addEventListener("paste", e => { e.preventDefault(); S.integrity.pasted++; });
+
+/* ===== setup ===== */
+$("btn-mic").addEventListener("click", async () => {
+  $("mic-msg").textContent = "Asking for the microphone…";
+  try{
+    S.stream = await navigator.mediaDevices.getUserMedia({
+      audio:{ echoCancellation:true, noiseSuppression:true, autoGainControl:true }
+    });
+    srInit();
+    $("mic-msg").textContent = "Microphone ready" + (S.sr ? " and transcript ready." : ", transcript unavailable.") + " Say a sentence and check the meter moves.";
+    $("btn-start").disabled = false;
+    $("btn-start").classList.add("primary");
+    $("btn-mic").disabled = true;
+    startMeter();
+  }catch(err){
+    $("mic-msg").textContent = "The microphone was refused (" + err.name + "). Allow it in the address bar, then press the button again. Without it the test cannot run.";
+  }
+});
+
+$("btn-start").addEventListener("click", () => {
+  const nm = $("f-name").value.trim();
+  if(nm.length < 2){ $("mic-msg").textContent = "Type your full name first."; $("f-name").focus(); return; }
+  S.name = nm;
+  S.cohort = $("f-cohort").value;
+  S.test = TESTS.find(t => t.id === $("f-test").value);
+  S.plan = buildPlan(S.test);
+  if(!$("f-sr").checked) S.integrity.srUnavailable = true;
+  if(S.meterStop) S.meterStop();
+  S.started = new Date();
+  $("rail").hidden = false;
+  partIntro(1);
+});
+
+/* ===== plan ===== */
+function buildPlan(t){
+  const p = [];
+  let n1 = 0;
+  t.p1.forEach(block => block.qs.forEach(q => p.push({
+    kind:"q", part:1, topic:block.topic, text:q, secs:T.p1, qid:"P1-" + (++n1)
+  })));
+  p.push({kind:"prep", part:2, secs:T.p2prep});
+  p.push({kind:"talk", part:2, secs:T.p2talk, qid:"P2-CARD"});
+  p.push({kind:"q", part:2, topic:"Rounding off", text:t.p2.followup, secs:T.p2follow, qid:"P2-FOLLOW"});
+  t.p3.forEach((q,n) => p.push({kind:"q", part:3, topic:"Discussion", text:q, secs:T.p3, qid:"P3-" + (n+1)}));
+  return p;
+}
+const PART_INFO = {
+  1:{title:"Introduction and interview", text:"Short questions about you. Answer in two or three sentences each. Thirty seconds per question."},
+  2:{title:"Individual long turn", text:"One card. One minute to make notes, then two minutes of uninterrupted speech. Do not stop early."},
+  3:{title:"Two-way discussion", text:"Harder, more general questions. Give an opinion and a reason, then develop it. Fifty seconds per question."}
+};
+function partIntro(part){
+  $("intro-eyebrow").textContent = "Part " + part;
+  $("intro-title").textContent = PART_INFO[part].title;
+  $("intro-text").textContent = PART_INFO[part].text;
+  $("stage").textContent = "Part " + part + " — ready";
+  $("clock").textContent = "0:00"; $("barfill").style.width = "100%";
+  show("scr-intro");
+  $("btn-partgo").onclick = async () => {
+    await recStop();
+    recStart(part);
+    runStep();
+  };
+}
+
+/* ===== runner ===== */
+async function runStep(){
+  const step = S.plan[S.i];
+  if(!step){ finish(); return; }
+
+  if(step.kind === "q"){
+    const inPart = S.plan.filter(x => x.part === step.part && x.kind !== "prep");
+    const idx = inPart.indexOf(step) + 1;
+    $("stage").textContent = "Part " + step.part + " · " + step.topic;
+    $("q-label").textContent = "Part " + step.part + " · question " + idx + " of " + inPart.length;
+    $("q-text").textContent = step.text;
+    $("rep-left").textContent = S.repeats;
+    $("btn-repeat").disabled = S.repeats < 1;
+    $("live").innerHTML = "<em>Listening…</em>";
+    show("scr-q");
+    srTake();
+    await say(step.text);
+    const t0 = Date.now();
+    srStart();
+    startClock(step.secs, () => closeQ(step, t0));
+    $("btn-next").onclick = () => { stopClock(); closeQ(step, t0); };
+    $("btn-repeat").onclick = async () => {
+      if(S.repeats < 1) return;
+      S.repeats--; $("rep-left").textContent = S.repeats; $("btn-repeat").disabled = true;
+      pauseClock(); await say(step.text); srStart(); resumeClock();
+    };
+    return;
+  }
+
+  if(step.kind === "prep"){
+    const c = S.test.p2;
+    $("stage").textContent = "Part 2 · preparing";
+    $("cue-text").textContent = c.card;
+    $("cue-bullets").innerHTML = "<li>You should say:</li>" + c.bullets.map(b => "<li>" + esc(b) + "</li>").join("") + "<li>" + esc(c.explain) + "</li>";
+    show("scr-prep");
+    srStop();
+    await say(c.card + " You should say: " + c.bullets.join("; ") + "; " + c.explain + " You have one minute to make notes.");
+    startClock(T.p2prep, () => { S.i++; runStep(); });
+    $("btn-speak-now").onclick = () => { stopClock(); S.i++; runStep(); };
+    return;
+  }
+
+  if(step.kind === "talk"){
+    const c = S.test.p2;
+    S.notes = $("f-notes").value.trim();
+    $("stage").textContent = "Part 2 · speaking";
+    $("talk-text").textContent = c.card;
+    $("talk-bullets").innerHTML = $("cue-bullets").innerHTML;
+    $("live2").innerHTML = "<em>Listening…</em>";
+    show("scr-talk");
+    srTake();
+    await say("Remember you have two minutes. You can start speaking now.");
+    const t0 = Date.now();
+    srStart();
+    startClock(T.p2talk, () => closeQ(step, t0));
+    return;
+  }
+}
+
+function closeQ(step, t0){
+  srStop();
+  S.segments.push({
+    part:step.part,
+    qid:step.qid,
+    topic: step.kind === "talk" ? "Long turn" : (step.topic || ""),
+    question: step.kind === "talk" ? S.test.p2.card : step.text,
+    text: srTake(),
+    seconds: Math.round((Date.now() - t0)/1000)
+  });
+  const next = S.plan[S.i + 1];
+  S.i++;
+  if(!next){ finish(); return; }
+  if(next.part !== step.part){ partIntro(next.part); return; }
+  runStep();
+}
+
+/* ===== metrics ===== */
+const FILLERS = ["um","uh","er","erm","like","you know","i mean","yeah","actually","basically","so yeah"];
+function words(s){ return s ? s.trim().split(/\s+/).filter(Boolean) : []; }
+function countFillers(s){
+  const low = " " + s.toLowerCase().replace(/[^a-z' ]/g," ").replace(/\s+/g," ") + " ";
+  let n = 0;
+  for(const f of FILLERS){
+    const re = new RegExp("(?:^| )" + f.replace(/ /g,"\\s+") + "(?= |$)","g");
+    n += (low.match(re) || []).length;
+  }
+  return n;
+}
+function metrics(){
+  const byPart = {};
+  [1,2,3].forEach(p => {
+    const segs = S.segments.filter(s => s.part === p);
+    const w = segs.reduce((a,s) => a + words(s.text).length, 0);
+    const sec = segs.reduce((a,s) => a + s.seconds, 0);
+    byPart[p] = {
+      questions: segs.length,
+      words: w,
+      seconds: sec,
+      wpm: sec ? Math.round(w / (sec/60)) : 0,
+      fillers: segs.reduce((a,s) => a + countFillers(s.text), 0)
+    };
+  });
+  const p2 = S.segments.find(s => s.qid === "P2-CARD");
+  const all = S.segments.reduce((a,s) => a + words(s.text).length, 0);
+  const allSec = S.segments.reduce((a,s) => a + s.seconds, 0);
+  return {
+    byPart,
+    totalWords: all,
+    totalSeconds: allSec,
+    wpm: allSec ? Math.round(all / (allSec/60)) : 0,
+    p2Words: p2 ? words(p2.text).length : 0,
+    p2Seconds: p2 ? p2.seconds : 0,
+    shortAnswers: S.segments.filter(s => s.qid !== "P2-CARD" && words(s.text).length < 15).length
+  };
+}
+
+/* ===== report ===== */
+function pad(n){ return String(n).padStart(2,"0"); }
+function stamp(d){ return d.getFullYear() + "-" + pad(d.getMonth()+1) + "-" + pad(d.getDate()) + " " + pad(d.getHours()) + ":" + pad(d.getMinutes()); }
+function slug(s){ return s.normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[^A-Za-z0-9]+/g,"-").replace(/^-|-$/g,"").toLowerCase(); }
+
+function buildReport(){
+  const m = metrics();
+  const end = new Date();
+  const dur = Math.round((end - S.started)/1000);
+  const L = [];
+  L.push("IELTS SPEAKING TEST — SUBMISSION");
+  L.push("================================");
+  L.push("Student     : " + S.name);
+  L.push("Cohort      : " + S.cohort);
+  L.push("Test set    : " + S.test.id + " v" + S.test.v);
+  L.push("Taken       : " + stamp(S.started) + " — " + stamp(end) + " (" + fmt(dur) + ")");
+  L.push("Browser     : " + (navigator.userAgent || "unknown"));
+  L.push("");
+  L.push("INTEGRITY LOG");
+  L.push("-------------");
+  L.push("Left the tab        : " + S.integrity.blur + " time(s), " + Math.round(S.integrity.hiddenMs/1000) + "s away");
+  L.push("Repeats used        : " + (1 - S.repeats) + " of 1");
+  L.push("Paste blocked       : " + S.integrity.pasted + " attempt(s)");
+  L.push("Recording problems  : " + (S.integrity.recErrors.length ? S.integrity.recErrors.join(", ") : "none"));
+  L.push("Audio captured      : " + [1,2,3].map(p => "Part " + p + " " + (S.blobs[p] ? Math.round(S.blobs[p].size/1024) + "KB" : "MISSING")).join(" · "));
+  L.push("Transcript source   : " + (S.integrity.srUnavailable ? "unavailable in this browser" : "browser recognition (drops most fillers — judge fluency from the audio)"));
+  L.push("");
+  L.push("MEASUREMENTS (counted, not graded)");
+  L.push("----------------------------------");
+  L.push("Density = words per minute of airtime, not speaking rate. Low density means long silences.");
+  [1,2,3].forEach(p => {
+    const b = m.byPart[p];
+    L.push("Part " + p + ": " + b.questions + " answers · " + b.words + " words · " + fmt(b.seconds) + " airtime · density " + b.wpm + " · " + b.fillers + " fillers in transcript");
+  });
+  L.push("Long turn: " + m.p2Words + " words in " + fmt(m.p2Seconds) + (m.p2Seconds < 100 ? "  <-- stopped before two minutes" : ""));
+  L.push("Whole test: " + m.totalWords + " words · average density " + m.wpm);
+  L.push("Answers under 15 words: " + m.shortAnswers + " of " + (S.segments.length - 1));
+  L.push("");
+  L.push("PART 2 NOTES");
+  L.push("------------");
+  L.push(S.notes ? S.notes : "(none written)");
+  L.push("");
+  L.push("TRANSCRIPT");
+  L.push("----------");
+  S.segments.forEach(s => {
+    L.push("[" + s.qid + (s.topic ? " · " + s.topic : "") + "] (" + s.seconds + "s) Q: " + s.question);
+    L.push("    A: " + (s.text || "(no speech detected)"));
+    L.push("");
+  });
+  L.push("--- MACHINE BLOCK ---");
+  L.push(JSON.stringify({
+    student:S.name, cohort:S.cohort, test:S.test.id, version:S.test.v,
+    started:S.started.toISOString(), ended:end.toISOString(), durationSeconds:dur,
+    integrity:{ tabLeaves:S.integrity.blur, hiddenSeconds:Math.round(S.integrity.hiddenMs/1000),
+      repeatsUsed:1 - S.repeats, pasteBlocked:S.integrity.pasted,
+      recorderErrors:S.integrity.recErrors, transcriptAvailable:!S.integrity.srUnavailable,
+      audioBytes:{1:S.blobs[1]?S.blobs[1].size:0, 2:S.blobs[2]?S.blobs[2].size:0, 3:S.blobs[3]?S.blobs[3].size:0} },
+    metrics:m, notes:S.notes, segments:S.segments
+  }));
+  return { text:L.join("\n"), m:m };
+}
+
+/* ===== finish ===== */
+async function finish(){
+  stopClock(); srStop();
+  try{ speechSynthesis.cancel(); }catch(e){}
+  await recStop();
+  if(S.stream){ S.stream.getTracks().forEach(t => t.stop()); }
+  $("rail").hidden = true;
+
+  const built = buildReport();
+  const base = slug(S.name) + "_" + S.test.id + "_" + stamp(S.started).replace(/[: ]/g,"-");
+
+  $("report").textContent = built.text;
+  wire($("dl-r"), new Blob([built.text], {type:"text/plain;charset=utf-8"}), base + "_report.txt");
+  [1,2,3].forEach(p => {
+    const el = $("dl-" + p);
+    if(S.blobs[p]){
+      const ext = /mp4/.test(S.blobs[p].type) ? "m4a" : /ogg/.test(S.blobs[p].type) ? "ogg" : "webm";
+      wire(el, S.blobs[p], base + "_part" + p + "." + ext);
+    } else { el.textContent = "Part " + p + " audio missing"; }
+  });
+
+  const m = built.m;
+  $("statgrid").innerHTML = [
+    ["Total words", m.totalWords],
+    ["Words per minute", m.wpm],
+    ["Long turn", fmt(m.p2Seconds)],
+    ["Short answers", m.shortAnswers],
+    ["Tab leaves", S.integrity.blur]
+  ].map(([k,v]) => '<div class="stat"><b>' + v + '</b><span>' + k + '</span></div>').join("");
+
+  show("scr-done");
+  window.scrollTo(0,0);
+}
+function wire(a, blob, filename){
+  a.href = URL.createObjectURL(blob);
+  a.download = filename;
+  a.removeAttribute("aria-disabled");
+  a.textContent = a.textContent.replace(/ missing$/,"");
+}
+$("btn-copy").addEventListener("click", async () => {
+  try{ await navigator.clipboard.writeText($("report").textContent); $("btn-copy").textContent = "Copied"; }
+  catch(e){
+    const r = document.createRange(); r.selectNodeContents($("report"));
+    const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r);
+    $("btn-copy").textContent = "Selected — press Ctrl+C";
+  }
+  setTimeout(() => { $("btn-copy").textContent = "Copy report"; }, 2500);
+});
+</script>
+</body>
+</html>
