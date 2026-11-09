@@ -3,71 +3,58 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Speaking Test Runner</title>
+<title>IELTS Homework</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Instrument+Serif&display=swap">
 <style>
-/* Layout: single centred exam column; fixed status rail on top carrying clock + record state. */
+/* Layout: one exam column; a sticky rail carries the clock whenever a clock is running. */
 :root{
-  --paper:#f3f4f6;
-  --card:#ffffff;
-  --ink:#15181d;
-  --muted:#5b6370;
-  --line:#d7dae1;
-  --accent:#0d5b55;
-  --accent-soft:#e3efed;
-  --rec:#b5352b;
-  --warn:#9a6107;
+  --paper:#f3f4f6; --card:#ffffff; --ink:#15181d; --muted:#5b6370; --line:#d7dae1;
+  --accent:#0d5b55; --accent-soft:#e3efed; --rec:#b5352b; --warn:#9a6107; --ok:#1d6b3f;
   --ui:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
   --display:"Instrument Serif","Iowan Old Style",Georgia,serif;
   color-scheme:light;
 }
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]){
-    --paper:#101215; --card:#191c21; --ink:#e8eaee; --muted:#98a0ac;
-    --line:#2a2f37; --accent:#55cdbd; --accent-soft:#17302e; --rec:#ee6054; --warn:#d99a2b;
-    color-scheme:dark;
-  }
-}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#101215; --card:#191c21; --ink:#e8eaee; --muted:#98a0ac; --line:#2a2f37;
+  --accent:#55cdbd; --accent-soft:#17302e; --rec:#ee6054; --warn:#d99a2b; --ok:#73d39a;
+  color-scheme:dark;
+}}
 :root[data-theme="dark"]{
-  --paper:#101215; --card:#191c21; --ink:#e8eaee; --muted:#98a0ac;
-  --line:#2a2f37; --accent:#55cdbd; --accent-soft:#17302e; --rec:#ee6054; --warn:#d99a2b;
+  --paper:#101215; --card:#191c21; --ink:#e8eaee; --muted:#98a0ac; --line:#2a2f37;
+  --accent:#55cdbd; --accent-soft:#17302e; --rec:#ee6054; --warn:#d99a2b; --ok:#73d39a;
   color-scheme:dark;
 }
 *{box-sizing:border-box}
 html,body{margin:0}
 body{
-  background:var(--paper); color:var(--ink);
-  font-family:var(--ui); font-size:16px; line-height:1.5;
+  background:var(--paper); color:var(--ink); font-family:var(--ui); font-size:16px; line-height:1.5;
   padding-left:max(16px,env(safe-area-inset-left,0px));
   padding-right:max(16px,env(safe-area-inset-right,0px));
-  padding-block:0 48px;
+  padding-block:0 56px;
 }
 .wrap{max-width:720px;margin:0 auto}
-h1,h2,h3{text-wrap:balance;margin:0}
-h1{font-family:var(--display);font-weight:400;font-size:2.1rem;line-height:1.1}
-h2{font-size:1.05rem;font-weight:600;letter-spacing:.01em}
-.eyebrow{font-size:.72rem;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--muted)}
+h1{font-family:var(--display);font-weight:400;font-size:2.1rem;line-height:1.1;margin:0;text-wrap:balance}
+h2{font-size:1.05rem;font-weight:600;margin:0}
 p{margin:.6rem 0}
-.lede{color:var(--muted);margin-top:.5rem}
+.eyebrow{font-size:.72rem;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--muted)}
+.lede{color:var(--muted);margin-top:.5rem;max-width:62ch}
 .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px}
 .stack{display:flex;flex-direction:column;gap:18px}
 .row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
-.grow{flex:1 1 200px;min-width:0}
+.grow{flex:1 1 180px;min-width:0}
+.hint{font-size:.82rem;color:var(--muted)}
+.rules{margin:0;padding-left:1.15rem;font-size:.95rem;color:var(--muted)}
+.rules li{margin:.35rem 0}
+.warnbox{border-left:3px solid var(--warn);padding:2px 0 2px 12px;font-size:.9rem;color:var(--muted)}
 
-/* status rail */
-.rail{
-  position:sticky;top:env(safe-area-inset-top,0px);z-index:9;
-  background:var(--paper);border-bottom:1px solid var(--line);
-  margin-left:calc(-1 * max(16px,env(safe-area-inset-left,0px)));
-  margin-right:calc(-1 * max(16px,env(safe-area-inset-right,0px)));
-  padding-left:max(16px,env(safe-area-inset-left,0px));
-  padding-right:max(16px,env(safe-area-inset-right,0px));
-}
+.rail{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--paper);border-bottom:1px solid var(--line);
+  margin-left:calc(-1 * max(16px,env(safe-area-inset-left,0px)));margin-right:calc(-1 * max(16px,env(safe-area-inset-right,0px)));
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
 .rail-in{max-width:720px;margin:0 auto;display:flex;align-items:center;gap:14px;padding-block:10px}
-.clock{font-variant-numeric:tabular-nums;font-size:1.9rem;font-weight:600;letter-spacing:-.01em;line-height:1}
+.clock{font-variant-numeric:tabular-nums;font-size:1.9rem;font-weight:600;line-height:1}
 .clock.low{color:var(--rec)}
 .stage{font-size:.8rem;color:var(--muted);flex:1 1 auto;min-width:0}
 .dot{display:inline-flex;align-items:center;gap:6px;font-size:.74rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--rec)}
@@ -77,41 +64,49 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .bar{height:3px;background:var(--line);border-radius:2px;overflow:hidden}
 .bar i{display:block;height:100%;background:var(--accent);width:100%;transition:width .25s linear}
 
-/* question */
-.qnum{font-size:.72rem;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--muted)}
-.question{font-family:var(--display);font-size:1.8rem;line-height:1.22;margin:.4rem 0 0}
-.cue{background:var(--accent-soft);border:1px solid var(--accent);border-radius:10px;padding:18px}
-.cue .question{font-size:1.5rem}
-.cue ul{margin:.7rem 0 0;padding-left:1.1rem;font-family:var(--ui);font-size:.98rem}
-.cue li{margin:.2rem 0}
-
 button{font:inherit;font-weight:500;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:10px 16px;cursor:pointer}
 button:hover{border-color:var(--accent)}
 button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 button[disabled]{opacity:.45;cursor:not-allowed}
 .primary{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
-:root[data-theme="dark"] .primary,:root:not([data-theme="light"]) .primary{color:#06201e}
-@media (prefers-color-scheme:light){:root:not([data-theme="dark"]) .primary{color:#fff}}
-.big{padding:16px 26px;font-size:1.05rem}
-
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .primary{color:#06201e}}
+:root[data-theme="dark"] .primary{color:#06201e}
+.big{padding:15px 24px;font-size:1.05rem}
 label{display:block;font-size:.8rem;font-weight:600;color:var(--muted);margin-bottom:5px}
 input,select,textarea{font:inherit;width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink)}
-textarea{min-height:120px;resize:vertical;font-size:.95rem}
-.hint{font-size:.82rem;color:var(--muted)}
-.rules{margin:0;padding-left:1.15rem;font-size:.95rem;color:var(--muted)}
-.rules li{margin:.35rem 0}
-.warnbox{border-left:3px solid var(--warn);padding:2px 0 2px 12px;font-size:.9rem;color:var(--muted)}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
-.stat{border:1px solid var(--line);border-radius:8px;padding:12px}
-.stat b{display:block;font-size:1.45rem;font-variant-numeric:tabular-nums;font-weight:600;line-height:1.1}
-.stat span{font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-pre{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px;overflow-x:auto;font-size:.82rem;line-height:1.5;max-height:340px}
-a.dl{display:inline-block;text-decoration:none;font-weight:600;color:var(--accent);border:1px solid var(--accent);border-radius:8px;padding:10px 16px}
-a.dl[aria-disabled="true"]{opacity:.4;pointer-events:none}
+textarea{min-height:120px;resize:vertical;font-size:.95rem;line-height:1.6}
+textarea.essay{min-height:340px}
+
+/* menu */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.tile{text-align:left;padding:18px;display:flex;flex-direction:column;gap:5px;align-items:flex-start}
+.tile .t{font-weight:600;font-size:1.02rem}
+.tile .d{font-size:.84rem;color:var(--muted)}
+.tile .s{font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-top:6px}
+.tile .s.todo{color:var(--muted)}
+.tile .s.sent{color:var(--ok)}
+
+.qnum{font-size:.72rem;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--muted)}
+.question{font-family:var(--display);font-size:1.8rem;line-height:1.22;margin:.4rem 0 0}
+.cue{background:var(--accent-soft);border:1px solid var(--accent);border-radius:10px;padding:18px}
+.cue .question{font-size:1.5rem}
+.cue ul{margin:.7rem 0 0;padding-left:1.1rem;font-family:var(--ui);font-size:.98rem}
 .live{font-size:.9rem;color:var(--muted);min-height:3.2em;border-top:1px dashed var(--line);padding-top:10px;margin-top:16px}
 .live em{font-style:normal;color:var(--ink)}
-hr{border:0;border-top:1px solid var(--line);margin:0}
-footer{margin-top:28px;font-size:.78rem;color:var(--muted)}
+.prompt{background:var(--accent-soft);border:1px solid var(--accent);border-radius:10px;padding:16px;font-size:1.02rem}
+.wordcount{font-size:.84rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.wordcount.short{color:var(--rec)}
+.vi{font-family:var(--display);font-size:2rem;line-height:1.2;margin:.3rem 0 0}
+.pos{font-size:.84rem;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
+.stat{border:1px solid var(--line);border-radius:8px;padding:12px}
+.stat b{display:block;font-size:1.45rem;font-variant-numeric:tabular-nums;font-weight:600;line-height:1.1}
+.stat span{font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.marks{margin:0;padding-left:1.1rem;font-size:.92rem}
+.marks li.no{color:var(--rec)}
+pre{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px;overflow-x:auto;font-size:.8rem;line-height:1.5;max-height:300px;white-space:pre-wrap}
+a.dl{display:inline-block;text-decoration:none;font-weight:600;color:var(--accent);border:1px solid var(--accent);border-radius:8px;padding:9px 15px}
+footer{margin-top:30px;font-size:.78rem;color:var(--muted)}
 </style>
 </head>
 <body>
@@ -119,7 +114,7 @@ footer{margin-top:28px;font-size:.78rem;color:var(--muted)}
 <div class="rail" id="rail" hidden>
   <div class="rail-in">
     <div class="clock" id="clock">0:00</div>
-    <div class="stage" id="stage">Part 1</div>
+    <div class="stage" id="stage"></div>
     <div class="dot" id="recdot" hidden><b></b>Recording</div>
   </div>
   <div class="bar" style="margin-bottom:10px"><i id="barfill"></i></div>
@@ -127,84 +122,112 @@ footer{margin-top:28px;font-size:.78rem;color:var(--muted)}
 
 <div class="wrap">
 
-<!-- ===== SETUP ===== -->
-<section id="scr-setup" class="stack" style="padding-block:34px">
+<!-- ===== IDENTITY ===== -->
+<section id="scr-id" class="stack" style="padding-block:34px">
   <div>
-    <div class="eyebrow">Homework — full test</div>
-    <h1>IELTS Speaking Test</h1>
-    <p class="lede">Fifteen minutes, three parts, one take. The questions are read out to you and the clock runs on its own. Nothing can be paused, replayed or re-recorded.</p>
+    <div class="eyebrow">Weekly homework</div>
+    <h1>IELTS Homework</h1>
+    <p class="lede">Everything is handed in here. Save this one link. You can do the four tasks on different days, but each one is a single attempt with a clock.</p>
   </div>
-
   <div class="card stack">
     <div class="row">
-      <div class="grow">
-        <label for="f-name">Full name</label>
-        <input id="f-name" autocomplete="off" placeholder="Nguyễn Văn A">
-      </div>
-      <div class="grow">
-        <label for="f-cohort">Cohort</label>
-        <select id="f-cohort">
-          <option>Mon/Thu 19:00</option>
-          <option>Tue/Fri 19:00</option>
-          <option>Wed/Sat 19:00</option>
-          <option>Sat/Sun 09:00</option>
-          <option>Private</option>
-        </select>
-      </div>
+      <div class="grow"><label for="f-name">Full name</label><input id="f-name" autocomplete="off" placeholder="Nguyễn Văn A"></div>
+      <div class="grow"><label for="f-cohort">Class</label><select id="f-cohort"></select></div>
+      <div class="grow"><label for="f-week">Week</label><select id="f-week"></select></div>
     </div>
-    <div class="row">
-      <div class="grow">
-        <label for="f-test">Test set (as assigned)</label>
-        <select id="f-test"></select>
-      </div>
-    </div>
-    <div class="row">
-      <label style="display:flex;align-items:center;gap:8px;font-weight:500;color:var(--ink);margin:0">
-        <input type="checkbox" id="f-sr" checked style="width:auto">
-        Capture a live transcript
-      </label>
-      <span class="hint">Leave this on. Turn it off only if the microphone meter stays flat while you speak.</span>
-    </div>
-    <div id="support" class="hint"></div>
+    <div class="hint" id="id-msg"></div>
   </div>
+  <div><button id="btn-id" class="primary big">Continue</button></div>
+</section>
 
+<!-- ===== MENU ===== -->
+<section id="scr-menu" class="stack" hidden style="padding-block:34px">
+  <div>
+    <div class="eyebrow" id="menu-who"></div>
+    <h1 id="menu-title">This week</h1>
+    <p class="lede" id="menu-theme"></p>
+  </div>
+  <div class="tiles" id="tiles"></div>
+  <div class="row"><button id="btn-switch" class="hint" style="border:0;background:none;padding:0;text-decoration:underline">Not you, or wrong week?</button></div>
+</section>
+
+<!-- ===== LISTENING AND READING ===== -->
+<section id="scr-lr" class="stack" hidden style="padding-block:28px">
+  <div><div class="eyebrow">Task 1 of 4</div><h1>Listening and reading</h1></div>
+  <div class="prompt" id="lr-brief"></div>
   <div class="card stack">
-    <h2>Rules</h2>
-    <ul class="rules">
-      <li>Use Chrome on a laptop with headphones. Phones and Safari will not record properly.</li>
-      <li>Each question is read once. You get one repeat for the whole test.</li>
-      <li>When the clock reaches zero the next question starts, even mid-sentence.</li>
-      <li>In Part 2 you get one minute to make notes, then two minutes to speak.</li>
-      <li>Leaving this tab is recorded in the report. Do not open a dictionary or another window.</li>
-      <li>At the end you download four files and upload them to the homework form.</li>
-    </ul>
-    <div class="warnbox">Stay on this page until the download buttons appear. If you close the tab early, the recording is lost and the test counts as not submitted.</div>
+    <div><label for="lr-answers">Your answers, numbered in order</label><textarea id="lr-answers" spellcheck="false" placeholder="1 B&#10;2 library&#10;3 FALSE"></textarea></div>
+    <div><label for="lr-dict">Dictation</label>
+      <p class="hint" style="margin-top:-2px">Type the stretch of audio named above, word for word. Spelling mistakes are fine. Blanks are fine. Inventing text is not.</p>
+      <textarea id="lr-dict" spellcheck="false"></textarea><div class="wordcount" id="lr-dict-wc">0 words</div></div>
+    <div><label for="lr-ev">Evidence</label>
+      <p class="hint" style="margin-top:-2px">For five reading answers give the line number and the paraphrase pair. Example: Q7, line 24, "cut back sharply" became "reduced significantly".</p>
+      <textarea id="lr-ev" spellcheck="false"></textarea><div class="wordcount" id="lr-ev-wc">0 pairs found</div></div>
+    <div><label for="lr-unknown">Words and phrases you did not know</label>
+      <p class="hint" style="margin-top:-2px">At least five, each with your guess at the meaning before you looked it up.</p>
+      <textarea id="lr-unknown" spellcheck="false"></textarea></div>
+    <div class="row">
+      <div class="grow"><label for="lr-time">How long did it take you?</label><input id="lr-time" placeholder="1h 50m"></div>
+      <div class="grow"><label for="lr-plays">How many times did you play the audio?</label>
+        <select id="lr-plays"><option>Once</option><option>Twice</option><option>Three times</option><option>More than three</option></select></div>
+    </div>
   </div>
+  <div class="row"><button id="lr-send" class="primary big">Hand in</button><button class="back">Back</button></div>
+  <div class="hint" id="lr-msg"></div>
+</section>
 
-  <div class="row">
-    <button id="btn-mic" class="primary big">Check microphone</button>
-    <button id="btn-start" class="big" disabled>Start test</button>
-  </div>
-  <div id="mic-msg" class="hint"></div>
-  <div id="meter-wrap" hidden>
-    <label for="meter">Microphone level — say a sentence and watch it move</label>
-    <div class="bar" style="height:10px"><i id="meter" style="width:0%;background:var(--rec);transition:width .08s linear"></i></div>
+<!-- ===== WRITING ===== -->
+<section id="scr-w-intro" class="stack" hidden style="padding-block:34px">
+  <div><div class="eyebrow">Task 2 of 4</div><h1>Writing</h1>
+    <p class="lede">One hour in total. Task 1 runs for twenty minutes, then Task 2 for forty. The clock does not stop and you cannot return to Task 1 once it ends.</p></div>
+  <div class="card"><ul class="rules">
+    <li>Pasting is blocked. Everything must be typed here.</li>
+    <li>Your work is saved in this browser as you type, so a crash does not lose it.</li>
+    <li>Leaving the tab is recorded and sent with your answer.</li>
+    <li>Task 1 needs at least 150 words, Task 2 at least 250.</li>
+  </ul></div>
+  <div class="row"><button id="w-start" class="primary big">Start the hour</button><button class="back">Back</button></div>
+</section>
+
+<section id="scr-write" hidden style="padding-block:24px">
+  <div class="qnum" id="w-label"></div>
+  <div class="prompt" id="w-prompt" style="margin-top:10px"></div>
+  <img id="w-img" alt="" style="max-width:100%;margin-top:14px;border:1px solid var(--line);border-radius:8px" hidden>
+  <div style="margin-top:16px"><textarea id="w-text" class="essay" spellcheck="false" placeholder="Start typing here."></textarea></div>
+  <div class="row" style="margin-top:10px">
+    <div class="wordcount" id="w-wc">0 words</div>
+    <button id="w-next">Finished this task</button>
   </div>
 </section>
 
-<!-- ===== PART INTRO ===== -->
-<section id="scr-intro" class="stack" hidden style="padding-block:40px">
-  <div>
-    <div class="eyebrow" id="intro-eyebrow">Part 1</div>
-    <h1 id="intro-title">Introduction and interview</h1>
-    <p class="lede" id="intro-text"></p>
+<!-- ===== SPEAKING ===== -->
+<section id="scr-s-intro" class="stack" hidden style="padding-block:34px">
+  <div><div class="eyebrow">Task 3 of 4</div><h1>Speaking</h1>
+    <p class="lede">A full fifteen minute test in three parts. Questions are read to you, the clock runs on its own, and nothing can be paused or recorded twice.</p></div>
+  <div class="card"><ul class="rules">
+    <li>Chrome on a laptop, with headphones. Phones and Safari will not record properly.</li>
+    <li>Each question is read once. You get one repeat for the whole test.</li>
+    <li>When the clock reaches zero the next question starts, even mid-sentence.</li>
+    <li>In Part 2 you get one minute of notes, then two minutes of speech.</li>
+  </ul>
+  <div class="warnbox" style="margin-top:14px">Stay on this page until it says your work has been sent. Closing the tab early loses the recording.</div></div>
+  <div class="row">
+    <button id="btn-mic" class="primary big">Check microphone</button>
+    <button id="btn-sgo" class="big" disabled>Start test</button>
+    <button class="back">Back</button>
   </div>
+  <div class="hint" id="mic-msg"></div>
+  <div id="meter-wrap" hidden><label for="meter">Microphone level, say a sentence and watch it move</label>
+    <div class="bar" style="height:10px"><i id="meter" style="width:0%;background:var(--rec);transition:width .08s linear"></i></div></div>
+</section>
+
+<section id="scr-part" class="stack" hidden style="padding-block:40px">
+  <div><div class="eyebrow" id="part-eyebrow"></div><h1 id="part-title"></h1><p class="lede" id="part-text"></p></div>
   <div><button id="btn-partgo" class="primary big">Begin</button></div>
 </section>
 
-<!-- ===== QUESTION ===== -->
 <section id="scr-q" hidden style="padding-block:26px">
-  <div class="qnum" id="q-label">Part 1 · question 1 of 9</div>
+  <div class="qnum" id="q-label"></div>
   <h2 class="question" id="q-text">—</h2>
   <div class="row" style="margin-top:22px">
     <button id="btn-repeat">Repeat the question (<span id="rep-left">1</span> left)</button>
@@ -213,53 +236,62 @@ footer{margin-top:28px;font-size:.78rem;color:var(--muted)}
   <div class="live" id="live"><em>Listening…</em></div>
 </section>
 
-<!-- ===== PART 2 PREP ===== -->
 <section id="scr-prep" hidden style="padding-block:26px">
   <div class="qnum">Part 2 · one minute to prepare</div>
-  <div class="cue" style="margin-top:10px">
-    <h2 class="question" id="cue-text">—</h2>
-    <ul id="cue-bullets"></ul>
-  </div>
-  <div style="margin-top:18px">
-    <label for="f-notes">Notes (optional, kept in the report)</label>
-    <textarea id="f-notes" placeholder="Write single words only, not sentences." spellcheck="false"></textarea>
-  </div>
-  <div class="row" style="margin-top:14px">
-    <button id="btn-speak-now">I am ready, start speaking</button>
-    <span class="hint">Speaking starts on its own when the minute ends.</span>
-  </div>
+  <div class="cue" style="margin-top:10px"><h2 class="question" id="cue-text">—</h2><ul id="cue-bullets"></ul></div>
+  <div style="margin-top:18px"><label for="f-notes">Notes (optional, sent with your answer)</label>
+    <textarea id="f-notes" placeholder="Single words only, not sentences." spellcheck="false"></textarea></div>
+  <div class="row" style="margin-top:14px"><button id="btn-speak-now">I am ready, start speaking</button>
+    <span class="hint">Speaking starts on its own when the minute ends.</span></div>
 </section>
 
-<!-- ===== PART 2 SPEECH ===== -->
 <section id="scr-talk" hidden style="padding-block:26px">
   <div class="qnum">Part 2 · speak for two minutes</div>
-  <div class="cue" style="margin-top:10px">
-    <h2 class="question" id="talk-text">—</h2>
-    <ul id="talk-bullets"></ul>
-  </div>
+  <div class="cue" style="margin-top:10px"><h2 class="question" id="talk-text">—</h2><ul id="talk-bullets"></ul></div>
   <div class="live" id="live2"><em>Listening…</em></div>
 </section>
 
-<!-- ===== DONE ===== -->
-<section id="scr-done" class="stack" hidden style="padding-block:34px">
-  <div>
-    <div class="eyebrow">Test complete</div>
-    <h1>Download all four files</h1>
-    <p class="lede">Upload every file to the homework form. A missing part is marked as not submitted.</p>
+<!-- ===== VOCABULARY ===== -->
+<section id="scr-v-intro" class="stack" hidden style="padding-block:34px">
+  <div><div class="eyebrow">Task 4 of 4</div><h1>Vocabulary</h1>
+    <p class="lede">Two rounds. First the ten words of the week, from the Vietnamese, ten seconds each. Then three of them used in sentences about your own life.</p></div>
+  <div class="card"><ul class="rules">
+    <li>Ten seconds is not enough time to look a word up. That is the point.</li>
+    <li>No going back and no second attempt.</li>
+    <li>Pasting is blocked and leaving the tab is recorded.</li>
+    <li>Spelling counts. A near miss is marked separately so your teacher can see it.</li>
+  </ul></div>
+  <div class="row"><button id="v-start" class="primary big">Start</button><button class="back">Back</button></div>
+</section>
+
+<section id="scr-v-recall" hidden style="padding-block:26px">
+  <div class="qnum" id="v-label"></div>
+  <div class="vi" id="v-vi">—</div>
+  <div class="pos" id="v-pos"></div>
+  <div style="margin-top:20px;max-width:380px"><input id="v-input" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Type the English word"></div>
+  <div class="row" style="margin-top:12px"><button id="v-next">Next</button></div>
+</section>
+
+<section id="scr-v-use" hidden style="padding-block:26px">
+  <div class="qnum" id="vu-label"></div>
+  <h2 class="question" id="vu-word">—</h2>
+  <p class="hint">Write one sentence about your own life using this word. Sixty seconds.</p>
+  <div style="margin-top:12px"><textarea id="vu-text" spellcheck="false"></textarea></div>
+  <div class="row" style="margin-top:10px"><button id="vu-next">Next</button></div>
+</section>
+
+<!-- ===== SENDING / DONE ===== -->
+<section id="scr-send" class="stack" hidden style="padding-block:40px">
+  <div><div class="eyebrow" id="send-eyebrow">Sending</div><h1 id="send-title">Handing in your work</h1>
+    <p class="lede" id="send-text">Do not close this tab.</p></div>
+  <div class="bar"><i id="send-bar" style="width:10%"></i></div>
+  <div class="grid" id="send-stats"></div>
+  <div id="send-fallback" hidden class="card stack">
+    <h2>Could not reach the server</h2>
+    <p class="hint">Download the files below and send them to your teacher. Your work is not lost.</p>
+    <div class="row" id="send-links"></div>
   </div>
-  <div class="row">
-    <a class="dl" id="dl-r" aria-disabled="true">Report (.txt)</a>
-    <a class="dl" id="dl-1" aria-disabled="true">Part 1 audio</a>
-    <a class="dl" id="dl-2" aria-disabled="true">Part 2 audio</a>
-    <a class="dl" id="dl-3" aria-disabled="true">Part 3 audio</a>
-  </div>
-  <div class="grid" id="statgrid"></div>
-  <div class="card stack">
-    <h2>Report</h2>
-    <p class="hint">This is what your teacher receives. Copy it if the download is blocked.</p>
-    <pre id="report">—</pre>
-    <div><button id="btn-copy">Copy report</button></div>
-  </div>
+  <div class="row" id="send-acts"></div>
 </section>
 
 <footer>Practice tool for classroom use. Not an official IELTS service and it cannot issue a recognised score.</footer>
@@ -267,130 +299,181 @@ footer{margin-top:28px;font-size:.78rem;color:var(--muted)}
 
 <script>
 "use strict";
+
 /* =====================================================================
-   QUESTION BANK — edit freely. Logic below never reads anything else.
-   Add a set by copying one block and changing the id. Bump `v` when you
-   change the wording of a set that students have already sat.
+   CONFIG — the only block to edit week to week.
+   endpoint: the Apps Script web app URL. Leave "" to fall back to downloads.
    ===================================================================== */
-const TESTS = [
-{
-  id:"NOV-A", v:1,
-  p1:[
-    {topic:"Introduction", qs:["Do you work, or are you a student?","Why did you choose that job or that subject?"]},
-    {topic:"Your hometown", qs:["Where are you from?","What do you like most about living there?","Has it changed much in the last few years?","Would you like to live there in the future?"]},
-    {topic:"Reading", qs:["Do you read much in your free time?","What kind of books do you prefer?","Did you read a lot when you were a child?"]}
-  ],
-  p2:{
-    card:"Describe a skill you would like to learn.",
-    bullets:["what the skill is","how you would learn it","why you want to learn it"],
-    explain:"and explain how it would be useful to you.",
-    followup:"Do many people in your country learn this skill?"
+const CONFIG = {
+  endpoint: "",
+  cohorts: ["IE1","IE2","IE3","IE4","IE5"],
+  weeks: 12
+};
+
+/* Everything a week needs, in one block. Copy a block to add a week. */
+const WEEKS = {
+"W01": {
+  theme: "Skills and learning",
+  lr: "Listening: Cambridge 17, Test 1, Section 2. Dictate from 03:10 to 04:30.\nReading: Cambridge 17, Test 1, Passage 1.",
+  writing: {
+    task1: "The chart below shows the number of visitors to three city museums between 2010 and 2020. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+    task1Image: "",
+    task2: "Some people believe that university education should be funded entirely by the state. To what extent do you agree or disagree?"
   },
-  p3:[
-    "Why do you think some people find it harder than others to learn a new skill?",
-    "Should schools spend more time on practical skills than on academic subjects?",
-    "What is the best age to start learning a difficult skill?",
-    "How has technology changed the way people learn skills?",
-    "Do employers value qualifications or practical ability more?",
-    "Will self-taught learning replace formal courses in the future?"
+  speaking: {
+    p1:[
+      {topic:"Introduction", qs:["Do you work, or are you a student?","Why did you choose that job or that subject?"]},
+      {topic:"Your hometown", qs:["Where are you from?","What do you like most about living there?","Has it changed much in the last few years?","Would you like to live there in the future?"]},
+      {topic:"Reading", qs:["Do you read much in your free time?","What kind of books do you prefer?","Did you read a lot when you were a child?"]}
+    ],
+    p2:{ card:"Describe a skill you would like to learn.",
+      bullets:["what the skill is","how you would learn it","why you want to learn it"],
+      explain:"and explain how it would be useful to you.",
+      followup:"Do many people in your country learn this skill?" },
+    p3:[
+      "Why do you think some people find it harder than others to learn a new skill?",
+      "Should schools spend more time on practical skills than on academic subjects?",
+      "What is the best age to start learning a difficult skill?",
+      "How has technology changed the way people learn skills?",
+      "Do employers value qualifications or practical ability more?",
+      "Will self-taught learning replace formal courses in the future?"
+    ]
+  },
+  vocab: [
+    {en:"abandon", vi:"từ bỏ, bỏ dở", pos:"verb"},
+    {en:"barrier", vi:"rào cản", pos:"noun"},
+    {en:"recover", vi:"hồi phục, lấy lại", pos:"verb"},
+    {en:"deteriorate", vi:"xấu đi, suy giảm", pos:"verb"},
+    {en:"tuition", vi:"học phí", pos:"noun"},
+    {en:"contribute", vi:"đóng góp", pos:"verb"},
+    {en:"measure", vi:"đo lường, đánh giá", pos:"verb"},
+    {en:"enrol", vi:"ghi danh, nhập học", pos:"verb"},
+    {en:"steadily", vi:"một cách đều đặn", pos:"adverb"},
+    {en:"outweigh", vi:"lớn hơn, vượt trội hơn", pos:"verb"}
   ]
 },
-{
-  id:"NOV-B", v:1,
-  p1:[
-    {topic:"Introduction", qs:["Do you work, or are you a student?","Is that something you plan to continue with?"]},
-    {topic:"Food", qs:["What kind of food do you usually eat?","Do you prefer eating at home or eating out?","Have your eating habits changed in recent years?","Is cooking a common skill among people your age?"]},
-    {topic:"Phones", qs:["How often do you use your phone each day?","What do you mainly use it for?","Could you manage a week without it?"]}
-  ],
-  p2:{
-    card:"Describe a place you often go to in your free time.",
-    bullets:["where it is","how often you go there","what you do there"],
-    explain:"and explain why you keep going back.",
-    followup:"Do many people of your age go to places like this?"
+"W02": {
+  theme: "Cities and public space",
+  lr: "Listening: Cambridge 17, Test 2, Section 3. Dictate from 00:40 to 02:00.\nReading: Cambridge 17, Test 2, Passage 2.",
+  writing: {
+    task1: "The table below shows the proportion of households in four districts that had access to a public park within one kilometre, in 2005 and 2020. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+    task1Image: "",
+    task2: "In many cities, shopping centres have replaced public squares and parks as the main meeting places. Do the advantages of this development outweigh the disadvantages?"
   },
-  p3:[
-    "Why do cities need public spaces that cost nothing to use?",
-    "Who should pay for parks and libraries, the government or the people who use them?",
-    "Have shopping centres replaced public spaces in modern cities?",
-    "What makes a public place feel safe to spend time in?",
-    "Do people spend less time outdoors than they did in the past?",
-    "How might public spaces need to change in the next twenty years?"
+  speaking: {
+    p1:[
+      {topic:"Introduction", qs:["Do you work, or are you a student?","Is that something you plan to continue with?"]},
+      {topic:"Food", qs:["What kind of food do you usually eat?","Do you prefer eating at home or eating out?","Have your eating habits changed in recent years?","Is cooking a common skill among people your age?"]},
+      {topic:"Phones", qs:["How often do you use your phone each day?","What do you mainly use it for?","Could you manage a week without it?"]}
+    ],
+    p2:{ card:"Describe a place you often go to in your free time.",
+      bullets:["where it is","how often you go there","what you do there"],
+      explain:"and explain why you keep going back.",
+      followup:"Do many people of your age go to places like this?" },
+    p3:[
+      "Why do cities need public spaces that cost nothing to use?",
+      "Who should pay for parks and libraries, the government or the people who use them?",
+      "Have shopping centres replaced public spaces in modern cities?",
+      "What makes a public place feel safe to spend time in?",
+      "Do people spend less time outdoors than they did in the past?",
+      "How might public spaces need to change in the next twenty years?"
+    ]
+  },
+  vocab: [
+    {en:"accessible", vi:"dễ tiếp cận", pos:"adjective"},
+    {en:"congestion", vi:"sự tắc nghẽn", pos:"noun"},
+    {en:"maintain", vi:"duy trì, bảo trì", pos:"verb"},
+    {en:"resident", vi:"cư dân", pos:"noun"},
+    {en:"facility", vi:"cơ sở vật chất", pos:"noun"},
+    {en:"isolated", vi:"bị cô lập", pos:"adjective"},
+    {en:"preserve", vi:"bảo tồn", pos:"verb"},
+    {en:"affordable", vi:"có giá phải chăng", pos:"adjective"},
+    {en:"commute", vi:"đi lại hằng ngày", pos:"verb"},
+    {en:"substantially", vi:"một cách đáng kể", pos:"adverb"}
   ]
 },
-{
-  id:"NOV-C", v:1,
-  p1:[
-    {topic:"Introduction", qs:["Do you work, or are you a student?","What is the busiest part of your week?"]},
-    {topic:"Weather", qs:["What is the weather usually like where you live?","Which season do you prefer?","Does the weather affect how you spend your day?","Has the weather in your area changed over the years?"]},
-    {topic:"Music", qs:["What kind of music do you listen to?","When do you usually listen to it?","Did you learn an instrument at school?"]}
-  ],
-  p2:{
-    card:"Describe a time you helped someone.",
-    bullets:["who you helped","what the situation was","what you did"],
-    explain:"and explain how you felt about it afterwards.",
-    followup:"Is it common for strangers to help each other where you live?"
+"W03": {
+  theme: "Helping and community",
+  lr: "Listening: Cambridge 18, Test 1, Section 4. Dictate from 01:30 to 02:50.\nReading: Cambridge 18, Test 1, Passage 3.",
+  writing: {
+    task1: "The diagram below shows how donated clothing is sorted and redistributed by a charity. Summarise the information by selecting and reporting the main features.",
+    task1Image: "",
+    task2: "Some people think that helping those in need is the responsibility of the government rather than of individuals. To what extent do you agree or disagree?"
   },
-  p3:[
-    "Why are some people more willing to help strangers than others?",
-    "Should helping others be taught as part of the school curriculum?",
-    "Do people in large cities help each other less than people in small towns?",
-    "Is it the responsibility of the government or of individuals to help those in need?",
-    "Has social media made people more willing to help, or only more willing to appear helpful?",
-    "Will communities become more supportive or less supportive in the future?"
+  speaking: {
+    p1:[
+      {topic:"Introduction", qs:["Do you work, or are you a student?","What is the busiest part of your week?"]},
+      {topic:"Weather", qs:["What is the weather usually like where you live?","Which season do you prefer?","Does the weather affect how you spend your day?","Has the weather in your area changed over the years?"]},
+      {topic:"Music", qs:["What kind of music do you listen to?","When do you usually listen to it?","Did you learn an instrument at school?"]}
+    ],
+    p2:{ card:"Describe a time you helped someone.",
+      bullets:["who you helped","what the situation was","what you did"],
+      explain:"and explain how you felt about it afterwards.",
+      followup:"Is it common for strangers to help each other where you live?" },
+    p3:[
+      "Why are some people more willing to help strangers than others?",
+      "Should helping others be taught as part of the school curriculum?",
+      "Do people in large cities help each other less than people in small towns?",
+      "Is it the responsibility of the government or of individuals to help those in need?",
+      "Has social media made people more willing to help, or only more willing to appear helpful?",
+      "Will communities become more supportive or less supportive in the future?"
+    ]
+  },
+  vocab: [
+    {en:"generous", vi:"hào phóng", pos:"adjective"},
+    {en:"obligation", vi:"nghĩa vụ", pos:"noun"},
+    {en:"voluntary", vi:"tự nguyện", pos:"adjective"},
+    {en:"vulnerable", vi:"dễ bị tổn thương", pos:"adjective"},
+    {en:"donate", vi:"quyên góp", pos:"verb"},
+    {en:"neglect", vi:"bỏ bê, lơ là", pos:"verb"},
+    {en:"reluctant", vi:"miễn cưỡng, ngần ngại", pos:"adjective"},
+    {en:"burden", vi:"gánh nặng", pos:"noun"},
+    {en:"sustain", vi:"duy trì, chống đỡ", pos:"verb"},
+    {en:"widespread", vi:"phổ biến rộng rãi", pos:"adjective"}
   ]
 }
+};
+
+/* timings, seconds */
+const T = { p1:30, p2prep:60, p2talk:120, p2follow:25, p3:50, task1:20*60, task2:40*60, recall:10, use:60 };
+const TASKS = [
+  {key:"lr",  name:"Listening and reading", desc:"Answers, dictation and evidence. No clock."},
+  {key:"w",   name:"Writing",               desc:"Task 1 and Task 2, one hour, clock enforced."},
+  {key:"s",   name:"Speaking",              desc:"Full fifteen minute test, recorded."},
+  {key:"v",   name:"Vocabulary",            desc:"Ten words against the clock, then three sentences."}
 ];
 
-/* ===== timing, in seconds. Mirrors the real test. ===== */
-const T = { p1:30, p2prep:60, p2talk:120, p2follow:25, p3:50 };
-
-/* ===== elements ===== */
+/* ===== helpers ===== */
 const $ = id => document.getElementById(id);
-const screens = ["scr-setup","scr-intro","scr-q","scr-prep","scr-talk","scr-done"];
-function show(name){ screens.forEach(s => $(s).hidden = (s !== name)); }
+const SCREENS = ["scr-id","scr-menu","scr-lr","scr-w-intro","scr-write","scr-s-intro","scr-part","scr-q","scr-prep","scr-talk","scr-v-intro","scr-v-recall","scr-v-use","scr-send"];
+function show(n){ SCREENS.forEach(s => $(s).hidden = (s !== n)); window.scrollTo(0,0); }
+function esc(s){ return String(s).replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c])); }
+function words(s){ return (s||"").trim() ? s.trim().split(/\s+/).filter(Boolean).length : 0; }
+function fmt(s){ s = Math.max(0, Math.round(s)); return Math.floor(s/60) + ":" + String(s%60).padStart(2,"0"); }
+function pad(n){ return String(n).padStart(2,"0"); }
+function stamp(d){ return d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate())+" "+pad(d.getHours())+":"+pad(d.getMinutes()); }
+function slug(s){ return (s||"").normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[^A-Za-z0-9]+/g,"-").replace(/^-|-$/g,"").toLowerCase(); }
+function countEvidence(s){ return ((s||"").match(/\bline\s*\.?\s*\d+/gi) || []).length; }
+function store(k,v){ try{ v===undefined ? localStorage.removeItem(k) : localStorage.setItem(k, v); }catch(e){} }
+function recall(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
 
 /* ===== state ===== */
 const S = {
-  name:"", cohort:"", test:null,
-  plan:[],            // flat list of steps
-  i:0,
-  repeats:1,
-  notes:"",
-  started:null,
-  segments:[],        // {part, qid, question, text, seconds, started}
-  blobs:{1:null,2:null,3:null},
-  integrity:{ blur:0, hiddenMs:0, hiddenFrom:null, pasted:0, recErrors:[], srUnavailable:false },
-  stream:null, rec:null, chunks:[], recPart:null,
-  sr:null, srWanted:false, srBuffer:"", srFinal:"",
-  tick:null, deadline:0, paused:false, onExpire:null, limit:0
+  name:"", cohort:"", week:"", wk:null,
+  sent: {},
+  integrity:{ blur:0, hiddenMs:0, from:null, pasted:0 },
+  tick:null, deadline:0, limit:0, onExpire:null, paused:false, remain:0,
+  stream:null, rec:null, chunks:[], recPart:null, blobs:{1:null,2:null,3:null},
+  sr:null, srWanted:false, srFinal:"", srOff:false,
+  plan:[], i:0, repeats:1, notes:"", segments:[], started:null,
+  w:{ stage:0, task1:"", task2:"", t1s:0, t2s:0 },
+  v:{ i:0, answers:[], useIdx:[], useAns:[], started:null }
 };
 
-/* ===== populate test picker + support notice ===== */
-TESTS.forEach(t => {
-  const o = document.createElement("option");
-  o.value = t.id; o.textContent = t.id + " (v" + t.v + ")";
-  $("f-test").appendChild(o);
-});
-(function support(){
-  const ua = navigator.userAgent;
-  const chromeLike = /Chrome\//.test(ua) && !/Edg\//.test(ua) && !/OPR\//.test(ua);
-  const sr = ("webkitSpeechRecognition" in window) || ("SpeechRecognition" in window);
-  const mr = typeof MediaRecorder !== "undefined" && navigator.mediaDevices;
-  const msgs = [];
-  if(!mr) msgs.push("This browser cannot record audio. Use Chrome on a laptop.");
-  if(!sr){ S.integrity.srUnavailable = true; msgs.push("No live transcript in this browser. The audio still records, but your teacher gets no text."); }
-  if(mr && sr && !chromeLike) msgs.push("Chrome is strongly recommended. Other browsers may stop recording without warning.");
-  if(location.protocol === "file:") msgs.push("Opened as a local file. If the microphone is refused, open the hosted link instead.");
-  $("support").textContent = msgs.join(" ");
-})();
-
 /* ===== clock ===== */
-function fmt(s){ s = Math.max(0, Math.round(s)); return Math.floor(s/60) + ":" + String(s%60).padStart(2,"0"); }
-function startClock(seconds, onExpire){
-  stopClock();
-  S.limit = seconds; S.deadline = Date.now() + seconds*1000; S.onExpire = onExpire; S.paused = false;
-  paint();
-  S.tick = setInterval(paint, 200);
+function startClock(sec, onExpire){
+  stopClock(); S.limit = sec; S.deadline = Date.now() + sec*1000; S.onExpire = onExpire; S.paused = false;
+  $("rail").hidden = false; paint(); S.tick = setInterval(paint, 200);
 }
 function paint(){
   const left = (S.deadline - Date.now())/1000;
@@ -400,16 +483,212 @@ function paint(){
   if(left <= 0){ const f = S.onExpire; stopClock(); if(f) f(); }
 }
 function stopClock(){ if(S.tick){ clearInterval(S.tick); S.tick = null; } S.onExpire = null; }
+function hideRail(){ stopClock(); $("rail").hidden = true; }
 function pauseClock(){ if(S.tick && !S.paused){ S.paused = true; S.remain = S.deadline - Date.now(); clearInterval(S.tick); S.tick = null; } }
-function resumeClock(){ if(S.paused){ S.paused = false; S.deadline = Date.now() + S.remain; S.tick = setInterval(paint, 200); paint(); } }
+function resumeClock(){ if(S.paused){ S.paused = false; S.deadline = Date.now() + S.remain; S.tick = setInterval(paint,200); paint(); } }
 
-/* ===== speech synthesis ===== */
+/* ===== integrity ===== */
+document.addEventListener("visibilitychange", () => {
+  if(document.hidden){ S.integrity.blur++; S.integrity.from = Date.now(); }
+  else if(S.integrity.from){ S.integrity.hiddenMs += Date.now() - S.integrity.from; S.integrity.from = null; }
+});
+function noPaste(el){ el.addEventListener("paste", e => { e.preventDefault(); S.integrity.pasted++; }); }
+function resetIntegrity(){ S.integrity = {blur:0, hiddenMs:0, from:null, pasted:0}; }
+function integrityOut(){
+  return { tabLeaves:S.integrity.blur, hiddenSeconds:Math.round(S.integrity.hiddenMs/1000), pasteBlocked:S.integrity.pasted };
+}
+
+/* ===== identity ===== */
+CONFIG.cohorts.forEach(c => { const o=document.createElement("option"); o.textContent=c; $("f-cohort").appendChild(o); });
+Object.keys(WEEKS).forEach(w => { const o=document.createElement("option"); o.textContent=w; $("f-week").appendChild(o); });
+$("f-name").value = recall("hw.name") || "";
+if(recall("hw.cohort")) $("f-cohort").value = recall("hw.cohort");
+if(recall("hw.week")) $("f-week").value = recall("hw.week");
+
+$("btn-id").addEventListener("click", () => {
+  const n = $("f-name").value.trim();
+  if(n.length < 2){ $("id-msg").textContent = "Type your full name first."; $("f-name").focus(); return; }
+  S.name = n; S.cohort = $("f-cohort").value; S.week = $("f-week").value; S.wk = WEEKS[S.week];
+  store("hw.name", n); store("hw.cohort", S.cohort); store("hw.week", S.week);
+  loadSent(); menu();
+});
+$("btn-switch").addEventListener("click", () => show("scr-id"));
+
+function sentKey(){ return "hw.sent." + slug(S.name) + "." + S.week; }
+function loadSent(){ try{ S.sent = JSON.parse(recall(sentKey()) || "{}"); }catch(e){ S.sent = {}; } }
+function markSent(k){ S.sent[k] = new Date().toISOString(); store(sentKey(), JSON.stringify(S.sent)); }
+
+function menu(){
+  hideRail();
+  $("menu-who").textContent = S.name + " · " + S.cohort + " · " + S.week;
+  $("menu-theme").textContent = S.wk.theme;
+  $("tiles").innerHTML = "";
+  TASKS.forEach(t => {
+    const b = document.createElement("button");
+    b.className = "tile card";
+    const done = !!S.sent[t.key];
+    b.innerHTML = '<span class="t">' + esc(t.name) + '</span><span class="d">' + esc(t.desc) + '</span>' +
+      '<span class="s ' + (done ? "sent" : "todo") + '">' + (done ? "Handed in" : "Not done") + "</span>";
+    b.onclick = () => { if(done && !confirmRedo(t.name)) return; openTask(t.key); };
+    $("tiles").appendChild(b);
+  });
+  show("scr-menu");
+}
+function confirmRedo(name){ return window.confirm(name + " has already been handed in. Doing it again replaces nothing and your teacher sees both attempts. Continue?"); }
+
+function openTask(k){
+  resetIntegrity();
+  if(k === "lr"){ $("lr-brief").textContent = S.wk.lr; hideRail(); show("scr-lr"); }
+  if(k === "w"){ hideRail(); show("scr-w-intro"); }
+  if(k === "s"){ hideRail(); show("scr-s-intro"); }
+  if(k === "v"){ hideRail(); show("scr-v-intro"); }
+}
+document.querySelectorAll("button.back").forEach(b => b.addEventListener("click", menu));
+
+/* ===== submission ===== */
+function postJSON(obj){
+  if(!CONFIG.endpoint) return Promise.reject(new Error("no endpoint configured"));
+  return fetch(CONFIG.endpoint, {
+    method:"POST", mode:"cors", redirect:"follow",
+    headers:{"Content-Type":"text/plain;charset=utf-8"},  // text/plain avoids a CORS preflight Apps Script cannot answer
+    body: JSON.stringify(obj)
+  }).then(r => r.text()).then(t => {
+    let j; try{ j = JSON.parse(t); }catch(e){ throw new Error("bad reply"); }
+    if(!j.ok) throw new Error(j.error || "rejected");
+    return j;
+  });
+}
+function blobToB64(b){
+  return new Promise((res,rej) => {
+    const fr = new FileReader();
+    fr.onload = () => res(String(fr.result).split(",")[1] || "");
+    fr.onerror = rej;
+    fr.readAsDataURL(b);
+  });
+}
+function sendScreen(title, text){
+  $("send-eyebrow").textContent = "Sending";
+  $("send-title").textContent = title;
+  $("send-text").textContent = text;
+  $("send-bar").style.width = "15%";
+  $("send-stats").innerHTML = "";
+  $("send-fallback").hidden = true;
+  $("send-links").innerHTML = "";
+  $("send-acts").innerHTML = "";
+  show("scr-send");
+}
+function sendOK(taskKey, stats){
+  markSent(taskKey);
+  $("send-eyebrow").textContent = "Handed in";
+  $("send-title").textContent = "Your work has been sent";
+  $("send-text").textContent = "Nothing else to do for this task.";
+  $("send-bar").style.width = "100%";
+  $("send-stats").innerHTML = (stats||[]).map(([k,v]) => '<div class="stat"><b>'+esc(v)+'</b><span>'+esc(k)+'</span></div>').join("");
+  const b = document.createElement("button"); b.className="primary big"; b.textContent="Back to my tasks"; b.onclick = menu;
+  $("send-acts").innerHTML = ""; $("send-acts").appendChild(b);
+}
+function sendFailed(files, stats){
+  $("send-eyebrow").textContent = "Not sent";
+  $("send-title").textContent = "The server could not be reached";
+  $("send-text").textContent = "Your work is safe. Download it and send it to your teacher, then tell them the upload failed.";
+  $("send-bar").style.width = "100%";
+  $("send-stats").innerHTML = (stats||[]).map(([k,v]) => '<div class="stat"><b>'+esc(v)+'</b><span>'+esc(k)+'</span></div>').join("");
+  $("send-fallback").hidden = false;
+  (files||[]).forEach(([label, blob, filename]) => {
+    const a = document.createElement("a");
+    a.className = "dl"; a.textContent = label; a.href = URL.createObjectURL(blob); a.download = filename;
+    $("send-links").appendChild(a);
+  });
+  const b = document.createElement("button"); b.textContent="Back to my tasks"; b.onclick = menu;
+  $("send-acts").innerHTML = ""; $("send-acts").appendChild(b);
+}
+function base(){ return { student:S.name, cohort:S.cohort, week:S.week, at:new Date().toISOString(), integrity:integrityOut() }; }
+
+/* ===== 1. LISTENING AND READING ===== */
+["lr-answers","lr-dict","lr-ev","lr-unknown"].forEach(id => noPaste($(id)));
+$("lr-dict").addEventListener("input", () => { $("lr-dict-wc").textContent = words($("lr-dict").value) + " words"; });
+$("lr-ev").addEventListener("input", () => {
+  const n = countEvidence($("lr-ev").value);
+  const el = $("lr-ev-wc"); el.textContent = n + " line reference" + (n===1?"":"s") + " found";
+  el.classList.toggle("short", n < 5);
+});
+$("lr-send").addEventListener("click", () => {
+  const v = id => $(id).value.trim();
+  if(!v("lr-answers") || !v("lr-dict") || !v("lr-ev")){ $("lr-msg").textContent = "Answers, dictation and evidence are all required."; return; }
+  const payload = Object.assign(base(), {
+    task:"lr",
+    answers:v("lr-answers"), dictation:v("lr-dict"), evidence:v("lr-ev"), unknown:v("lr-unknown"),
+    timeTaken:v("lr-time"), plays:$("lr-plays").value,
+    measures:{ dictationWords:words(v("lr-dict")), evidencePairs:countEvidence(v("lr-ev")),
+      answerLines:v("lr-answers").split(/\n+/).filter(x=>x.trim()).length,
+      unknownLines:v("lr-unknown").split(/\n+/).filter(x=>x.trim()).length }
+  });
+  sendScreen("Handing in your listening and reading", "This takes a moment.");
+  postJSON(payload)
+    .then(() => sendOK("lr", [["Dictation words", payload.measures.dictationWords], ["Line references", payload.measures.evidencePairs]]))
+    .catch(() => sendFailed([["Download your answers", new Blob([JSON.stringify(payload,null,2)],{type:"text/plain"}), slug(S.name)+"_"+S.week+"_lr.txt"]],
+      [["Dictation words", payload.measures.dictationWords]]));
+});
+
+/* ===== 2. WRITING ===== */
+noPaste($("w-text"));
+$("w-text").addEventListener("input", () => {
+  const n = words($("w-text").value);
+  const min = S.w.stage === 1 ? 150 : 250;
+  const el = $("w-wc"); el.textContent = n + " words";
+  el.classList.toggle("short", n < min);
+  store("hw.draft." + S.week + "." + S.w.stage, $("w-text").value);
+});
+$("w-start").addEventListener("click", () => { S.w.stage = 0; nextWriting(); });
+function nextWriting(){
+  S.w.stage++;
+  if(S.w.stage > 2){ finishWriting(); return; }
+  const t1 = S.w.stage === 1;
+  $("w-label").textContent = t1 ? "Task 1 · twenty minutes · at least 150 words" : "Task 2 · forty minutes · at least 250 words";
+  $("w-prompt").textContent = t1 ? S.wk.writing.task1 : S.wk.writing.task2;
+  const img = t1 ? (S.wk.writing.task1Image || "") : "";
+  $("w-img").hidden = !img; if(img) $("w-img").src = img;
+  const saved = recall("hw.draft." + S.week + "." + S.w.stage) || "";
+  $("w-text").value = saved;
+  $("w-wc").textContent = words(saved) + " words";
+  $("stage").textContent = t1 ? "Writing · Task 1" : "Writing · Task 2";
+  show("scr-write");
+  const secs = t1 ? T.task1 : T.task2;
+  const t0 = Date.now();
+  let closed = false;
+  const done = () => {
+    if(closed) return; closed = true; stopClock();
+    const used = Math.round((Date.now()-t0)/1000);
+    if(t1){ S.w.task1 = $("w-text").value; S.w.t1s = used; } else { S.w.task2 = $("w-text").value; S.w.t2s = used; }
+    nextWriting();
+  };
+  startClock(secs, done);
+  $("w-next").onclick = done;
+}
+function finishWriting(){
+  hideRail();
+  const payload = Object.assign(base(), {
+    task:"w", task1:S.w.task1, task2:S.w.task2,
+    prompts:{ task1:S.wk.writing.task1, task2:S.wk.writing.task2 },
+    measures:{ task1Words:words(S.w.task1), task2Words:words(S.w.task2),
+      task1Seconds:S.w.t1s, task2Seconds:S.w.t2s }
+  });
+  sendScreen("Handing in your writing", "This takes a moment.");
+  const stats = [["Task 1 words", payload.measures.task1Words], ["Task 2 words", payload.measures.task2Words]];
+  postJSON(payload).then(() => {
+    store("hw.draft." + S.week + ".1"); store("hw.draft." + S.week + ".2");
+    sendOK("w", stats);
+  }).catch(() => sendFailed([["Download your writing", new Blob([
+      "TASK 1 ("+payload.measures.task1Words+" words)\n\n"+S.w.task1+"\n\n\nTASK 2 ("+payload.measures.task2Words+" words)\n\n"+S.w.task2
+    ],{type:"text/plain"}), slug(S.name)+"_"+S.week+"_writing.txt"]], stats));
+}
+
+/* ===== 3. SPEAKING ===== */
 let voice = null;
 function pickVoice(){
   const vs = speechSynthesis.getVoices();
   voice = vs.find(v => /en-GB/i.test(v.lang) && /Google|Daniel|Serena|Kate/i.test(v.name))
-       || vs.find(v => /en-GB/i.test(v.lang))
-       || vs.find(v => /^en/i.test(v.lang)) || null;
+       || vs.find(v => /en-GB/i.test(v.lang)) || vs.find(v => /^en/i.test(v.lang)) || null;
 }
 if(window.speechSynthesis){ pickVoice(); speechSynthesis.onvoiceschanged = pickVoice; }
 function say(text){
@@ -418,21 +697,19 @@ function say(text){
     srStop();
     try{ speechSynthesis.cancel(); }catch(e){}
     let done = false;
-    const finish = () => { if(done) return; done = true; res(); };
-    setTimeout(finish, Math.max(4500, text.length * 95) + 200); // safety net: Chrome sometimes never fires onend
-    setTimeout(() => {                                          // speak() right after cancel() is swallowed in Chrome
+    const fin = () => { if(done) return; done = true; res(); };
+    setTimeout(fin, Math.max(4500, text.length*95) + 200);
+    setTimeout(() => {
       const u = new SpeechSynthesisUtterance(text);
       u.lang = "en-GB"; u.rate = 0.95; if(voice) u.voice = voice;
-      u.onend = finish; u.onerror = finish;
-      try{ speechSynthesis.speak(u); }catch(e){ finish(); }
+      u.onend = fin; u.onerror = fin;
+      try{ speechSynthesis.speak(u); }catch(e){ fin(); }
     }, 140);
   });
 }
-
-/* ===== recognition ===== */
 function srInit(){
   const C = window.SpeechRecognition || window.webkitSpeechRecognition;
-  if(!C) return;
+  if(!C){ S.srOff = true; return; }
   const r = new C();
   r.lang = "en-GB"; r.continuous = true; r.interimResults = true; r.maxAlternatives = 1;
   r.onresult = e => {
@@ -443,24 +720,16 @@ function srInit(){
     }
     const txt = (S.srFinal + interim).trim();
     const tail = txt.length > 220 ? "…" + txt.slice(-220) : txt;
-    $("live").innerHTML = $("live2").innerHTML = tail ? "<em>" + esc(tail) + "</em>" : "<em>Listening…</em>";
+    $("live").innerHTML = $("live2").innerHTML = tail ? "<em>"+esc(tail)+"</em>" : "<em>Listening…</em>";
   };
-  r.onerror = e => {
-    if(e.error === "no-speech" || e.error === "aborted") return;
-    S.integrity.recErrors.push(e.error);
-  };
+  r.onerror = () => {};
   r.onend = () => { if(S.srWanted){ try{ r.start(); }catch(e){} } };
   S.sr = r;
 }
-function srStart(){
-  if(!S.sr || !$("f-sr").checked) return;
-  S.srWanted = true; try{ S.sr.start(); }catch(e){}
-}
+function srStart(){ if(!S.sr) return; S.srWanted = true; try{ S.sr.start(); }catch(e){} }
 function srStop(){ if(!S.sr) return; S.srWanted = false; try{ S.sr.stop(); }catch(e){} }
 function srTake(){ const t = S.srFinal.trim(); S.srFinal = ""; return t; }
-function esc(s){ return s.replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c])); }
 
-/* ===== recording ===== */
 function pickMime(){
   const c = ["audio/webm;codecs=opus","audio/webm","audio/mp4","audio/ogg;codecs=opus"];
   for(const m of c){ if(window.MediaRecorder && MediaRecorder.isTypeSupported && MediaRecorder.isTypeSupported(m)) return m; }
@@ -470,10 +739,9 @@ function recStart(part){
   if(!S.stream) return;
   S.chunks = []; S.recPart = part;
   const mime = pickMime();
-  try{ S.rec = mime ? new MediaRecorder(S.stream, {mimeType:mime, audioBitsPerSecond:48000}) : new MediaRecorder(S.stream); }
-  catch(e){ S.integrity.recErrors.push("recorder:" + e.name); return; }
+  try{ S.rec = mime ? new MediaRecorder(S.stream,{mimeType:mime, audioBitsPerSecond:32000}) : new MediaRecorder(S.stream); }
+  catch(e){ return; }
   S.rec.ondataavailable = e => { if(e.data && e.data.size) S.chunks.push(e.data); };
-  S.rec.onerror = e => S.integrity.recErrors.push("recorder:" + (e.error && e.error.name));
   S.rec.start(2000);
   $("recdot").hidden = false;
 }
@@ -482,157 +750,108 @@ function recStop(){
     if(!S.rec || S.rec.state === "inactive"){ res(); return; }
     const part = S.recPart, rec = S.rec;
     rec.onstop = () => {
-      const type = rec.mimeType || "audio/webm";
-      S.blobs[part] = S.chunks.length ? new Blob(S.chunks, {type}) : null;
+      S.blobs[part] = S.chunks.length ? new Blob(S.chunks,{type:rec.mimeType||"audio/webm"}) : null;
       S.chunks = []; S.rec = null; $("recdot").hidden = true; res();
     };
     try{ rec.stop(); }catch(e){ S.rec = null; res(); }
   });
 }
-
-/* ===== mic level meter (setup screen only) ===== */
+$("btn-mic").addEventListener("click", async () => {
+  $("mic-msg").textContent = "Asking for the microphone…";
+  try{
+    S.stream = await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true,noiseSuppression:true,autoGainControl:true}});
+    srInit();
+    $("mic-msg").textContent = "Microphone ready. Say a sentence and check the meter moves.";
+    $("btn-sgo").disabled = false; $("btn-sgo").classList.add("primary"); $("btn-mic").disabled = true;
+    startMeter();
+  }catch(err){
+    $("mic-msg").textContent = "The microphone was refused ("+err.name+"). Allow it in the address bar and press the button again.";
+  }
+});
 function startMeter(){
   const AC = window.AudioContext || window.webkitAudioContext;
   if(!AC || !S.stream) return;
   try{
-    const ctx = new AC();
-    const an = ctx.createAnalyser();
-    an.fftSize = 512;
-    ctx.createMediaStreamSource(S.stream).connect(an);
+    const ctx = new AC(), an = ctx.createAnalyser();
+    an.fftSize = 512; ctx.createMediaStreamSource(S.stream).connect(an);
     const buf = new Uint8Array(an.fftSize);
     $("meter-wrap").hidden = false;
     S.meter = setInterval(() => {
       an.getByteTimeDomainData(buf);
-      let peak = 0;
-      for(let k = 0; k < buf.length; k++){ const d = Math.abs(buf[k] - 128); if(d > peak) peak = d; }
-      $("meter").style.width = Math.min(100, Math.round(peak / 70 * 100)) + "%";
+      let peak = 0; for(let k=0;k<buf.length;k++){ const d=Math.abs(buf[k]-128); if(d>peak) peak=d; }
+      $("meter").style.width = Math.min(100, Math.round(peak/70*100)) + "%";
     }, 80);
     S.meterStop = () => { clearInterval(S.meter); try{ ctx.close(); }catch(e){} $("meter-wrap").hidden = true; };
   }catch(e){}
 }
-
-/* ===== integrity watchers ===== */
-document.addEventListener("visibilitychange", () => {
-  if(!S.started) return;
-  if(document.hidden){ S.integrity.blur++; S.integrity.hiddenFrom = Date.now(); }
-  else if(S.integrity.hiddenFrom){ S.integrity.hiddenMs += Date.now() - S.integrity.hiddenFrom; S.integrity.hiddenFrom = null; }
-});
-window.addEventListener("beforeunload", e => {
-  if(S.started && $("scr-done").hidden){ e.preventDefault(); e.returnValue = ""; }
-});
-$("f-notes").addEventListener("paste", e => { e.preventDefault(); S.integrity.pasted++; });
-
-/* ===== setup ===== */
-$("btn-mic").addEventListener("click", async () => {
-  $("mic-msg").textContent = "Asking for the microphone…";
-  try{
-    S.stream = await navigator.mediaDevices.getUserMedia({
-      audio:{ echoCancellation:true, noiseSuppression:true, autoGainControl:true }
-    });
-    srInit();
-    $("mic-msg").textContent = "Microphone ready" + (S.sr ? " and transcript ready." : ", transcript unavailable.") + " Say a sentence and check the meter moves.";
-    $("btn-start").disabled = false;
-    $("btn-start").classList.add("primary");
-    $("btn-mic").disabled = true;
-    startMeter();
-  }catch(err){
-    $("mic-msg").textContent = "The microphone was refused (" + err.name + "). Allow it in the address bar, then press the button again. Without it the test cannot run.";
-  }
-});
-
-$("btn-start").addEventListener("click", () => {
-  const nm = $("f-name").value.trim();
-  if(nm.length < 2){ $("mic-msg").textContent = "Type your full name first."; $("f-name").focus(); return; }
-  S.name = nm;
-  S.cohort = $("f-cohort").value;
-  S.test = TESTS.find(t => t.id === $("f-test").value);
-  S.plan = buildPlan(S.test);
-  if(!$("f-sr").checked) S.integrity.srUnavailable = true;
+$("btn-sgo").addEventListener("click", () => {
   if(S.meterStop) S.meterStop();
-  S.started = new Date();
-  $("rail").hidden = false;
+  S.plan = buildPlan(S.wk.speaking); S.i = 0; S.repeats = 1; S.segments = []; S.started = new Date();
   partIntro(1);
 });
-
-/* ===== plan ===== */
-function buildPlan(t){
-  const p = [];
-  let n1 = 0;
-  t.p1.forEach(block => block.qs.forEach(q => p.push({
-    kind:"q", part:1, topic:block.topic, text:q, secs:T.p1, qid:"P1-" + (++n1)
-  })));
-  p.push({kind:"prep", part:2, secs:T.p2prep});
-  p.push({kind:"talk", part:2, secs:T.p2talk, qid:"P2-CARD"});
-  p.push({kind:"q", part:2, topic:"Rounding off", text:t.p2.followup, secs:T.p2follow, qid:"P2-FOLLOW"});
-  t.p3.forEach((q,n) => p.push({kind:"q", part:3, topic:"Discussion", text:q, secs:T.p3, qid:"P3-" + (n+1)}));
+function buildPlan(sp){
+  const p = []; let n1 = 0;
+  sp.p1.forEach(b => b.qs.forEach(q => p.push({kind:"q",part:1,topic:b.topic,text:q,secs:T.p1,qid:"P1-"+(++n1)})));
+  p.push({kind:"prep",part:2,secs:T.p2prep});
+  p.push({kind:"talk",part:2,secs:T.p2talk,qid:"P2-CARD"});
+  p.push({kind:"q",part:2,topic:"Rounding off",text:sp.p2.followup,secs:T.p2follow,qid:"P2-FOLLOW"});
+  sp.p3.forEach((q,n) => p.push({kind:"q",part:3,topic:"Discussion",text:q,secs:T.p3,qid:"P3-"+(n+1)}));
   return p;
 }
 const PART_INFO = {
-  1:{title:"Introduction and interview", text:"Short questions about you. Answer in two or three sentences each. Thirty seconds per question."},
-  2:{title:"Individual long turn", text:"One card. One minute to make notes, then two minutes of uninterrupted speech. Do not stop early."},
+  1:{title:"Introduction and interview", text:"Short questions about you. Two or three sentences each. Thirty seconds per question."},
+  2:{title:"Individual long turn", text:"One card. One minute of notes, then two minutes of uninterrupted speech. Do not stop early."},
   3:{title:"Two-way discussion", text:"Harder, more general questions. Give an opinion and a reason, then develop it. Fifty seconds per question."}
 };
 function partIntro(part){
-  $("intro-eyebrow").textContent = "Part " + part;
-  $("intro-title").textContent = PART_INFO[part].title;
-  $("intro-text").textContent = PART_INFO[part].text;
-  $("stage").textContent = "Part " + part + " — ready";
-  $("clock").textContent = "0:00"; $("barfill").style.width = "100%";
-  show("scr-intro");
+  hideRail();
+  $("part-eyebrow").textContent = "Part " + part;
+  $("part-title").textContent = PART_INFO[part].title;
+  $("part-text").textContent = PART_INFO[part].text;
+  show("scr-part");
   $("btn-partgo").disabled = false;
   $("btn-partgo").onclick = async () => {
-    $("btn-partgo").disabled = true;   // a second click re-enters runStep and restarts the clock
-    await recStop();
-    recStart(part);
-    runStep();
+    $("btn-partgo").disabled = true;
+    await recStop(); recStart(part); runStep();
   };
 }
-
-/* ===== runner ===== */
 async function runStep(){
   const step = S.plan[S.i];
-  if(!step){ finish(); return; }
+  if(!step){ finishSpeaking(); return; }
 
   if(step.kind === "q"){
     const inPart = S.plan.filter(x => x.part === step.part && x.kind !== "prep");
-    const idx = inPart.indexOf(step) + 1;
-    $("stage").textContent = "Part " + step.part + " · " + step.topic;
-    $("q-label").textContent = "Part " + step.part + " · question " + idx + " of " + inPart.length;
+    $("stage").textContent = "Speaking · Part " + step.part + " · " + step.topic;
+    $("q-label").textContent = "Part " + step.part + " · question " + (inPart.indexOf(step)+1) + " of " + inPart.length;
     $("q-text").textContent = step.text;
     $("rep-left").textContent = S.repeats;
     $("live").innerHTML = "<em>Listening…</em>";
-    // Locked while the question is read aloud, so a click cannot reach the previous question's handler
-    $("btn-next").disabled = true;
-    $("btn-repeat").disabled = true;
+    $("btn-next").disabled = true; $("btn-repeat").disabled = true;
     show("scr-q");
     srTake();
     await say(step.text);
     const t0 = Date.now();
     let closed = false;
     const finishQ = () => { if(closed) return; closed = true; stopClock(); closeQ(step, t0); };
-    $("btn-next").disabled = false;
-    $("btn-repeat").disabled = S.repeats < 1;
-    srStart();
-    startClock(step.secs, finishQ);
+    $("btn-next").disabled = false; $("btn-repeat").disabled = S.repeats < 1;
+    srStart(); startClock(step.secs, finishQ);
     $("btn-next").onclick = finishQ;
     $("btn-repeat").onclick = async () => {
       if(S.repeats < 1 || closed) return;
       S.repeats--; $("rep-left").textContent = S.repeats;
       $("btn-repeat").disabled = true; $("btn-next").disabled = true;
-      pauseClock();
-      await say(step.text);
-      if(closed) return;              // the clock ran out while it was being re-read
-      $("btn-next").disabled = false;
-      srStart(); resumeClock();
+      pauseClock(); await say(step.text);
+      if(closed) return;
+      $("btn-next").disabled = false; srStart(); resumeClock();
     };
     return;
   }
 
   if(step.kind === "prep"){
-    const c = S.test.p2;
-    $("stage").textContent = "Part 2 · preparing";
+    const c = S.wk.speaking.p2;
+    $("stage").textContent = "Speaking · Part 2 · preparing";
     $("cue-text").textContent = c.card;
-    $("cue-bullets").innerHTML = "<li>You should say:</li>" + c.bullets.map(b => "<li>" + esc(b) + "</li>").join("") + "<li>" + esc(c.explain) + "</li>";
+    $("cue-bullets").innerHTML = "<li>You should say:</li>" + c.bullets.map(b => "<li>"+esc(b)+"</li>").join("") + "<li>"+esc(c.explain)+"</li>";
     show("scr-prep");
     $("btn-speak-now").disabled = true;
     srStop();
@@ -646,9 +865,9 @@ async function runStep(){
   }
 
   if(step.kind === "talk"){
-    const c = S.test.p2;
+    const c = S.wk.speaking.p2;
     S.notes = $("f-notes").value.trim();
-    $("stage").textContent = "Part 2 · speaking";
+    $("stage").textContent = "Speaking · Part 2 · speaking";
     $("talk-text").textContent = c.card;
     $("talk-bullets").innerHTML = $("cue-bullets").innerHTML;
     $("live2").innerHTML = "<em>Listening…</em>";
@@ -656,178 +875,193 @@ async function runStep(){
     srTake();
     await say("Remember you have two minutes. You can start speaking now.");
     const t0 = Date.now();
-    srStart();
-    startClock(T.p2talk, () => closeQ(step, t0));
+    srStart(); startClock(T.p2talk, () => closeQ(step, t0));
     return;
   }
 }
-
 function closeQ(step, t0){
   srStop();
   S.segments.push({
-    part:step.part,
-    qid:step.qid,
+    part:step.part, qid:step.qid,
     topic: step.kind === "talk" ? "Long turn" : (step.topic || ""),
-    question: step.kind === "talk" ? S.test.p2.card : step.text,
-    text: srTake(),
-    seconds: Math.round((Date.now() - t0)/1000)
+    question: step.kind === "talk" ? S.wk.speaking.p2.card : step.text,
+    text: srTake(), seconds: Math.round((Date.now()-t0)/1000)
   });
-  const next = S.plan[S.i + 1];
+  const next = S.plan[S.i+1];
   S.i++;
-  if(!next){ finish(); return; }
+  if(!next){ finishSpeaking(); return; }
   if(next.part !== step.part){ partIntro(next.part); return; }
   runStep();
 }
-
-/* ===== metrics ===== */
-const FILLERS = ["um","uh","er","erm","like","you know","i mean","yeah","actually","basically","so yeah"];
-function words(s){ return s ? s.trim().split(/\s+/).filter(Boolean) : []; }
-function countFillers(s){
-  const low = " " + s.toLowerCase().replace(/[^a-z' ]/g," ").replace(/\s+/g," ") + " ";
-  let n = 0;
-  for(const f of FILLERS){
-    const re = new RegExp("(?:^| )" + f.replace(/ /g,"\\s+") + "(?= |$)","g");
-    n += (low.match(re) || []).length;
-  }
-  return n;
-}
-function metrics(){
+function speakingMetrics(){
   const byPart = {};
   [1,2,3].forEach(p => {
     const segs = S.segments.filter(s => s.part === p);
-    const w = segs.reduce((a,s) => a + words(s.text).length, 0);
+    const w = segs.reduce((a,s) => a + words(s.text), 0);
     const sec = segs.reduce((a,s) => a + s.seconds, 0);
-    byPart[p] = {
-      questions: segs.length,
-      words: w,
-      seconds: sec,
-      wpm: sec ? Math.round(w / (sec/60)) : 0,
-      fillers: segs.reduce((a,s) => a + countFillers(s.text), 0)
-    };
+    byPart[p] = { questions:segs.length, words:w, seconds:sec, density: sec ? Math.round(w/(sec/60)) : 0 };
   });
   const p2 = S.segments.find(s => s.qid === "P2-CARD");
-  const all = S.segments.reduce((a,s) => a + words(s.text).length, 0);
+  const all = S.segments.reduce((a,s) => a + words(s.text), 0);
   const allSec = S.segments.reduce((a,s) => a + s.seconds, 0);
-  return {
-    byPart,
-    totalWords: all,
-    totalSeconds: allSec,
-    wpm: allSec ? Math.round(all / (allSec/60)) : 0,
-    p2Words: p2 ? words(p2.text).length : 0,
-    p2Seconds: p2 ? p2.seconds : 0,
-    shortAnswers: S.segments.filter(s => s.qid !== "P2-CARD" && words(s.text).length < 15).length
-  };
+  return { byPart, totalWords:all, totalSeconds:allSec, density: allSec ? Math.round(all/(allSec/60)) : 0,
+    longTurnSeconds: p2 ? p2.seconds : 0, longTurnWords: p2 ? words(p2.text) : 0,
+    shortAnswers: S.segments.filter(s => s.qid !== "P2-CARD" && words(s.text) < 15).length };
 }
+async function finishSpeaking(){
+  stopClock(); srStop();
+  try{ speechSynthesis.cancel(); }catch(e){}
+  await recStop();
+  if(S.stream) S.stream.getTracks().forEach(t => t.stop());
+  hideRail();
 
-/* ===== report ===== */
-function pad(n){ return String(n).padStart(2,"0"); }
-function stamp(d){ return d.getFullYear() + "-" + pad(d.getMonth()+1) + "-" + pad(d.getDate()) + " " + pad(d.getHours()) + ":" + pad(d.getMinutes()); }
-function slug(s){ return s.normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[^A-Za-z0-9]+/g,"-").replace(/^-|-$/g,"").toLowerCase(); }
+  const m = speakingMetrics();
+  const stats = [["Words spoken", m.totalWords], ["Long turn", fmt(m.longTurnSeconds)], ["Short answers", m.shortAnswers]];
+  sendScreen("Sending your recording", "This can take a minute. Do not close the tab.");
 
-function buildReport(){
-  const m = metrics();
-  const end = new Date();
-  const dur = Math.round((end - S.started)/1000);
-  const L = [];
-  L.push("IELTS SPEAKING TEST — SUBMISSION");
-  L.push("================================");
-  L.push("Student     : " + S.name);
-  L.push("Cohort      : " + S.cohort);
-  L.push("Test set    : " + S.test.id + " v" + S.test.v);
-  L.push("Taken       : " + stamp(S.started) + " — " + stamp(end) + " (" + fmt(dur) + ")");
-  L.push("Browser     : " + (navigator.userAgent || "unknown"));
-  L.push("");
-  L.push("INTEGRITY LOG");
-  L.push("-------------");
-  L.push("Left the tab        : " + S.integrity.blur + " time(s), " + Math.round(S.integrity.hiddenMs/1000) + "s away");
-  L.push("Repeats used        : " + (1 - S.repeats) + " of 1");
-  L.push("Paste blocked       : " + S.integrity.pasted + " attempt(s)");
-  L.push("Recording problems  : " + (S.integrity.recErrors.length ? S.integrity.recErrors.join(", ") : "none"));
-  L.push("Audio captured      : " + [1,2,3].map(p => "Part " + p + " " + (S.blobs[p] ? Math.round(S.blobs[p].size/1024) + "KB" : "MISSING")).join(" · "));
-  L.push("Transcript source   : " + (S.integrity.srUnavailable ? "unavailable in this browser" : "browser recognition (drops most fillers — judge fluency from the audio)"));
-  L.push("");
-  L.push("MEASUREMENTS (counted, not graded)");
-  L.push("----------------------------------");
-  L.push("Density = words per minute of airtime, not speaking rate. Low density means long silences.");
-  [1,2,3].forEach(p => {
-    const b = m.byPart[p];
-    L.push("Part " + p + ": " + b.questions + " answers · " + b.words + " words · " + fmt(b.seconds) + " airtime · density " + b.wpm + " · " + b.fillers + " fillers in transcript");
+  const audio = {};
+  for(const p of [1,2,3]){
+    if(S.blobs[p]){
+      $("send-bar").style.width = (15 + p*15) + "%";
+      audio[p] = { b64: await blobToB64(S.blobs[p]), type: S.blobs[p].type, bytes: S.blobs[p].size };
+    }
+  }
+  $("send-bar").style.width = "70%";
+  const payload = Object.assign(base(), {
+    task:"s", notes:S.notes, segments:S.segments, metrics:m,
+    repeatsUsed: 1 - S.repeats, transcriptAvailable: !S.srOff,
+    missingAudio: [1,2,3].filter(p => !S.blobs[p]),
+    audio
   });
-  L.push("Long turn: " + m.p2Words + " words in " + fmt(m.p2Seconds) + (m.p2Seconds < 100 ? "  <-- stopped before two minutes" : ""));
-  L.push("Whole test: " + m.totalWords + " words · average density " + m.wpm);
-  L.push("Answers under 15 words: " + m.shortAnswers + " of " + (S.segments.length - 1));
+  postJSON(payload).then(() => sendOK("s", stats)).catch(() => {
+    const files = [["Download the report", new Blob([speakingReport(m)],{type:"text/plain"}), slug(S.name)+"_"+S.week+"_speaking.txt"]];
+    [1,2,3].forEach(p => { if(S.blobs[p]) files.push(["Part "+p+" audio", S.blobs[p], slug(S.name)+"_"+S.week+"_part"+p+".webm"]); });
+    sendFailed(files, stats);
+  });
+}
+function speakingReport(m){
+  const L = [];
+  L.push("SPEAKING — " + S.name + " · " + S.cohort + " · " + S.week);
+  L.push("Taken " + stamp(S.started) + ", repeats used " + (1 - S.repeats) + ", left the tab " + S.integrity.blur + " time(s)");
+  L.push("Long turn " + m.longTurnSeconds + "s / " + m.longTurnWords + " words · " + m.totalWords + " words total · density " + m.density);
   L.push("");
-  L.push("PART 2 NOTES");
-  L.push("------------");
-  L.push(S.notes ? S.notes : "(none written)");
-  L.push("");
-  L.push("TRANSCRIPT");
-  L.push("----------");
   S.segments.forEach(s => {
     L.push("[" + s.qid + (s.topic ? " · " + s.topic : "") + "] (" + s.seconds + "s) Q: " + s.question);
     L.push("    A: " + (s.text || "(no speech detected)"));
     L.push("");
   });
-  L.push("--- MACHINE BLOCK ---");
-  L.push(JSON.stringify({
-    student:S.name, cohort:S.cohort, test:S.test.id, version:S.test.v,
-    started:S.started.toISOString(), ended:end.toISOString(), durationSeconds:dur,
-    integrity:{ tabLeaves:S.integrity.blur, hiddenSeconds:Math.round(S.integrity.hiddenMs/1000),
-      repeatsUsed:1 - S.repeats, pasteBlocked:S.integrity.pasted,
-      recorderErrors:S.integrity.recErrors, transcriptAvailable:!S.integrity.srUnavailable,
-      audioBytes:{1:S.blobs[1]?S.blobs[1].size:0, 2:S.blobs[2]?S.blobs[2].size:0, 3:S.blobs[3]?S.blobs[3].size:0} },
-    metrics:m, notes:S.notes, segments:S.segments
-  }));
-  return { text:L.join("\n"), m:m };
+  L.push("NOTES: " + (S.notes || "(none)"));
+  return L.join("\n");
 }
 
-/* ===== finish ===== */
-async function finish(){
-  stopClock(); srStop();
-  try{ speechSynthesis.cancel(); }catch(e){}
-  await recStop();
-  if(S.stream){ S.stream.getTracks().forEach(t => t.stop()); }
-  $("rail").hidden = true;
-
-  const built = buildReport();
-  const base = slug(S.name) + "_" + S.test.id + "_" + stamp(S.started).replace(/[: ]/g,"-");
-
-  $("report").textContent = built.text;
-  wire($("dl-r"), new Blob([built.text], {type:"text/plain;charset=utf-8"}), base + "_report.txt");
-  [1,2,3].forEach(p => {
-    const el = $("dl-" + p);
-    if(S.blobs[p]){
-      const ext = /mp4/.test(S.blobs[p].type) ? "m4a" : /ogg/.test(S.blobs[p].type) ? "ogg" : "webm";
-      wire(el, S.blobs[p], base + "_part" + p + "." + ext);
-    } else { el.textContent = "Part " + p + " audio missing"; }
-  });
-
-  const m = built.m;
-  $("statgrid").innerHTML = [
-    ["Total words", m.totalWords],
-    ["Words per minute", m.wpm],
-    ["Long turn", fmt(m.p2Seconds)],
-    ["Short answers", m.shortAnswers],
-    ["Tab leaves", S.integrity.blur]
-  ].map(([k,v]) => '<div class="stat"><b>' + v + '</b><span>' + k + '</span></div>').join("");
-
-  show("scr-done");
-  window.scrollTo(0,0);
+/* ===== 4. VOCABULARY ===== */
+noPaste($("v-input")); noPaste($("vu-text"));
+$("v-start").addEventListener("click", () => {
+  S.v = { i:0, answers:[], useIdx:[], useAns:[], started:new Date() };
+  const n = S.wk.vocab.length;
+  const pool = S.wk.vocab.map((_,k) => k);
+  for(let k = pool.length - 1; k > 0; k--){ const j = Math.floor(Math.random()*(k+1)); [pool[k],pool[j]] = [pool[j],pool[k]]; }
+  S.v.useIdx = pool.slice(0, Math.min(3, n));
+  recallStep();
+});
+function recallStep(){
+  const list = S.wk.vocab;
+  if(S.v.i >= list.length){ S.v.i = 0; useStep(); return; }
+  const w = list[S.v.i];
+  $("v-label").textContent = "Word " + (S.v.i+1) + " of " + list.length;
+  $("v-vi").textContent = w.vi;
+  $("v-pos").textContent = w.pos || "";
+  $("v-input").value = "";
+  $("stage").textContent = "Vocabulary · recall";
+  show("scr-v-recall");
+  $("v-input").focus();
+  let closed = false;
+  const done = () => {
+    if(closed) return; closed = true; stopClock();
+    S.v.answers.push({ en:w.en, vi:w.vi, given:$("v-input").value.trim() });
+    S.v.i++; recallStep();
+  };
+  startClock(T.recall, done);
+  $("v-next").onclick = done;
+  $("v-input").onkeydown = e => { if(e.key === "Enter"){ e.preventDefault(); done(); } };
 }
-function wire(a, blob, filename){
-  a.href = URL.createObjectURL(blob);
-  a.download = filename;
-  a.removeAttribute("aria-disabled");
-  a.textContent = a.textContent.replace(/ missing$/,"");
+function useStep(){
+  if(S.v.i >= S.v.useIdx.length){ finishVocab(); return; }
+  const w = S.wk.vocab[S.v.useIdx[S.v.i]];
+  $("vu-label").textContent = "Sentence " + (S.v.i+1) + " of " + S.v.useIdx.length;
+  $("vu-word").textContent = w.en;
+  $("vu-text").value = "";
+  $("stage").textContent = "Vocabulary · your own sentences";
+  show("scr-v-use");
+  $("vu-text").focus();
+  let closed = false;
+  const done = () => {
+    if(closed) return; closed = true; stopClock();
+    S.v.useAns.push({ word:w.en, sentence:$("vu-text").value.trim() });
+    S.v.i++; useStep();
+  };
+  startClock(T.use, done);
+  $("vu-next").onclick = done;
 }
-$("btn-copy").addEventListener("click", async () => {
-  try{ await navigator.clipboard.writeText($("report").textContent); $("btn-copy").textContent = "Copied"; }
-  catch(e){
-    const r = document.createRange(); r.selectNodeContents($("report"));
-    const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r);
-    $("btn-copy").textContent = "Selected — press Ctrl+C";
+function norm(s){ return (s||"").toLowerCase().trim().replace(/[^a-z]/g,""); }
+function editDistance(a,b){
+  const m = a.length, n = b.length;
+  if(!m) return n; if(!n) return m;
+  let prev = Array.from({length:n+1}, (_,j) => j);
+  for(let i = 1; i <= m; i++){
+    const cur = [i];
+    for(let j = 1; j <= n; j++){
+      cur[j] = Math.min(prev[j]+1, cur[j-1]+1, prev[j-1] + (a[i-1] === b[j-1] ? 0 : 1));
+    }
+    prev = cur;
   }
-  setTimeout(() => { $("btn-copy").textContent = "Copy report"; }, 2500);
+  return prev[n];
+}
+function gradeVocab(){
+  let right = 0, near = 0;
+  const marked = S.v.answers.map(a => {
+    const g = norm(a.given), t = norm(a.en);
+    let verdict;
+    if(!g) verdict = "blank";
+    else if(g === t){ verdict = "right"; right++; }
+    else if(editDistance(g,t) <= Math.max(1, Math.floor(t.length/5))){ verdict = "near"; near++; }
+    else verdict = "wrong";
+    return Object.assign({}, a, {verdict});
+  });
+  const own = S.v.useAns.filter(u => /\b(i|i'm|i've|my|me|we|our|us)\b/i.test(u.sentence)).length;
+  return { marked, right, near, wrong: marked.length - right - near, total: marked.length, ownSentences: own };
+}
+function finishVocab(){
+  hideRail();
+  const g = gradeVocab();
+  const payload = Object.assign(base(), {
+    task:"v", recall:g.marked, sentences:S.v.useAns,
+    measures:{ right:g.right, near:g.near, wrong:g.wrong, total:g.total, ownSentences:g.ownSentences,
+      secondsEach:T.recall }
+  });
+  sendScreen("Handing in your vocabulary", "This takes a moment.");
+  const stats = [["Correct", g.right + "/" + g.total], ["Near miss", g.near], ["Own sentences", g.ownSentences + "/" + S.v.useAns.length]];
+  const after = () => {
+    const ul = document.createElement("ul");
+    ul.className = "marks";
+    g.marked.forEach(m => {
+      const li = document.createElement("li");
+      if(m.verdict !== "right") li.className = "no";
+      li.textContent = m.vi + " → " + m.en + (m.verdict === "right" ? "" : "   (you wrote: " + (m.given || "nothing") + ")");
+      ul.appendChild(li);
+    });
+    $("send-stats").insertAdjacentElement("afterend", ul);
+  };
+  postJSON(payload).then(() => { sendOK("v", stats); after(); })
+    .catch(() => { sendFailed([["Download your answers", new Blob([JSON.stringify(payload,null,2)],{type:"text/plain"}), slug(S.name)+"_"+S.week+"_vocab.txt"]], stats); after(); });
+}
+
+/* ===== leaving mid-task ===== */
+window.addEventListener("beforeunload", e => {
+  const busy = !$("scr-write").hidden || !$("scr-q").hidden || !$("scr-talk").hidden
+            || !$("scr-prep").hidden || !$("scr-v-recall").hidden || !$("scr-v-use").hidden
+            || ($("send-eyebrow").textContent === "Sending" && !$("scr-send").hidden);
+  if(busy){ e.preventDefault(); e.returnValue = ""; }
 });
 </script>
 </body>
