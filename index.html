@@ -579,7 +579,9 @@ function partIntro(part){
   $("stage").textContent = "Part " + part + " — ready";
   $("clock").textContent = "0:00"; $("barfill").style.width = "100%";
   show("scr-intro");
+  $("btn-partgo").disabled = false;
   $("btn-partgo").onclick = async () => {
+    $("btn-partgo").disabled = true;   // a second click re-enters runStep and restarts the clock
     await recStop();
     recStart(part);
     runStep();
@@ -598,19 +600,30 @@ async function runStep(){
     $("q-label").textContent = "Part " + step.part + " · question " + idx + " of " + inPart.length;
     $("q-text").textContent = step.text;
     $("rep-left").textContent = S.repeats;
-    $("btn-repeat").disabled = S.repeats < 1;
     $("live").innerHTML = "<em>Listening…</em>";
+    // Locked while the question is read aloud, so a click cannot reach the previous question's handler
+    $("btn-next").disabled = true;
+    $("btn-repeat").disabled = true;
     show("scr-q");
     srTake();
     await say(step.text);
     const t0 = Date.now();
+    let closed = false;
+    const finishQ = () => { if(closed) return; closed = true; stopClock(); closeQ(step, t0); };
+    $("btn-next").disabled = false;
+    $("btn-repeat").disabled = S.repeats < 1;
     srStart();
-    startClock(step.secs, () => closeQ(step, t0));
-    $("btn-next").onclick = () => { stopClock(); closeQ(step, t0); };
+    startClock(step.secs, finishQ);
+    $("btn-next").onclick = finishQ;
     $("btn-repeat").onclick = async () => {
-      if(S.repeats < 1) return;
-      S.repeats--; $("rep-left").textContent = S.repeats; $("btn-repeat").disabled = true;
-      pauseClock(); await say(step.text); srStart(); resumeClock();
+      if(S.repeats < 1 || closed) return;
+      S.repeats--; $("rep-left").textContent = S.repeats;
+      $("btn-repeat").disabled = true; $("btn-next").disabled = true;
+      pauseClock();
+      await say(step.text);
+      if(closed) return;              // the clock ran out while it was being re-read
+      $("btn-next").disabled = false;
+      srStart(); resumeClock();
     };
     return;
   }
@@ -621,10 +634,14 @@ async function runStep(){
     $("cue-text").textContent = c.card;
     $("cue-bullets").innerHTML = "<li>You should say:</li>" + c.bullets.map(b => "<li>" + esc(b) + "</li>").join("") + "<li>" + esc(c.explain) + "</li>";
     show("scr-prep");
+    $("btn-speak-now").disabled = true;
     srStop();
     await say(c.card + " You should say: " + c.bullets.join("; ") + "; " + c.explain + " You have one minute to make notes.");
-    startClock(T.p2prep, () => { S.i++; runStep(); });
-    $("btn-speak-now").onclick = () => { stopClock(); S.i++; runStep(); };
+    let moved = false;
+    const go = () => { if(moved) return; moved = true; stopClock(); S.i++; runStep(); };
+    $("btn-speak-now").disabled = false;
+    startClock(T.p2prep, go);
+    $("btn-speak-now").onclick = go;
     return;
   }
 
