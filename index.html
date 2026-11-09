@@ -466,7 +466,7 @@ const S = {
   stream:null, rec:null, chunks:[], recPart:null, blobs:{1:null,2:null,3:null},
   sr:null, srWanted:false, srFinal:"", srOff:false,
   plan:[], i:0, repeats:1, notes:"", segments:[], started:null,
-  w:{ stage:0, task1:"", task2:"", t1s:0, t2s:0 },
+  w:{ stage:0, task1:"", task2:"", t1s:0, t2s:0, s1:[], s2:[], d1:0, d2:0, sampler:null },
   v:{ i:0, answers:[], useIdx:[], useAns:[], started:null }
 };
 
@@ -632,6 +632,29 @@ $("lr-send").addEventListener("click", () => {
 
 /* ===== 2. WRITING ===== */
 noPaste($("w-text"));
+$("w-text").addEventListener("keydown", e => {
+  if(e.key === "Backspace" || e.key === "Delete"){ if(S.w.stage === 1) S.w.d1++; else S.w.d2++; }
+});
+/* Length sampled on a fixed tick. Composition is bursty and deletes; transcription
+   from a second screen is a straight line with almost no deletions. */
+function curveStats(samples, dels){
+  const d = [];
+  for(let k = 1; k < samples.length; k++) d.push(samples[k] - samples[k-1]);
+  const active = d.filter(x => x > 0);
+  const mean = active.length ? active.reduce((a,b) => a+b, 0) / active.length : 0;
+  const sd = active.length ? Math.sqrt(active.reduce((a,b) => a + (b-mean)*(b-mean), 0) / active.length) : 0;
+  return {
+    ticks: d.length,
+    deletions: dels,
+    pauses: d.filter(x => x <= 0).length,
+    meanBurst: Math.round(mean),
+    steadiness: mean ? Number((sd/mean).toFixed(2)) : 0,
+    samples: samples
+  };
+}
+function curveLine(label, c){
+  return label + " steadiness " + c.steadiness + ", " + c.deletions + " deletions, " + c.pauses + " pauses of " + c.ticks;
+}
 $("w-text").addEventListener("input", () => {
   const n = words($("w-text").value);
   const min = S.w.stage === 1 ? 150 : 250;
@@ -655,9 +678,14 @@ function nextWriting(){
   show("scr-write");
   const secs = t1 ? T.task1 : T.task2;
   const t0 = Date.now();
+  const arr = t1 ? (S.w.s1 = [saved.length]) : (S.w.s2 = [saved.length]);
+  if(S.w.sampler) clearInterval(S.w.sampler);
+  S.w.sampler = setInterval(() => arr.push($("w-text").value.length), 4000);
   let closed = false;
   const done = () => {
     if(closed) return; closed = true; stopClock();
+    if(S.w.sampler){ clearInterval(S.w.sampler); S.w.sampler = null; }
+    arr.push($("w-text").value.length);
     const used = Math.round((Date.now()-t0)/1000);
     if(t1){ S.w.task1 = $("w-text").value; S.w.t1s = used; } else { S.w.task2 = $("w-text").value; S.w.t2s = used; }
     nextWriting();
@@ -667,11 +695,14 @@ function nextWriting(){
 }
 function finishWriting(){
   hideRail();
+  const c1 = curveStats(S.w.s1, S.w.d1), c2 = curveStats(S.w.s2, S.w.d2);
   const payload = Object.assign(base(), {
     task:"w", task1:S.w.task1, task2:S.w.task2,
     prompts:{ task1:S.wk.writing.task1, task2:S.wk.writing.task2 },
+    typing:{ task1:c1, task2:c2 },
     measures:{ task1Words:words(S.w.task1), task2Words:words(S.w.task2),
-      task1Seconds:S.w.t1s, task2Seconds:S.w.t2s }
+      task1Seconds:S.w.t1s, task2Seconds:S.w.t2s,
+      typingSummary: curveLine("T1", c1) + " · " + curveLine("T2", c2) }
   });
   sendScreen("Handing in your writing", "This takes a moment.");
   const stats = [["Task 1 words", payload.measures.task1Words], ["Task 2 words", payload.measures.task2Words]];
