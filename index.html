@@ -151,6 +151,14 @@ footer{margin-top:30px;font-size:.78rem;color:var(--muted)}
   <div class="row"><button id="btn-switch" class="hint" style="border:0;background:none;padding:0;text-decoration:underline">Not you, or wrong week?</button></div>
 </section>
 
+<!-- ===== FEEDBACK ===== -->
+<section id="scr-fb" class="stack" hidden style="padding-block:28px">
+  <div><div class="eyebrow">From your teacher</div><h1>Your feedback</h1>
+    <p class="lede" id="fb-msg">Loading…</p></div>
+  <div id="fb-list" class="stack"></div>
+  <div class="row"><button class="back">Back</button></div>
+</section>
+
 <!-- ===== LISTENING AND READING ===== -->
 <section id="scr-lr" class="stack" hidden style="padding-block:28px">
   <div><div class="eyebrow">Task 1 of 4</div><h1>Listening and reading</h1></div>
@@ -445,7 +453,7 @@ const TASKS = [
 
 /* ===== helpers ===== */
 const $ = id => document.getElementById(id);
-const SCREENS = ["scr-id","scr-menu","scr-lr","scr-w-intro","scr-write","scr-s-intro","scr-part","scr-q","scr-prep","scr-talk","scr-v-intro","scr-v-recall","scr-v-use","scr-send"];
+const SCREENS = ["scr-id","scr-menu","scr-fb","scr-lr","scr-w-intro","scr-write","scr-s-intro","scr-part","scr-q","scr-prep","scr-talk","scr-v-intro","scr-v-recall","scr-v-use","scr-send"];
 function show(n){ SCREENS.forEach(s => $(s).hidden = (s !== n)); window.scrollTo(0,0); }
 function esc(s){ return String(s).replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c])); }
 function words(s){ return (s||"").trim() ? s.trim().split(/\s+/).filter(Boolean).length : 0; }
@@ -532,7 +540,45 @@ function menu(){
     b.onclick = () => { if(done && !confirmRedo(t.name)) return; openTask(t.key); };
     $("tiles").appendChild(b);
   });
+  const fb = document.createElement("button");
+  fb.className = "tile card";
+  fb.innerHTML = '<span class="t">Your feedback</span><span class="d">Corrections your teacher has sent back.</span>' +
+    '<span class="s todo">Read before you write</span>';
+  fb.onclick = openFeedback;
+  $("tiles").appendChild(fb);
   show("scr-menu");
+}
+
+function openFeedback(){
+  hideRail();
+  $("fb-list").innerHTML = "";
+  $("fb-msg").textContent = "Loading…";
+  show("scr-fb");
+  if(!CONFIG.endpoint){ $("fb-msg").textContent = "Not available yet."; return; }
+  fetch(CONFIG.endpoint + "?action=feedback&student=" + encodeURIComponent(S.name))
+    .then(r => r.json())
+    .then(j => {
+      if(!j.ok) throw new Error(j.error || "error");
+      if(!j.items || !j.items.length){
+        $("fb-msg").textContent = "Nothing here yet. Your corrections appear once your teacher has marked the work.";
+        return;
+      }
+      $("fb-msg").textContent = "Most recent first. Read the last one before you start this week's writing.";
+      j.items.forEach(it => {
+        const card = document.createElement("div");
+        card.className = "card";
+        const head = document.createElement("div");
+        head.className = "qnum";
+        head.textContent = [it.week, it.task, String(it.at || "").slice(0,10)].filter(Boolean).join(" · ");
+        const body = document.createElement("div");
+        body.style.marginTop = "10px";
+        body.style.whiteSpace = "pre-wrap";
+        body.textContent = it.body || "";
+        card.append(head, body);
+        $("fb-list").appendChild(card);
+      });
+    })
+    .catch(() => { $("fb-msg").textContent = "Could not load your feedback. Check your connection and try again."; });
 }
 function confirmRedo(name){ return window.confirm(name + " has already been handed in. Doing it again replaces nothing and your teacher sees both attempts. Continue?"); }
 
