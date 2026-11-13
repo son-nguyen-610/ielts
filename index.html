@@ -205,6 +205,18 @@ body.wide .wrap{max-width:1180px}
   <div class="row"><button id="btn-switch" class="hint" style="border:0;background:none;padding:0;text-decoration:underline">Not you, or wrong week?</button></div>
 </section>
 
+<!-- ===== TEACHER LOG (?teacher) ===== -->
+<section id="scr-teacher" class="stack" hidden style="padding-block:28px">
+  <div><div class="eyebrow">Teacher</div><h1>Homework log</h1><p class="lede">Who has handed in what, and when.</p></div>
+  <div class="card row" style="align-items:flex-end">
+    <div class="grow"><label for="tc-key">Teacher key</label><input id="tc-key" type="password" autocomplete="off"></div>
+    <div><label for="tc-week">Week</label><select id="tc-week"></select></div>
+    <div><button id="tc-load" class="primary">Show</button></div>
+  </div>
+  <div class="hint" id="tc-msg"></div>
+  <div class="card" style="overflow-x:auto"><table class="wl" id="tc-table"></table></div>
+</section>
+
 <!-- ===== HOME (v2) ===== -->
 <section id="scr-home" class="stack" hidden style="padding-block:28px">
   <div><div class="eyebrow" id="home-who"></div><h1>This week</h1><p class="lede" id="home-theme"></p></div>
@@ -590,7 +602,7 @@ const TASKS = [
 
 /* ===== helpers ===== */
 const $ = id => document.getElementById(id);
-const SCREENS = ["scr-id","scr-home","scr-tintro","scr-listen","scr-read","scr-vq","scr-result","scr-menu","scr-fb","scr-words","scr-lib","scr-lr","scr-w-intro","scr-write","scr-s-intro","scr-part","scr-q","scr-prep","scr-talk","scr-v-intro","scr-v-recall","scr-v-use","scr-send"];
+const SCREENS = ["scr-id","scr-teacher","scr-home","scr-tintro","scr-listen","scr-read","scr-vq","scr-result","scr-menu","scr-fb","scr-words","scr-lib","scr-lr","scr-w-intro","scr-write","scr-s-intro","scr-part","scr-q","scr-prep","scr-talk","scr-v-intro","scr-v-recall","scr-v-use","scr-send"];
 function show(n){ SCREENS.forEach(s => $(s).hidden = (s !== n)); window.scrollTo(0,0); }
 function esc(s){ return String(s).replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c])); }
 function words(s){ return (s||"").trim() ? s.trim().split(/\s+/).filter(Boolean).length : 0; }
@@ -1839,11 +1851,39 @@ function finishQuiz(k, resumed){
     return { n:i+1, given:a.given, ok: v === "right", verdict:v, en:w.en, hint: w.en + " = " + w.vi }; });
   const right = res.filter(r => r.ok).length, near = res.filter(r => r.verdict === "near").length;
   const payload = Object.assign(base(), { task:"v", measures:{ right, near, wrong: res.length - right - near, total: res.length, ownSentences: 0 },
-    answers: "[" + (k === "lr-v" ? "LR" : "SW") + " list]\n" + res.map(r => r.en + " <- " + (r.given || "-") + " [" + r.verdict + "]").join("\n"), sentences: "", list: k });
+    recall: res.map(r => ({ en:r.en, given:r.given, verdict:r.verdict })), sentences: [], list: k });
   /* wrong items show the answer straight away: the point of the quiz is to learn the list */
   res.forEach(r => { if(!r.ok) r.hint = "Đáp án: " + r.hint; });
   handIn(k, payload, res, "Vocabulary: " + right + "/" + res.length);
 }
+
+/* ----- teacher log ----- */
+function teacherPage(){
+  Object.keys(WEEKS).forEach(w => { const o = document.createElement("option"); o.textContent = w; $("tc-week").appendChild(o); });
+  $("tc-week").value = currentWeek(); $("tc-key").value = recall("hw.tkey") || "";
+  _show("scr-teacher"); $("topbar").hidden = true;
+  if($("tc-key").value) loadTeacher();
+}
+function loadTeacher(){
+  const key = $("tc-key").value.trim(); if(!key){ $("tc-msg").textContent = "Type the teacher key."; return; }
+  store("hw.tkey", key); $("tc-msg").textContent = "Loading…";
+  fetch(CONFIG.endpoint + "?action=status&week=" + encodeURIComponent($("tc-week").value) + "&key=" + encodeURIComponent(key))
+    .then(r => r.json()).then(j => {
+      if(!j.ok){ $("tc-msg").textContent = j.error === "wrong key" ? "Wrong key." : "Error: " + (j.error || "unknown"); return; }
+      const cols = ["LR vocab","Listening","Reading","SW vocab","Speaking","Writing"];
+      const seen = {}; (j.items || []).forEach(it => seen[slug(it.Student)] = it);
+      (j.roster || []).forEach(r => { if(!seen[slug(r.name)]) seen[slug(r.name)] = { Student:r.name, Class:r.cls }; });
+      const rows = Object.values(seen).sort((a,b) => (a.Class||"").localeCompare(b.Class||"") || a.Student.localeCompare(b.Student));
+      const f = v => v ? new Date(v).toLocaleString([], {weekday:"short", hour:"2-digit", minute:"2-digit"}) : "";
+      $("tc-table").innerHTML = '<tr><td><b>Student</b></td><td><b>Class</b></td>' + cols.map(c => '<td><b>' + c + '</b></td>').join("") + '<td><b>Done</b></td></tr>' +
+        rows.map(r => { const n = cols.filter(c => r[c]).length;
+          return '<tr><td>' + esc(r.Student) + '</td><td>' + esc(r.Class || "") + '</td>' + cols.map(c => '<td style="color:' + (r[c] ? "var(--ok)" : "var(--rec)") + '">' + (r[c] ? "✓ " + f(r[c]) : "—") + '</td>').join("") +
+            '<td><b>' + n + '/6</b></td></tr>'; }).join("");
+      $("tc-msg").textContent = rows.length ? rows.filter(r => cols.every(c => r[c])).length + " of " + rows.length + " students finished everything." : "Nobody has handed in anything for this week yet.";
+    }).catch(() => { $("tc-msg").textContent = "Could not reach the server."; });
+}
+$("tc-load").addEventListener("click", loadTeacher);
+if(/[?&]teacher\b/.test(location.search)) setTimeout(teacherPage, 0);
 
 /* ----- word lists screen shows both lists ----- */
 openWords = function(){
