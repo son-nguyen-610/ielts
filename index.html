@@ -163,6 +163,12 @@ footer{margin-top:30px;font-size:.78rem;color:var(--muted)}
 .res li{margin:4px 0}.res .ok{color:var(--ok)}.res .no{color:var(--rec)}.res .h{display:block;font-size:.84rem;color:var(--warn)}
 .nowplaying{font-size:.9rem;color:var(--muted)}
 body.wide .wrap{max-width:1180px}
+.wlayout{display:block}
+@media(min-width:900px){
+  .wlayout.side{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px;align-items:start}
+  .wlayout.side .wside{position:sticky;top:70px;max-height:calc(100vh - 90px);overflow:auto}
+  .wlayout.side .essay{min-height:calc(100vh - 220px)}
+}
 .readjump{position:sticky;top:64px;z-index:5}
 @media(min-width:900px){.readjump{display:none}}
 </style>
@@ -345,12 +351,18 @@ body.wide .wrap{max-width:1180px}
 
 <section id="scr-write" hidden style="padding-block:24px">
   <div class="qnum" id="w-label"></div>
-  <div class="prompt" id="w-prompt" style="margin-top:10px"></div>
-  <img id="w-img" alt="Task 1 chart" title="Click to enlarge" style="max-width:100%;margin-top:14px;border:1px solid var(--line);border-radius:8px;cursor:zoom-in;background:#fff" hidden onclick="window.open(this.src,'_blank')">
-  <div style="margin-top:16px"><textarea id="w-text" class="essay" spellcheck="false" placeholder="Start typing here."></textarea></div>
-  <div class="row" style="margin-top:10px">
-    <div class="wordcount" id="w-wc">0 words</div>
-    <button id="w-next">Finished this task</button>
+  <div class="wlayout" id="w-layout">
+    <div class="wside noselect" id="w-side">
+      <div class="prompt" id="w-prompt" style="margin-top:10px"></div>
+      <img id="w-img" alt="Task 1 chart" title="Click to enlarge" style="max-width:100%;margin-top:14px;border:1px solid var(--line);border-radius:8px;cursor:zoom-in;background:#fff" hidden onclick="window.open(this.src,'_blank')">
+    </div>
+    <div class="wmain">
+      <div style="margin-top:10px"><textarea id="w-text" class="essay" spellcheck="false" placeholder="Start typing here."></textarea></div>
+      <div class="row" style="margin-top:10px">
+        <div class="wordcount" id="w-wc">0 words</div>
+        <button id="w-next">Finished this task</button>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1091,6 +1103,7 @@ function nextWriting(){
   $("w-prompt").textContent = t1 ? S.wk.writing.task1 : S.wk.writing.task2;
   const img = t1 ? (S.wk.writing.task1Image || "") : "";
   showTask1Charts(t1 ? (S.wk.writing.task1Alt || []) : [], img);
+  $("w-layout").classList.toggle("side", t1);
   const saved = recall("hw.draft." + S.week + "." + S.w.stage) || "";
   $("w-text").value = saved;
   $("w-wc").textContent = words(saved) + " words";
@@ -1542,7 +1555,7 @@ show = function(n){
   const inApp = n !== "scr-id";
   const testing = ["scr-listen","scr-read","scr-vq","scr-write","scr-q","scr-prep","scr-talk","scr-part"].includes(n);
   $("topbar").hidden = !inApp || testing;
-  document.body.classList.toggle("wide", n === "scr-read");
+  document.body.classList.toggle("wide", n === "scr-read" || (n === "scr-write" && S.w && S.w.stage === 1));
   $("tb-back").hidden = n === "scr-home";
   document.querySelectorAll(".topbar .nav").forEach(b => b.classList.toggle("on",
     (b.dataset.go === "home" && n === "scr-home") || (b.dataset.go === "lib" && n === "scr-lib") ||
