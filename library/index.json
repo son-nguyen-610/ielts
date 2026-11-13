@@ -1,0 +1,205 @@
+{
+ "items": [
+  {
+   "group": "Cheat sheets",
+   "title": "Writing",
+   "sub": "Bộ khung Task 1 và Task 2, từ vựng, cách nghĩ ý",
+   "file": "writing.md",
+   "tags": "writing task 1 task 2 skeleton khung"
+  },
+  {
+   "group": "Cheat sheets",
+   "title": "Speaking",
+   "sub": "Luật câu và bộ khung theo dạng câu hỏi",
+   "file": "speaking.md",
+   "tags": "speaking part 1 part 2 part 3"
+  },
+  {
+   "group": "Cheat sheets",
+   "title": "Bản rút gọn",
+   "sub": "Phiên bản ngắn để ôn trước giờ thi",
+   "file": "rutgon.md",
+   "tags": "short version rút gọn"
+  },
+  {
+   "group": "Task 1 sample answers",
+   "title": "#1 University library users",
+   "file": "samples/q001.md",
+   "tags": "task 1 sample"
+  },
+  {
+   "group": "Task 1 sample answers",
+   "title": "#3 UK and Ireland independent films",
+   "file": "samples/q003.md",
+   "tags": "task 1 sample"
+  },
+  {
+   "group": "Task 1 sample answers",
+   "title": "#5 Production of a lead pencil",
+   "file": "samples/q005.md",
+   "tags": "task 1 sample"
+  },
+  {
+   "group": "Task 1 sample answers",
+   "title": "#7 Hot air balloon",
+   "file": "samples/q007.md",
+   "tags": "task 1 sample"
+  },
+  {
+   "group": "Task 1 sample answers",
+   "title": "#8 Rain-shadow deserts",
+   "file": "samples/q008.md",
+   "tags": "task 1 sample"
+  },
+  {
+   "group": "Task 1 sample answers",
+   "title": "#9 Cycling versus driving",
+   "file": "samples/q009.md",
+   "tags": "task 1 sample"
+  },
+  {
+   "group": "Task 1 sample answers",
+   "title": "#10 Charlestown weight assessment",
+   "file": "samples/q010.md",
+   "tags": "task 1 sample"
+  },
+  {
+   "group": "Task 1 sample answers",
+   "title": "#14 India and China population",
+   "file": "samples/q014.md",
+   "tags": "task 1 sample"
+  },
+  {
+   "group": "Task 1 sample answers",
+   "title": "#16 Health centre ratings",
+   "file": "samples/q016.md",
+   "tags": "task 1 sample"
+  },
+  {
+   "group": "Task 1 sample answers",
+   "title": "#21 Global car sharing usage",
+   "file": "samples/q021.md",
+   "tags": "task 1 sample"
+  },
+  {
+   "group": "Task 1 sample answers",
+   "title": "#22 Smartphone ownership",
+   "file": "samples/q022.md",
+   "tags": "task 1 sample"
+  },
+  {
+   "group": "Task 1 sample answers",
+   "title": "#23 Homework hours and science scores",
+   "file": "samples/q023.md",
+   "tags": "task 1 sample"
+  },
+  {
+   "group": "Task 1 sample answers",
+   "title": "#24 Reasons for study and employer support",
+   "file": "samples/q024.md",
+   "tags": "task 1 sample"
+  },
+  {
+   "group": "Task 1 sample answers",
+   "title": "#25 Commuting modes in a European city",
+   "file": "samples/q025.md",
+   "tags": "task 1 sample"
+  },
+  {
+   "group": "Task 1 sample answers",
+   "title": "#26 Age structure of Yemen and Italy",
+   "file": "samples/q026.md",
+   "tags": "task 1 sample"
+  },
+  {
+   "group": "Task 2 sample answers",
+   "title": "#2 Both parents working",
+   "file": "samples/q002.md",
+   "tags": "task 2 sample"
+  },
+  {
+   "group": "Task 2 sample answers",
+   "title": "#2b Both parents working, opposite side",
+   "file": "samples/q02b.md",
+   "tags": "task 2 sample"
+  },
+  {
+   "group": "Task 2 sample answers",
+   "title": "#4 Living alone",
+   "file": "samples/q004.md",
+   "tags": "task 2 sample"
+  },
+  {
+   "group": "Task 2 sample answers",
+   "title": "#6 Working from home",
+   "file": "samples/q006.md",
+   "tags": "task 2 sample"
+  },
+  {
+   "group": "Task 2 sample answers",
+   "title": "#11 Ageing population",
+   "file": "samples/q011.md",
+   "tags": "task 2 sample"
+  },
+  {
+   "group": "Task 2 sample answers",
+   "title": "#12 Tourism and local culture",
+   "file": "samples/q012.md",
+   "tags": "task 2 sample"
+  },
+  {
+   "group": "Task 2 sample answers",
+   "title": "#13 Parks replaced by housing",
+   "file": "samples/q013.md",
+   "tags": "task 2 sample"
+  },
+  {
+   "group": "Task 2 sample answers",
+   "title": "#15 Celebrity privacy and the media",
+   "file": "samples/q015.md",
+   "tags": "task 2 sample"
+  },
+  {
+   "group": "Task 2 sample answers",
+   "title": "#17 Easier international travel",
+   "file": "samples/q017.md",
+   "tags": "task 2 sample"
+  },
+  {
+   "group": "Task 2 sample answers",
+   "title": "#18 Self-medication instead of doctors",
+   "file": "samples/q018.md",
+   "tags": "task 2 sample"
+  },
+  {
+   "group": "Task 2 sample answers",
+   "title": "#19 Government funding for artists",
+   "file": "samples/q019.md",
+   "tags": "task 2 sample"
+  },
+  {
+   "group": "Task 2 sample answers",
+   "title": "#20 AI replacing human workers",
+   "file": "samples/q020.md",
+   "tags": "task 2 sample"
+  },
+  {
+   "group": "Task 2 sample answers",
+   "title": "#27 Fewer students studying science",
+   "file": "samples/q027.md",
+   "tags": "task 2 sample"
+  },
+  {
+   "group": "Task 2 sample answers",
+   "title": "#28 Fewer people cycling to work",
+   "file": "samples/q028.md",
+   "tags": "task 2 sample"
+  },
+  {
+   "group": "Task 2 sample answers",
+   "title": "#29 Financial aid or practical help",
+   "file": "samples/q029.md",
+   "tags": "task 2 sample"
+  }
+ ]
+}

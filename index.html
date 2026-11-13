@@ -102,7 +102,7 @@ textarea.essay{min-height:340px}
 .libgrp{font-size:.74rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:8px}
 .libitem{text-align:left;display:block;width:100%}.libitem small{display:block;color:var(--muted);font-size:.8rem}
 .md{line-height:1.65}.md h2{font-size:1.3rem;margin:1.2em 0 .4em}.md h3{font-size:1.05rem;margin:1em 0 .3em}.md h2:first-child,.md h3:first-child{margin-top:0}
-.md p{margin:.5em 0}.md ul,.md ol{margin:.4em 0;padding-left:1.3rem}.md li{margin:.2em 0}
+.md p{margin:.5em 0}.md ul,.md ol{margin:.4em 0;padding-left:1.3rem}.md li{margin:.2em 0}.md li.sub{list-style:none;margin-left:1.1rem;color:var(--muted)}.md li.sub::before{content:'↳ ';}
 .md table{border-collapse:collapse;width:100%;margin:.6em 0;font-size:.92rem}.md td,.md th{border:1px solid var(--line);padding:6px 8px;vertical-align:top;text-align:left}
 .md blockquote{margin:.6em 0;padding:4px 0 4px 12px;border-left:3px solid var(--accent);color:var(--ink)}
 .md img{max-width:100%;border-radius:8px}.md hr{border:0;border-top:1px solid var(--line);margin:1.2em 0}
@@ -666,9 +666,11 @@ function md(src){
     }
     if(/^>\s?/.test(l)){ const q = []; while(i < L.length && /^>\s?/.test(L[i])){ q.push(inl(L[i].replace(/^>\s?/,""))); i++; } out.push("<blockquote>"+q.join("<br>")+"</blockquote>"); continue; }
     if(/^\s*([-*]|\d+\.)\s+/.test(l)){
-      const ordered = /^\s*\d+\./.test(l), it = [];
-      while(i < L.length && /^\s*([-*]|\d+\.)\s+/.test(L[i])){ it.push("<li>"+inl(L[i].replace(/^\s*([-*]|\d+\.)\s+/,""))+"</li>"); i++; }
-      out.push((ordered?"<ol>":"<ul>") + it.join("") + (ordered?"</ol>":"</ul>")); continue;
+      const ordered = /^\s*\d+\./.test(l), it = [], start = ordered ? parseInt(l.trim(), 10) : 1;
+      while(i < L.length && /^\s*([-*]|\d+\.)\s+/.test(L[i])){
+        const sub = /^\s{2,}/.test(L[i]);
+        it.push('<li' + (sub ? ' class="sub"' : '') + '>' + inl(L[i].replace(/^\s*([-*]|\d+\.)\s+/,"")) + "</li>"); i++; }
+      out.push((ordered ? '<ol start="' + start + '">' : "<ul>") + it.join("") + (ordered?"</ol>":"</ul>")); continue;
     }
     const p = []; while(i < L.length && L[i].trim() && !/^(#|\||>|\s*([-*]|\d+\.)\s|---)/.test(L[i])){ p.push(inl(L[i])); i++; }
     out.push("<p>"+p.join("<br>")+"</p>");
