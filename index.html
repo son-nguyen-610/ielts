@@ -99,6 +99,12 @@ textarea.essay{min-height:340px}
 .wordcount.short{color:var(--rec)}
 .vi{font-family:var(--display);font-weight:600;font-size:1.9rem;line-height:1.2;margin:.3rem 0 0}
 .pos{font-size:.84rem;color:var(--muted)}
+.qgrp{margin:14px 0 6px;font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.qrow{display:grid;grid-template-columns:42px 1fr 26px;gap:8px;align-items:center;margin:6px 0}
+.qrow .n{font-weight:600;color:var(--muted);text-align:right}
+.qrow .m{font-weight:700;text-align:center}.qrow.ok .m{color:var(--ok)}.qrow.no .m{color:var(--rec)}
+.qrow.ok input{border-color:var(--ok)}.qrow.no input{border-color:var(--rec)}
+.qhint{grid-column:2 / 4;font-size:.84rem;color:var(--warn);margin:-2px 0 4px}
 .vhint{font-size:1.5rem;letter-spacing:.32em;font-weight:600;color:var(--accent);margin-top:10px;font-variant-numeric:tabular-nums}
 .wl{width:100%;border-collapse:collapse}.wl td{padding:9px 6px;border-bottom:1px solid var(--line);vertical-align:top}.wl td.en{font-weight:600}.wl td.p{color:var(--muted);font-size:.84rem;white-space:nowrap}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
@@ -167,7 +173,13 @@ footer{margin-top:30px;font-size:.78rem;color:var(--muted)}
   <div><div class="eyebrow">Task 1 of 4</div><h1>Listening and reading</h1></div>
   <div class="prompt" id="lr-brief"></div>
   <div class="card stack">
-    <div><label for="lr-answers">Your answers, numbered in order</label><textarea id="lr-answers" spellcheck="false" placeholder="1 B&#10;2 library&#10;3 FALSE"></textarea></div>
+    <div id="lr-free"><label for="lr-answers">Your answers, numbered in order</label><textarea id="lr-answers" spellcheck="false" placeholder="1 B&#10;2 library&#10;3 FALSE"></textarea></div>
+    <div id="lr-keyed" hidden>
+      <label>Your answers</label>
+      <p class="hint" style="margin-top:-2px">Type each answer, then press Check. Wrong answers get a hint and one more try. Both tries go to your teacher.</p>
+      <div id="lr-qs"></div>
+      <div class="row" style="margin-top:10px"><button id="lr-check">Check answers</button><span class="hint" id="lr-score"></span></div>
+    </div>
     <div><label for="lr-dict">Dictation</label>
       <p class="hint" style="margin-top:-2px">Type the stretch of audio named above, word for word. Spelling mistakes are fine. Blanks are fine. Inventing text is not.</p>
       <textarea id="lr-dict" spellcheck="false"></textarea><div class="wordcount" id="lr-dict-wc">0 words</div></div>
@@ -612,7 +624,7 @@ function confirmRedo(name){ return window.confirm(name + " has already been hand
 
 function openTask(k){
   resetIntegrity();
-  if(k === "lr"){ $("lr-brief").textContent = S.wk.lr; hideRail(); show("scr-lr"); }
+  if(k === "lr"){ $("lr-brief").textContent = S.wk.lr; setupKeyed(); hideRail(); show("scr-lr"); }
   if(k === "w"){ hideRail(); show("scr-w-intro"); }
   if(k === "s"){ hideRail(); show("scr-s-intro"); }
   if(k === "v"){ hideRail(); show("scr-v-intro"); }
@@ -686,7 +698,84 @@ $("lr-ev").addEventListener("input", () => {
   const el = $("lr-ev-wc"); el.textContent = n + " line reference" + (n===1?"":"s") + " found";
   el.classList.toggle("short", n < 5);
 });
+/* Auto-marking. Keys are stored only as salted SHA-256 hashes of each accepted answer,
+   so the page never carries the plain answers. Hints are written so they point at the
+   passage without giving the answer away. */
+function normAns(x){
+  let a = (x||"").toLowerCase().replace(/[’']/g,"").replace(/[^a-z0-9 ]+/g," ").replace(/\s+/g," ").trim();
+  const map = { t:"true", f:"false", ng:"not given", notgiven:"not given", y:"yes", n:"no" };
+  return map[a.replace(/ /g,"")] && a.length <= 8 ? map[a.replace(/ /g,"")] : a;
+}
+async function sha(t){
+  const b = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(t));
+  return [...new Uint8Array(b)].map(x => x.toString(16).padStart(2,"0")).join("").slice(0,16);
+}
+function keyedQs(){
+  const k = S.wk.keys; if(!k) return [];
+  const out = [];
+  (k.parts || []).forEach(part => part.items.forEach((it, j) => out.push(Object.assign({ part:part.name, n:part.start + j }, it))));
+  return out;
+}
+function setupKeyed(){
+  const qs = keyedQs();
+  $("lr-free").hidden = !!qs.length; $("lr-keyed").hidden = !qs.length;
+  S.lrk = { tries:0, first:null, last:null };
+  $("lr-score").textContent = ""; $("lr-check").disabled = false; $("lr-check").textContent = "Check answers";
+  if(!qs.length) return;
+  let html = "", part = "";
+  qs.forEach(q => {
+    if(q.part !== part){ part = q.part; html += '<div class="qgrp">' + esc(part) + '</div>'; }
+    html += '<div class="qrow" id="qr' + q.n + '"><span class="n">' + q.n + '</span>' +
+      '<input id="qa' + q.n + '" autocomplete="off" spellcheck="false"><span class="m"></span>' +
+      '<div class="qhint" hidden></div></div>';
+  });
+  $("lr-qs").innerHTML = html;
+  qs.forEach(q => noPaste($("qa" + q.n)));
+}
+async function markKeyed(){
+  const qs = keyedQs(), res = [];
+  for(const q of qs){
+    const given = $("qa" + q.n).value.trim();
+    const h = given ? await sha(S.wk.keys.salt + "|" + S.week + "|" + q.n + "|" + normAns(given)) : "";
+    res.push({ n:q.n, given, ok: !!given && q.h.includes(h), hint:q.hint || "" });
+  }
+  return res;
+}
+$("lr-check").addEventListener("click", async () => {
+  const qs = keyedQs(); if(!qs.length) return;
+  if(qs.some(q => !$("qa" + q.n).value.trim())){ $("lr-score").textContent = "Answer every question first (guess if you must)."; return; }
+  const res = await markKeyed();
+  S.lrk.tries++;
+  if(S.lrk.tries === 1) S.lrk.first = res;
+  S.lrk.last = res;
+  const right = res.filter(r => r.ok).length;
+  res.forEach(r => {
+    const row = $("qr" + r.n); row.classList.toggle("ok", r.ok); row.classList.toggle("no", !r.ok);
+    row.querySelector(".m").textContent = r.ok ? "✓" : "✗";
+    const hb = row.querySelector(".qhint");
+    hb.hidden = r.ok || S.lrk.tries > 1 || !r.hint; hb.textContent = r.hint ? "Hint: " + r.hint : "";
+    $("qa" + r.n).readOnly = r.ok || S.lrk.tries > 1;
+  });
+  if(S.lrk.tries === 1 && right < res.length){
+    $("lr-score").textContent = right + "/" + res.length + " right. Fix the red ones using the hints, then check again.";
+    $("lr-check").textContent = "Check again";
+  } else {
+    $("lr-score").textContent = "Final: " + right + "/" + res.length + (S.lrk.tries > 1 ? " (first try " + S.lrk.first.filter(r => r.ok).length + ")" : "") + ". Now finish the rest and hand in.";
+    $("lr-check").disabled = true;
+  }
+});
+function keyedSummary(){
+  const f = S.lrk.first, l = S.lrk.last;
+  const lines = ["Score: first try " + f.filter(r => r.ok).length + "/" + f.length + ", final " + l.filter(r => r.ok).length + "/" + l.length];
+  l.forEach((r, i) => lines.push(r.n + " " + r.given + (r.ok ? " ✓" : " ✗") + (f[i].given !== r.given ? "  (first: " + f[i].given + (f[i].ok ? " ✓" : " ✗") + ")" : "")));
+  return lines.join("\n");
+}
+
 $("lr-send").addEventListener("click", () => {
+  if(keyedQs().length){
+    if(!S.lrk || !S.lrk.last || ($("lr-check").disabled === false)){ $("lr-msg").textContent = "Check your answers first (both tries, if you got any wrong)."; return; }
+    $("lr-answers").value = keyedSummary();
+  }
   const v = id => $(id).value.trim();
   if(!v("lr-answers") || !v("lr-dict") || !v("lr-ev")){ $("lr-msg").textContent = "Answers, dictation and evidence are all required."; return; }
   const payload = Object.assign(base(), {
