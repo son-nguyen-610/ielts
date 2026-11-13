@@ -99,6 +99,13 @@ textarea.essay{min-height:340px}
 .wordcount.short{color:var(--rec)}
 .vi{font-family:var(--display);font-weight:600;font-size:1.9rem;line-height:1.2;margin:.3rem 0 0}
 .pos{font-size:.84rem;color:var(--muted)}
+.libgrp{font-size:.74rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:8px}
+.libitem{text-align:left;display:block;width:100%}.libitem small{display:block;color:var(--muted);font-size:.8rem}
+.md{line-height:1.65}.md h2{font-size:1.3rem;margin:1.2em 0 .4em}.md h3{font-size:1.05rem;margin:1em 0 .3em}.md h2:first-child,.md h3:first-child{margin-top:0}
+.md p{margin:.5em 0}.md ul,.md ol{margin:.4em 0;padding-left:1.3rem}.md li{margin:.2em 0}
+.md table{border-collapse:collapse;width:100%;margin:.6em 0;font-size:.92rem}.md td,.md th{border:1px solid var(--line);padding:6px 8px;vertical-align:top;text-align:left}
+.md blockquote{margin:.6em 0;padding:4px 0 4px 12px;border-left:3px solid var(--accent);color:var(--ink)}
+.md img{max-width:100%;border-radius:8px}.md hr{border:0;border-top:1px solid var(--line);margin:1.2em 0}
 .qgrp{margin:14px 0 6px;font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 .qrow{display:grid;grid-template-columns:42px 1fr 26px;gap:8px;align-items:center;margin:6px 0}
 .qrow .n{font-weight:600;color:var(--muted);text-align:right}
@@ -272,6 +279,16 @@ footer{margin-top:30px;font-size:.78rem;color:var(--muted)}
   <div class="qnum">Part 2 · speak for two minutes</div>
   <div class="cue" style="margin-top:10px"><h2 class="question" id="talk-text">—</h2><ul id="talk-bullets"></ul></div>
   <div class="live" id="live2"><em>Listening…</em></div>
+</section>
+
+<!-- ===== LIBRARY ===== -->
+<section id="scr-lib" class="stack" hidden style="padding-block:28px">
+  <div><div class="eyebrow">Library</div><h1 id="lib-title">Cheat sheets and sample answers</h1>
+    <p class="lede" id="lib-lede">Everything from class in one place.</p></div>
+  <input id="lib-search" placeholder="Search: a topic, a question, a word" autocomplete="off">
+  <div id="lib-list" class="stack" style="gap:10px"></div>
+  <article id="lib-doc" class="card md" hidden></article>
+  <div class="row"><button id="lib-up" hidden>All items</button><button class="back">Back to my tasks</button></div>
 </section>
 
 <!-- ===== WORD LIST ===== -->
@@ -478,7 +495,7 @@ const TASKS = [
 
 /* ===== helpers ===== */
 const $ = id => document.getElementById(id);
-const SCREENS = ["scr-id","scr-menu","scr-fb","scr-words","scr-lr","scr-w-intro","scr-write","scr-s-intro","scr-part","scr-q","scr-prep","scr-talk","scr-v-intro","scr-v-recall","scr-v-use","scr-send"];
+const SCREENS = ["scr-id","scr-menu","scr-fb","scr-words","scr-lib","scr-lr","scr-w-intro","scr-write","scr-s-intro","scr-part","scr-q","scr-prep","scr-talk","scr-v-intro","scr-v-recall","scr-v-use","scr-send"];
 function show(n){ SCREENS.forEach(s => $(s).hidden = (s !== n)); window.scrollTo(0,0); }
 function esc(s){ return String(s).replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c])); }
 function words(s){ return (s||"").trim() ? s.trim().split(/\s+/).filter(Boolean).length : 0; }
@@ -577,6 +594,14 @@ function menu(){
     '<span class="s todo">Study first</span>';
   wl.onclick = openWords;
   $("tiles").appendChild(wl);
+  const lib = document.createElement("button");
+  lib.className = "tile card";
+  lib.innerHTML = '<span class="t">Library</span><span class="d">Cheat sheets and every sample answer from class.</span>' +
+    '<span class="s todo">Open any time</span>';
+  lib.onclick = openLibrary;
+  lib.hidden = true;
+  $("tiles").appendChild(lib);
+  fetch("library/index.json?v=" + Date.now()).then(r => r.json()).then(j => { LIB = j; lib.hidden = !(j.items || []).length; }).catch(() => {});
   show("scr-menu");
 }
 
@@ -587,6 +612,67 @@ function openWords(){
     '<tr><td>' + esc(w.vi) + '</td><td class="en">' + esc(w.en) + '</td><td class="p">' + esc(w.pos || "") + '</td></tr>').join("");
   show("scr-words");
 }
+/* ===== LIBRARY =====
+   library/index.json lists the items; each item is a small Markdown file in library/. */
+let LIB = null;
+function openLibrary(){
+  hideRail(); show("scr-lib"); libHome();
+  if(LIB){ renderLib(); return; }
+  $("lib-list").innerHTML = '<p class="hint">Loading…</p>';
+  fetch("library/index.json?v=" + Date.now()).then(r => r.json()).then(j => { LIB = j; renderLib(); })
+    .catch(() => { $("lib-list").innerHTML = '<p class="hint">The library could not load. Check your connection and try again.</p>'; });
+}
+function libHome(){ $("lib-doc").hidden = true; $("lib-list").hidden = false; $("lib-search").hidden = false; $("lib-up").hidden = true; }
+function renderLib(){
+  const q = $("lib-search").value.trim().toLowerCase();
+  const items = (LIB.items || []).filter(it => !q || (it.title + " " + (it.tags || "") + " " + (it.group || "")).toLowerCase().includes(q));
+  let html = "", grp = null;
+  items.forEach(it => {
+    if(it.group !== grp){ grp = it.group; html += '<div class="libgrp">' + esc(grp) + '</div>'; }
+    html += '<button class="card libitem" data-f="' + esc(it.file) + '">' + esc(it.title) + (it.sub ? '<small>' + esc(it.sub) + '</small>' : '') + '</button>';
+  });
+  $("lib-list").innerHTML = html || '<p class="hint">Nothing matches.</p>';
+  $("lib-list").querySelectorAll(".libitem").forEach(b => b.onclick = () => openLibDoc(b.dataset.f));
+}
+$("lib-search").addEventListener("input", () => LIB && renderLib());
+$("lib-up").addEventListener("click", () => { libHome(); window.scrollTo(0,0); });
+function openLibDoc(f){
+  $("lib-list").hidden = true; $("lib-search").hidden = true; $("lib-up").hidden = false;
+  $("lib-doc").hidden = false; $("lib-doc").innerHTML = '<p class="hint">Loading…</p>'; window.scrollTo(0,0);
+  fetch("library/" + f + "?v=" + Date.now()).then(r => r.text()).then(t => { $("lib-doc").innerHTML = md(t); })
+    .catch(() => { $("lib-doc").innerHTML = '<p class="hint">Could not load this item.</p>'; });
+}
+/* Small Markdown renderer: headings, bold/italic, lists, tables, quotes, images, rules. */
+function md(src){
+  const inl = t => esc(t).replace(/!\[([^\]]*)\]\(([^)\s]+)\)/g,'<img alt="$1" src="$2">')
+    .replace(/\*\*([^*]+)\*\*/g,"<strong>$1</strong>").replace(/(^|[^*])\*([^*]+)\*/g,"$1<em>$2</em>");
+  const out = [], L = src.replace(/\r/g,"").split("\n");
+  let i = 0;
+  while(i < L.length){
+    const l = L[i];
+    if(!l.trim()){ i++; continue; }
+    let m;
+    if((m = l.match(/^(#{1,4})\s+(.*)/))){ const n = Math.min(4, m[1].length + 1); out.push("<h"+n+">"+inl(m[2])+"</h"+n+">"); i++; continue; }
+    if(/^---+\s*$/.test(l)){ out.push("<hr>"); i++; continue; }
+    if(/^\|/.test(l)){
+      const rows = []; while(i < L.length && /^\|/.test(L[i])){ rows.push(L[i]); i++; }
+      const cells = r => r.replace(/^\||\|\s*$/g,"").split("|").map(c => c.trim());
+      const body = rows.filter(r => !/^\|[\s:|-]+\|?\s*$/.test(r));
+      out.push("<table>" + body.map((r,k) => "<tr>" + cells(r).map(c => (k===0 && rows.length>1 && /^\|[\s:|-]+/.test(rows[1]) ? "<th>"+inl(c)+"</th>" : "<td>"+inl(c)+"</td>")).join("") + "</tr>").join("") + "</table>");
+      continue;
+    }
+    if(/^>\s?/.test(l)){ const q = []; while(i < L.length && /^>\s?/.test(L[i])){ q.push(inl(L[i].replace(/^>\s?/,""))); i++; } out.push("<blockquote>"+q.join("<br>")+"</blockquote>"); continue; }
+    if(/^\s*([-*]|\d+\.)\s+/.test(l)){
+      const ordered = /^\s*\d+\./.test(l), it = [];
+      while(i < L.length && /^\s*([-*]|\d+\.)\s+/.test(L[i])){ it.push("<li>"+inl(L[i].replace(/^\s*([-*]|\d+\.)\s+/,""))+"</li>"); i++; }
+      out.push((ordered?"<ol>":"<ul>") + it.join("") + (ordered?"</ol>":"</ul>")); continue;
+    }
+    const p = []; while(i < L.length && L[i].trim() && !/^(#|\||>|\s*([-*]|\d+\.)\s|---)/.test(L[i])){ p.push(inl(L[i])); i++; }
+    out.push("<p>"+p.join("<br>")+"</p>");
+  }
+  return out.join("\n");
+}
+
 function letterHint(en){ return en.split(" ").map(word => word[0] + word.slice(1).replace(/[a-z]/gi, "_")).join("   "); }
 
 function openFeedback(){
