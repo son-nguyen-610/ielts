@@ -1,0 +1,1565 @@
+{
+ "week": "W01",
+ "lr": {
+  "listening": {
+   "parts": [
+    {
+     "title": "Part 1 · Enquiry about an evening course",
+     "context": "You will hear a man phoning an adult learning centre to ask about an evening course.",
+     "voices": {
+      "A": "female",
+      "B": "male"
+     },
+     "script": [
+      {
+       "v": "A",
+       "t": "Good morning, Riverside Adult Learning Centre. How can I help you?"
+      },
+      {
+       "v": "B",
+       "t": "Oh, hello. I'm calling about your evening courses. I saw a leaflet in the library, and I was interested in the upholstery course, you know, re-covering old chairs and sofas."
+      },
+      {
+       "v": "A",
+       "t": "Ah, I'm sorry, that one's actually full for this term. We've had a lot of interest in it. But we do have a similar course with a few places left. It's called Furniture Repair for Beginners."
+      },
+      {
+       "v": "B",
+       "t": "Furniture Repair. OK, what does that involve?"
+      },
+      {
+       "v": "A",
+       "t": "Well, it covers the basics, so fixing loose joints, replacing broken parts and simple refinishing. It's very practical. Most people find it a good starting point before they move on to upholstery."
+      },
+      {
+       "v": "B",
+       "t": "That sounds useful, actually. When does it run?"
+      },
+      {
+       "v": "A",
+       "t": "Let me just check. Last term it was on Tuesday evenings, but the tutor has changed his schedule, so this term it's on Wednesdays."
+      },
+      {
+       "v": "B",
+       "t": "Wednesdays are fine for me. And what time does it start?"
+      },
+      {
+       "v": "A",
+       "t": "The leaflet says six thirty, but I'm afraid that's out of date. We moved it to seven o'clock because a lot of people were coming straight from work and arriving late."
+      },
+      {
+       "v": "B",
+       "t": "Seven is much better for me too. And it finishes at...?"
+      },
+      {
+       "v": "A",
+       "t": "Nine. So it's a two-hour session each week."
+      },
+      {
+       "v": "B",
+       "t": "Right. And how many weeks is the course?"
+      },
+      {
+       "v": "A",
+       "t": "It used to be ten weeks, but we've shortened it slightly. It's now eight weeks, and the tutor says that's enough to cover everything properly."
+      },
+      {
+       "v": "B",
+       "t": "OK. And can I ask about the cost?"
+      },
+      {
+       "v": "A",
+       "t": "Of course. Are you a member of the centre?"
+      },
+      {
+       "v": "B",
+       "t": "No, I'm not. Does that make a difference?"
+      },
+      {
+       "v": "A",
+       "t": "Yes, members pay eighty pounds, and for non-members it's ninety-five. Membership itself costs twenty pounds a year, so if you're planning to take more than one course, it might be worth joining."
+      },
+      {
+       "v": "B",
+       "t": "Hmm, I'll think about that. For now I'll just pay the non-member price. Ninety-five, you said?"
+      },
+      {
+       "v": "A",
+       "t": "That's right. All the tools are provided, so you don't need to buy any equipment."
+      },
+      {
+       "v": "B",
+       "t": "Oh, good. Is there anything I do need to bring?"
+      },
+      {
+       "v": "A",
+       "t": "Yes, the tutor asks everyone to bring a small piece of wooden furniture that needs fixing. People sometimes want to bring a table, but that's usually too big to carry and too big for the workbenches. So he recommends something like a stool."
+      },
+      {
+       "v": "B",
+       "t": "I've got an old one in the garage with a wobbly leg. That would be perfect."
+      },
+      {
+       "v": "A",
+       "t": "Great. And you should wear old clothes, because it can get quite dusty. We do provide aprons, but please bring your own gloves. Some of the wood can be quite rough."
+      },
+      {
+       "v": "B",
+       "t": "OK, gloves. Got it. Who's the tutor, by the way?"
+      },
+      {
+       "v": "A",
+       "t": "His name's Mark Dowling. That's D-O-W-L-I-N-G. He's been running courses here for about six years, and he used to restore antique furniture professionally."
+      },
+      {
+       "v": "B",
+       "t": "He sounds very experienced. And is there parking at the centre?"
+      },
+      {
+       "v": "A",
+       "t": "There's a small car park at the front, but it's for staff only, I'm afraid. Students can park for free in the car park behind the library, which is just two minutes' walk away."
+      },
+      {
+       "v": "B",
+       "t": "Behind the library. That's easy. Right, I'd like to book a place, please."
+      },
+      {
+       "v": "A",
+       "t": "Certainly. Can I take your name?"
+      },
+      {
+       "v": "B",
+       "t": "Yes, it's Daniel Hadley."
+      },
+      {
+       "v": "A",
+       "t": "Could you spell your surname for me?"
+      },
+      {
+       "v": "B",
+       "t": "Sure. H-A-D-L-E-Y."
+      },
+      {
+       "v": "A",
+       "t": "Thank you, Mr Hadley. I'll send you a confirmation email with all the details."
+      }
+     ],
+     "groups": [
+      {
+       "instructions": "Complete the notes below. Write ONE WORD AND/OR A NUMBER for each answer.",
+       "type": "gap",
+       "questions": [
+        {
+         "n": 1,
+         "text": "Course title: Furniture ______ for Beginners"
+        },
+        {
+         "n": 2,
+         "text": "Day: ______ evenings"
+        },
+        {
+         "n": 3,
+         "text": "Start time: ______ p.m."
+        },
+        {
+         "n": 4,
+         "text": "Length of course: ______ weeks"
+        },
+        {
+         "n": 5,
+         "text": "Fee for non-members: £______"
+        },
+        {
+         "n": 6,
+         "text": "Bring a small piece of furniture to repair, e.g. a ______"
+        },
+        {
+         "n": 7,
+         "text": "Also bring your own ______"
+        },
+        {
+         "n": 8,
+         "text": "Tutor: Mark ______"
+        },
+        {
+         "n": 9,
+         "text": "Free parking: car park behind the ______"
+        },
+        {
+         "n": 10,
+         "text": "Caller's name: Daniel ______"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Part 2 · A community skills exchange",
+     "context": "You will hear a coordinator giving a welcome talk to new members of a community skills exchange.",
+     "voices": {
+      "A": "male"
+     },
+     "script": [
+      {
+       "v": "A",
+       "t": "Good evening, everyone, and welcome to the Northgate Skills Exchange. My name's Colin, and I've been coordinating the programme since it started. Before we look at this term's sessions, I'd like to explain a little about how the exchange works, because it's quite different from a normal evening class."
+      },
+      {
+       "v": "A",
+       "t": "The basic idea is simple. Everyone who joins has something they can teach and something they'd like to learn. Nobody pays any money. Instead, for every hour you spend teaching, you earn one hour of learning. When we first set up the exchange, we assumed most people would join to learn practical things like cooking or bike repair. In fact, what surprised us was that the most common reason people gave for joining was to get to know others in the neighbourhood. For many members, the learning almost comes second."
+      },
+      {
+       "v": "A",
+       "t": "Now, a few practical points. Some of you have asked whether you need any qualifications to teach. You don't. We're not looking for professional teachers. What we do ask is that you run a short trial session with one of our volunteers before you teach a group, just so we can make sure the session is well organised."
+      },
+      {
+       "v": "A",
+       "t": "You'll keep track of your hours using the online booking system. We used to give everyone paper cards, but people kept losing them, so this year everything is online. If you don't have internet access at home, the staff at the front desk can update your record for you."
+      },
+      {
+       "v": "A",
+       "t": "Another question we often get is about children. Children are welcome at some of our sessions, but they must be accompanied by an adult, and they can't earn hours themselves."
+      },
+      {
+       "v": "A",
+       "t": "Last year we asked members what they valued most about the exchange, and two answers came up again and again. The first was the chance to try out a skill before deciding whether to spend money on a proper course. The second was the relaxed atmosphere, the fact that nobody is tested or given a grade. Interestingly, very few people mentioned our convenient location, even though we'd expected that to be important. And although a handful of members suggested making the sessions longer, that wasn't something most people felt strongly about."
+      },
+      {
+       "v": "A",
+       "t": "OK, let me tell you about some of this term's sessions. Basic bike maintenance is back by popular demand. It takes place outside in the courtyard, but don't worry about the weather. If it rains, we simply move into the garage, so it always goes ahead. All the tools and spare parts are supplied, so you don't need to bring anything."
+      },
+      {
+       "v": "A",
+       "t": "Bread making is always very popular, but because of the size of the kitchen, we can only take six people at a time, and I'm afraid we can't make any exceptions to that."
+      },
+      {
+       "v": "A",
+       "t": "Conversational Spanish has moved. It used to be held in the main hall, but it's now in the reading room on the first floor, which is much quieter."
+      },
+      {
+       "v": "A",
+       "t": "Gardening for beginners is new this term. It'll only run twice a month rather than every week, because the volunteer who leads it works shifts."
+      },
+      {
+       "v": "A",
+       "t": "And our sewing circle is ideal for families. It's one of the few sessions where children can come along, as long as they're over eight. Right, are there any questions so far?"
+      }
+     ],
+     "groups": [
+      {
+       "instructions": "Choose the correct letter, A, B or C.",
+       "type": "mc",
+       "questions": [
+        {
+         "n": 11,
+         "text": "According to the speaker, what was the most common reason people gave for joining the exchange?",
+         "options": [
+          "A to meet people who live nearby",
+          "B to avoid paying for courses",
+          "C to learn practical skills"
+         ]
+        },
+        {
+         "n": 12,
+         "text": "Before teaching a group, new members must",
+         "options": [
+          "A show a teaching qualification.",
+          "B attend a training day.",
+          "C run a trial session with a volunteer."
+         ]
+        },
+        {
+         "n": 13,
+         "text": "How do members record their hours this year?",
+         "options": [
+          "A by asking the coordinator",
+          "B using an online system",
+          "C on paper cards"
+         ]
+        },
+        {
+         "n": 14,
+         "text": "What does the speaker say about children?",
+         "options": [
+          "A They are welcome at all sessions.",
+          "B They can earn hours.",
+          "C They must come with an adult."
+         ]
+        }
+       ]
+      },
+      {
+       "instructions": "Choose TWO letters, A–E.",
+       "type": "multi2",
+       "questions": [
+        {
+         "n": 15,
+         "n2": 16,
+         "text": "Which TWO things did members say they valued most about the exchange?",
+         "options": [
+          "A the convenient location",
+          "B the relaxed atmosphere",
+          "C the length of the sessions",
+          "D the quality of the teachers",
+          "E being able to try a skill before paying for a course"
+         ]
+        }
+       ]
+      },
+      {
+       "instructions": "What does the speaker say about each of the following sessions? Choose FOUR answers from the box and write the correct letter, A–F, next to Questions 17–20.",
+       "type": "match",
+       "options": [
+        "A It is held in a different room from before.",
+        "B It is suitable for children.",
+        "C All equipment is supplied.",
+        "D The number of participants is strictly limited.",
+        "E It does not run every week.",
+        "F It may be cancelled in bad weather."
+       ],
+       "questions": [
+        {
+         "n": 17,
+         "text": "Basic bike maintenance"
+        },
+        {
+         "n": 18,
+         "text": "Bread making"
+        },
+        {
+         "n": 19,
+         "text": "Conversational Spanish"
+        },
+        {
+         "n": 20,
+         "text": "Gardening for beginners"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Part 3 · Planning a project on learning from videos",
+     "context": "You will hear two education students, Hannah and Leo, planning a research project.",
+     "voices": {
+      "A": "female",
+      "B": "male"
+     },
+     "script": [
+      {
+       "v": "A",
+       "t": "So, Leo, have you had a chance to think about our project? We need to send our plan to the tutor by Friday."
+      },
+      {
+       "v": "B",
+       "t": "Yes, I've been reading around the topic. I think our original idea, comparing learning from videos with learning from books, is too broad. There's already so much research on it."
+      },
+      {
+       "v": "A",
+       "t": "I agree. What did you have in mind instead?"
+      },
+      {
+       "v": "B",
+       "t": "Well, we could focus on practical skills, and look at whether people who learn from online videos can actually do the task afterwards, not just whether they feel confident."
+      },
+      {
+       "v": "A",
+       "t": "That's a good point. In my experience, people often think they've mastered something just because the video was easy to follow, and then they find they can't do it."
+      },
+      {
+       "v": "B",
+       "t": "Exactly. That gap between confidence and actual ability is what interests me."
+      },
+      {
+       "v": "A",
+       "t": "So how would we test it? We could ask people to watch a video and then do the task straight away."
+      },
+      {
+       "v": "B",
+       "t": "We could, but then we're only measuring short-term memory. I'd rather we tested them again a week later, to find out how much they still remember."
+      },
+      {
+       "v": "A",
+       "t": "That makes sense, although it means we'll need people who are willing to come back."
+      },
+      {
+       "v": "B",
+       "t": "True. I thought we could recruit first-year students. They're easy to find."
+      },
+      {
+       "v": "A",
+       "t": "Hmm, the problem is that they're all roughly the same age, and I'd expect age to make a difference. Younger people probably grew up learning from videos. Could we include some older participants too, perhaps from the staff?"
+      },
+      {
+       "v": "B",
+       "t": "Good idea. And what task should we use? I was going to suggest folding a paper model. It's quick, cheap and easy to score, because either the model is correct or it isn't."
+      },
+      {
+       "v": "A",
+       "t": "But lots of people have done paper folding at school, so some participants would start with an advantage. What about tying a particular knot, like the ones sailors use? Hardly anyone knows how to tie those."
+      },
+      {
+       "v": "B",
+       "t": "Fair enough. Knots it is. Now, the tutor said we should mention any limitations in the plan."
+      },
+      {
+       "v": "A",
+       "t": "Right. Well, one obvious problem is that our sample will be quite small. We'll probably only get about thirty people."
+      },
+      {
+       "v": "B",
+       "t": "Yes, we should definitely mention that. And people taking part might behave differently because they know they're being watched. They'll probably concentrate harder than they would at home."
+      },
+      {
+       "v": "A",
+       "t": "That's true. I was also worried about the quality of the videos, but if we make our own, that won't be an issue."
+      },
+      {
+       "v": "B",
+       "t": "So, just those two, then. Now, how shall we divide up the work? There's the literature review first."
+      },
+      {
+       "v": "A",
+       "t": "I think we should share that equally, so we both understand the background. We could split the articles between us and then compare notes."
+      },
+      {
+       "v": "B",
+       "t": "OK. What about making the video? I've used editing software before, so I'm happy to do it, but I'm not sure how much detail to include."
+      },
+      {
+       "v": "A",
+       "t": "Why don't we check with our tutor, Dr Price? She'll know what's appropriate."
+      },
+      {
+       "v": "B",
+       "t": "Good idea. And the questionnaire. I'd planned twenty questions, but that seems a lot."
+      },
+      {
+       "v": "A",
+       "t": "It is. People will get bored. Let's cut it down to about ten."
+      },
+      {
+       "v": "B",
+       "t": "Agreed. And the data analysis?"
+      },
+      {
+       "v": "A",
+       "t": "We can't really plan that in detail until we've collected the data, so let's not worry about it for now."
+      }
+     ],
+     "groups": [
+      {
+       "instructions": "Choose the correct letter, A, B or C.",
+       "type": "mc",
+       "questions": [
+        {
+         "n": 21,
+         "text": "What does Hannah say about people who learn from videos?",
+         "options": [
+          "A They often overestimate what they have learned.",
+          "B They prefer short videos to long ones.",
+          "C They learn faster than people who use books."
+         ]
+        },
+        {
+         "n": 22,
+         "text": "Why does Leo want to test the participants a second time?",
+         "options": [
+          "A to check whether they have practised at home",
+          "B to compare them with a different group",
+          "C to see how much they remember after a delay"
+         ]
+        },
+        {
+         "n": 23,
+         "text": "Hannah thinks first-year students alone may not be suitable because",
+         "options": [
+          "A they are too busy to come back.",
+          "B they are similar in age.",
+          "C they already know the skill."
+         ]
+        },
+        {
+         "n": 24,
+         "text": "Why do the students choose knots rather than paper folding?",
+         "options": [
+          "A Few people already know how to tie them.",
+          "B Knots are easier to score.",
+          "C Knots are cheaper."
+         ]
+        }
+       ]
+      },
+      {
+       "instructions": "Choose TWO letters, A–E.",
+       "type": "multi2",
+       "questions": [
+        {
+         "n": 25,
+         "n2": 26,
+         "text": "Which TWO limitations do the students agree to mention in their plan?",
+         "options": [
+          "A the cost of materials",
+          "B the small number of participants",
+          "C the poor quality of the videos",
+          "D participants trying harder because they are observed",
+          "E the short time available"
+         ]
+        }
+       ]
+      },
+      {
+       "instructions": "What do the students decide about each part of the project? Choose FOUR answers from the box and write the correct letter, A–F, next to Questions 27–30.",
+       "type": "match",
+       "options": [
+        "A share it equally",
+        "B ask the tutor for advice",
+        "C make it shorter",
+        "D use a different method",
+        "E plan it at a later stage",
+        "F get help from another student"
+       ],
+       "questions": [
+        {
+         "n": 27,
+         "text": "literature review"
+        },
+        {
+         "n": 28,
+         "text": "video"
+        },
+        {
+         "n": 29,
+         "text": "questionnaire"
+        },
+        {
+         "n": 30,
+         "text": "data analysis"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Part 4 · How experts develop their skills",
+     "context": "You will hear part of a lecture on the psychology of skill learning.",
+     "voices": {
+      "A": "female"
+     },
+     "script": [
+      {
+       "v": "A",
+       "t": "Good morning. Today I'm going to talk about how people move from being complete beginners to being experts in a skill, whether that skill is playing the violin, driving a car or performing surgery. I'll start with a well-known model that divides skill learning into three stages, and then I'll look at what research tells us about effective practice."
+      },
+      {
+       "v": "A",
+       "t": "In the first stage, which is often called the cognitive stage, the learner is trying to understand what the task involves. At this point, people depend a great deal on verbal instructions. A learner driver, for example, will often repeat the instructor's words quietly to themselves. Performance in this stage is inconsistent, and errors are very common. Learners also tend to become exhausted quite quickly, not because the task is physically demanding, but because of the mental effort it requires. Every single action has to be consciously controlled."
+      },
+      {
+       "v": "A",
+       "t": "In the second stage, the associative stage, movements become smoother and more efficient. What's important here is that learners begin to notice their own mistakes, rather than waiting for someone else to point them out. This is a significant change, because it means they can start to correct themselves."
+      },
+      {
+       "v": "A",
+       "t": "The final stage is the autonomous stage. By now, the skill has become largely automatic. An experienced driver, for instance, can perform the skill while talking to a passenger, something that would have been almost impossible in the first stage."
+      },
+      {
+       "v": "A",
+       "t": "So what moves people through these stages? It's tempting to assume that the answer is simply time, and that anyone who practises for long enough will become an expert. But a growing body of evidence suggests that the type of practice matters far more than the amount. Researchers use the term deliberate practice to describe a particular kind of training. Deliberate practice is not the same as repeating a task you can already do. Instead, it involves working at the edge of your current ability, on the specific aspects that you find difficult."
+      },
+      {
+       "v": "A",
+       "t": "Another key feature is that the learner receives immediate feedback, usually from a coach or teacher. Without it, people may repeat the same errors for years without realising. Interestingly, studies of musicians and athletes show that experts rarely practise for more than an hour without a break. This is because fatigue reduces the quality of practice, and poor-quality practice may actually reinforce bad habits."
+      },
+      {
+       "v": "A",
+       "t": "Let's turn now to how practice should be organised over time. One of the most reliable findings in this area is known as the spacing effect. If you have, say, six hours to practise a skill, you'll get much better retention if you spread those hours over several days than if you do them all in one long session."
+      },
+      {
+       "v": "A",
+       "t": "A related finding concerns what's called interleaved practice. This means mixing different tasks together, rather than practising one thing repeatedly before moving on to the next. A tennis player might alternate between different types of shot, for example. Learners usually find this harder, and in the short term their performance may even appear worse. However, interleaved practice improves the ability to apply skills in new situations, which is, of course, what really matters in the long run."
+      },
+      {
+       "v": "A",
+       "t": "This brings me to an important point for learners and teachers. Because effective practice often feels difficult, people tend to prefer methods that feel comfortable. The danger is that learners judge their progress by how easy practice feels, and that can be very misleading. In fact, a certain amount of difficulty is usually a sign that real learning is taking place."
+      }
+     ],
+     "groups": [
+      {
+       "instructions": "Complete the notes below. Write ONE WORD ONLY for each answer.",
+       "type": "gap",
+       "questions": [
+        {
+         "n": 31,
+         "text": "Stage 1 (cognitive): learners rely heavily on ______ instructions"
+        },
+        {
+         "n": 32,
+         "text": "Stage 1: learners tire quickly because of the mental ______ needed"
+        },
+        {
+         "n": 33,
+         "text": "Stage 2 (associative): learners start to notice their own ______"
+        },
+        {
+         "n": 34,
+         "text": "Stage 3 (autonomous): the skill can be performed while ______"
+        },
+        {
+         "n": 35,
+         "text": "Deliberate practice: working at the edge of one's current ______"
+        },
+        {
+         "n": 36,
+         "text": "Deliberate practice also requires immediate ______ from a coach or teacher"
+        },
+        {
+         "n": 37,
+         "text": "Experts take breaks because ______ lowers the quality of practice"
+        },
+        {
+         "n": 38,
+         "text": "Spacing effect: practice spread over several days leads to better ______"
+        },
+        {
+         "n": 39,
+         "text": "Interleaved practice helps learners apply skills in new ______"
+        },
+        {
+         "n": 40,
+         "text": "Learners should not judge their progress by how ______ practice feels"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "reading": {
+   "passages": [
+    {
+     "title": "The return of the apprenticeship",
+     "subtitle": "Why learning on the job is attracting fresh attention from employers and governments",
+     "paragraphs": [
+      {
+       "label": "",
+       "text": "For much of the twentieth century, the apprenticeship was regarded as the natural route into skilled work. A young person would join a workshop or firm at the age of fifteen or sixteen and spend several years learning a trade under the guidance of an experienced worker. By the 1980s, however, this model had begun to fall out of favour in many industrialised economies. Governments increasingly promoted university education as the key to individual success and national prosperity, and apprenticeships came to be seen as a second-best option for those who had not done well at school."
+      },
+      {
+       "label": "",
+       "text": "In recent years, this view has started to change. According to recent surveys, a significant proportion of employers believe that university graduates lack the practical skills needed in the workplace, while many young people are questioning whether the cost of a degree is justified. As a result, apprenticeships have begun to attract renewed interest from policymakers, businesses and families alike. Some economists argue that the revival can be attributed to a growing mismatch between what education systems produce and what labour markets actually require."
+      },
+      {
+       "label": "",
+       "text": "The modern apprenticeship differs from its historical predecessor in several important ways. Traditional schemes were concentrated in manual trades such as carpentry, plumbing and metalwork. Today, apprenticeships are available in a wide range of fields, including accounting, software development, nursing and engineering. This shift reflects the changing structure of modern economies, in which service and technology industries now employ far more people than traditional manufacturing. Some programmes even allow apprentices to earn a full degree while they work, with their employer covering the cost of tuition. In addition, modern schemes usually combine work-based training with formal study at a college for one or two days a week, whereas older apprenticeships relied almost entirely on learning by observation."
+      },
+      {
+       "label": "",
+       "text": "Supporters of apprenticeships point to several advantages. The most obvious is financial, since apprentices receive a wage from the start rather than accumulating debt. Equally important, according to researchers who study workplace learning, is the way in which knowledge is acquired. Skills that are learned in the context where they will be used tend to be retained more effectively than those learned in a classroom. An apprentice electrician who installs wiring under supervision is not only learning a technique but also learning when and why to apply it. Furthermore, apprentices develop what are sometimes called soft skills, such as communicating with customers and working in a team, which are difficult to teach in a lecture hall."
+      },
+      {
+       "label": "",
+       "text": "Nevertheless, the apprenticeship model is not without its critics. One concern is that the quality of training varies considerably from one employer to another. While large companies often run well-designed programmes with dedicated mentors, smaller firms may lack the time or resources to provide proper supervision. In the worst cases, apprentices have been used as a source of cheap labour, carrying out routine tasks at the expense of genuine learning. Critics also warn that training which is closely tied to one company's needs may leave workers with skills that are of limited value elsewhere, making it harder for them to change jobs later in their careers. There have also been complaints that some apprentices complete their programmes without receiving any recognised qualification."
+      },
+      {
+       "label": "",
+       "text": "There is also the question of status. In many countries, apprenticeships continue to suffer from a poor image, and parents in particular often regard them as inferior to university study. Surveys of school leavers suggest that young people themselves are more open to the idea than their parents are, but family opinion can still play a crucial role in their final decision. Some education specialists believe that this perception will only change if apprenticeships are offered by the most respected companies and lead to well-paid careers."
+      },
+      {
+       "label": "",
+       "text": "In response to these concerns, several governments have introduced financial incentives for employers who take on apprentices, as well as national standards designed to guarantee the quality of training. Others have funded advertising campaigns aimed at school leavers, presenting apprenticeships as an ambitious choice rather than a fallback. Early evaluations of these measures have been mixed. In some sectors, the number of apprenticeships has risen sharply, but there are signs that certain employers have simply relabelled existing training courses in order to receive government funding. It is therefore too early to say whether the current enthusiasm will lead to lasting change."
+      },
+      {
+       "label": "",
+       "text": "What seems clear, however, is that the old division between academic and vocational education is becoming less meaningful. As technology transforms the nature of work, people will increasingly need to combine theoretical knowledge with practical experience throughout their lives. In this sense, the apprenticeship may be less a return to the past than a model for the future. Several universities have already begun to build periods of paid work into their degree programmes."
+      }
+     ],
+     "groups": [
+      {
+       "instructions": "Questions 1–6. Do the following statements agree with the information given in the passage? Write TRUE if the statement agrees with the information, FALSE if the statement contradicts the information, NOT GIVEN if there is no information on this.",
+       "type": "tfng",
+       "options": [
+        "TRUE",
+        "FALSE",
+        "NOT GIVEN"
+       ],
+       "questions": [
+        {
+         "n": 1,
+         "text": "By the 1980s, apprenticeships were often seen as a choice for students with weak school results."
+        },
+        {
+         "n": 2,
+         "text": "In the past, apprentices usually began their training after finishing a university degree."
+        },
+        {
+         "n": 3,
+         "text": "Software development is now the most popular field for apprenticeships."
+        },
+        {
+         "n": 4,
+         "text": "Some modern apprentices do not have to pay for their own university studies."
+        },
+        {
+         "n": 5,
+         "text": "Older apprenticeships included regular classes at a college."
+        },
+        {
+         "n": 6,
+         "text": "Apprentice electricians are paid more than apprentices in other trades."
+        }
+       ]
+      },
+      {
+       "instructions": "Questions 7–10. Complete the summary below. Choose NO MORE THAN TWO WORDS from the passage for each answer.",
+       "type": "gap",
+       "questions": [
+        {
+         "n": 7,
+         "text": "Supporters say apprentices benefit financially because they earn a ______ instead of building up debt."
+        },
+        {
+         "n": 8,
+         "text": "Skills learned where they will actually be used are ______ more effectively than those learned in a classroom."
+        },
+        {
+         "n": 9,
+         "text": "Apprentices also gain soft skills such as working in a ______."
+        },
+        {
+         "n": 10,
+         "text": "However, critics point out that smaller firms may be unable to offer proper ______."
+        }
+       ]
+      },
+      {
+       "instructions": "Questions 11–13. Choose the correct letter, A, B, C or D.",
+       "type": "mc",
+       "questions": [
+        {
+         "n": 11,
+         "text": "According to the passage, one risk of training that is closely linked to a single company is that",
+         "options": [
+          "A the company may stop offering training.",
+          "B workers may find it harder to change jobs.",
+          "C apprentices may lose interest in their work.",
+          "D apprentices may receive lower wages."
+         ]
+        },
+        {
+         "n": 12,
+         "text": "What does the writer say about attitudes towards apprenticeships?",
+         "options": [
+          "A Their image has improved greatly in most countries.",
+          "B Young people are more negative about them than their parents.",
+          "C Families can strongly influence young people's choices.",
+          "D The most respected companies refuse to offer them."
+         ]
+        },
+        {
+         "n": 13,
+         "text": "What has happened since some governments introduced incentives for employers?",
+         "options": [
+          "A The quality of training has improved everywhere.",
+          "B The number of apprenticeships has fallen in every sector.",
+          "C National training standards have been abandoned.",
+          "D Some employers have renamed existing courses to obtain funding."
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Never too old to learn?",
+     "subtitle": "Research is challenging long-held assumptions about learning in adulthood",
+     "paragraphs": [
+      {
+       "label": "A",
+       "text": "It is widely believed that the ability to learn declines steadily with age. Children, we are told, absorb new languages effortlessly and pick up musical instruments with ease, whereas adults struggle to master even simple new skills. This assumption has shaped education systems for generations, with the great majority of public spending on learning directed at people under the age of twenty-five. However, a growing number of researchers argue that the picture is far more complicated than this popular view suggests."
+      },
+      {
+       "label": "B",
+       "text": "Part of the explanation for the traditional view lies in early research on the brain. For much of the twentieth century, scientists believed that the adult brain was essentially fixed, and that the connections between nerve cells were established in childhood and changed little afterwards. This led to the idea of critical periods, windows of time during which certain abilities must be acquired if they are to be acquired at all. The best-known example concerns language, as it was claimed that people who learn a second language after their early teens will never achieve native-like pronunciation. Because of such claims, many adults came to believe that it was simply too late for them to start learning a language or a musical instrument."
+      },
+      {
+       "label": "C",
+       "text": "Over the past few decades, advances in brain imaging have made it possible to observe changes in the living brain, and the findings have been striking. Studies have shown that the adult brain remains capable of forming new connections throughout life, a property known as plasticity. In one type of experiment, adults who spent several weeks learning a new physical skill showed measurable growth in areas of the brain associated with processing movement. When the participants stopped practising, however, these changes partly disappeared."
+      },
+      {
+       "label": "D",
+       "text": "None of this means that age makes no difference. Older learners do tend to process new information more slowly, and their working memory, the ability to hold several pieces of information in mind at once, generally declines from early adulthood onwards. However, these disadvantages can often be balanced by strengths that younger learners lack. Adults typically have a much larger store of existing knowledge, which allows them to connect new material to what they already know. They are also better at planning their own learning and at understanding why a particular skill is worth acquiring."
+      },
+      {
+       "label": "E",
+       "text": "Indeed, when researchers compare children and adults under controlled conditions, adults frequently learn faster in the early stages. In studies of second-language learning, for example, adult beginners often make quicker progress in grammar and vocabulary during the first year than children who start at the same time. The advantage of starting young appears only in the long run, and even then mainly in pronunciation. Some researchers suggest that the apparent superiority of children has less to do with biology than with circumstances, since children typically receive many years of exposure to a language, whereas adults often study for a few hours a week alongside work and family commitments."
+      },
+      {
+       "label": "F",
+       "text": "Motivation and self-belief also appear to play a significant part. Older learners who are convinced that they are too old to learn tend to give up more quickly when they encounter difficulties, and they often interpret mistakes as evidence of declining ability rather than as a normal part of the learning process. In one study, adults who were told before a memory test that age has little effect on memory performed noticeably better than those who were reminded of negative stereotypes about ageing. Such findings suggest that beliefs about learning can become self-fulfilling."
+      },
+      {
+       "label": "G",
+       "text": "These discoveries have important implications for policy. As people live longer and working lives become more extended, the need to acquire new skills in middle and later life is increasing. Workers whose jobs are changed by automation may need to retrain several times during their careers. Yet in many countries, adult education receives only a small share of funding, and courses are often designed with young people in mind. Employers, too, are often reluctant to invest in training older staff, assuming that younger employees will learn more quickly and stay longer. Researchers recommend that programmes for adults should build on learners' existing experience, allow them to learn at their own pace, and directly challenge the belief that ability inevitably declines with age."
+      },
+      {
+       "label": "H",
+       "text": "Perhaps the most encouraging message from this research is that learning itself may help to keep the brain healthy. There is evidence that people who continue to take on mentally demanding activities in later life experience a slower decline in their thinking skills. While scientists are cautious about claiming that learning a new skill can prevent age-related illness, it seems that the brain, like a muscle, benefits from regular use. Some doctors now encourage older patients to take up activities such as learning a language, playing an instrument or dancing."
+      }
+     ],
+     "groups": [
+      {
+       "instructions": "Questions 14–18. Reading Passage 2 has eight paragraphs, A–H. Which paragraph contains the following information? Write the correct letter, A–H.",
+       "type": "match",
+       "options": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H"
+       ],
+       "questions": [
+        {
+         "n": 14,
+         "text": "an example of how negative expectations can affect performance"
+        },
+        {
+         "n": 15,
+         "text": "a reference to changes in the brain that were not permanent"
+        },
+        {
+         "n": 16,
+         "text": "a comparison of how quickly adults and children make progress at the beginning"
+        },
+        {
+         "n": 17,
+         "text": "a description of an earlier scientific belief about the brain"
+        },
+        {
+         "n": 18,
+         "text": "suggestions for how courses for adults should be designed"
+        }
+       ]
+      },
+      {
+       "instructions": "Questions 19–23. Do the following statements agree with the claims of the writer? Write YES if the statement agrees with the claims of the writer, NO if the statement contradicts the claims of the writer, NOT GIVEN if it is impossible to say what the writer thinks about this.",
+       "type": "ynng",
+       "options": [
+        "YES",
+        "NO",
+        "NOT GIVEN"
+       ],
+       "questions": [
+        {
+         "n": 19,
+         "text": "Public spending on education has traditionally focused on younger people."
+        },
+        {
+         "n": 20,
+         "text": "Adults' existing knowledge can help them learn new material."
+        },
+        {
+         "n": 21,
+         "text": "Working memory gradually improves throughout adult life."
+        },
+        {
+         "n": 22,
+         "text": "Most adults who learn a second language do so for professional reasons."
+        },
+        {
+         "n": 23,
+         "text": "Research has proved that learning a new skill prevents age-related illness."
+        }
+       ]
+      },
+      {
+       "instructions": "Questions 24–26. Complete the sentences below. Choose NO MORE THAN TWO WORDS from the passage for each answer.",
+       "type": "gap",
+       "questions": [
+        {
+         "n": 24,
+         "text": "The brain's ability to form new connections throughout life is called ______."
+        },
+        {
+         "n": 25,
+         "text": "Adults who were told that age has little effect on memory did better in a ______."
+        },
+        {
+         "n": 26,
+         "text": "Workers may need to retrain several times because their jobs are changed by ______."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "vocab": {
+  "lr": [
+   {
+    "en": "fall out of favour",
+    "vi": "không còn được ưa chuộng",
+    "pos": "verb phrase",
+    "ex": "By the 1980s, however, this model had begun to fall out of favour in many industrialised economies."
+   },
+   {
+    "en": "a significant proportion of",
+    "vi": "một tỉ lệ đáng kể",
+    "pos": "quantifier phrase",
+    "ex": "According to recent surveys, a significant proportion of employers believe that university graduates lack the practical skills needed in the workplace, while many young people are questioning whether the cost of a degree is justified."
+   },
+   {
+    "en": "attract renewed interest",
+    "vi": "được quan tâm trở lại",
+    "pos": "verb phrase",
+    "ex": "As a result, apprenticeships have begun to attract renewed interest from policymakers, businesses and families alike."
+   },
+   {
+    "en": "be attributed to",
+    "vi": "được cho là do",
+    "pos": "verb phrase (passive)",
+    "ex": "Some economists argue that the revival can be attributed to a growing mismatch between what education systems produce and what labour markets actually require."
+   },
+   {
+    "en": "a wide range of",
+    "vi": "nhiều loại khác nhau",
+    "pos": "quantifier phrase",
+    "ex": "Today, apprenticeships are available in a wide range of fields, including accounting, software development, nursing and engineering."
+   },
+   {
+    "en": "relied almost entirely on",
+    "vi": "hầu như hoàn toàn dựa vào",
+    "pos": "verb phrase",
+    "ex": "In addition, modern schemes usually combine work-based training with formal study at a college for one or two days a week, whereas older apprenticeships relied almost entirely on learning by observation."
+   },
+   {
+    "en": "not without its critics",
+    "vi": "cũng có người phản đối",
+    "pos": "adjective phrase",
+    "ex": "Nevertheless, the apprenticeship model is not without its critics."
+   },
+   {
+    "en": "at the expense of",
+    "vi": "đánh đổi bằng, gây thiệt hại cho",
+    "pos": "prepositional phrase",
+    "ex": "In the worst cases, apprentices have been used as a source of cheap labour, carrying out routine tasks at the expense of genuine learning."
+   },
+   {
+    "en": "play a crucial role in",
+    "vi": "đóng vai trò then chốt trong",
+    "pos": "verb phrase",
+    "ex": "Surveys of school leavers suggest that young people themselves are more open to the idea than their parents are, but family opinion can still play a crucial role in their final decision."
+   },
+   {
+    "en": "In response to",
+    "vi": "để đáp lại, nhằm ứng phó với",
+    "pos": "prepositional phrase",
+    "ex": "In response to these concerns, several governments have introduced financial incentives for employers who take on apprentices, as well as national standards designed to guarantee the quality of training."
+   },
+   {
+    "en": "too early to say whether",
+    "vi": "còn quá sớm để nói liệu",
+    "pos": "phrase",
+    "ex": "It is therefore too early to say whether the current enthusiasm will lead to lasting change."
+   },
+   {
+    "en": "combine theoretical knowledge with practical experience",
+    "vi": "kết hợp kiến thức lý thuyết với kinh nghiệm thực tế",
+    "pos": "verb phrase",
+    "ex": "As technology transforms the nature of work, people will increasingly need to combine theoretical knowledge with practical experience throughout their lives."
+   },
+   {
+    "en": "a growing number of",
+    "vi": "ngày càng nhiều",
+    "pos": "quantifier phrase",
+    "ex": "However, a growing number of researchers argue that the picture is far more complicated than this popular view suggests."
+   },
+   {
+    "en": "far more complicated than",
+    "vi": "phức tạp hơn nhiều so với",
+    "pos": "adjective phrase",
+    "ex": "However, a growing number of researchers argue that the picture is far more complicated than this popular view suggests."
+   },
+   {
+    "en": "be balanced by",
+    "vi": "được bù đắp bởi",
+    "pos": "verb phrase (passive)",
+    "ex": "However, these disadvantages can often be balanced by strengths that younger learners lack."
+   },
+   {
+    "en": "under controlled conditions",
+    "vi": "trong điều kiện được kiểm soát",
+    "pos": "prepositional phrase",
+    "ex": "Indeed, when researchers compare children and adults under controlled conditions, adults frequently learn faster in the early stages."
+   },
+   {
+    "en": "become self-fulfilling",
+    "vi": "tự trở thành sự thật (vì tin vào nó)",
+    "pos": "verb phrase",
+    "ex": "Such findings suggest that beliefs about learning can become self-fulfilling."
+   },
+   {
+    "en": "have important implications for",
+    "vi": "có ảnh hưởng quan trọng đến",
+    "pos": "verb phrase",
+    "ex": "These discoveries have important implications for policy."
+   },
+   {
+    "en": "a growing body of evidence",
+    "vi": "ngày càng nhiều bằng chứng",
+    "pos": "noun phrase",
+    "ex": "But a growing body of evidence suggests that the type of practice matters far more than the amount."
+   },
+   {
+    "en": "in the long run",
+    "vi": "về lâu dài",
+    "pos": "prepositional phrase",
+    "ex": "However, interleaved practice improves the ability to apply skills in new situations, which is, of course, what really matters in the long run."
+   }
+  ],
+  "sw": [
+   {
+    "en": "pursue a career in",
+    "vi": "theo đuổi sự nghiệp trong (lĩnh vực)",
+    "pos": "verb phrase",
+    "ex": "Many talented teenagers no longer wish to pursue a career in physics or chemistry."
+   },
+   {
+    "en": "job prospects",
+    "vi": "triển vọng việc làm",
+    "pos": "noun phrase",
+    "ex": "Students tend to choose subjects that offer better job prospects after graduation."
+   },
+   {
+    "en": "be perceived as",
+    "vi": "bị xem là, được nhìn nhận là",
+    "pos": "verb phrase (passive)",
+    "ex": "Science subjects may be perceived as difficult and dull by secondary school students."
+   },
+   {
+    "en": "a heavy workload",
+    "vi": "khối lượng học tập/công việc nặng",
+    "pos": "noun phrase",
+    "ex": "A science degree usually involves a heavy workload of laboratory hours and complex calculations."
+   },
+   {
+    "en": "lucrative fields such as",
+    "vi": "những ngành sinh lợi cao như",
+    "pos": "noun phrase",
+    "ex": "Many graduates are drawn to lucrative fields such as finance and marketing."
+   },
+   {
+    "en": "a shortage of skilled workers",
+    "vi": "sự thiếu hụt lao động có tay nghề",
+    "pos": "noun phrase",
+    "ex": "A country with few science graduates may soon face a shortage of skilled workers in medicine and engineering."
+   },
+   {
+    "en": "hinder innovation",
+    "vi": "cản trở sự đổi mới",
+    "pos": "verb phrase",
+    "ex": "A lack of researchers can hinder innovation in key industries."
+   },
+   {
+    "en": "economic competitiveness",
+    "vi": "năng lực cạnh tranh kinh tế",
+    "pos": "noun phrase",
+    "ex": "Scientific research is closely linked to a nation's economic competitiveness."
+   },
+   {
+    "en": "discourage students from",
+    "vi": "khiến học sinh nản lòng không muốn",
+    "pos": "verb phrase",
+    "ex": "Poorly equipped laboratories may discourage students from choosing science subjects."
+   },
+   {
+    "en": "abstract concepts",
+    "vi": "các khái niệm trừu tượng",
+    "pos": "noun phrase",
+    "ex": "Teachers who rely only on textbooks make abstract concepts even harder to understand."
+   },
+   {
+    "en": "hands-on experience",
+    "vi": "kinh nghiệm thực hành",
+    "pos": "noun phrase",
+    "ex": "Practical experiments give students hands-on experience that makes science more meaningful."
+   },
+   {
+    "en": "public understanding of science",
+    "vi": "hiểu biết của công chúng về khoa học",
+    "pos": "noun phrase",
+    "ex": "A decline in science education could weaken public understanding of science in everyday decisions."
+   },
+   {
+    "en": "acquire a new skill",
+    "vi": "học được một kỹ năng mới",
+    "pos": "verb phrase",
+    "ex": "The best way to acquire a new skill is to practise it a little every day."
+   },
+   {
+    "en": "lifelong learning",
+    "vi": "học tập suốt đời",
+    "pos": "noun phrase",
+    "ex": "Technology changes so quickly that lifelong learning has become essential for every worker."
+   },
+   {
+    "en": "a sense of achievement",
+    "vi": "cảm giác thành tựu",
+    "pos": "noun phrase",
+    "ex": "Finishing a difficult course gave me a sense of achievement that I still remember."
+   },
+   {
+    "en": "strike a balance between",
+    "vi": "cân bằng giữa",
+    "pos": "verb phrase",
+    "ex": "Many students find it hard to strike a balance between part-time work and their studies."
+   },
+   {
+    "en": "meet the demands of",
+    "vi": "đáp ứng yêu cầu của",
+    "pos": "verb phrase",
+    "ex": "Graduates need practical skills to meet the demands of the modern job market."
+   },
+   {
+    "en": "a close-knit community",
+    "vi": "cộng đồng gắn bó",
+    "pos": "noun phrase",
+    "ex": "My hometown is a small place with a close-knit community where everyone knows each other."
+   },
+   {
+    "en": "broaden my horizons",
+    "vi": "mở rộng tầm nhìn",
+    "pos": "verb phrase",
+    "ex": "I chose to study abroad because I wanted to broaden my horizons."
+   },
+   {
+    "en": "the main reason why",
+    "vi": "lý do chính tại sao",
+    "pos": "noun phrase",
+    "ex": "I think the main reason why I enjoy my major is that it allows me to solve real problems."
+   }
+  ]
+ },
+ "keys": {
+  "salt": "iejrccq0ftqg",
+  "listening": {
+   "1": {
+    "h": [
+     "bc1e0221dbfa6827"
+    ],
+    "hint": "Khóa người gọi hỏi đầu tiên đã hết chỗ. Nghe tên khóa tương tự còn chỗ trống."
+   },
+   "2": {
+    "h": [
+     "874f3132a6e5cfd4",
+     "bd6c50800827bff4"
+    ],
+    "hint": "Có hai ngày được nhắc. Chọn lịch của kỳ này, không phải kỳ trước."
+   },
+   "3": {
+    "h": [
+     "22c26c05350834dc",
+     "78fb252d8d8388ec",
+     "8724f958f05eaf31",
+     "ce6069b7b1d5c255"
+    ],
+    "hint": "Giờ in trên tờ rơi đã cũ. Nghe giờ mới sau cụm 'out of date'."
+   },
+   "4": {
+    "h": [
+     "8a764af4d38cffc6",
+     "cbdb6ea4693f0a4d"
+    ],
+    "hint": "Số tuần đã thay đổi. Chọn con số hiện tại, không phải con số trước đây."
+   },
+   "5": {
+    "h": [
+     "7becaf6d047ae6b0",
+     "b410308c4c19883c"
+    ],
+    "hint": "Có hai mức phí. Người gọi trả lời là mình KHÔNG phải hội viên."
+   },
+   "6": {
+    "h": [
+     "5fb3b54e8b25a67e"
+    ],
+    "hint": "Lễ tân nhắc một món quá to để mang. Nghe món gia sư khuyên mang theo."
+   },
+   "7": {
+    "h": [
+     "da87a15c18d41383"
+    ],
+    "hint": "Trung tâm cung cấp một thứ, thứ còn lại phải tự mang. Nghe ngay sau phần 'old clothes'."
+   },
+   "8": {
+    "h": [
+     "3a033f25f88150b8"
+    ],
+    "hint": "Họ của gia sư được đánh vần từng chữ cái."
+   },
+   "9": {
+    "h": [
+     "b33c771397eab426"
+    ],
+    "hint": "Bãi đỗ phía trước chỉ dành cho nhân viên. Nghe vị trí bãi đỗ miễn phí cho học viên."
+   },
+   "10": {
+    "h": [
+     "fa618b61a23997fd"
+    ],
+    "hint": "Họ của người gọi được đánh vần ở cuối cuộc gọi."
+   },
+   "11": {
+    "h": [
+     "cddef4519586c506"
+    ],
+    "hint": "Nghe sau cụm 'what surprised us'. Lý do được nhắc đầu tiên là điều họ từng đoán, không phải kết quả thật."
+   },
+   "12": {
+    "h": [
+     "7a1d5e6c0fa6971b"
+    ],
+    "hint": "Nghe đoạn trả lời câu hỏi về 'qualifications'. Chú ý câu bắt đầu bằng 'What we do ask'."
+   },
+   "13": {
+    "h": [
+     "74813649b40fafbd"
+    ],
+    "hint": "Một cách làm là của các năm trước. Nghe cách làm của năm nay."
+   },
+   "14": {
+    "h": [
+     "33e603d4c1cf2513"
+    ],
+    "hint": "Nghe đoạn nói về 'children' ngay sau phần ghi giờ học. Có hai điều kiện được nêu."
+   },
+   "15": {
+    "h": [
+     "2c526fe5b7380be5",
+     "778fc21b36f1798f"
+    ],
+    "hint": "Nghe 'two answers came up again and again'. Hai thứ được nhắc sau đó bị nói là KHÔNG quan trọng với đa số.",
+    "grp": "15-16"
+   },
+   "16": {
+    "h": [
+     "3db026dc5de99a73",
+     "e3cffb5643f0aec4"
+    ],
+    "hint": "Nghe 'two answers came up again and again'. Hai thứ được nhắc sau đó bị nói là KHÔNG quan trọng với đa số.",
+    "grp": "15-16"
+   },
+   "17": {
+    "h": [
+     "a8d17f0b09bfbf17"
+    ],
+    "hint": "Phần thời tiết là bẫy, nghe kỹ buổi này có bị hủy không. Câu cuối của đoạn mới là đáp án."
+   },
+   "18": {
+    "h": [
+     "9509a392603011e4"
+    ],
+    "hint": "Nghe lý do liên quan đến kích thước căn bếp."
+   },
+   "19": {
+    "h": [
+     "22fa5115facb3796"
+    ],
+    "hint": "Nghe từ 'moved' và hai địa điểm được so sánh."
+   },
+   "20": {
+    "h": [
+     "f3a4bd1b8017dd8d"
+    ],
+    "hint": "Nghe tần suất của buổi học và lý do người phụ trách làm theo ca."
+   },
+   "21": {
+    "h": [
+     "9d4fd788ab965abb"
+    ],
+    "hint": "Nghe câu Hannah bắt đầu bằng 'In my experience'."
+   },
+   "22": {
+    "h": [
+     "aa9e5d104d4d2366"
+    ],
+    "hint": "Leo không muốn chỉ đo trí nhớ ngắn hạn. Nghe lý do sau 'a week later'."
+   },
+   "23": {
+    "h": [
+     "a499eb97abcbfe99"
+    ],
+    "hint": "Nghe Hannah nói 'the problem is that...' sau khi Leo đề xuất tuyển sinh viên năm nhất."
+   },
+   "24": {
+    "h": [
+     "4b7d2ca1cb8c2bb0"
+    ],
+    "hint": "Những ưu điểm 'quick, cheap, easy to score' là của gấp giấy. Nghe lý do Hannah phản đối gấp giấy."
+   },
+   "25": {
+    "h": [
+     "0fe7cb58b282c6d0",
+     "dd8654fa58709e3f"
+    ],
+    "hint": "Nghe phần 'limitations'. Một vấn đề được nhắc rồi bị loại vì họ sẽ tự làm thứ đó. Leo chốt 'just those two'.",
+    "grp": "25-26"
+   },
+   "26": {
+    "h": [
+     "7b7d03137afec41d",
+     "d1220aefde2d05cb"
+    ],
+    "hint": "Nghe phần 'limitations'. Một vấn đề được nhắc rồi bị loại vì họ sẽ tự làm thứ đó. Leo chốt 'just those two'.",
+    "grp": "25-26"
+   },
+   "27": {
+    "h": [
+     "f804213886668b8c"
+    ],
+    "hint": "Nghe Hannah đề xuất cách chia các bài báo giữa hai người."
+   },
+   "28": {
+    "h": [
+     "215876368067621e"
+    ],
+    "hint": "Leo tự làm phần này, nhưng chưa rõ một điều. Nghe Hannah gợi ý giải quyết bằng cách nào."
+   },
+   "29": {
+    "h": [
+     "e87d08c7dd132f64"
+    ],
+    "hint": "Nghe hai con số 'twenty' và 'ten'."
+   },
+   "30": {
+    "h": [
+     "bf9518bea93f26d5"
+    ],
+    "hint": "Câu cuối của bài. Họ chưa thể làm gì trước khi có dữ liệu?"
+   },
+   "31": {
+    "h": [
+     "c3cfcb5f15e8bdbb"
+    ],
+    "hint": "Nghe ví dụ người học lái xe lặp lại lời người hướng dẫn. Từ cần điền đứng trước 'instructions'."
+   },
+   "32": {
+    "h": [
+     "0a873870518694ad"
+    ],
+    "hint": "Người học mệt KHÔNG phải vì thể chất. Nghe từ đứng sau 'mental'."
+   },
+   "33": {
+    "h": [
+     "e0c76b21cde51e41"
+    ],
+    "hint": "Nghe điều người học tự nhận ra thay vì chờ người khác chỉ ra."
+   },
+   "34": {
+    "h": [
+     "4b8b1fe94146d0fb"
+    ],
+    "hint": "Nghe ví dụ người lái xe có kinh nghiệm và hành khách."
+   },
+   "35": {
+    "h": [
+     "eae227002aa051df"
+    ],
+    "hint": "Nghe cụm 'at the edge of your current...'."
+   },
+   "36": {
+    "h": [
+     "eb45465d90454040"
+    ],
+    "hint": "Nghe 'Another key feature'. Thiếu điều này, người học lặp lỗi nhiều năm."
+   },
+   "37": {
+    "h": [
+     "2c29f183f0ab6bec"
+    ],
+    "hint": "Nghe lý do chuyên gia hiếm khi luyện quá một tiếng liền."
+   },
+   "38": {
+    "h": [
+     "44eab6f3eea5d749"
+    ],
+    "hint": "Nghe ví dụ 'six hours'. Từ cần điền đứng sau 'much better'."
+   },
+   "39": {
+    "h": [
+     "2955530003a0f81d"
+    ],
+    "hint": "Lúc đầu kết quả có vẻ tệ hơn. Nghe từ 'However' để biết lợi ích thật."
+   },
+   "40": {
+    "h": [
+     "c45f94e9b8628c9b"
+    ],
+    "hint": "Nghe phần cuối, sau 'The danger is that'."
+   }
+  },
+  "reading": {
+   "1": {
+    "h": [
+     "69803e3774d1da61"
+    ],
+    "hint": "Đoạn 1, câu cuối. So sánh cách nhìn về học nghề với đại học."
+   },
+   "2": {
+    "h": [
+     "2223e49c805e67e1"
+    ],
+    "hint": "Đoạn 1, câu thứ hai. Để ý độ tuổi bắt đầu học nghề."
+   },
+   "3": {
+    "h": [
+     "9c258a2cc8910b2e"
+    ],
+    "hint": "Đoạn 3. Tìm xem có câu nào so sánh mức độ phổ biến giữa các ngành không."
+   },
+   "4": {
+    "h": [
+     "8b4b944c072e49f5"
+    ],
+    "hint": "Đoạn 3, câu nói về việc lấy bằng đại học trong lúc đi làm."
+   },
+   "5": {
+    "h": [
+     "49c65122c4fe9ae6"
+    ],
+    "hint": "Đoạn 3, câu cuối. So sánh cách học của mô hình mới và mô hình cũ."
+   },
+   "6": {
+    "h": [
+     "a82c99beeaaa6050"
+    ],
+    "hint": "Đoạn 4 có nhắc thợ điện học việc. Kiểm tra xem có thông tin nào về mức lương của họ không."
+   },
+   "7": {
+    "h": [
+     "0c9c019812298add",
+     "1bdc883852637e39"
+    ],
+    "hint": "Đoạn 4, câu nói về lợi ích tài chính."
+   },
+   "8": {
+    "h": [
+     "5624b0659dc6fa44"
+    ],
+    "hint": "Đoạn 4, câu nhắc đến 'context' và 'classroom'. Cần một động từ ở dạng bị động."
+   },
+   "9": {
+    "h": [
+     "3e14aec2ef9853df"
+    ],
+    "hint": "Đoạn 4, câu cuối, phần ví dụ về 'soft skills'."
+   },
+   "10": {
+    "h": [
+     "97dd0b7a276cf6be"
+    ],
+    "hint": "Đoạn 5. So sánh công ty lớn và công ty nhỏ, tìm thứ công ty nhỏ thiếu khả năng cung cấp."
+   },
+   "11": {
+    "h": [
+     "6df5865517cbeaa4"
+    ],
+    "hint": "Đoạn 5, câu cuối, bắt đầu bằng 'Critics also warn'."
+   },
+   "12": {
+    "h": [
+     "f66c833424c0563c"
+    ],
+    "hint": "Đoạn 6, phần nói về kết quả khảo sát học sinh và ý kiến gia đình."
+   },
+   "13": {
+    "h": [
+     "5a6467c7330f4c51"
+    ],
+    "hint": "Đoạn 7. Đọc phần sau 'there are signs that'."
+   },
+   "14": {
+    "h": [
+     "3fc4161d31d3de03"
+    ],
+    "hint": "Tìm đoạn có một nghiên cứu về bài kiểm tra trí nhớ và định kiến về tuổi già."
+   },
+   "15": {
+    "h": [
+     "a0753d9cfa0da8fe"
+    ],
+    "hint": "Tìm đoạn mô tả điều xảy ra khi người tham gia ngừng luyện tập."
+   },
+   "16": {
+    "h": [
+     "cafe9785a47b7670"
+    ],
+    "hint": "Tìm đoạn nhắc đến 'the first year' và 'the early stages'."
+   },
+   "17": {
+    "h": [
+     "3421e1f76f43c34e"
+    ],
+    "hint": "Tìm đoạn nói về quan niệm của các nhà khoa học trong thế kỷ hai mươi."
+   },
+   "18": {
+    "h": [
+     "eb27661833336fbc"
+    ],
+    "hint": "Tìm đoạn có động từ 'recommend'."
+   },
+   "19": {
+    "h": [
+     "7138248b520a1cea"
+    ],
+    "hint": "Đoạn A, câu nói về 'public spending'."
+   },
+   "20": {
+    "h": [
+     "24a17be168a72a38"
+    ],
+    "hint": "Đoạn D, phần nói về điểm mạnh của người lớn."
+   },
+   "21": {
+    "h": [
+     "e7da192421fb17b0"
+    ],
+    "hint": "Đoạn D, câu định nghĩa 'working memory'. Xem nó thay đổi theo hướng nào."
+   },
+   "22": {
+    "h": [
+     "5656072141b38386"
+    ],
+    "hint": "Đoạn E nói về người lớn học ngoại ngữ. Kiểm tra xem có nhắc đến lý do họ học không."
+   },
+   "23": {
+    "h": [
+     "6d5a5ce6e393f0ae"
+    ],
+    "hint": "Đoạn H, câu bắt đầu bằng 'While scientists are cautious'."
+   },
+   "24": {
+    "h": [
+     "24913baa3b1ad3b2"
+    ],
+    "hint": "Đoạn C, cụm 'a property known as'."
+   },
+   "25": {
+    "h": [
+     "28d5eaa84efa7c60"
+    ],
+    "hint": "Đoạn F, câu mô tả một nghiên cứu cụ thể."
+   },
+   "26": {
+    "h": [
+     "2eb971de053a33de"
+    ],
+    "hint": "Đoạn G, câu nói về người lao động và việc học lại nhiều lần."
+   }
+  }
+ }
+}

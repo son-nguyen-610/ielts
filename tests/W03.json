@@ -1,0 +1,1533 @@
+{
+ "week": "W03",
+ "lr": {
+  "listening": {
+   "parts": [
+    {
+     "title": "Part 1 · Volunteering to visit older people",
+     "context": "You will hear a man phoning a charity to offer to become a volunteer.",
+     "voices": {
+      "A": "female",
+      "B": "male"
+     },
+     "script": [
+      {
+       "v": "A",
+       "t": "Good morning, Silver Link Befriending Scheme, Karen speaking. How can I help?"
+      },
+      {
+       "v": "B",
+       "t": "Hi. I saw your poster at the health centre, and I'm interested in volunteering, visiting older people who live on their own."
+      },
+      {
+       "v": "A",
+       "t": "Wonderful, we're always looking for new volunteers. I can take a few details now and then send you an application pack. Is that OK?"
+      },
+      {
+       "v": "B",
+       "t": "Sure."
+      },
+      {
+       "v": "A",
+       "t": "Can I have your name, please?"
+      },
+      {
+       "v": "B",
+       "t": "Alex Brennan. That's B-R-E-N-N-A-N."
+      },
+      {
+       "v": "A",
+       "t": "Thanks, Alex. And what do you do at the moment? Are you working or studying?"
+      },
+      {
+       "v": "B",
+       "t": "I finished my degree last year, and now I'm a trainee architect at a firm in the city centre."
+      },
+      {
+       "v": "A",
+       "t": "Oh, interesting. So when would you be available? Most of our volunteers visit once a week for about an hour."
+      },
+      {
+       "v": "B",
+       "t": "Weekdays are difficult because of work. On Sunday mornings I usually visit my own grandparents, so I'd say Saturday afternoons would suit me best."
+      },
+      {
+       "v": "A",
+       "t": "Saturday afternoons, lovely. Now, we try to match volunteers with older people who share their interests. What sort of things do you enjoy?"
+      },
+      {
+       "v": "B",
+       "t": "Well, I like walking, but I suppose not everyone would be able to do that. And I'm not much of a gardener, I'm afraid. But I play a lot of chess, so I'd be very happy to play with someone."
+      },
+      {
+       "v": "A",
+       "t": "Chess, that's great. We actually have a gentleman who's been asking for a chess partner for months. And do you speak any languages apart from English?"
+      },
+      {
+       "v": "B",
+       "t": "Yes, my mother's Polish, so I speak Polish fluently. I did some Spanish at school, but I've forgotten most of it."
+      },
+      {
+       "v": "A",
+       "t": "Polish could be really useful. We have several Polish speakers on our list. Now, before you start, there are a few checks. We'll need two references."
+      },
+      {
+       "v": "B",
+       "t": "Can one of them be from a family member?"
+      },
+      {
+       "v": "A",
+       "t": "No, I'm afraid they can't be from relatives. Ideally, one should be from your employer and one from someone who's known you for at least two years, like a former teacher."
+      },
+      {
+       "v": "B",
+       "t": "That's fine."
+      },
+      {
+       "v": "A",
+       "t": "All new volunteers also attend a training session. The next one's on the twelfth of May. That's a Thursday evening."
+      },
+      {
+       "v": "B",
+       "t": "Hang on, let me check my diary. Yes, the twelfth is fine."
+      },
+      {
+       "v": "A",
+       "t": "Great. It's usually held here at our office, but because we're having some building work done, this one will be at the town museum, in the education room on the ground floor."
+      },
+      {
+       "v": "B",
+       "t": "The museum, OK. Do I need to bring anything?"
+      },
+      {
+       "v": "A",
+       "t": "Yes, you'll need to bring some photo identification, such as a passport or a driving licence. Oh, and proof of address too, like a recent bill."
+      },
+      {
+       "v": "B",
+       "t": "OK, no problem."
+      },
+      {
+       "v": "A",
+       "t": "And one last thing. We pay volunteers' travel expenses."
+      },
+      {
+       "v": "B",
+       "t": "Oh, that's kind. How much is that?"
+      },
+      {
+       "v": "A",
+       "t": "It used to be up to six pounds per visit, but we've just increased it to eight, because bus fares have gone up."
+      },
+      {
+       "v": "B",
+       "t": "That's very generous. Thank you."
+      },
+      {
+       "v": "A",
+       "t": "Not at all. I'll post the application pack to you today, and please call me if you have any questions."
+      }
+     ],
+     "groups": [
+      {
+       "instructions": "Complete the notes below. Write ONE WORD AND/OR A NUMBER for each answer.",
+       "type": "gap",
+       "questions": [
+        {
+         "n": 1,
+         "text": "Name: Alex ______"
+        },
+        {
+         "n": 2,
+         "text": "Occupation: trainee ______"
+        },
+        {
+         "n": 3,
+         "text": "Available: ______ afternoons"
+        },
+        {
+         "n": 4,
+         "text": "Interests: ______"
+        },
+        {
+         "n": 5,
+         "text": "Languages: English and ______"
+        },
+        {
+         "n": 6,
+         "text": "References: two needed, but not from ______"
+        },
+        {
+         "n": 7,
+         "text": "Training session: Thursday ______"
+        },
+        {
+         "n": 8,
+         "text": "Training place: the town ______"
+        },
+        {
+         "n": 9,
+         "text": "Bring: photo identification and proof of ______"
+        },
+        {
+         "n": 10,
+         "text": "Travel expenses: up to £______ per visit"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Part 2 · A centre for young and old",
+     "context": "You will hear the manager of a community centre speaking to parents at an open evening.",
+     "voices": {
+      "A": "female"
+     },
+     "script": [
+      {
+       "v": "A",
+       "t": "Good evening, and thank you all for coming to this open evening at Oakfield House. My name's Ruth Ellis, and I'm the manager here. As most of you know, Oakfield is rather unusual, because it combines a nursery for children aged two to five with a day centre for older people, all under one roof."
+      },
+      {
+       "v": "A",
+       "t": "The idea actually came about almost by accident. Originally, the council planned to build the nursery on a separate site across the road. But when that land turned out to be unsuitable, the only space available was next to the existing day centre, and so we decided to try sharing the building. Looking back, it was the best thing that could have happened."
+      },
+      {
+       "v": "A",
+       "t": "People often ask who benefits most. We expected it to be the children, and they certainly do benefit, but in fact the biggest change we've seen is in the older people. Staff report that many of them are more active and more talkative than before, and some who rarely spoke to anyone now look forward to coming in every day."
+      },
+      {
+       "v": "A",
+       "t": "Of course, safety is a concern for many parents. All our staff and volunteers have been through full background checks, and the children are always supervised by nursery staff. They're never left alone with the older visitors."
+      },
+      {
+       "v": "A",
+       "t": "The two groups don't spend the whole day together. Each has its own space, and joint activities take place each morning. When we first opened, these sessions lasted the whole morning, but we found that was too tiring for both groups, so now they last about two hours."
+      },
+      {
+       "v": "A",
+       "t": "The nursery staff have noticed two things in particular about the children. Firstly, they've become much more confident when talking to adults they don't know. And secondly, they've learned to be more patient, because some of the older people move and speak quite slowly. A few parents have told us that their children's reading has improved, but to be honest, it's too early to say whether that's because of the centre."
+      },
+      {
+       "v": "A",
+       "t": "Now let me tell you about this term's joint activities. On Mondays, there's a singing session led by one of our day centre members, who used to work as a pianist in a hotel. He's wonderful with the children."
+      },
+      {
+       "v": "A",
+       "t": "On Tuesdays, it's cooking. Last term the children and older people made biscuits together, but we decided they contained too much sugar, so this term they'll be making soup instead."
+      },
+      {
+       "v": "A",
+       "t": "Wednesday is gardening. Normally that happens in the vegetable beds outside, but they're being rebuilt at the moment, so this term the sessions will take place in the greenhouse."
+      },
+      {
+       "v": "A",
+       "t": "And on Fridays we have storytelling. The older people bring in old photographs and use them to tell the children about their own childhoods. It's always a favourite. Right, I'll now take you on a short tour of the building."
+      }
+     ],
+     "groups": [
+      {
+       "instructions": "Choose the correct letter, A, B or C.",
+       "type": "mc",
+       "questions": [
+        {
+         "n": 11,
+         "text": "Why did the nursery and day centre start sharing a building?",
+         "options": [
+          "A The council had planned it from the beginning.",
+          "B Parents asked for the two to be combined.",
+          "C The original site for the nursery was unsuitable."
+         ]
+        },
+        {
+         "n": 12,
+         "text": "According to the speaker, who has benefited most from the arrangement?",
+         "options": [
+          "A the older people",
+          "B the staff",
+          "C the children"
+         ]
+        },
+        {
+         "n": 13,
+         "text": "What does the speaker say about safety?",
+         "options": [
+          "A Older visitors receive safety training.",
+          "B Volunteers do not need background checks.",
+          "C Nursery staff always supervise the children."
+         ]
+        },
+        {
+         "n": 14,
+         "text": "How long do the joint sessions last now?",
+         "options": [
+          "A about two hours",
+          "B the whole morning",
+          "C about one hour"
+         ]
+        }
+       ]
+      },
+      {
+       "instructions": "Choose TWO letters, A–E.",
+       "type": "multi2",
+       "questions": [
+        {
+         "n": 15,
+         "n2": 16,
+         "text": "Which TWO changes have nursery staff noticed in the children?",
+         "options": [
+          "A greater patience",
+          "B more confidence with unfamiliar adults",
+          "C improved sleep",
+          "D better reading skills",
+          "E healthier eating habits"
+         ]
+        }
+       ]
+      },
+      {
+       "instructions": "Complete the notes below. Write ONE WORD ONLY for each answer.",
+       "type": "gap",
+       "questions": [
+        {
+         "n": 17,
+         "text": "Monday: singing, led by a former ______"
+        },
+        {
+         "n": 18,
+         "text": "Tuesday: cooking, making ______"
+        },
+        {
+         "n": 19,
+         "text": "Wednesday: gardening, this term in the ______"
+        },
+        {
+         "n": 20,
+         "text": "Friday: storytelling, using old ______"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Part 3 · A presentation on ageing populations",
+     "context": "You will hear two students, Priya and Ben, planning a presentation on how governments respond to ageing populations.",
+     "voices": {
+      "A": "female",
+      "B": "male"
+     },
+     "script": [
+      {
+       "v": "B",
+       "t": "Priya, shall we sort out the plan for our presentation on ageing populations?"
+      },
+      {
+       "v": "A",
+       "t": "Yes, let's. First, sources. I found a government report on pensions that has some really useful data."
+      },
+      {
+       "v": "B",
+       "t": "Great, let's definitely use that. I also watched an online lecture by a demographer, which explained the background very clearly. I think we should include it too."
+      },
+      {
+       "v": "A",
+       "t": "Agreed. What about that newspaper article you mentioned?"
+      },
+      {
+       "v": "B",
+       "t": "I reread it, and it's more opinion than evidence, so let's leave it out. I also thought about interviewing our grandparents, but the tutor said personal stories wouldn't count as academic sources."
+      },
+      {
+       "v": "A",
+       "t": "Fair enough. And the textbook chapter is a bit out of date. It was written before the latest population figures came out."
+      },
+      {
+       "v": "B",
+       "t": "So, just the two sources, then. Now, the policies. Let's start with raising the retirement age."
+      },
+      {
+       "v": "A",
+       "t": "Most economists support it, because people are living longer. The problem is that it's extremely unpopular. Whenever a government proposes it, there are protests, and politicians worry about losing elections."
+      },
+      {
+       "v": "B",
+       "t": "Yes. And what about paying families to have more children?"
+      },
+      {
+       "v": "A",
+       "t": "From what I've read, births go up for a year or two, but then they fall back to where they were. People just have children earlier than they would have done anyway."
+      },
+      {
+       "v": "B",
+       "t": "Right. Then there's using robots in care homes."
+      },
+      {
+       "v": "A",
+       "t": "That's an interesting one. There have been a few trials, but nobody really knows yet whether older people accept them, or whether they actually save money. We'd need to see a lot more studies before we could say anything."
+      },
+      {
+       "v": "B",
+       "t": "OK. And building housing designed for older people?"
+      },
+      {
+       "v": "A",
+       "t": "I like that idea, because if older people move into smaller homes, larger family houses become available, so younger families benefit as well."
+      },
+      {
+       "v": "B",
+       "t": "Good point. And free public transport for older people?"
+      },
+      {
+       "v": "A",
+       "t": "Well, it sounds good, but the cost would be enormous, and I can't see any government affording it at the moment."
+      },
+      {
+       "v": "B",
+       "t": "So how shall we organise the presentation? We could go country by country."
+      },
+      {
+       "v": "A",
+       "t": "That might be repetitive, since many countries use the same policies. Why don't we organise it by policy, and give examples from different countries for each one?"
+      },
+      {
+       "v": "B",
+       "t": "Yes, that's much clearer. And we should remember the feedback from our last presentation."
+      },
+      {
+       "v": "A",
+       "t": "Definitely. The tutor said we spoke clearly and kept to time, but our slides had far too much writing on them."
+      },
+      {
+       "v": "B",
+       "t": "So this time, mainly pictures and key words. What should we do next? The slides are almost finished."
+      },
+      {
+       "v": "A",
+       "t": "I think the most useful thing would be to rehearse. We could ask the tutor to watch us, but she's away this week. Shall I book one of the study rooms in the library for Thursday, and we can practise there?"
+      },
+      {
+       "v": "B",
+       "t": "Good idea. Let's do that. I'll email you the latest version of the slides tonight, so you can check them before Thursday."
+      },
+      {
+       "v": "A",
+       "t": "Perfect. And if we have time afterwards, we could ask a couple of friends to watch and give us some honest feedback."
+      }
+     ],
+     "groups": [
+      {
+       "instructions": "Choose TWO letters, A–E.",
+       "type": "multi2",
+       "questions": [
+        {
+         "n": 21,
+         "n2": 22,
+         "text": "Which TWO sources will the students use?",
+         "options": [
+          "A a newspaper article",
+          "B a government report",
+          "C interviews with their grandparents",
+          "D an online lecture",
+          "E a textbook chapter"
+         ]
+        }
+       ]
+      },
+      {
+       "instructions": "What do the students say about each policy? Choose FIVE answers from the box and write the correct letter, A–G, next to Questions 23–27.",
+       "type": "match",
+       "options": [
+        "A It would be too expensive.",
+        "B It only has a short-term effect.",
+        "C It has already been tried successfully.",
+        "D It is unpopular with voters.",
+        "E More research is needed.",
+        "F It would also help younger people.",
+        "G It is too difficult to organise."
+       ],
+       "questions": [
+        {
+         "n": 23,
+         "text": "raising the retirement age"
+        },
+        {
+         "n": 24,
+         "text": "paying families to have more children"
+        },
+        {
+         "n": 25,
+         "text": "using robots in care homes"
+        },
+        {
+         "n": 26,
+         "text": "building housing for older people"
+        },
+        {
+         "n": 27,
+         "text": "free public transport for older people"
+        }
+       ]
+      },
+      {
+       "instructions": "Choose the correct letter, A, B or C.",
+       "type": "mc",
+       "questions": [
+        {
+         "n": 28,
+         "text": "How will the students organise their presentation?",
+         "options": [
+          "A by time period",
+          "B by country",
+          "C by policy"
+         ]
+        },
+        {
+         "n": 29,
+         "text": "What did the tutor criticise about their last presentation?",
+         "options": [
+          "A They went over the time limit.",
+          "B Their slides contained too much text.",
+          "C They spoke too quickly."
+         ]
+        },
+        {
+         "n": 30,
+         "text": "What will the students do next?",
+         "options": [
+          "A practise in the library",
+          "B meet their tutor",
+          "C finish the slides"
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Part 4 · Forecasting population",
+     "context": "You will hear part of a lecture on how population forecasts are made.",
+     "voices": {
+      "A": "male"
+     },
+     "script": [
+      {
+       "v": "A",
+       "t": "Good morning. Today's lecture is about population forecasting, in other words, how demographers try to predict the size and structure of future populations, and why their predictions sometimes turn out to be wrong."
+      },
+      {
+       "v": "A",
+       "t": "All population forecasts are built on three components. The first is births, the second is deaths, and the third is migration, the movement of people into and out of a country or region. If we know how many people there are today and can estimate these three components, we can calculate how the population will change."
+      },
+      {
+       "v": "A",
+       "t": "The most widely used technique is called the cohort-component method. Here, the population is divided into groups according to age and sex. Each group is then moved forward in time, year by year. For example, the women aged thirty this year become the women aged thirty-one next year, minus those who die or leave, plus those who arrive. Births are calculated by applying fertility rates to the women in each age group."
+      },
+      {
+       "v": "A",
+       "t": "Of the three components, fertility is generally the hardest to predict. Death rates tend to change slowly and fairly steadily, but birth rates depend on personal choices, which can shift quite quickly in response to economic conditions or changing attitudes. That said, forecasters have also made mistakes about deaths. During the second half of the twentieth century, many forecasts underestimated the rise in life expectancy, because they assumed that improvements in health would slow down. In fact, they continued for much longer than anyone expected."
+      },
+      {
+       "v": "A",
+       "t": "To understand long-term trends, demographers often refer to a model called the demographic transition. In the first stage, both birth rates and death rates are high, so the population grows slowly, if at all. In the second stage, death rates fall, mainly because of better sanitation and a more reliable food supply, while birth rates remain high. This is when populations grow most rapidly. In the third stage, birth rates also begin to fall, as women gain access to education and paid employment. And in the fourth stage, both rates are low. Some researchers have added a fifth stage, in which birth rates fall so low that the population begins to shrink."
+      },
+      {
+       "v": "A",
+       "t": "This process has important consequences for the age structure of a population. As birth rates fall and people live longer, the proportion of older people rises. Economists pay particular attention to the ratio of retired people to workers, because it affects how pensions and healthcare can be paid for."
+      },
+      {
+       "v": "A",
+       "t": "Given all this uncertainty, how should forecasts be presented? In the past, many organisations published a single figure for the expected population in, say, fifty years' time. Today, most forecasters prefer to give a range, showing the most likely outcome along with higher and lower possibilities. This is a more honest way of communicating what we do and don't know."
+      },
+      {
+       "v": "A",
+       "t": "Finally, it's worth remembering that forecasts are not just academic exercises. Governments use them to plan services. If a forecast predicts more young children in a particular area, the local authority may decide to build new schools there. If it predicts more older residents, it may need to invest in care services instead. So the accuracy of these forecasts really does matter to people's everyday lives."
+      }
+     ],
+     "groups": [
+      {
+       "instructions": "Complete the notes below. Write ONE WORD ONLY for each answer.",
+       "type": "gap",
+       "questions": [
+        {
+         "n": 31,
+         "text": "Three components of forecasts: births, deaths and ______"
+        },
+        {
+         "n": 32,
+         "text": "Cohort-component method: population divided into groups by age and ______"
+        },
+        {
+         "n": 33,
+         "text": "Fertility is hard to predict because it depends on personal ______"
+        },
+        {
+         "n": 34,
+         "text": "Many past forecasts underestimated the rise in life ______"
+        },
+        {
+         "n": 35,
+         "text": "Stage 2: death rates fall because of better ______ and food supply"
+        },
+        {
+         "n": 36,
+         "text": "Stage 3: birth rates fall as women gain access to ______ and paid work"
+        },
+        {
+         "n": 37,
+         "text": "Possible stage 5: the population starts to ______"
+        },
+        {
+         "n": 38,
+         "text": "Economists focus on the ratio of retired people to ______"
+        },
+        {
+         "n": 39,
+         "text": "Forecasts are now usually given as a ______ rather than a single figure"
+        },
+        {
+         "n": 40,
+         "text": "Forecasts help local authorities decide where to build new ______"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "reading": {
+   "passages": [
+    {
+     "title": "Why are families getting smaller?",
+     "subtitle": "Demographers have identified several forces behind one of the most important social changes of modern times",
+     "paragraphs": [
+      {
+       "label": "",
+       "text": "Over the past half century, the average number of children per woman has fallen dramatically across most of the world. In many wealthy countries, the figure is now well below the level needed to keep a population stable in the long term without migration. More surprisingly, rapid declines have also taken place in many middle-income countries, often over a much shorter period than they took in Europe or North America. Demographers have spent decades trying to explain this shift, and while no single factor accounts for it, several broad explanations have gained wide acceptance. The change has been so widespread that it can now be found in almost every region, in rich and poor countries alike, and among people of very different cultures and religions."
+      },
+      {
+       "label": "",
+       "text": "The first concerns child survival. In societies where many children die young, parents tend to have large families, partly to ensure that some of their children survive to adulthood. In some cases, parents also had additional children to replace those they had lost. As healthcare and nutrition improve and child mortality falls, families no longer need to have as many children to achieve the family size they want. Historical records suggest that falls in child mortality have generally been followed, after a delay of one or two generations, by falls in birth rates."
+      },
+      {
+       "label": "",
+       "text": "A second explanation focuses on economics. In agricultural societies, children often begin contributing to the household from an early age, working in the fields or caring for animals. In urban, industrial economies, by contrast, children are expensive. They must be housed, fed and educated for many years before they become financially independent, and the cost of raising them tends to rise as parents invest more in each child's education. Economists describe this as a shift from quantity to quality, as parents choose to have fewer children but spend more on each one. In addition, pensions and other forms of social security have reduced the need for parents to rely on their children for support in old age."
+      },
+      {
+       "label": "",
+       "text": "Education, particularly the education of women, is widely regarded as one of the most powerful influences of all. Women who stay in school longer tend to marry and have their first child later, and they are more likely to work outside the home. Education also increases knowledge of family planning. Studies comparing regions within the same country have found that differences in women's schooling explain a large part of the variation in birth rates, even when differences in income are taken into account."
+      },
+      {
+       "label": "",
+       "text": "Cultural change also plays a part, though its effects are harder to measure. Television and, more recently, the internet have exposed people to different ideas about family life. In several countries, researchers have found that areas which gained access to popular television dramas featuring small families experienced faster declines in fertility than similar areas without such programmes. Changing attitudes to marriage and the growing importance of personal fulfilment have also been suggested as contributing factors."
+      },
+      {
+       "label": "",
+       "text": "Government policy can also influence birth rates, although not always in the way intended. In the past, some countries actively tried to reduce birth rates through public campaigns or even legal limits on family size. Today, others that are concerned about ageing populations and shrinking workforces are trying to raise birth rates by offering cash payments, longer parental leave or cheaper childcare. The results of such policies have generally been modest. Cash payments, in particular, appear to affect the timing of births more than the total number of children that families eventually have."
+      },
+      {
+       "label": "",
+       "text": "Many demographers now believe that the obstacles facing young adults deserve more attention. Surveys in a number of countries show that people would, on average, like to have more children than they actually do. The gap is often explained by practical barriers, such as the high cost of housing, insecure employment and the difficulty of combining a career with family responsibilities. If this is correct, policies that make it easier for young people to establish stable lives may prove more effective than direct financial incentives. In some countries, the average age at which women have their first child has risen by several years within a single generation."
+      },
+      {
+       "label": "",
+       "text": "Whatever its causes, the decline in birth rates is likely to have far-reaching consequences. Smaller generations of workers will need to support larger numbers of retired people, and some regions may face labour shortages and the closure of schools. Yet some researchers point out that smaller populations may also bring benefits, such as less pressure on natural resources and greater investment in each individual. How societies adapt will depend largely on the choices they make in the coming decades. Some governments are already preparing for these changes by encouraging people to stay in work for longer."
+      }
+     ],
+     "groups": [
+      {
+       "instructions": "Questions 1–5. Complete the notes below. Choose NO MORE THAN TWO WORDS from the passage for each answer.",
+       "type": "gap",
+       "questions": [
+        {
+         "n": 1,
+         "text": "Child survival: falls in birth rates usually come one or two ______ after falls in child mortality."
+        },
+        {
+         "n": 2,
+         "text": "Economics: in farming societies, children work in the ______ or look after animals."
+        },
+        {
+         "n": 3,
+         "text": "Economists call this change a shift from quantity to ______."
+        },
+        {
+         "n": 4,
+         "text": "Education: women who study for longer usually have their first child ______."
+        },
+        {
+         "n": 5,
+         "text": "Culture: television dramas showing ______ were linked to faster falls in fertility."
+        }
+       ]
+      },
+      {
+       "instructions": "Questions 6–10. Do the following statements agree with the information given in the passage? Write TRUE if the statement agrees with the information, FALSE if the statement contradicts the information, NOT GIVEN if there is no information on this.",
+       "type": "tfng",
+       "options": [
+        "TRUE",
+        "FALSE",
+        "NOT GIVEN"
+       ],
+       "questions": [
+        {
+         "n": 6,
+         "text": "Birth rates in middle-income countries have generally fallen more slowly than they did in Europe."
+        },
+        {
+         "n": 7,
+         "text": "The link between women's education and lower birth rates remains even when income is considered."
+        },
+        {
+         "n": 8,
+         "text": "Some countries have used laws to limit the number of children families could have."
+        },
+        {
+         "n": 9,
+         "text": "Cheaper childcare has raised birth rates more successfully than cash payments."
+        },
+        {
+         "n": 10,
+         "text": "Surveys show that people generally want fewer children than they actually have."
+        }
+       ]
+      },
+      {
+       "instructions": "Questions 11–13. Choose the correct letter, A, B, C or D.",
+       "type": "mc",
+       "questions": [
+        {
+         "n": 11,
+         "text": "According to the passage, cash payments to parents mainly",
+         "options": [
+          "A encourage people to marry earlier.",
+          "B change when children are born.",
+          "C reduce the cost of childcare.",
+          "D increase family size permanently."
+         ]
+        },
+        {
+         "n": 12,
+         "text": "What do many demographers now believe?",
+         "options": [
+          "A Most young people do not want children.",
+          "B Financial incentives should be made larger.",
+          "C Young adults face practical obstacles to having children.",
+          "D Housing costs have little effect on family size."
+         ]
+        },
+        {
+         "n": 13,
+         "text": "What point is made in the final paragraph?",
+         "options": [
+          "A Smaller populations may bring advantages as well as problems.",
+          "B Falling birth rates will cause economic collapse.",
+          "C Governments have no influence over birth rates.",
+          "D Every region will face labour shortages."
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Planning for longer lives",
+     "subtitle": "Experts from different fields consider how societies should adapt to rising life expectancy",
+     "paragraphs": [
+      {
+       "label": "",
+       "text": "In the middle of the twentieth century, a person born in a wealthy country could expect to live to around sixty-five. Today, a child born in the same country has a reasonable chance of celebrating a hundredth birthday. Improvements in nutrition, sanitation and medical care have all contributed to this change. This remarkable increase in life expectancy is one of humanity's greatest achievements, yet it has also created challenges that governments, employers and individuals are only beginning to address."
+      },
+      {
+       "label": "",
+       "text": "Traditional thinking divides life into three stages, namely education, work and retirement. This model was designed for a world in which retirement lasted only a few years. According to the economist Lena Marsh, it no longer makes sense when people may spend thirty years or more in retirement. She argues that a longer life should be seen as an opportunity to rethink the entire life course, with people moving between periods of work, study and rest at different ages rather than following a fixed sequence. In her view, the main obstacle is not human biology but the rigid structure of institutions such as pension systems and universities."
+      },
+      {
+       "label": "",
+       "text": "Not all experts share her optimism. The health researcher David Okafor points out that longer lives are not necessarily healthier lives. While average life expectancy has risen steadily, the number of years that people spend in good health has not always increased at the same rate. As a result, many people now spend a longer period at the end of their lives living with long-term conditions that require ongoing care. Okafor believes that unless far more is invested in preventing illness, rising longevity will place unsustainable pressure on health services. He also notes that the cost of such care is likely to rise further as treatments become more advanced."
+      },
+      {
+       "label": "",
+       "text": "The question of who will provide this care is becoming increasingly urgent. In many countries, care for older people has traditionally been provided by family members, most often women. However, smaller families, greater geographical mobility and the rising number of women in paid work mean that this informal system is under strain. The sociologist Hana Varga has studied communities in which older people support each other through organised networks of volunteers. She found that these schemes not only reduced loneliness but also delayed the point at which members needed professional care. In her opinion, such networks could become an essential part of the care system, although they cannot replace trained professionals entirely."
+      },
+      {
+       "label": "",
+       "text": "Housing is another area where change is needed. Most homes are designed for younger, able-bodied people, with stairs, narrow doorways and bathrooms that are difficult to use for someone with limited mobility. The architect Tomás Rivera argues that new homes should be built to be adaptable from the start, so that they can be modified easily as their occupants grow older. This, he claims, would add relatively little to construction costs and would allow many older people to remain in their own homes rather than moving into residential care. He also suggests that new housing developments should mix homes for different age groups, rather than concentrating older people in separate retirement villages."
+      },
+      {
+       "label": "",
+       "text": "The world of work will also need to adapt. As populations age, many employers are already facing shortages of experienced staff, and some have begun to recruit older workers actively. Research suggests that, contrary to popular belief, older employees are no less productive than younger colleagues in most types of work. Although they may be slower at some tasks, they tend to make fewer serious errors. Nevertheless, age discrimination remains widespread, and older job seekers often find it difficult even to obtain an interview. The management specialist Grace Lin argues that flexible arrangements, such as part-time contracts and gradual retirement, are the key to keeping older people in the workforce. Many older workers, she notes, do not want to stop working completely but would welcome a lighter workload."
+      },
+      {
+       "label": "",
+       "text": "Individuals themselves also face new decisions. A longer life requires more savings, and surveys suggest that most people are financially unprepared for a retirement that may last several decades. Financial advisers increasingly recommend that people start saving for retirement in their twenties. A longer life also raises questions about how people should invest in their own skills and health. If the three-stage life is giving way to something more flexible, then learning, saving and staying healthy can no longer be left to particular stages of life but must become lifelong activities."
+      },
+      {
+       "label": "",
+       "text": "A longer life, then, is neither simply a burden nor simply a gift. Whether it proves to be more one than the other will depend largely on how well societies prepare for it, and on whether they are willing to rethink institutions that were designed for a very different age."
+      }
+     ],
+     "groups": [
+      {
+       "instructions": "Questions 14–18. Look at the following statements and the list of people below. Match each statement with the correct person, A–E.",
+       "type": "match",
+       "options": [
+        "A Lena Marsh",
+        "B David Okafor",
+        "C Hana Varga",
+        "D Tomás Rivera",
+        "E Grace Lin"
+       ],
+       "questions": [
+        {
+         "n": 14,
+         "text": "Homes should be designed so that they can be changed easily later on."
+        },
+        {
+         "n": 15,
+         "text": "Institutions, rather than the human body, are the main barrier to a new approach to life."
+        },
+        {
+         "n": 16,
+         "text": "Older people helping one another can reduce the need for professional care."
+        },
+        {
+         "n": 17,
+         "text": "Reducing working hours gradually could help keep older people in employment."
+        },
+        {
+         "n": 18,
+         "text": "Without more investment in prevention, health services may not be able to cope."
+        }
+       ]
+      },
+      {
+       "instructions": "Questions 19–22. Do the following statements agree with the claims of the writer? Write YES if the statement agrees with the claims of the writer, NO if the statement contradicts the claims of the writer, NOT GIVEN if it is impossible to say what the writer thinks about this.",
+       "type": "ynng",
+       "options": [
+        "YES",
+        "NO",
+        "NOT GIVEN"
+       ],
+       "questions": [
+        {
+         "n": 19,
+         "text": "The rise in life expectancy is a major achievement."
+        },
+        {
+         "n": 20,
+         "text": "Older employees generally make more serious mistakes than younger ones."
+        },
+        {
+         "n": 21,
+         "text": "Most older workers would prefer to work from home."
+        },
+        {
+         "n": 22,
+         "text": "Most people have saved enough money for a long retirement."
+        }
+       ]
+      },
+      {
+       "instructions": "Questions 23–26. Complete the summary using the list of words, A–H, below.",
+       "type": "match",
+       "options": [
+        "A short",
+        "B strain",
+        "C adaptable",
+        "D lifelong",
+        "E expensive",
+        "F review",
+        "G separate",
+        "H temporary"
+       ],
+       "questions": [
+        {
+         "n": 23,
+         "text": "The traditional three-stage life was designed at a time when retirement was ______."
+        },
+        {
+         "n": 24,
+         "text": "Care traditionally provided by relatives is now under ______ because families are smaller and more mobile."
+        },
+        {
+         "n": 25,
+         "text": "Building homes that are ______ from the beginning would help people stay in their own homes."
+        },
+        {
+         "n": 26,
+         "text": "For individuals, learning and saving must become ______ activities."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "vocab": {
+  "lr": [
+   {
+    "en": "no single factor accounts for",
+    "vi": "không có yếu tố đơn lẻ nào giải thích được",
+    "pos": "clause",
+    "ex": "Demographers have spent decades trying to explain this shift, and while no single factor accounts for it, several broad explanations have gained wide acceptance."
+   },
+   {
+    "en": "gained wide acceptance",
+    "vi": "được chấp nhận rộng rãi",
+    "pos": "verb phrase",
+    "ex": "Demographers have spent decades trying to explain this shift, and while no single factor accounts for it, several broad explanations have gained wide acceptance."
+   },
+   {
+    "en": "by contrast",
+    "vi": "ngược lại",
+    "pos": "linking phrase",
+    "ex": "In urban, industrial economies, by contrast, children are expensive."
+   },
+   {
+    "en": "is widely regarded as",
+    "vi": "được xem rộng rãi là",
+    "pos": "verb phrase (passive)",
+    "ex": "Education, particularly the education of women, is widely regarded as one of the most powerful influences of all."
+   },
+   {
+    "en": "are taken into account",
+    "vi": "được tính đến",
+    "pos": "verb phrase (passive)",
+    "ex": "Studies comparing regions within the same country have found that differences in women's schooling explain a large part of the variation in birth rates, even when differences in income are taken into account."
+   },
+   {
+    "en": "plays a part",
+    "vi": "đóng một phần vai trò",
+    "pos": "verb phrase",
+    "ex": "Cultural change also plays a part, though its effects are harder to measure."
+   },
+   {
+    "en": "not always in the way intended",
+    "vi": "không phải lúc nào cũng như mong muốn",
+    "pos": "adverbial phrase",
+    "ex": "Government policy can also influence birth rates, although not always in the way intended."
+   },
+   {
+    "en": "deserve more attention",
+    "vi": "đáng được quan tâm hơn",
+    "pos": "verb phrase",
+    "ex": "Many demographers now believe that the obstacles facing young adults deserve more attention."
+   },
+   {
+    "en": "far-reaching consequences",
+    "vi": "hậu quả sâu rộng",
+    "pos": "noun phrase",
+    "ex": "Whatever its causes, the decline in birth rates is likely to have far-reaching consequences."
+   },
+   {
+    "en": "depend largely on",
+    "vi": "phụ thuộc phần lớn vào",
+    "pos": "verb phrase",
+    "ex": "How societies adapt will depend largely on the choices they make in the coming decades."
+   },
+   {
+    "en": "in the coming decades",
+    "vi": "trong những thập kỷ tới",
+    "pos": "time phrase",
+    "ex": "How societies adapt will depend largely on the choices they make in the coming decades."
+   },
+   {
+    "en": "not necessarily",
+    "vi": "không nhất thiết",
+    "pos": "adverb phrase",
+    "ex": "The health researcher David Okafor points out that longer lives are not necessarily healthier lives."
+   },
+   {
+    "en": "at the same rate",
+    "vi": "với cùng tốc độ",
+    "pos": "prepositional phrase",
+    "ex": "While average life expectancy has risen steadily, the number of years that people spend in good health has not always increased at the same rate."
+   },
+   {
+    "en": "place unsustainable pressure on",
+    "vi": "gây áp lực không thể chịu nổi lên",
+    "pos": "verb phrase",
+    "ex": "Okafor believes that unless far more is invested in preventing illness, rising longevity will place unsustainable pressure on health services."
+   },
+   {
+    "en": "is becoming increasingly urgent",
+    "vi": "đang ngày càng cấp bách",
+    "pos": "verb phrase",
+    "ex": "The question of who will provide this care is becoming increasingly urgent."
+   },
+   {
+    "en": "under strain",
+    "vi": "chịu áp lực, căng thẳng",
+    "pos": "prepositional phrase",
+    "ex": "However, smaller families, greater geographical mobility and the rising number of women in paid work mean that this informal system is under strain."
+   },
+   {
+    "en": "contrary to popular belief",
+    "vi": "trái với suy nghĩ phổ biến",
+    "pos": "linking phrase",
+    "ex": "Research suggests that, contrary to popular belief, older employees are no less productive than younger colleagues in most types of work."
+   },
+   {
+    "en": "no less productive than",
+    "vi": "năng suất không kém",
+    "pos": "comparative phrase",
+    "ex": "Research suggests that, contrary to popular belief, older employees are no less productive than younger colleagues in most types of work."
+   },
+   {
+    "en": "giving way to",
+    "vi": "nhường chỗ cho, được thay thế bởi",
+    "pos": "verb phrase",
+    "ex": "If the three-stage life is giving way to something more flexible, then learning, saving and staying healthy can no longer be left to particular stages of life but must become lifelong activities."
+   },
+   {
+    "en": "turn out to be",
+    "vi": "hóa ra là",
+    "pos": "verb phrase",
+    "ex": "Today's lecture is about population forecasting, in other words, how demographers try to predict the size and structure of future populations, and why their predictions sometimes turn out to be wrong."
+   }
+  ],
+  "sw": [
+   {
+    "en": "financial aid",
+    "vi": "viện trợ tài chính",
+    "pos": "noun phrase",
+    "ex": "After a natural disaster, financial aid can help poorer countries respond quickly."
+   },
+   {
+    "en": "end up in the wrong hands",
+    "vi": "rơi vào tay kẻ xấu",
+    "pos": "verb phrase",
+    "ex": "Without proper monitoring, donated money may end up in the wrong hands."
+   },
+   {
+    "en": "address the root causes of",
+    "vi": "giải quyết tận gốc nguyên nhân của",
+    "pos": "verb phrase",
+    "ex": "Practical help is more likely to address the root causes of poverty."
+   },
+   {
+    "en": "become self-sufficient",
+    "vi": "trở nên tự lực, tự chủ",
+    "pos": "verb phrase",
+    "ex": "Training local farmers allows a community to become self-sufficient in food."
+   },
+   {
+    "en": "dependence on aid",
+    "vi": "sự phụ thuộc vào viện trợ",
+    "pos": "noun phrase",
+    "ex": "Long-term cash transfers may create dependence on aid rather than growth."
+   },
+   {
+    "en": "transfer of knowledge",
+    "vi": "sự chuyển giao kiến thức",
+    "pos": "noun phrase",
+    "ex": "The transfer of knowledge from experienced engineers can benefit a country for generations."
+   },
+   {
+    "en": "technical expertise",
+    "vi": "chuyên môn kỹ thuật",
+    "pos": "noun phrase",
+    "ex": "Building a safe water system requires technical expertise as well as money."
+   },
+   {
+    "en": "basic infrastructure",
+    "vi": "cơ sở hạ tầng cơ bản",
+    "pos": "noun phrase",
+    "ex": "Many rural areas still lack basic infrastructure such as roads and clean water."
+   },
+   {
+    "en": "lift people out of poverty",
+    "vi": "giúp người dân thoát nghèo",
+    "pos": "verb phrase",
+    "ex": "Education is one of the most reliable ways to lift people out of poverty."
+   },
+   {
+    "en": "a humanitarian crisis",
+    "vi": "một cuộc khủng hoảng nhân đạo",
+    "pos": "noun phrase",
+    "ex": "During a humanitarian crisis, cash is often the fastest form of help."
+   },
+   {
+    "en": "long-term development",
+    "vi": "sự phát triển lâu dài",
+    "pos": "noun phrase",
+    "ex": "Practical projects tend to support long-term development more effectively than one-off payments."
+   },
+   {
+    "en": "make a positive contribution to",
+    "vi": "đóng góp tích cực cho",
+    "pos": "verb phrase",
+    "ex": "Volunteers can make a positive contribution to their local community."
+   },
+   {
+    "en": "give something back to",
+    "vi": "đóng góp lại cho (cộng đồng)",
+    "pos": "verb phrase",
+    "ex": "I volunteer at the weekend because I want to give something back to my neighbourhood."
+   },
+   {
+    "en": "an ageing population",
+    "vi": "dân số già hóa",
+    "pos": "noun phrase",
+    "ex": "Countries with an ageing population need more doctors and care workers."
+   },
+   {
+    "en": "put pressure on",
+    "vi": "gây áp lực lên",
+    "pos": "verb phrase",
+    "ex": "Rapid population growth can put pressure on housing and public services."
+   },
+   {
+    "en": "in the foreseeable future",
+    "vi": "trong tương lai gần",
+    "pos": "prepositional phrase",
+    "ex": "I do not plan to move to another city in the foreseeable future."
+   },
+   {
+    "en": "a densely populated area",
+    "vi": "khu vực đông dân cư",
+    "pos": "noun phrase",
+    "ex": "I grew up in a densely populated area where every street was busy."
+   },
+   {
+    "en": "lend a helping hand",
+    "vi": "giúp đỡ một tay",
+    "pos": "verb phrase",
+    "ex": "My parents taught me to lend a helping hand to neighbours in need."
+   },
+   {
+    "en": "a sense of responsibility",
+    "vi": "tinh thần trách nhiệm",
+    "pos": "noun phrase",
+    "ex": "Helping others gives young people a sense of responsibility."
+   },
+   {
+    "en": "living standards",
+    "vi": "mức sống",
+    "pos": "noun phrase",
+    "ex": "Rising living standards have allowed people to live longer and healthier lives."
+   }
+  ]
+ },
+ "keys": {
+  "salt": "ff7phhd75rlt",
+  "listening": {
+   "1": {
+    "h": [
+     "9178ddc36dccf3f3"
+    ],
+    "hint": "Họ được đánh vần từng chữ cái ngay đầu cuộc gọi."
+   },
+   "2": {
+    "h": [
+     "e68f234254c49b5f"
+    ],
+    "hint": "Nghe công việc hiện tại sau khi người gọi nói đã tốt nghiệp."
+   },
+   "3": {
+    "h": [
+     "5153a8617a320e50",
+     "6cc630e59f96c81b"
+    ],
+    "hint": "Ngày thường bận, và một buổi sáng đã dành cho ông bà. Nghe lựa chọn cuối cùng."
+   },
+   "4": {
+    "h": [
+     "f02641e5989b1f9e"
+    ],
+    "hint": "Người gọi nhắc ba hoạt động. Hai hoạt động đầu bị loại."
+   },
+   "5": {
+    "h": [
+     "eeb6293e18ac5d39"
+    ],
+    "hint": "Một ngôn ngữ học ở trường nhưng đã quên gần hết. Chọn ngôn ngữ nói trôi chảy."
+   },
+   "6": {
+    "h": [
+     "5fd32003ec76d0f5",
+     "c37ab215f10108a5"
+    ],
+    "hint": "Người gọi hỏi một câu và nhân viên trả lời 'No'. Nghe câu trả lời đó."
+   },
+   "7": {
+    "h": [
+     "2385197b756c746c",
+     "b0ca58fd1d77f592",
+     "cac87e0ece6d6f27",
+     "efde1354187be18c"
+    ],
+    "hint": "Nghe ngày tháng của buổi tập huấn tiếp theo."
+   },
+   "8": {
+    "h": [
+     "f7fa4143ae68f3fd"
+    ],
+    "hint": "Địa điểm thường ngày đang sửa chữa. Nghe địa điểm của buổi này."
+   },
+   "9": {
+    "h": [
+     "c92a2b15ead22f57"
+    ],
+    "hint": "Nghe phần trả lời câu hỏi 'Do I need to bring anything?', thứ được thêm vào sau chữ 'Oh'."
+   },
+   "10": {
+    "h": [
+     "141c4fddee474bdb",
+     "3aa94ce0f205991c"
+    ],
+    "hint": "Mức chi trả đã thay đổi. Chọn con số mới."
+   },
+   "11": {
+    "h": [
+     "6909fea25d073d62"
+    ],
+    "hint": "Nghe 'came about almost by accident' và chuyện gì xảy ra với mảnh đất bên kia đường."
+   },
+   "12": {
+    "h": [
+     "0081764b0a5a3abb"
+    ],
+    "hint": "Nhóm được nhắc đầu tiên là nhóm họ dự đoán. Nghe sau cụm 'but in fact'."
+   },
+   "13": {
+    "h": [
+     "1ef03d7463b80d90"
+    ],
+    "hint": "Nghe đoạn bắt đầu bằng 'Of course, safety is a concern'."
+   },
+   "14": {
+    "h": [
+     "dd691fcebed339ed"
+    ],
+    "hint": "Thời lượng đã thay đổi so với lúc mới mở. Nghe sau 'so now'."
+   },
+   "15": {
+    "h": [
+     "1d3a5d13d4ca2be8",
+     "3d3453b7d8ecf117"
+    ],
+    "hint": "Nghe 'Firstly' và 'secondly'. Một điều do phụ huynh kể nhưng chưa chắc chắn.",
+    "grp": "15-16"
+   },
+   "16": {
+    "h": [
+     "96bdf3eacef3d73c",
+     "c90e033b19e63d42"
+    ],
+    "hint": "Nghe 'Firstly' và 'secondly'. Một điều do phụ huynh kể nhưng chưa chắc chắn.",
+    "grp": "15-16"
+   },
+   "17": {
+    "h": [
+     "288e05f384f6dd2c"
+    ],
+    "hint": "Nghe công việc trước đây của thành viên dẫn buổi hát."
+   },
+   "18": {
+    "h": [
+     "ff43001f43dff768"
+    ],
+    "hint": "Món của kỳ trước bị thay vì quá nhiều đường. Nghe món của kỳ này."
+   },
+   "19": {
+    "h": [
+     "e11003ef2fabcefb"
+    ],
+    "hint": "Khu vườn bên ngoài đang được làm lại. Nghe địa điểm tạm thời."
+   },
+   "20": {
+    "h": [
+     "578b78f24f8af85c",
+     "69707a0a5a195373"
+    ],
+    "hint": "Nghe thứ người lớn tuổi mang đến để kể chuyện tuổi thơ."
+   },
+   "21": {
+    "h": [
+     "426f36667ea31bf0",
+     "e97846ab688deb41"
+    ],
+    "hint": "Ba nguồn bị loại vì ba lý do khác nhau: thiếu bằng chứng, không học thuật, đã cũ.",
+    "grp": "21-22"
+   },
+   "22": {
+    "h": [
+     "35409e7ddf2f800c",
+     "bdda5f21687d174e"
+    ],
+    "hint": "Ba nguồn bị loại vì ba lý do khác nhau: thiếu bằng chứng, không học thuật, đã cũ.",
+    "grp": "21-22"
+   },
+   "23": {
+    "h": [
+     "b7d3d5dae2b015a8"
+    ],
+    "hint": "Các nhà kinh tế ủng hộ, nhưng nghe 'The problem is that...'."
+   },
+   "24": {
+    "h": [
+     "52302e1ef63bda4e"
+    ],
+    "hint": "Nghe chuyện gì xảy ra với số ca sinh sau một hai năm."
+   },
+   "25": {
+    "h": [
+     "f7e94555ce049b69"
+    ],
+    "hint": "Mới có vài thử nghiệm. Nghe câu cuối của Priya về chính sách này."
+   },
+   "26": {
+    "h": [
+     "1a34136e03e87275"
+    ],
+    "hint": "Nghe chuyện gì xảy ra với những ngôi nhà lớn của gia đình."
+   },
+   "27": {
+    "h": [
+     "21628832ccfe4cf9"
+    ],
+    "hint": "Nghe phần sau 'it sounds good, but'."
+   },
+   "28": {
+    "h": [
+     "d55dde5f1596be08"
+    ],
+    "hint": "Một cách sắp xếp được đề xuất trước rồi bị chê là lặp lại."
+   },
+   "29": {
+    "h": [
+     "fc66e9a75eab226c"
+    ],
+    "hint": "Giảng viên khen hai điều và chê một điều. Nghe sau chữ 'but'."
+   },
+   "30": {
+    "h": [
+     "97a0bff020f7bc9d"
+    ],
+    "hint": "Slide gần xong và giảng viên đi vắng. Nghe đề xuất cuối cùng của Priya."
+   },
+   "31": {
+    "h": [
+     "daa37b2e10218d1a"
+    ],
+    "hint": "Nghe thành phần thứ ba, sau 'the third is'."
+   },
+   "32": {
+    "h": [
+     "e9e96f6c2b334fe0"
+    ],
+    "hint": "Nghe cụm 'divided into groups according to...'."
+   },
+   "33": {
+    "h": [
+     "34f8ae9c3662e68b"
+    ],
+    "hint": "So sánh tỉ lệ tử và tỉ lệ sinh. Nghe từ đứng sau 'personal'."
+   },
+   "34": {
+    "h": [
+     "5462fe1a3eb5c3bc"
+    ],
+    "hint": "Nghe phần nói về sai lầm trong nửa sau thế kỷ hai mươi."
+   },
+   "35": {
+    "h": [
+     "cece5e6e63bdddfa"
+    ],
+    "hint": "Nghe giai đoạn hai, lý do tỉ lệ tử giảm."
+   },
+   "36": {
+    "h": [
+     "b227db3afc42d4ac"
+    ],
+    "hint": "Nghe giai đoạn ba, cụm 'gain access to'."
+   },
+   "37": {
+    "h": [
+     "cc8f0a7dd70877c4"
+    ],
+    "hint": "Nghe phần một số nhà nghiên cứu thêm giai đoạn thứ năm."
+   },
+   "38": {
+    "h": [
+     "e4eac0308dd26ca0"
+    ],
+    "hint": "Nghe tỉ lệ ảnh hưởng đến lương hưu và y tế."
+   },
+   "39": {
+    "h": [
+     "6a8b0df04dc8e17b"
+    ],
+    "hint": "Ngày xưa công bố một con số. Nghe cách làm ngày nay."
+   },
+   "40": {
+    "h": [
+     "6802baa3da90bad0"
+    ],
+    "hint": "Nghe ví dụ về khu vực có nhiều trẻ nhỏ."
+   }
+  },
+  "reading": {
+   "1": {
+    "h": [
+     "d17a618dd18bf7ea"
+    ],
+    "hint": "Đoạn 2, câu cuối, cụm 'after a delay of'."
+   },
+   "2": {
+    "h": [
+     "642e1cdf2c6b2083",
+     "c94b6b09e29ee744"
+    ],
+    "hint": "Đoạn 3, câu thứ hai về xã hội nông nghiệp."
+   },
+   "3": {
+    "h": [
+     "68d7ec382eb8d1e8"
+    ],
+    "hint": "Đoạn 3, câu cuối."
+   },
+   "4": {
+    "h": [
+     "fb54ad1e2fcba19b"
+    ],
+    "hint": "Đoạn 4, câu thứ hai."
+   },
+   "5": {
+    "h": [
+     "61cc3bb34c891388"
+    ],
+    "hint": "Đoạn 5, câu nói về phim truyền hình."
+   },
+   "6": {
+    "h": [
+     "be8d2960a98be538"
+    ],
+    "hint": "Đoạn 1, câu bắt đầu bằng 'More surprisingly'. Để ý khoảng thời gian."
+   },
+   "7": {
+    "h": [
+     "35a51ec6a1e76208"
+    ],
+    "hint": "Đoạn 4, phần cuối của câu cuối."
+   },
+   "8": {
+    "h": [
+     "c9358960ae6b8005"
+    ],
+    "hint": "Đoạn 6, câu nói về quá khứ."
+   },
+   "9": {
+    "h": [
+     "70e8efc2c83cfc11"
+    ],
+    "hint": "Đoạn 6 nhắc cả hai biện pháp. Kiểm tra xem có so sánh hiệu quả của chúng không."
+   },
+   "10": {
+    "h": [
+     "268de6f7512c0743"
+    ],
+    "hint": "Đoạn 7, câu thứ hai về kết quả khảo sát."
+   },
+   "11": {
+    "h": [
+     "aaef7f415a5f762c"
+    ],
+    "hint": "Đoạn 6, câu cuối, bắt đầu bằng 'Cash payments, in particular'."
+   },
+   "12": {
+    "h": [
+     "e8a5988d97b59887"
+    ],
+    "hint": "Đoạn 7, câu đầu và các ví dụ ngay sau đó."
+   },
+   "13": {
+    "h": [
+     "6c1fe1743b827ad3"
+    ],
+    "hint": "Đoạn cuối. Để ý từ 'Yet' giới thiệu một góc nhìn khác."
+   },
+   "14": {
+    "h": [
+     "db528a1cdc1b60ab"
+    ],
+    "hint": "Tìm người làm trong lĩnh vực nhà ở."
+   },
+   "15": {
+    "h": [
+     "281ff75613ca1154"
+    ],
+    "hint": "Tìm câu có cụm 'the main obstacle is not'."
+   },
+   "16": {
+    "h": [
+     "411e574912b69d9a"
+    ],
+    "hint": "Tìm người nghiên cứu mạng lưới tình nguyện viên."
+   },
+   "17": {
+    "h": [
+     "5306c507e19038d9"
+    ],
+    "hint": "Tìm đoạn nói về thế giới việc làm và hình thức làm việc linh hoạt."
+   },
+   "18": {
+    "h": [
+     "217dc9c115442676"
+    ],
+    "hint": "Tìm người nghiên cứu về sức khỏe và từ 'unless'."
+   },
+   "19": {
+    "h": [
+     "1d89b77a210d7193"
+    ],
+    "hint": "Đoạn 1, câu cuối."
+   },
+   "20": {
+    "h": [
+     "2f11d290fa880a03"
+    ],
+    "hint": "Đoạn 6, câu bắt đầu bằng 'Although they may be slower'."
+   },
+   "21": {
+    "h": [
+     "1d1d029d37b4fd58"
+    ],
+    "hint": "Đoạn 6 nói về mong muốn của người lao động lớn tuổi. Kiểm tra xem có nhắc đến nơi làm việc không."
+   },
+   "22": {
+    "h": [
+     "9f59ff68ef4a578a"
+    ],
+    "hint": "Đoạn 7, câu nói về khảo sát và tiền tiết kiệm."
+   },
+   "23": {
+    "h": [
+     "3fa884ba30e0d8a7"
+    ],
+    "hint": "Đoạn 2, câu nói mô hình ba giai đoạn được thiết kế cho thế giới nào."
+   },
+   "24": {
+    "h": [
+     "46f6e44cb7553a06"
+    ],
+    "hint": "Đoạn 4, câu bắt đầu bằng 'However'."
+   },
+   "25": {
+    "h": [
+     "6f8f3672f9c72106"
+    ],
+    "hint": "Đoạn 5, ý kiến của kiến trúc sư."
+   },
+   "26": {
+    "h": [
+     "84301641cdd8fa33"
+    ],
+    "hint": "Đoạn 7, câu cuối."
+   }
+  }
+ }
+}

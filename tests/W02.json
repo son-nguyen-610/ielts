@@ -1,0 +1,1555 @@
+{
+ "week": "W02",
+ "lr": {
+  "listening": {
+   "parts": [
+    {
+     "title": "Part 1 · Joining a car club",
+     "context": "You will hear a woman phoning a car club to ask about becoming a member.",
+     "voices": {
+      "A": "male",
+      "B": "female"
+     },
+     "script": [
+      {
+       "v": "A",
+       "t": "Good afternoon, CityShare Car Club, James speaking."
+      },
+      {
+       "v": "B",
+       "t": "Hi. I'm thinking about joining your car club, and I wondered if you could tell me a bit about how it works."
+      },
+      {
+       "v": "A",
+       "t": "Of course. Basically, members can book one of our cars online for as little as an hour, and the price includes fuel and insurance. Would you like to register now? I can take your details over the phone."
+      },
+      {
+       "v": "B",
+       "t": "Yes, why not."
+      },
+      {
+       "v": "A",
+       "t": "Great. Can I have your full name, please?"
+      },
+      {
+       "v": "B",
+       "t": "It's Sarah Whitlock."
+      },
+      {
+       "v": "A",
+       "t": "Is that W-H-I-T-L-O-C-K?"
+      },
+      {
+       "v": "B",
+       "t": "Yes, that's right."
+      },
+      {
+       "v": "A",
+       "t": "And your address?"
+      },
+      {
+       "v": "B",
+       "t": "It's twenty-seven Fenton Road. That's F-E-N-T-O-N."
+      },
+      {
+       "v": "A",
+       "t": "Thank you. Now, we need to know how long you've held a full driving licence. Our insurance requires at least two years."
+      },
+      {
+       "v": "B",
+       "t": "Oh, that's no problem. I got my licence when I was eighteen, so that's six years. Actually, no, sorry, I failed my first test, so I passed when I was nineteen. So it's five years."
+      },
+      {
+       "v": "A",
+       "t": "Five years, that's fine. Now, we have two membership plans. The Regular plan costs twelve pounds a month, and then the hourly rate is lower. The Occasional plan has no monthly fee, but you pay a bit more per hour. How often do you think you'll need a car?"
+      },
+      {
+       "v": "B",
+       "t": "Not very often. Maybe once a month, for a big shopping trip or to visit my parents."
+      },
+      {
+       "v": "A",
+       "t": "In that case, I'd recommend the Occasional plan. You'd save money."
+      },
+      {
+       "v": "B",
+       "t": "OK, let's go with that one. How much is it per hour?"
+      },
+      {
+       "v": "A",
+       "t": "On the Regular plan it's five pounds fifty, and on the Occasional plan it's seven pounds fifty."
+      },
+      {
+       "v": "B",
+       "t": "Seven fifty. That's fine. And where are the cars kept?"
+      },
+      {
+       "v": "A",
+       "t": "Let me see, you're on Fenton Road, so your nearest car... We used to have one at the railway station, but we moved it last month because parking there became too expensive. It's now in the car park of the cinema, about five minutes from you."
+      },
+      {
+       "v": "B",
+       "t": "Oh, that's handy."
+      },
+      {
+       "v": "A",
+       "t": "Can I ask how you heard about us?"
+      },
+      {
+       "v": "B",
+       "t": "I think a friend mentioned it first. No, actually, it was a colleague. Someone I work with uses it all the time."
+      },
+      {
+       "v": "A",
+       "t": "A colleague, great. Now, to complete your registration, you don't need to come to our office, and there's no deposit to pay. You just need to email us a photo of both sides of your driving licence, and then we'll activate your account."
+      },
+      {
+       "v": "B",
+       "t": "That's easy enough. Is there anything else I should know about using the cars?"
+      },
+      {
+       "v": "A",
+       "t": "Just a couple of rules. Please leave the car clean and tidy for the next member. And about fuel. We used to ask members to return cars with at least half a tank, but people found that difficult, so now it's at least a quarter of a tank. If it's lower than that, you fill it up with the fuel card that's kept in the car, so you don't pay anything yourself."
+      },
+      {
+       "v": "B",
+       "t": "Oh, good. And what happens if I'm late bringing a car back?"
+      },
+      {
+       "v": "A",
+       "t": "Well, the next member might be waiting, so we take it quite seriously. It isn't just an extra hour's charge. There's a fixed fee of twenty pounds. If you know you're going to be late, you can extend your booking on the app, as long as no one else has booked the car after you."
+      },
+      {
+       "v": "B",
+       "t": "Right. I'll be careful, then. Thanks, that's really helpful."
+      },
+      {
+       "v": "A",
+       "t": "You're welcome. You'll receive a welcome email in the next few minutes."
+      }
+     ],
+     "groups": [
+      {
+       "instructions": "Complete the form below. Write ONE WORD AND/OR A NUMBER for each answer.",
+       "type": "gap",
+       "questions": [
+        {
+         "n": 1,
+         "text": "Name: Sarah ______"
+        },
+        {
+         "n": 2,
+         "text": "Address: 27 ______ Road"
+        },
+        {
+         "n": 3,
+         "text": "Has held a driving licence for: ______ years"
+        },
+        {
+         "n": 4,
+         "text": "Membership plan chosen: ______"
+        },
+        {
+         "n": 5,
+         "text": "Cost per hour: £______"
+        },
+        {
+         "n": 6,
+         "text": "Nearest car: in the car park of the ______"
+        },
+        {
+         "n": 7,
+         "text": "Heard about the club from a ______"
+        }
+       ]
+      },
+      {
+       "instructions": "Choose the correct letter, A, B or C.",
+       "type": "mc",
+       "questions": [
+        {
+         "n": 8,
+         "text": "To complete her registration, Sarah must",
+         "options": [
+          "A email a photo of her licence.",
+          "B visit the club's office.",
+          "C pay a deposit."
+         ]
+        },
+        {
+         "n": 9,
+         "text": "Cars must be returned with at least",
+         "options": [
+          "A a full tank of fuel.",
+          "B a quarter of a tank of fuel.",
+          "C half a tank of fuel."
+         ]
+        },
+        {
+         "n": 10,
+         "text": "If Sarah returns a car late, she will",
+         "options": [
+          "A pay a fixed amount.",
+          "B lose her membership.",
+          "C pay for one extra hour."
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Part 2 · Changes to the city centre",
+     "context": "You will hear a city council transport manager talking on local radio about planned changes to the city centre.",
+     "voices": {
+      "A": "female"
+     },
+     "script": [
+      {
+       "v": "A",
+       "t": "Thank you for inviting me onto the programme. As many listeners will know, the council has just approved a major plan for transport in the city centre, and I'd like to explain what it involves and why we're doing it."
+      },
+      {
+       "v": "A",
+       "t": "People often assume the main purpose is to cut pollution. Air quality will certainly improve, and that's very welcome, but it isn't the main reason. Above all, we want to make the centre a safer place for people on foot. Too many pedestrians are injured on our streets every year, and we simply can't accept that."
+      },
+      {
+       "v": "A",
+       "t": "The biggest single project is, of course, the new tram line. We originally hoped to open it in the spring, and then the summer was mentioned, but because of problems with underground cables, the opening has been put back to the autumn. I'm sorry about that, but we'd rather get it right."
+      },
+      {
+       "v": "A",
+       "t": "Several people have contacted us about residents' parking permits. I can reassure you that the price will stay the same. What will change is that each household will be limited to one permit, because there simply isn't enough space for more."
+      },
+      {
+       "v": "A",
+       "t": "Now, buses. There are two changes I'm particularly pleased about. Firstly, night buses will run every fifteen minutes instead of every hour, which should help people who work late shifts. Secondly, you'll be able to buy one ticket that's valid on both buses and trams, so you won't need to pay twice if you change. I know some people were hoping for free travel for under-eighteens, but in fact they'll get half-price fares. And we would love to introduce electric buses, but at the moment there's no funding for them."
+      },
+      {
+       "v": "A",
+       "t": "Let me now go through what's happening in particular streets. Market Square will be closed to all vehicles, and that includes bicycles, so cyclists will need to get off and walk. Station Road will remain open, but only to buses and bicycles, so private cars won't be able to use it."
+      },
+      {
+       "v": "A",
+       "t": "On the River Bridge, we're adding a cycle lane, separated from the traffic by a low barrier, which cyclists have been asking for for years. On Park Lane, which passes two primary schools, the speed limit will be reduced to twenty miles an hour. We had also hoped to widen the pavements there, but I'm afraid that part of the plan has been postponed indefinitely."
+      },
+      {
+       "v": "A",
+       "t": "And finally, Hill Street. Some residents asked for a new car park there, but there just isn't room. Instead, Hill Street will become one-way, with traffic only allowed to travel up the hill, towards the hospital."
+      },
+      {
+       "v": "A",
+       "t": "Full details are on the council website, and you can also see the plans at the central library until the end of the month. Of course, there will be some disruption while the work is carried out, and I'd like to thank residents and businesses in advance for their patience. We'll do our best to keep the main roads open during the busiest times of the year."
+      }
+     ],
+     "groups": [
+      {
+       "instructions": "Choose the correct letter, A, B or C.",
+       "type": "mc",
+       "questions": [
+        {
+         "n": 11,
+         "text": "What is the main aim of the new transport plan?",
+         "options": [
+          "A to shorten journey times",
+          "B to reduce air pollution",
+          "C to make the centre safer for pedestrians"
+         ]
+        },
+        {
+         "n": 12,
+         "text": "When will the new tram line open?",
+         "options": [
+          "A in the autumn",
+          "B in the summer",
+          "C in the spring"
+         ]
+        },
+        {
+         "n": 13,
+         "text": "What will change about residents' parking permits?",
+         "options": [
+          "A They will no longer be needed.",
+          "B Each household can only have one.",
+          "C They will become more expensive."
+         ]
+        }
+       ]
+      },
+      {
+       "instructions": "Choose TWO letters, A–E.",
+       "type": "multi2",
+       "questions": [
+        {
+         "n": 14,
+         "n2": 15,
+         "text": "Which TWO changes to bus services does the speaker mention?",
+         "options": [
+          "A free travel for under-eighteens",
+          "B longer bus routes",
+          "C tickets that can be used on buses and trams",
+          "D new electric buses",
+          "E more frequent night buses"
+         ]
+        }
+       ]
+      },
+      {
+       "instructions": "What change will be made in each of the following places? Choose FIVE answers from the box and write the correct letter, A–G, next to Questions 16–20.",
+       "type": "match",
+       "options": [
+        "A It will be closed to all traffic.",
+        "B Only buses and bicycles will be allowed.",
+        "C A cycle lane will be added.",
+        "D The speed limit will be lowered.",
+        "E A new car park will be built.",
+        "F Traffic will move in one direction only.",
+        "G The pavements will be made wider."
+       ],
+       "questions": [
+        {
+         "n": 16,
+         "text": "Market Square"
+        },
+        {
+         "n": 17,
+         "text": "Station Road"
+        },
+        {
+         "n": 18,
+         "text": "River Bridge"
+        },
+        {
+         "n": 19,
+         "text": "Park Lane"
+        },
+        {
+         "n": 20,
+         "text": "Hill Street"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Part 3 · A survey of student travel",
+     "context": "You will hear two students, Maya and Tom, discussing a survey they carried out on how students travel to the university.",
+     "voices": {
+      "A": "female",
+      "B": "male"
+     },
+     "script": [
+      {
+       "v": "B",
+       "t": "So, Maya, we need to plan our presentation on the travel survey. Remind me, why did we choose this topic in the first place? I know it wasn't on the tutor's list."
+      },
+      {
+       "v": "A",
+       "t": "No, it wasn't. We chose it because the university announced that it's going to reduce the number of parking spaces on campus next year, and we thought our results might actually be useful to them."
+      },
+      {
+       "v": "B",
+       "t": "Oh yes, that's right. And how many responses did we get in the end? Over three hundred, wasn't it?"
+      },
+      {
+       "v": "A",
+       "t": "Three hundred and twelve. We started by interviewing people at the main gate, but that was so slow that we only managed about forty. Nearly all the rest came from the online questionnaire."
+      },
+      {
+       "v": "B",
+       "t": "There was one problem with the data, though. Quite a few staff filled it in as well as students, but that's fine, we can just separate them. The real issue was the question about distance. Lots of people misunderstood it and wrote how long the journey took, not how far it was."
+      },
+      {
+       "v": "A",
+       "t": "I know. We'll have to mention that. Anyway, the results. The bus is still the most common way of getting here, but cost was by far the biggest complaint. People said the fares have gone up twice this year."
+      },
+      {
+       "v": "B",
+       "t": "And cycling was interesting. Quite a lot of people cycle, but they said they felt the least safe of all the groups, mainly because of that big roundabout near the sports hall."
+      },
+      {
+       "v": "A",
+       "t": "What about driving? I thought more people would drive."
+      },
+      {
+       "v": "B",
+       "t": "Well, compared with the survey the university did three years ago, far fewer students come by car now. Parking's so expensive."
+      },
+      {
+       "v": "A",
+       "t": "And walking surprised me. I really didn't expect so many people to walk, even from quite far away. You'd think bad weather would put people off, but most walkers said it didn't bother them."
+      },
+      {
+       "v": "B",
+       "t": "Someone asked me which method was most popular with first-year students, but we didn't break the results down by year group, so we can't really say."
+      },
+      {
+       "v": "A",
+       "t": "OK. Now, for the presentation itself, I don't want to show slide after slide of charts. People switch off. Why don't we use a map of the city, with dots showing where people live and how they travel?"
+      },
+      {
+       "v": "B",
+       "t": "That's a great idea. I'd thought of including some quotes from the interviews, but we've only got ten minutes, so let's keep it simple."
+      },
+      {
+       "v": "A",
+       "t": "Agreed. And we need to finish with some recommendations for the university."
+      },
+      {
+       "v": "B",
+       "t": "Well, cheaper bus passes would be the obvious one, but the university doesn't control the fares, so there's not much point."
+      },
+      {
+       "v": "A",
+       "t": "True. But it does control the bike storage, and the cyclists said there's nowhere secure to leave their bikes. So more bike storage, definitely."
+      },
+      {
+       "v": "B",
+       "t": "Yes. And what about a car-sharing scheme? If staff and students who live in the same area could share lifts, there'd be fewer cars on campus, which is what the university wants."
+      },
+      {
+       "v": "A",
+       "t": "Good, let's include that. Someone also suggested a shuttle bus from the railway station, but I think that would be far too expensive for the university to run."
+      },
+      {
+       "v": "B",
+       "t": "I agree. So those two, then. Shall we start on the slides tomorrow?"
+      }
+     ],
+     "groups": [
+      {
+       "instructions": "Choose the correct letter, A, B or C.",
+       "type": "mc",
+       "questions": [
+        {
+         "n": 21,
+         "text": "Why did the students choose this topic?",
+         "options": [
+          "A They had difficulty travelling to the university.",
+          "B Their tutor recommended it.",
+          "C The university is planning to reduce parking."
+         ]
+        },
+        {
+         "n": 22,
+         "text": "Most of the responses to the survey came from",
+         "options": [
+          "A interviews at the main gate.",
+          "B an online questionnaire.",
+          "C members of staff."
+         ]
+        },
+        {
+         "n": 23,
+         "text": "What problem with the data does Tom mention?",
+         "options": [
+          "A Staff responses could not be separated.",
+          "B Some people answered the survey twice.",
+          "C One question was often misunderstood."
+         ]
+        },
+        {
+         "n": 24,
+         "text": "What does Maya suggest for the presentation?",
+         "options": [
+          "A using a map",
+          "B including quotes from interviews",
+          "C showing a large number of charts"
+         ]
+        }
+       ]
+      },
+      {
+       "instructions": "Choose TWO letters, A–E.",
+       "type": "multi2",
+       "questions": [
+        {
+         "n": 25,
+         "n2": 26,
+         "text": "Which TWO recommendations will the students make to the university?",
+         "options": [
+          "A later lecture times",
+          "B more secure bike storage",
+          "C a car-sharing scheme",
+          "D cheaper bus passes",
+          "E a shuttle bus from the station"
+         ]
+        }
+       ]
+      },
+      {
+       "instructions": "What do the students say about each method of travel? Choose FOUR answers from the box and write the correct letter, A–F, next to Questions 27–30.",
+       "type": "match",
+       "options": [
+        "A More people use it than expected.",
+        "B It is often affected by the weather.",
+        "C Users feel the least safe.",
+        "D It is the most popular with first-year students.",
+        "E Cost is the main complaint.",
+        "F Fewer people use it than in the past."
+       ],
+       "questions": [
+        {
+         "n": 27,
+         "text": "bus"
+        },
+        {
+         "n": 28,
+         "text": "bicycle"
+        },
+        {
+         "n": 29,
+         "text": "car"
+        },
+        {
+         "n": 30,
+         "text": "walking"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Part 4 · Traffic and the shape of cities",
+     "context": "You will hear part of a lecture on urban planning and traffic.",
+     "voices": {
+      "A": "male"
+     },
+     "script": [
+      {
+       "v": "A",
+       "t": "Good afternoon. In today's lecture, I want to look at the relationship between roads, traffic and the shape of our cities. I'll begin with a concept that has changed the way many planners think about congestion, and then I'll discuss some of the strategies cities are now using to reduce car use."
+      },
+      {
+       "v": "A",
+       "t": "For most of the twentieth century, the standard response to congestion was simple. If roads were crowded, you built more roads, or you made existing ones wider. However, planners gradually noticed that this rarely solved the problem. Within a few years, the new roads were often just as crowded as the old ones. In other words, building new roads tends to generate more traffic. This is known as induced demand."
+      },
+      {
+       "v": "A",
+       "t": "Why does it happen? When a road is widened, journeys become quicker, at least at first. As a result, people who previously travelled at quieter times start driving during the rush hour, and people who used public transport switch to their cars. Some people even move further away from their workplace, because the journey now seems manageable. Eventually, the road fills up again."
+      },
+      {
+       "v": "A",
+       "t": "It's worth remembering how much damage the old approach caused. In the middle of the last century, many cities were redesigned around the private car, and in a number of cases, entire neighbourhoods were demolished to make room for urban motorways. The assumption was that road space could keep pace with demand. We now know that it can't."
+      },
+      {
+       "v": "A",
+       "t": "Interestingly, the process also works in reverse. When roads are closed or narrowed, people predicted terrible congestion. But in many cases, a significant share of the traffic simply disappears, rather than moving onto nearby streets. People change their routes, the time they travel, or the way they travel, and some journeys are not made at all."
+      },
+      {
+       "v": "A",
+       "t": "So what tools do cities have? One is the congestion charge, where drivers pay a fee to enter the city centre during busy periods. Evidence suggests that these schemes are most effective when the money raised is spent on improving public transport, so that people have a realistic alternative to driving."
+      },
+      {
+       "v": "A",
+       "t": "Another tool is parking policy. In the past, many cities required every new building to provide a minimum number of parking spaces. Today, a growing number of planners set a maximum instead, particularly for new developments close to train or bus stations."
+      },
+      {
+       "v": "A",
+       "t": "Finally, some cities are trying to change their shape altogether. The idea of the compact city is that most daily needs, such as shops, schools and doctors, should be within a short walk or cycle of people's homes. This requires mixing housing with shops and offices, rather than separating them into different zones, as twentieth-century planning tended to do."
+      },
+      {
+       "v": "A",
+       "t": "The compact city has many supporters, but it also has critics. Some worry that making neighbourhoods more attractive could push up property prices, so that the people who would benefit most can no longer afford to live there. That's an issue we'll come back to next week."
+      }
+     ],
+     "groups": [
+      {
+       "instructions": "Complete the notes below. Write ONE WORD ONLY for each answer.",
+       "type": "gap",
+       "questions": [
+        {
+         "n": 31,
+         "text": "Induced demand: building new roads tends to generate more ______"
+        },
+        {
+         "n": 32,
+         "text": "Some people who used public transport switch to their ______"
+        },
+        {
+         "n": 33,
+         "text": "In the mid-20th century, whole ______ were demolished to build urban motorways"
+        },
+        {
+         "n": 34,
+         "text": "When roads are closed, much of the traffic disappears instead of moving onto nearby ______"
+        },
+        {
+         "n": 35,
+         "text": "Congestion charge: drivers pay a ______ to enter the centre"
+        },
+        {
+         "n": 36,
+         "text": "Most effective when the money is spent on public ______"
+        },
+        {
+         "n": 37,
+         "text": "Many planners now set a maximum number of parking spaces for new ______"
+        },
+        {
+         "n": 38,
+         "text": "Compact city: daily needs within a short walk or ______ of home"
+        },
+        {
+         "n": 39,
+         "text": "Housing is mixed with shops and ______"
+        },
+        {
+         "n": 40,
+         "text": "Critics fear higher ______ prices"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "reading": {
+   "passages": [
+    {
+     "title": "The return of the tram",
+     "subtitle": "How a transport system once dismissed as old-fashioned came back into favour",
+     "paragraphs": [
+      {
+       "label": "A",
+       "text": "In the early decades of the twentieth century, the electric tram was the backbone of public transport in hundreds of cities. Trams were cheaper to operate than the horse-drawn vehicles they replaced, and because they ran on rails, they could carry far more passengers at higher speeds. By the 1920s, most large cities had extensive networks, and the tram was used above all by ordinary working people, for many of whom it was the only affordable way to travel to work. Whole districts of housing were built along tram routes, and the shape of many modern cities still reflects the lines that trams once followed. Tram companies were often privately owned, and some even built parks at the end of their lines to encourage people to travel at weekends."
+      },
+      {
+       "label": "B",
+       "text": "Within a few decades, however, the tram had almost disappeared from many urban streets. Several factors contributed to its decline. The rapid growth of car ownership after the Second World War meant that roads became increasingly crowded, and trams, which shared the road with other vehicles, came to be blamed for causing delays. At the same time, motor buses were becoming more reliable and could be introduced without the expense of laying and maintaining tracks. Many tram networks were also in poor condition after years of underinvestment, and city authorities were reluctant to pay for costly repairs. In some cities, bus manufacturers and oil companies actively campaigned for the replacement of trams, although historians disagree about how much influence such campaigns really had."
+      },
+      {
+       "label": "C",
+       "text": "The decision to remove trams was not always based on careful analysis. In a number of cities, historians have found that the choice was influenced as much by fashion as by economics. Trams came to be seen as a symbol of the past, while buses and private cars represented modernity and progress. Planners who wished to present their cities as forward-looking were therefore keen to replace rails with roads, even where the existing tram system was still profitable. In some places, tracks that had been renewed only a few years earlier were torn up and covered with asphalt. Once the rails had gone, reversing the decision became extremely expensive."
+      },
+      {
+       "label": "D",
+       "text": "Not every city followed this path. In parts of central and eastern Europe in particular, tram networks were retained and gradually modernised. These cities provided valuable evidence when, from the 1980s onwards, planners elsewhere began to reconsider the role of the tram. Rising concern about air pollution and traffic congestion led many authorities to look for alternatives to the car, and the tram, now redesigned with quieter vehicles and low floors for easier access, was rediscovered. Since then, dozens of cities that had abandoned their trams decades earlier have built new lines. Some of these new systems have proved far more popular than expected, with passenger numbers exceeding forecasts within the first few years of operation."
+      },
+      {
+       "label": "E",
+       "text": "Modern tram systems, often called light rail, offer several advantages over buses. Because trams run on fixed tracks, passengers can see exactly where the route goes, and many people find this reassuring, especially in an unfamiliar city. There is also evidence that people who would never consider taking a bus are willing to use a tram, a tendency that transport researchers sometimes call the rail factor. In addition, a tram line represents a long-term commitment by the city, which can encourage businesses and property developers to invest in the areas it serves. Trams also produce no exhaust fumes at street level, and their smooth ride makes it easier for passengers to read or work during the journey."
+      },
+      {
+       "label": "F",
+       "text": "However, trams are expensive to build. Laying track requires extensive work beneath the street to move water pipes, electricity cables and other underground services, and construction can disrupt local businesses for months or even years. Critics argue that the same amount of money could provide a far more extensive network of high-quality bus services. Some cities have attempted to combine the advantages of both by introducing bus rapid transit, a system in which buses run on dedicated lanes and stop at stations similar to those used by trams. Where it has been carefully designed, this approach has delivered many of the benefits of a tram at a fraction of the cost."
+      },
+      {
+       "label": "G",
+       "text": "The debate over trams illustrates a wider point about urban transport. The value of a transport system depends not only on its technical performance but also on how people perceive it. A tram that is seen as modern, clean and reliable may attract passengers more successfully than a bus that is objectively just as fast. For planners, therefore, understanding public perceptions may be just as important as calculating costs and journey times, and it may explain why a technology that was once dismissed as outdated has found a place in the cities of the twenty-first century."
+      }
+     ],
+     "groups": [
+      {
+       "instructions": "Questions 1–6. Reading Passage 1 has seven paragraphs, A–G. Choose the correct heading for paragraphs B–G from the list of headings below. Write the correct number, i–ix. (Example: Paragraph A, answer i)",
+       "type": "match",
+       "options": [
+        "i A central role in city life",
+        "ii Several reasons for a rapid decline",
+        "iii A decision shaped by image",
+        "iv Cities that kept their trams",
+        "v What makes modern trams attractive",
+        "vi The high price of new lines",
+        "vii Why perception matters",
+        "viii A plan to ban cars from city centres",
+        "ix The invention of the electric motor"
+       ],
+       "questions": [
+        {
+         "n": 1,
+         "text": "Paragraph B"
+        },
+        {
+         "n": 2,
+         "text": "Paragraph C"
+        },
+        {
+         "n": 3,
+         "text": "Paragraph D"
+        },
+        {
+         "n": 4,
+         "text": "Paragraph E"
+        },
+        {
+         "n": 5,
+         "text": "Paragraph F"
+        },
+        {
+         "n": 6,
+         "text": "Paragraph G"
+        }
+       ]
+      },
+      {
+       "instructions": "Questions 7–10. Do the following statements agree with the information given in the passage? Write TRUE if the statement agrees with the information, FALSE if the statement contradicts the information, NOT GIVEN if there is no information on this.",
+       "type": "tfng",
+       "options": [
+        "TRUE",
+        "FALSE",
+        "NOT GIVEN"
+       ],
+       "questions": [
+        {
+         "n": 7,
+         "text": "In the 1920s, trams were used mainly by wealthy people."
+        },
+        {
+         "n": 8,
+         "text": "Some tram systems were removed even though they were making a profit."
+        },
+        {
+         "n": 9,
+         "text": "Modern trams use less electricity than older models."
+        },
+        {
+         "n": 10,
+         "text": "The term 'rail factor' refers to the higher cost of building tram lines."
+        }
+       ]
+      },
+      {
+       "instructions": "Questions 11–13. Complete the summary below. Choose NO MORE THAN TWO WORDS from the passage for each answer.",
+       "type": "gap",
+       "questions": [
+        {
+         "n": 11,
+         "text": "Tram lines are costly because water pipes, ______ and other underground services have to be moved."
+        },
+        {
+         "n": 12,
+         "text": "Construction work may cause problems for local ______ for a long time."
+        },
+        {
+         "n": 13,
+         "text": "In bus rapid transit, buses travel on ______ and stop at tram-style stations."
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Streets without signs",
+     "subtitle": "Can removing traffic lights and road markings make streets safer?",
+     "paragraphs": [
+      {
+       "label": "A",
+       "text": "For most of the twentieth century, the design of urban streets was guided by one central principle, the separation of pedestrians and vehicles. Traffic engineers built kerbs, railings, signs and signals to keep different road users apart, on the assumption that separation was the safest possible arrangement. Pedestrians were given pavements and crossings, drivers were given the road, and each group was expected to stay in its own space. The result in many towns was a landscape dominated by metal barriers, painted lines and an ever-growing number of signs. Few people questioned this arrangement, which seemed to follow naturally from the dramatic rise in car ownership."
+      },
+      {
+       "label": "B",
+       "text": "In the 1980s, a small group of traffic engineers in northern Europe began to question this approach. They observed that drivers in heavily controlled environments tended to pay attention to signs and signals rather than to the people around them. A green light, for instance, was treated as permission to drive on, regardless of whether a child was about to step into the road. Their alternative, which later became known as shared space, involved removing kerbs, signs, road markings and even traffic lights, so that drivers, cyclists and pedestrians would share a single surface and negotiate their movements with each other. The idea was initially met with disbelief, and some officials predicted that it would lead to chaos."
+      },
+      {
+       "label": "C",
+       "text": "The thinking behind shared space draws on research in psychology. According to a theory known as risk compensation, people adjust their behaviour according to how dangerous they believe a situation to be. When a road looks wide, straight and clearly marked, drivers feel safe and tend to drive faster. When the rules are less clear, they become uncertain about what others will do, and they respond by slowing down, looking around and making eye contact with other road users. In this way, the absence of rules can encourage more careful behaviour."
+      },
+      {
+       "label": "D",
+       "text": "Early schemes, mostly in small towns, produced some encouraging results. Average vehicle speeds fell, and several towns reported fewer serious accidents. Perhaps more surprisingly, journey times through town centres sometimes decreased, because traffic flowed more smoothly once vehicles no longer had to stop at traffic lights. Shop owners in some towns also noted that customers seemed to stay longer in the more relaxed environment. These findings attracted considerable attention, and over the following decades, shared space schemes were introduced in a number of countries."
+      },
+      {
+       "label": "E",
+       "text": "The approach has not been without controversy, however. Organisations representing blind and partially sighted people have argued that shared space puts them at a serious disadvantage. Such pedestrians rely on kerbs to tell them where the pavement ends and on controlled crossings to cross safely, and they cannot make eye contact with drivers. In my view, these concerns are entirely justified. In response to such criticism, some schemes have introduced so-called comfort zones, areas where vulnerable pedestrians can walk without any vehicles passing close to them. Similar worries have been raised on behalf of older people and young children."
+      },
+      {
+       "label": "F",
+       "text": "There are also questions about the quality of the evidence. Many evaluations of shared space schemes were carried out by the designers of those schemes, rather than by independent researchers, and most covered only short periods of time. Moreover, because serious accidents are relatively rare in any single street, it is extremely difficult to show with confidence whether a scheme has made a street safer or not. A change in the number of accidents from one year to the next may simply be a matter of chance. Critics have also pointed out that people may simply avoid streets where they feel unsafe, which would reduce accidents without making the street any safer."
+      },
+      {
+       "label": "G",
+       "text": "It is also clear that shared space does not suit every location. The approach appears to work best in streets where traffic volumes are moderate and where there are many pedestrians, such as town centres and shopping streets. On busy main roads carrying large numbers of lorries and through traffic, it is neither practical nor safe. For this reason, many towns now prefer a compromise design, in which kerbs are kept but made much lower, signs are reduced, and pedestrians are given greater priority without removing all physical separation."
+      },
+      {
+       "label": "H",
+       "text": "What, then, is the lasting lesson of the shared space movement? It would be a mistake to conclude that all traffic signs and signals should be removed. The more important insight is that the design of a street sends messages to the people who use it, and that those messages shape how they behave. A street that looks like a motorway will be driven on like one. Planners who take this into account can create streets that are both safer and more pleasant, whether or not they choose to remove the kerbs."
+      }
+     ],
+     "groups": [
+      {
+       "instructions": "Questions 14–17. Choose the correct letter, A, B, C or D.",
+       "type": "mc",
+       "questions": [
+        {
+         "n": 14,
+         "text": "According to paragraph A, traditional street design was based on the belief that",
+         "options": [
+          "A pedestrians needed fewer signs than drivers.",
+          "B keeping road users apart was safest.",
+          "C drivers should always have priority.",
+          "D streets should look attractive."
+         ]
+        },
+        {
+         "n": 15,
+         "text": "The engineers mentioned in paragraph B noticed that drivers in highly controlled streets",
+         "options": [
+          "A drove more slowly than elsewhere.",
+          "B made frequent eye contact with pedestrians.",
+          "C focused on signals more than on people.",
+          "D often ignored traffic lights."
+         ]
+        },
+        {
+         "n": 16,
+         "text": "According to paragraph C, drivers in shared space tend to slow down because they",
+         "options": [
+          "A are unsure how others will behave.",
+          "B are worried about speed cameras.",
+          "C find the road surface uncomfortable.",
+          "D have been given clear instructions."
+         ]
+        },
+        {
+         "n": 17,
+         "text": "What does the writer say about journey times in early schemes?",
+         "options": [
+          "A They were not measured.",
+          "B They sometimes became shorter.",
+          "C They became much longer.",
+          "D They stayed exactly the same."
+         ]
+        }
+       ]
+      },
+      {
+       "instructions": "Questions 18–22. Do the following statements agree with the claims of the writer? Write YES if the statement agrees with the claims of the writer, NO if the statement contradicts the claims of the writer, NOT GIVEN if it is impossible to say what the writer thinks about this.",
+       "type": "ynng",
+       "options": [
+        "YES",
+        "NO",
+        "NOT GIVEN"
+       ],
+       "questions": [
+        {
+         "n": 18,
+         "text": "The concerns of blind and partially sighted people about shared space are reasonable."
+        },
+        {
+         "n": 19,
+         "text": "Most evaluations of shared space schemes were carried out by independent researchers."
+        },
+        {
+         "n": 20,
+         "text": "The rarity of serious accidents makes it hard to judge whether a street has become safer."
+        },
+        {
+         "n": 21,
+         "text": "Shared space is a suitable design for busy main roads."
+        },
+        {
+         "n": 22,
+         "text": "Shared space schemes are cheaper to build than conventional streets."
+        }
+       ]
+      },
+      {
+       "instructions": "Questions 23–27. Complete each sentence with the correct ending, A–G.",
+       "type": "match",
+       "options": [
+        "A change their behaviour according to how dangerous a situation seems.",
+        "B give vulnerable pedestrians an area free of vehicles.",
+        "C covered only short periods of time.",
+        "D offer a compromise between separation and sharing.",
+        "E the design of a street influences how people behave.",
+        "F traffic lights should be removed from every town centre.",
+        "G drivers are more careful at night than during the day."
+       ],
+       "questions": [
+        {
+         "n": 23,
+         "text": "Risk compensation theory suggests that people"
+        },
+        {
+         "n": 24,
+         "text": "Comfort zones were introduced in some schemes to"
+        },
+        {
+         "n": 25,
+         "text": "Many evaluations of shared space were limited because they"
+        },
+        {
+         "n": 26,
+         "text": "Many towns now prefer designs with lower kerbs because they"
+        },
+        {
+         "n": 27,
+         "text": "According to the writer, the most important lesson of shared space is that"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "vocab": {
+  "lr": [
+   {
+    "en": "the backbone of",
+    "vi": "xương sống, nền tảng chính của",
+    "pos": "noun phrase",
+    "ex": "In the early decades of the twentieth century, the electric tram was the backbone of public transport in hundreds of cities."
+   },
+   {
+    "en": "contributed to its decline",
+    "vi": "góp phần vào sự suy giảm của nó",
+    "pos": "verb phrase",
+    "ex": "Several factors contributed to its decline."
+   },
+   {
+    "en": "be blamed for",
+    "vi": "bị đổ lỗi vì",
+    "pos": "verb phrase (passive)",
+    "ex": "The rapid growth of car ownership after the Second World War meant that roads became increasingly crowded, and trams, which shared the road with other vehicles, came to be blamed for causing delays."
+   },
+   {
+    "en": "were reluctant to",
+    "vi": "miễn cưỡng, không muốn",
+    "pos": "adjective phrase",
+    "ex": "Many tram networks were also in poor condition after years of underinvestment, and city authorities were reluctant to pay for costly repairs."
+   },
+   {
+    "en": "as much by fashion as by economics",
+    "vi": "do trào lưu chẳng kém gì do kinh tế",
+    "pos": "comparative phrase",
+    "ex": "In a number of cities, historians have found that the choice was influenced as much by fashion as by economics."
+   },
+   {
+    "en": "from the 1980s onwards",
+    "vi": "từ những năm 1980 trở đi",
+    "pos": "time phrase",
+    "ex": "These cities provided valuable evidence when, from the 1980s onwards, planners elsewhere began to reconsider the role of the tram."
+   },
+   {
+    "en": "led many authorities to",
+    "vi": "khiến nhiều chính quyền phải",
+    "pos": "verb phrase",
+    "ex": "Rising concern about air pollution and traffic congestion led many authorities to look for alternatives to the car, and the tram, now redesigned with quieter vehicles and low floors for easier access, was rediscovered."
+   },
+   {
+    "en": "a long-term commitment",
+    "vi": "một cam kết lâu dài",
+    "pos": "noun phrase",
+    "ex": "In addition, a tram line represents a long-term commitment by the city, which can encourage businesses and property developers to invest in the areas it serves."
+   },
+   {
+    "en": "at a fraction of the cost",
+    "vi": "với chi phí thấp hơn nhiều",
+    "pos": "prepositional phrase",
+    "ex": "Where it has been carefully designed, this approach has delivered many of the benefits of a tram at a fraction of the cost."
+   },
+   {
+    "en": "depends not only on",
+    "vi": "không chỉ phụ thuộc vào",
+    "pos": "verb phrase",
+    "ex": "The value of a transport system depends not only on its technical performance but also on how people perceive it."
+   },
+   {
+    "en": "on the assumption that",
+    "vi": "dựa trên giả định rằng",
+    "pos": "prepositional phrase",
+    "ex": "Traffic engineers built kerbs, railings, signs and signals to keep different road users apart, on the assumption that separation was the safest possible arrangement."
+   },
+   {
+    "en": "pay attention to",
+    "vi": "chú ý đến",
+    "pos": "verb phrase",
+    "ex": "They observed that drivers in heavily controlled environments tended to pay attention to signs and signals rather than to the people around them."
+   },
+   {
+    "en": "regardless of whether",
+    "vi": "bất kể liệu",
+    "pos": "linking phrase",
+    "ex": "A green light, for instance, was treated as permission to drive on, regardless of whether a child was about to step into the road."
+   },
+   {
+    "en": "draws on research in",
+    "vi": "dựa trên nghiên cứu về",
+    "pos": "verb phrase",
+    "ex": "The thinking behind shared space draws on research in psychology."
+   },
+   {
+    "en": "attracted considerable attention",
+    "vi": "thu hút sự chú ý đáng kể",
+    "pos": "verb phrase",
+    "ex": "These findings attracted considerable attention, and over the following decades, shared space schemes were introduced in a number of countries."
+   },
+   {
+    "en": "puts them at a serious disadvantage",
+    "vi": "đặt họ vào thế rất bất lợi",
+    "pos": "verb phrase",
+    "ex": "Organisations representing blind and partially sighted people have argued that shared space puts them at a serious disadvantage."
+   },
+   {
+    "en": "a matter of chance",
+    "vi": "chuyện ngẫu nhiên",
+    "pos": "noun phrase",
+    "ex": "A change in the number of accidents from one year to the next may simply be a matter of chance."
+   },
+   {
+    "en": "take this into account",
+    "vi": "tính đến điều này",
+    "pos": "verb phrase",
+    "ex": "Planners who take this into account can create streets that are both safer and more pleasant, whether or not they choose to remove the kerbs."
+   },
+   {
+    "en": "keep pace with",
+    "vi": "theo kịp",
+    "pos": "verb phrase",
+    "ex": "The assumption was that road space could keep pace with demand."
+   },
+   {
+    "en": "a realistic alternative to",
+    "vi": "một lựa chọn thay thế khả thi cho",
+    "pos": "noun phrase",
+    "ex": "Evidence suggests that these schemes are most effective when the money raised is spent on improving public transport, so that people have a realistic alternative to driving."
+   }
+  ],
+  "sw": [
+   {
+    "en": "commute to work",
+    "vi": "đi làm hằng ngày",
+    "pos": "verb phrase",
+    "ex": "Many people commute to work by car because their offices are far from home."
+   },
+   {
+    "en": "traffic congestion",
+    "vi": "tắc nghẽn giao thông",
+    "pos": "noun phrase",
+    "ex": "In many large cities, traffic congestion wastes millions of working hours every year."
+   },
+   {
+    "en": "dedicated cycle lanes",
+    "vi": "làn đường riêng cho xe đạp",
+    "pos": "noun phrase",
+    "ex": "Building dedicated cycle lanes would make riders feel much safer on busy roads."
+   },
+   {
+    "en": "road safety concerns",
+    "vi": "lo ngại về an toàn giao thông",
+    "pos": "noun phrase",
+    "ex": "For many people, road safety concerns are the main reason why they stop cycling."
+   },
+   {
+    "en": "exhaust fumes",
+    "vi": "khói xe",
+    "pos": "noun phrase",
+    "ex": "Cyclists in large cities often have to breathe in exhaust fumes from heavy traffic."
+   },
+   {
+    "en": "urban sprawl",
+    "vi": "sự mở rộng đô thị tràn lan",
+    "pos": "noun phrase",
+    "ex": "Because of urban sprawl, many workers now live too far from their offices to cycle."
+   },
+   {
+    "en": "a sedentary lifestyle",
+    "vi": "lối sống ít vận động",
+    "pos": "noun phrase",
+    "ex": "Driving to work every day contributes to a sedentary lifestyle."
+   },
+   {
+    "en": "financial incentives",
+    "vi": "các ưu đãi tài chính",
+    "pos": "noun phrase",
+    "ex": "Governments could offer financial incentives to employees who cycle to work."
+   },
+   {
+    "en": "secure bike parking",
+    "vi": "chỗ gửi xe đạp an toàn",
+    "pos": "noun phrase",
+    "ex": "Companies should provide secure bike parking so that staff are not worried about theft."
+   },
+   {
+    "en": "shower facilities",
+    "vi": "phòng tắm (tại nơi làm việc)",
+    "pos": "noun phrase",
+    "ex": "Few people will cycle in hot weather unless their workplace has shower facilities."
+   },
+   {
+    "en": "reduce carbon emissions",
+    "vi": "giảm khí thải carbon",
+    "pos": "verb phrase",
+    "ex": "Encouraging cycling is a cheap way to reduce carbon emissions in cities."
+   },
+   {
+    "en": "a convenient alternative to",
+    "vi": "một lựa chọn thay thế tiện lợi cho",
+    "pos": "noun phrase",
+    "ex": "For short journeys, a bicycle is a convenient alternative to the car."
+   },
+   {
+    "en": "during rush hour",
+    "vi": "vào giờ cao điểm",
+    "pos": "prepositional phrase",
+    "ex": "Buses are usually overcrowded during rush hour."
+   },
+   {
+    "en": "be stuck in traffic",
+    "vi": "bị kẹt xe",
+    "pos": "verb phrase",
+    "ex": "I hate to be stuck in traffic for an hour on my way home."
+   },
+   {
+    "en": "well-connected",
+    "vi": "được kết nối tốt (về giao thông)",
+    "pos": "adjective",
+    "ex": "My neighbourhood is well-connected, so I can reach the centre in fifteen minutes."
+   },
+   {
+    "en": "pedestrian-friendly",
+    "vi": "thân thiện với người đi bộ",
+    "pos": "adjective",
+    "ex": "A pedestrian-friendly city centre encourages people to walk instead of drive."
+   },
+   {
+    "en": "public transport network",
+    "vi": "mạng lưới giao thông công cộng",
+    "pos": "noun phrase",
+    "ex": "A reliable public transport network reduces the number of private cars on the road."
+   },
+   {
+    "en": "invest heavily in",
+    "vi": "đầu tư mạnh vào",
+    "pos": "verb phrase",
+    "ex": "Cities that invest heavily in cycling infrastructure tend to have healthier residents."
+   },
+   {
+    "en": "raise awareness of",
+    "vi": "nâng cao nhận thức về",
+    "pos": "verb phrase",
+    "ex": "Public campaigns can raise awareness of the health benefits of cycling."
+   },
+   {
+    "en": "high-rise buildings",
+    "vi": "các tòa nhà cao tầng",
+    "pos": "noun phrase",
+    "ex": "The centre of my city is full of high-rise buildings and busy roads."
+   }
+  ]
+ },
+ "keys": {
+  "salt": "t9t42g39nobt",
+  "listening": {
+   "1": {
+    "h": [
+     "650f2fd154a80300"
+    ],
+    "hint": "Họ được nhân viên đánh vần lại để xác nhận."
+   },
+   "2": {
+    "h": [
+     "e8d79219578614cf"
+    ],
+    "hint": "Tên đường được người gọi đánh vần ngay sau số nhà."
+   },
+   "3": {
+    "h": [
+     "2eb30da500be5c47",
+     "824a172c24bd2469"
+    ],
+    "hint": "Người gọi tự sửa lại câu trả lời đầu tiên. Nghe con số sau chữ 'Actually'."
+   },
+   "4": {
+    "h": [
+     "e3ab5e8579fc9c2c"
+    ],
+    "hint": "Có hai gói. Người gọi chỉ dùng xe khoảng một lần mỗi tháng."
+   },
+   "5": {
+    "h": [
+     "263f496c1d4f1f47",
+     "41cb9c1e4e860c5d",
+     "8a4af2e4002b5406"
+    ],
+    "hint": "Có hai mức giá theo giờ. Chọn giá của gói người gọi đã chọn."
+   },
+   "6": {
+    "h": [
+     "c2db4e62bdda98cd"
+    ],
+    "hint": "Xe từng đặt ở một chỗ khác nhưng đã chuyển đi. Nghe địa điểm hiện tại."
+   },
+   "7": {
+    "h": [
+     "5285c9887028d2fc"
+    ],
+    "hint": "Người gọi nhắc một người trước rồi tự sửa lại."
+   },
+   "8": {
+    "h": [
+     "f45b2874c1eefd40"
+    ],
+    "hint": "Nhân viên nói hai việc KHÔNG cần làm, rồi mới nói việc cần làm."
+   },
+   "9": {
+    "h": [
+     "056c21a83b4c2d5c"
+    ],
+    "hint": "Quy định về xăng đã thay đổi. Nghe quy định hiện tại sau chữ 'now'."
+   },
+   "10": {
+    "h": [
+     "94f90d434bf05fa2"
+    ],
+    "hint": "Nghe câu 'It isn't just...' và câu ngay sau nó."
+   },
+   "11": {
+    "h": [
+     "a4eedd61c36308dc"
+    ],
+    "hint": "Một mục tiêu được nhắc trước rồi bị nói là KHÔNG phải lý do chính. Nghe sau 'Above all'."
+   },
+   "12": {
+    "h": [
+     "0099451773b29e33"
+    ],
+    "hint": "Ba mùa đều được nhắc. Nghe mùa sau cụm 'put back to'."
+   },
+   "13": {
+    "h": [
+     "6d80e846e1bcd183"
+    ],
+    "hint": "Nghe 'What will change is that...'. Giá vẫn giữ nguyên."
+   },
+   "14": {
+    "h": [
+     "ad50710914a1a1c0",
+     "afc884722e818d1e"
+    ],
+    "hint": "Nghe 'Firstly' và 'Secondly'. Hai thứ được nhắc sau đó sẽ không xảy ra như mong đợi.",
+    "grp": "14-15"
+   },
+   "15": {
+    "h": [
+     "09b3d2c15a2a797e",
+     "602c3c5f5c40f631"
+    ],
+    "hint": "Nghe 'Firstly' và 'Secondly'. Hai thứ được nhắc sau đó sẽ không xảy ra như mong đợi.",
+    "grp": "14-15"
+   },
+   "16": {
+    "h": [
+     "a51d65188ffe5553"
+    ],
+    "hint": "Nghe chi tiết về xe đạp ở đây: người đi xe đạp phải làm gì?"
+   },
+   "17": {
+    "h": [
+     "b7df9f64d2ae2ef6"
+    ],
+    "hint": "Đường vẫn mở, nhưng cho những loại xe nào?"
+   },
+   "18": {
+    "h": [
+     "b3e43d610b0dfd0a"
+    ],
+    "hint": "Nghe thứ mà người đi xe đạp đã yêu cầu nhiều năm."
+   },
+   "19": {
+    "h": [
+     "f92bec7de64f0584"
+    ],
+    "hint": "Có hai kế hoạch cho con đường này nhưng một kế hoạch bị hoãn. Chọn thay đổi chắc chắn xảy ra."
+   },
+   "20": {
+    "h": [
+     "51e80fc02c5a3e05"
+    ],
+    "hint": "Một đề xuất bị từ chối vì thiếu chỗ. Nghe từ 'Instead'."
+   },
+   "21": {
+    "h": [
+     "13a4bbce1f1e82d6"
+    ],
+    "hint": "Nghe câu trả lời của Maya ngay đầu bài, sau 'We chose it because'."
+   },
+   "22": {
+    "h": [
+     "91768de2096ed768"
+    ],
+    "hint": "Một phương pháp quá chậm và chỉ được khoảng bốn mươi người. Nghe phần 'the rest'."
+   },
+   "23": {
+    "h": [
+     "cb07aa6db4c96816"
+    ],
+    "hint": "Tom nói một việc không sao cả, rồi mới nói 'The real issue'."
+   },
+   "24": {
+    "h": [
+     "40854f5695ce2f53"
+    ],
+    "hint": "Maya không muốn một thứ, và Tom bỏ một ý vì thiếu thời gian. Nghe đề xuất 'Why don't we...'."
+   },
+   "25": {
+    "h": [
+     "34e4376f25292b3f",
+     "59e3b659ce12aa7e"
+    ],
+    "hint": "Nghe phần cuối. Hai ý bị loại vì trường không kiểm soát được hoặc quá tốn kém.",
+    "grp": "25-26"
+   },
+   "26": {
+    "h": [
+     "06704d8becd902d2",
+     "a610aebe7b01cccc"
+    ],
+    "hint": "Nghe phần cuối. Hai ý bị loại vì trường không kiểm soát được hoặc quá tốn kém.",
+    "grp": "25-26"
+   },
+   "27": {
+    "h": [
+     "17fdc50ca9ec10db"
+    ],
+    "hint": "Phương tiện này phổ biến nhất, nhưng người dùng phàn nàn điều gì nhiều nhất?"
+   },
+   "28": {
+    "h": [
+     "5ba6d36281386474"
+    ],
+    "hint": "Nghe chi tiết về vòng xuyến gần nhà thể thao."
+   },
+   "29": {
+    "h": [
+     "89b93f5e6c2d181a"
+    ],
+    "hint": "Nghe phần so sánh với khảo sát ba năm trước."
+   },
+   "30": {
+    "h": [
+     "8e90b5ca7f4936a5"
+    ],
+    "hint": "Thời tiết là bẫy. Nghe Maya nói điều gì làm cô ấy bất ngờ."
+   },
+   "31": {
+    "h": [
+     "186e4a48abf718dc"
+    ],
+    "hint": "Nghe câu ngay trước cụm 'induced demand'."
+   },
+   "32": {
+    "h": [
+     "edc8cf74cfe63521"
+    ],
+    "hint": "Nghe phần giải thích 'Why does it happen?', nhóm người từng đi phương tiện công cộng."
+   },
+   "33": {
+    "h": [
+     "615446e8bb48be69",
+     "8b479749c278a5ad"
+    ],
+    "hint": "Nghe phần nói về thiệt hại của cách làm cũ."
+   },
+   "34": {
+    "h": [
+     "9d417e843be60f84"
+    ],
+    "hint": "Nghe phần 'works in reverse'."
+   },
+   "35": {
+    "h": [
+     "f46a2e1bd84a48c9"
+    ],
+    "hint": "Nghe công cụ đầu tiên mà thành phố có."
+   },
+   "36": {
+    "h": [
+     "ae1087b94b603de4",
+     "ef0478626417def6"
+    ],
+    "hint": "Nghe cụm 'most effective when the money raised is spent on...'."
+   },
+   "37": {
+    "h": [
+     "34a9d45dbaaa7f51"
+    ],
+    "hint": "Ngày xưa là mức tối thiểu cho mỗi tòa nhà mới. Nghe cách làm hiện nay."
+   },
+   "38": {
+    "h": [
+     "6a5cd029ade61361"
+    ],
+    "hint": "Nghe cụm 'within a short walk or...'."
+   },
+   "39": {
+    "h": [
+     "7c502cad0f9b4d23"
+    ],
+    "hint": "Nghe điều thành phố nén cần kết hợp với nhà ở."
+   },
+   "40": {
+    "h": [
+     "9f1fbac3765526b7"
+    ],
+    "hint": "Nghe phần cuối, lo ngại của những người phản đối."
+   }
+  },
+  "reading": {
+   "1": {
+    "h": [
+     "2fa21a57456a7566"
+    ],
+    "hint": "Đoạn B liệt kê nhiều yếu tố. Để ý cụm 'Several factors'."
+   },
+   "2": {
+    "h": [
+     "74a440ed6c079c1d"
+    ],
+    "hint": "Đoạn C nói quyết định không dựa trên phân tích kỹ. Vậy nó dựa trên điều gì?"
+   },
+   "3": {
+    "h": [
+     "a3703201ddf7d625"
+    ],
+    "hint": "Câu mở đầu đoạn D: 'Not every city followed this path'."
+   },
+   "4": {
+    "h": [
+     "3ec2cef467538ad9"
+    ],
+    "hint": "Đoạn E liệt kê lợi thế của tàu điện so với xe buýt."
+   },
+   "5": {
+    "h": [
+     "facb0cc8306c20c5"
+    ],
+    "hint": "Câu mở đầu đoạn F, bắt đầu bằng 'However'."
+   },
+   "6": {
+    "h": [
+     "00a4075ca3c6e10e"
+    ],
+    "hint": "Đoạn G nói giá trị của hệ thống giao thông phụ thuộc vào hai điều. Điều nào được nhấn mạnh?"
+   },
+   "7": {
+    "h": [
+     "6f2430f60ed197af"
+    ],
+    "hint": "Đoạn A, câu nói về những năm 1920 và người lao động."
+   },
+   "8": {
+    "h": [
+     "d2ee4040c1eb8ad5"
+    ],
+    "hint": "Đoạn C, câu bắt đầu bằng 'Planners who wished to present their cities'."
+   },
+   "9": {
+    "h": [
+     "0bcb1b301c2c63f6"
+    ],
+    "hint": "Đoạn D mô tả tàu điện được thiết kế lại. Kiểm tra xem có nhắc đến lượng điện tiêu thụ không."
+   },
+   "10": {
+    "h": [
+     "7364ba7a444fc90d"
+    ],
+    "hint": "Đoạn E. Đọc kỹ câu giải thích ngay trước cụm 'rail factor'."
+   },
+   "11": {
+    "h": [
+     "61322ab03e7edbe5",
+     "c68da7fbfbdd97f3"
+    ],
+    "hint": "Đoạn F, câu thứ hai. Tìm thứ đứng cạnh 'water pipes'."
+   },
+   "12": {
+    "h": [
+     "651d1da4953a4103"
+    ],
+    "hint": "Đoạn F, cùng câu, phần sau 'construction can disrupt'."
+   },
+   "13": {
+    "h": [
+     "76051a697e0661ae"
+    ],
+    "hint": "Đoạn F, câu định nghĩa 'bus rapid transit'."
+   },
+   "14": {
+    "h": [
+     "11cdf751fb5d8616"
+    ],
+    "hint": "Đoạn A, tìm cụm 'on the assumption that'."
+   },
+   "15": {
+    "h": [
+     "4bfee2e927000601"
+    ],
+    "hint": "Đoạn B, câu thứ hai và ví dụ về đèn xanh."
+   },
+   "16": {
+    "h": [
+     "1b33d7d7042baf67"
+    ],
+    "hint": "Đoạn C, câu bắt đầu bằng 'When the rules are less clear'."
+   },
+   "17": {
+    "h": [
+     "b4b0db57faab1d73"
+    ],
+    "hint": "Đoạn D, câu bắt đầu bằng 'Perhaps more surprisingly'."
+   },
+   "18": {
+    "h": [
+     "ff3654c995be6e31"
+    ],
+    "hint": "Đoạn E. Tìm câu tác giả nêu quan điểm cá nhân, bắt đầu bằng 'In my view'."
+   },
+   "19": {
+    "h": [
+     "31fd6f00d59b91d2"
+    ],
+    "hint": "Đoạn F, câu đầu tiên sau 'Many evaluations'."
+   },
+   "20": {
+    "h": [
+     "04dcfd32a22f5380"
+    ],
+    "hint": "Đoạn F, câu bắt đầu bằng 'Moreover'."
+   },
+   "21": {
+    "h": [
+     "fb67fe7423d84121"
+    ],
+    "hint": "Đoạn G. Tìm phần nói về đường có nhiều xe tải."
+   },
+   "22": {
+    "h": [
+     "66d97f7b20f4924a"
+    ],
+    "hint": "Đọc lại toàn bài, tìm xem có thông tin nào so sánh chi phí xây dựng không."
+   },
+   "23": {
+    "h": [
+     "a354eec8f5295de5"
+    ],
+    "hint": "Đoạn C, câu định nghĩa lý thuyết 'risk compensation'."
+   },
+   "24": {
+    "h": [
+     "9745b92fc6b75e46"
+    ],
+    "hint": "Đoạn E, câu có cụm 'comfort zones'."
+   },
+   "25": {
+    "h": [
+     "7b484799cb826130"
+    ],
+    "hint": "Đoạn F, câu đầu tiên. Có hai hạn chế, chỉ một hạn chế khớp với cấu trúc câu."
+   },
+   "26": {
+    "h": [
+     "9b14f6a642729544"
+    ],
+    "hint": "Đoạn G, câu cuối, từ khóa 'compromise'."
+   },
+   "27": {
+    "h": [
+     "7bf2874d073e3f0a"
+    ],
+    "hint": "Đoạn H. Tác giả nói một kết luận là sai lầm, rồi nêu điều quan trọng hơn."
+   }
+  }
+ }
+}
