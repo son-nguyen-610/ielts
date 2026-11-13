@@ -167,6 +167,7 @@ body.wide .wrap{max-width:1180px}
 </div>
 
 <div class="topbar" id="topbar" hidden><div class="topbar-in">
+  <button class="nav" id="tb-back" style="color:var(--accent)">← Back</button>
   <button class="nav" data-go="home">Homework</button>
   <button class="nav" data-go="lib">Library</button>
   <button class="nav" data-go="fb">Feedback</button>
@@ -1488,6 +1489,7 @@ show = function(n){
   const testing = ["scr-listen","scr-read","scr-vq","scr-write","scr-q","scr-prep","scr-talk","scr-part"].includes(n);
   $("topbar").hidden = !inApp || testing;
   document.body.classList.toggle("wide", n === "scr-read");
+  $("tb-back").hidden = n === "scr-home";
   document.querySelectorAll(".topbar .nav").forEach(b => b.classList.toggle("on",
     (b.dataset.go === "home" && n === "scr-home") || (b.dataset.go === "lib" && n === "scr-lib") ||
     (b.dataset.go === "fb" && n === "scr-fb") || (b.dataset.go === "words" && n === "scr-words")));
@@ -1512,6 +1514,11 @@ document.querySelectorAll(".topbar .nav").forEach(b => b.addEventListener("click
   if(S.locked || isBusy()){ toast("Finish this part first."); return; }
   ({home, lib:openLibrary, fb:openFeedback, words:openWords})[b.dataset.go]();
 }));
+$("tb-back").addEventListener("click", () => {
+  if(S.locked || isBusy()){ toast("Finish this part first."); return; }
+  if(!$("scr-lib").hidden && !$("lib-doc").hidden){ libHome(); window.scrollTo(0,0); return; }   // inside a Library item: back to the list
+  home();
+});
 $("tb-who").addEventListener("click", () => { if(S.locked || isBusy()){ toast("Finish this part first."); return; } show("scr-id"); });
 function isBusy(){
   return !$("scr-write").hidden || !$("scr-q").hidden || !$("scr-talk").hidden || !$("scr-prep").hidden || !$("scr-part").hidden;
