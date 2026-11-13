@@ -1510,7 +1510,7 @@ function toast(t){
     document.body.appendChild(el); }
   el.textContent = t; el.hidden = false; clearTimeout(el._t); el._t = setTimeout(() => el.hidden = true, 3500);
 }
-document.querySelectorAll(".topbar .nav").forEach(b => b.addEventListener("click", () => {
+document.querySelectorAll(".topbar .nav[data-go]").forEach(b => b.addEventListener("click", () => {
   if(S.locked || isBusy()){ toast("Finish this part first."); return; }
   ({home, lib:openLibrary, fb:openFeedback, words:openWords})[b.dataset.go]();
 }));
