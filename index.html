@@ -6,14 +6,14 @@
 <title>IELTS Homework</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Instrument+Serif&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap">
 <style>
 /* Layout: one exam column; a sticky rail carries the clock whenever a clock is running. */
 :root{
   --paper:#f3f4f6; --card:#ffffff; --ink:#15181d; --muted:#5b6370; --line:#d7dae1;
   --accent:#0d5b55; --accent-soft:#e3efed; --rec:#b5352b; --warn:#9a6107; --ok:#1d6b3f;
-  --ui:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-  --display:"Instrument Serif","Iowan Old Style",Georgia,serif;
+  --ui:"Be Vietnam Pro",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  --display:"Be Vietnam Pro",-apple-system,"Segoe UI",sans-serif;
   color-scheme:light;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
@@ -35,7 +35,7 @@ body{
   padding-block:0 56px;
 }
 .wrap{max-width:720px;margin:0 auto}
-h1{font-family:var(--display);font-weight:400;font-size:2.1rem;line-height:1.1;margin:0;text-wrap:balance}
+h1{font-family:var(--display);font-weight:700;letter-spacing:-.02em;font-size:2rem;line-height:1.1;margin:0;text-wrap:balance}
 h2{font-size:1.05rem;font-weight:600;margin:0}
 p{margin:.6rem 0}
 .eyebrow{font-size:.72rem;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--muted)}
@@ -88,7 +88,7 @@ textarea.essay{min-height:340px}
 .tile .s.sent{color:var(--ok)}
 
 .qnum{font-size:.72rem;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--muted)}
-.question{font-family:var(--display);font-size:1.8rem;line-height:1.22;margin:.4rem 0 0}
+.question{font-family:var(--display);font-weight:600;font-size:1.5rem;line-height:1.22;margin:.4rem 0 0}
 .cue{background:var(--accent-soft);border:1px solid var(--accent);border-radius:10px;padding:18px}
 .cue .question{font-size:1.5rem}
 .cue ul{margin:.7rem 0 0;padding-left:1.1rem;font-family:var(--ui);font-size:.98rem}
@@ -97,8 +97,10 @@ textarea.essay{min-height:340px}
 .prompt{background:var(--accent-soft);border:1px solid var(--accent);border-radius:10px;padding:16px;font-size:1.02rem}
 .wordcount{font-size:.84rem;color:var(--muted);font-variant-numeric:tabular-nums}
 .wordcount.short{color:var(--rec)}
-.vi{font-family:var(--display);font-size:2rem;line-height:1.2;margin:.3rem 0 0}
+.vi{font-family:var(--display);font-weight:600;font-size:1.9rem;line-height:1.2;margin:.3rem 0 0}
 .pos{font-size:.84rem;color:var(--muted)}
+.vhint{font-size:1.5rem;letter-spacing:.32em;font-weight:600;color:var(--accent);margin-top:10px;font-variant-numeric:tabular-nums}
+.wl{width:100%;border-collapse:collapse}.wl td{padding:9px 6px;border-bottom:1px solid var(--line);vertical-align:top}.wl td.en{font-weight:600}.wl td.p{color:var(--muted);font-size:.84rem;white-space:nowrap}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
 .stat{border:1px solid var(--line);border-radius:8px;padding:12px}
 .stat b{display:block;font-size:1.45rem;font-variant-numeric:tabular-nums;font-weight:600;line-height:1.1}
@@ -260,15 +262,24 @@ footer{margin-top:30px;font-size:.78rem;color:var(--muted)}
   <div class="live" id="live2"><em>Listening…</em></div>
 </section>
 
+<!-- ===== WORD LIST ===== -->
+<section id="scr-words" class="stack" hidden style="padding-block:28px">
+  <div><div class="eyebrow" id="words-week"></div><h1>Word list</h1>
+    <p class="lede">The vocabulary test uses exactly these words. Learn the English word for each meaning.</p></div>
+  <div class="card"><table class="wl" id="words-table"></table></div>
+  <div class="row"><button class="back">Back</button></div>
+</section>
+
 <!-- ===== VOCABULARY ===== -->
 <section id="scr-v-intro" class="stack" hidden style="padding-block:34px">
   <div><div class="eyebrow">Task 4 of 4</div><h1>Vocabulary</h1>
-    <p class="lede">Two rounds. First the ten words of the week, from the Vietnamese, ten seconds each. Then three of them used in sentences about your own life.</p></div>
+    <p class="lede">Two rounds. First the ten words of this week's list, from the Vietnamese, ten seconds each. Each word shows its first letter and length, so only the list word counts. Then three of them used in sentences about your own life.</p></div>
   <div class="card"><ul class="rules">
     <li>Ten seconds is not enough time to look a word up. That is the point.</li>
     <li>No going back and no second attempt.</li>
     <li>Pasting is blocked and leaving the tab is recorded.</li>
-    <li>Spelling counts. A near miss is marked separately so your teacher can see it.</li>
+    <li>Learn the word list first: the "Word list" tile on your tasks page.</li>
+    <li>Spelling counts. British or American spelling both count. A near miss is marked separately so your teacher can see it.</li>
   </ul></div>
   <div class="row"><button id="v-start" class="primary big">Start</button><button class="back">Back</button></div>
 </section>
@@ -277,6 +288,7 @@ footer{margin-top:30px;font-size:.78rem;color:var(--muted)}
   <div class="qnum" id="v-label"></div>
   <div class="vi" id="v-vi">—</div>
   <div class="pos" id="v-pos"></div>
+  <div class="vhint" id="v-hint"></div>
   <div style="margin-top:20px;max-width:380px"><input id="v-input" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Type the English word"></div>
   <div class="row" style="margin-top:12px"><button id="v-next">Next</button></div>
 </section>
@@ -454,7 +466,7 @@ const TASKS = [
 
 /* ===== helpers ===== */
 const $ = id => document.getElementById(id);
-const SCREENS = ["scr-id","scr-menu","scr-fb","scr-lr","scr-w-intro","scr-write","scr-s-intro","scr-part","scr-q","scr-prep","scr-talk","scr-v-intro","scr-v-recall","scr-v-use","scr-send"];
+const SCREENS = ["scr-id","scr-menu","scr-fb","scr-words","scr-lr","scr-w-intro","scr-write","scr-s-intro","scr-part","scr-q","scr-prep","scr-talk","scr-v-intro","scr-v-recall","scr-v-use","scr-send"];
 function show(n){ SCREENS.forEach(s => $(s).hidden = (s !== n)); window.scrollTo(0,0); }
 function esc(s){ return String(s).replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c])); }
 function words(s){ return (s||"").trim() ? s.trim().split(/\s+/).filter(Boolean).length : 0; }
@@ -547,8 +559,23 @@ function menu(){
     '<span class="s todo">Read before you write</span>';
   fb.onclick = openFeedback;
   $("tiles").appendChild(fb);
+  const wl = document.createElement("button");
+  wl.className = "tile card";
+  wl.innerHTML = '<span class="t">Word list</span><span class="d">This week\'s ten words. Learn them before the vocabulary test.</span>' +
+    '<span class="s todo">Study first</span>';
+  wl.onclick = openWords;
+  $("tiles").appendChild(wl);
   show("scr-menu");
 }
+
+function openWords(){
+  hideRail();
+  $("words-week").textContent = S.week + " · " + S.wk.theme;
+  $("words-table").innerHTML = S.wk.vocab.map(w =>
+    '<tr><td>' + esc(w.vi) + '</td><td class="en">' + esc(w.en) + '</td><td class="p">' + esc(w.pos || "") + '</td></tr>').join("");
+  show("scr-words");
+}
+function letterHint(en){ return en.split(" ").map(word => word[0] + word.slice(1).replace(/[a-z]/gi, "_")).join("   "); }
 
 function openFeedback(){
   hideRail();
@@ -1048,7 +1075,8 @@ function recallStep(){
   const w = list[S.v.i];
   $("v-label").textContent = "Word " + (S.v.i+1) + " of " + list.length;
   $("v-vi").textContent = w.vi;
-  $("v-pos").textContent = w.pos || "";
+  $("v-pos").textContent = (w.pos ? w.pos + " · " : "") + w.en.replace(/[^a-z]/gi,"").length + " letters";
+  $("v-hint").textContent = letterHint(w.en);
   $("v-input").value = "";
   $("stage").textContent = "Vocabulary · recall";
   show("scr-v-recall");
@@ -1056,7 +1084,7 @@ function recallStep(){
   let closed = false;
   const done = () => {
     if(closed) return; closed = true; stopClock();
-    S.v.answers.push({ en:w.en, vi:w.vi, given:$("v-input").value.trim() });
+    S.v.answers.push({ en:w.en, vi:w.vi, alt:w.alt, given:$("v-input").value.trim() });
     S.v.i++; recallStep();
   };
   startClock(T.recall, done);
@@ -1095,13 +1123,24 @@ function editDistance(a,b){
   }
   return prev[n];
 }
+/* British and American spellings both count, plus any alt listed for the word. */
+function variants(en, alt){
+  const t = norm(en), v = new Set([t]);
+  (alt || []).forEach(x => v.add(norm(x)));
+  [[/ise$/,"ize"],[/ize$/,"ise"],[/isation$/,"ization"],[/ization$/,"isation"],[/our/,"or"],[/re$/,"er"],
+   [/l$/,"ll"],[/ll$/,"l"],[/lment$/,"llment"],[/llment$/,"lment"],[/ence$/,"ense"],[/ogue$/,"og"]]
+    .forEach(([a,b]) => { if(a.test(t)) v.add(t.replace(a,b)); });
+  return [...v];
+}
 function gradeVocab(){
   let right = 0, near = 0;
   const marked = S.v.answers.map(a => {
     const g = norm(a.given), t = norm(a.en);
+    const ok = variants(a.en, a.alt);
+    const words = (a.given||"").toLowerCase().split(/[^a-z]+/).filter(Boolean);
     let verdict;
     if(!g) verdict = "blank";
-    else if(g === t){ verdict = "right"; right++; }
+    else if(ok.includes(g) || words.some(x => ok.includes(x))){ verdict = "right"; right++; }
     else if(editDistance(g,t) <= Math.max(1, Math.floor(t.length/5))){ verdict = "near"; near++; }
     else verdict = "wrong";
     return Object.assign({}, a, {verdict});
