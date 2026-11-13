@@ -99,6 +99,14 @@ textarea.essay{min-height:340px}
 .wordcount.short{color:var(--rec)}
 .vi{font-family:var(--display);font-weight:600;font-size:1.9rem;line-height:1.2;margin:.3rem 0 0}
 .pos{font-size:.84rem;color:var(--muted)}
+.libsec{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--card)}
+.libsec summary{cursor:pointer;display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-weight:700;font-size:1.02rem;list-style:none}
+.libsec summary::-webkit-details-marker{display:none}
+.libsec summary::before{content:"▸";color:var(--accent);margin-right:8px}
+.libsec[open] summary::before{content:"▾"}
+.libsec summary span{flex:1}
+.libsec summary small{font-weight:500;color:var(--muted);font-size:.8rem;text-align:right}
+.libsec .libitem{background:var(--paper)}
 .libgrp{font-size:.74rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:8px}
 .libitem{text-align:left;display:block;width:100%}.libitem small{display:block;color:var(--muted);font-size:.8rem}
 .md{line-height:1.65}.md h2{font-size:1.3rem;margin:1.2em 0 .4em}.md h3{font-size:1.05rem;margin:1em 0 .3em}.md h2:first-child,.md h3:first-child{margin-top:0}
@@ -338,7 +346,7 @@ body.wide .wrap{max-width:1180px}
 <section id="scr-write" hidden style="padding-block:24px">
   <div class="qnum" id="w-label"></div>
   <div class="prompt" id="w-prompt" style="margin-top:10px"></div>
-  <img id="w-img" alt="" style="max-width:100%;margin-top:14px;border:1px solid var(--line);border-radius:8px" hidden>
+  <img id="w-img" alt="Task 1 chart" title="Click to enlarge" style="max-width:100%;margin-top:14px;border:1px solid var(--line);border-radius:8px;cursor:zoom-in;background:#fff" hidden onclick="window.open(this.src,'_blank')">
   <div style="margin-top:16px"><textarea id="w-text" class="essay" spellcheck="false" placeholder="Start typing here."></textarea></div>
   <div class="row" style="margin-top:10px">
     <div class="wordcount" id="w-wc">0 words</div>
@@ -400,7 +408,7 @@ body.wide .wrap{max-width:1180px}
 <!-- ===== LIBRARY ===== -->
 <section id="scr-lib" class="stack" hidden style="padding-block:28px">
   <div><div class="eyebrow">Library</div><h1 id="lib-title">Cheat sheets and sample answers</h1>
-    <p class="lede" id="lib-lede">Everything from class in one place.</p></div>
+    <p class="lede" id="lib-lede">Model answers for each week appear here once that week's writing is handed in.</p></div>
   <input id="lib-search" placeholder="Search: a topic, a question, a word" autocomplete="off">
   <div id="lib-list" class="stack" style="gap:10px"></div>
   <article id="lib-doc" class="card md" hidden></article>
@@ -742,14 +750,30 @@ function openLibrary(){
     .catch(() => { $("lib-list").innerHTML = '<p class="hint">The library could not load. Check your connection and try again.</p>'; });
 }
 function libHome(){ $("lib-doc").hidden = true; $("lib-list").hidden = false; $("lib-search").hidden = false; $("lib-up").hidden = true; }
+/* Library layout: 1) samples for the writing you have just done (week by week, newest on top),
+   2) cheat sheets, 3) all Task 1 samples, 4) all Task 2 samples. Sections fold open/closed.
+   A week's samples appear only after that week's writing is handed in or the week is over,
+   so nobody reads the model answer before writing. */
+function weekReleased(w){
+  if(!w) return true;
+  if(w < currentWeek()) return true;
+  try{ return !!JSON.parse(recall("hw.sent." + slug(S.name) + "." + w) || "{}").w; }catch(e){ return false; }
+}
+function libBtn(it, weekly){
+  const t = weekly ? it.group.replace(/ sample answers$/, "") + " · " + it.title.replace(/^\d+\.\s*/, "") : it.title;
+  return '<button class="card libitem" data-f="' + esc(it.file) + '">' + esc(t) + (it.sub ? '<small>' + esc(it.sub) + '</small>' : '') + '</button>';
+}
 function renderLib(){
   const q = $("lib-search").value.trim().toLowerCase();
-  const items = (LIB.items || []).filter(it => !q || (it.title + " " + (it.tags || "") + " " + (it.group || "")).toLowerCase().includes(q));
-  let html = "", grp = null;
-  items.forEach(it => {
-    if(it.group !== grp){ grp = it.group; html += '<div class="libgrp">' + esc(grp) + '</div>'; }
-    html += '<button class="card libitem" data-f="' + esc(it.file) + '">' + esc(it.title) + (it.sub ? '<small>' + esc(it.sub) + '</small>' : '') + '</button>';
-  });
+  const all = (LIB.items || []).filter(it => weekReleased(it.week));
+  const match = it => !q || (it.title + " " + (it.tags || "") + " " + (it.group || "") + " " + (it.week || "")).toLowerCase().includes(q);
+  const items = all.filter(match);
+  const sec = (title, sub, list, open, weekly) => list.length ? '<details class="libsec"' + (open || q ? ' open' : '') + '><summary><span>' + esc(title) + '</span><small>' + esc(sub) + ' · ' + list.length + '</small></summary><div class="stack" style="gap:8px;margin-top:10px">' + list.map(it => libBtn(it, weekly)).join("") + '</div></details>' : "";
+  const weeks = [...new Set(items.filter(it => it.week).map(it => it.week))].sort().reverse();
+  let html = weeks.map((w, i) => sec(w + " writing · model answers", i === 0 ? "for the writing you just did" : "earlier week", items.filter(it => it.week === w).sort((a,b) => a.group.localeCompare(b.group)), i === 0, true)).join("");
+  html += sec("Cheat sheets", "the rules and frames to use every time", items.filter(it => it.group === "Cheat sheets"), true);
+  html += sec("All Task 1 model answers", "charts, tables, maps, processes", items.filter(it => /^Task 1/.test(it.group)), false);
+  html += sec("All Task 2 model answers", "essays by question type", items.filter(it => /^Task 2/.test(it.group)), false);
   $("lib-list").innerHTML = html || '<p class="hint">Nothing matches.</p>';
   $("lib-list").querySelectorAll(".libitem").forEach(b => b.onclick = () => openLibDoc(b.dataset.f));
 }

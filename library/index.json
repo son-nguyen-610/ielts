@@ -97,19 +97,22 @@
    "group": "Task 1 sample answers",
    "title": "13. Reasons for study and employer support",
    "file": "samples/q024.md",
-   "tags": "task 1 sample"
+   "tags": "task 1 sample",
+   "week": "W01"
   },
   {
    "group": "Task 1 sample answers",
    "title": "14. Commuting modes in a European city",
    "file": "samples/q025.md",
-   "tags": "task 1 sample"
+   "tags": "task 1 sample",
+   "week": "W02"
   },
   {
    "group": "Task 1 sample answers",
    "title": "15. Age structure of Yemen and Italy",
    "file": "samples/q026.md",
-   "tags": "task 1 sample"
+   "tags": "task 1 sample",
+   "week": "W03"
   },
   {
    "group": "Task 2 sample answers",
@@ -187,19 +190,22 @@
    "group": "Task 2 sample answers",
    "title": "13. Fewer students studying science",
    "file": "samples/q027.md",
-   "tags": "task 2 sample"
+   "tags": "task 2 sample",
+   "week": "W01"
   },
   {
    "group": "Task 2 sample answers",
    "title": "14. Fewer people cycling to work",
    "file": "samples/q028.md",
-   "tags": "task 2 sample"
+   "tags": "task 2 sample",
+   "week": "W02"
   },
   {
    "group": "Task 2 sample answers",
    "title": "15. Financial aid or practical help",
    "file": "samples/q029.md",
-   "tags": "task 2 sample"
+   "tags": "task 2 sample",
+   "week": "W03"
   }
  ]
 }
