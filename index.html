@@ -493,6 +493,7 @@ const WEEKS = {
   writing: {
     task1: "The charts below show the main reasons for study among students of different age groups and the amount of support they received from employers. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
     task1Image: "img/w01-task1.png",
+    task1Alt: [["https://ieltspracticeonline.com/wp-content/uploads/2022/11/Writing-Task-1-The-main-reasons-for-study-among-students-of-different-age-groups-and-the-amount-of-support-they-received-from-employers.gif", "https://www.ielts-writing.info/images/Graphs/G44.gif"], ["https://ieltspracticeonline.com/wp-content/uploads/2022/11/Writing-Task-1-The-main-reasons-for-study-among-students-of-different-age-groups-and-the-amount-of-support-they-received-from-employers-2.gif", "https://www.ielts-writing.info/images/Graphs/G45.gif"]],   // sharper chart-only copies, tried first; the local screenshot is the fallback
     task2: "Fewer students are choosing to study science. What are the reasons for this, and what effects does it have on society?"
   },
   speaking: {
@@ -534,6 +535,7 @@ const WEEKS = {
   writing: {
     task1: "The chart below shows the percentage of people using different modes of transport to travel to and from work in a European city in 1960, 1980 and 2000. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
     task1Image: "img/w02-task1.png",
+    task1Alt: [["https://www.ieltsbuddy.com/images/ielts-graph-transport.jpg", "https://lh3.googleusercontent.com/blogger_img_proxy/AEn0k_u4o_IPaHfICGJa2Z25xRKsxfKE1_8Cq1KclQjB5TkZwAeOY0_hoyeihj0-kjFA-BEynxNLX6by3w66ZC37oPxCHW3Yq96ALGOeUPII0UMVQArstN8FzGuhXtCg5Zx0K0_yOAFiwVH9js5OpYqoR47xXWuL_ycRsXj6ks5BS1Sj=s0-d"]],   // sharper chart-only copies, tried first; the local screenshot is the fallback
     task2: "Fewer people are using bicycles as a means of transport. Why is this, and how could cycling be encouraged?"
   },
   speaking: {
@@ -575,6 +577,7 @@ const WEEKS = {
   writing: {
     task1: "The charts below give information on the ages of the populations of Yemen and Italy in 2000 and projections for 2050. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
     task1Image: "img/w03-task1.png",
+    task1Alt: [["https://ted-ielts.com/wp-content/uploads/2017/04/Population-Pie-Charts.jpg", "https://ted-ielts.com/wp-content/uploads/2019/04/Population-Pie-Charts_goikrm.jpg"]],   // sharper chart-only copies, tried first; the local screenshot is the fallback
     task2: "Some people think rich countries should give financial aid to poorer ones. Others argue that practical help is more useful. Discuss both views and give your own opinion."
   },
   speaking: {
@@ -1064,6 +1067,22 @@ $("w-text").addEventListener("input", () => {
   store("hw.draft." + S.week + "." + S.w.stage, $("w-text").value);
 });
 $("w-start").addEventListener("click", () => { setLock("w"); S.w.stage = 0; nextWriting(); });
+/* Task 1 chart: try the sharp chart-only copies first (one or more charts), fall back to the local screenshot. */
+function showTask1Charts(groups, local){
+  let box = document.getElementById("w-imgs");
+  if(!box){ box = document.createElement("div"); box.id = "w-imgs"; $("w-img").after(box); }
+  box.innerHTML = ""; $("w-img").hidden = true;
+  if(!groups.length){ $("w-img").hidden = !local; if(local) $("w-img").src = local; return; }
+  let failed = 0;
+  groups.forEach(urls => {
+    const im = document.createElement("img"); let k = 0;
+    im.alt = "Task 1 chart"; im.title = "Click to enlarge"; im.referrerPolicy = "no-referrer";
+    im.style.cssText = "display:block;max-width:100%;width:100%;margin-top:14px;border:1px solid var(--line);border-radius:8px;background:#fff;cursor:zoom-in";
+    im.onclick = () => window.open(im.src, "_blank");
+    im.onerror = () => { k++; if(k < urls.length) im.src = urls[k]; else { im.remove(); failed++; if(failed === groups.length && local){ $("w-img").src = local; $("w-img").hidden = false; } } };
+    im.src = urls[0]; box.appendChild(im);
+  });
+}
 function nextWriting(){
   S.w.stage++;
   if(S.w.stage > 2){ finishWriting(); return; }
@@ -1071,7 +1090,7 @@ function nextWriting(){
   $("w-label").textContent = t1 ? "Task 1 · twenty minutes · at least 150 words" : "Task 2 · forty minutes · at least 250 words";
   $("w-prompt").textContent = t1 ? S.wk.writing.task1 : S.wk.writing.task2;
   const img = t1 ? (S.wk.writing.task1Image || "") : "";
-  $("w-img").hidden = !img; if(img) $("w-img").src = img;
+  showTask1Charts(t1 ? (S.wk.writing.task1Alt || []) : [], img);
   const saved = recall("hw.draft." + S.week + "." + S.w.stage) || "";
   $("w-text").value = saved;
   $("w-wc").textContent = words(saved) + " words";
