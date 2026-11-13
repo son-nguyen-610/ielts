@@ -113,7 +113,7 @@ textarea.essay{min-height:340px}
 .qrow.ok input{border-color:var(--ok)}.qrow.no input{border-color:var(--rec)}
 .qhint{grid-column:2 / 4;font-size:.84rem;color:var(--warn);margin:-2px 0 4px}
 .vhint{font-size:1.5rem;letter-spacing:.32em;font-weight:600;color:var(--accent);margin-top:10px;font-variant-numeric:tabular-nums}
-.wl{width:100%;border-collapse:collapse}.wl td{padding:9px 6px;border-bottom:1px solid var(--line);vertical-align:top}.wl td.en{font-weight:600}.wl td.p{color:var(--muted);font-size:.84rem;white-space:nowrap}
+.wl{width:100%;border-collapse:collapse;table-layout:auto;overflow-wrap:anywhere}.wl td{padding:9px 6px;border-bottom:1px solid var(--line);vertical-align:top}.wl td.en{font-weight:600}.wl td.p{color:var(--muted);font-size:.84rem;white-space:nowrap}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
 .stat{border:1px solid var(--line);border-radius:8px;padding:12px}
 .stat b{display:block;font-size:1.45rem;font-variant-numeric:tabular-nums;font-weight:600;line-height:1.1}
@@ -125,7 +125,9 @@ a.dl{display:inline-block;text-decoration:none;font-weight:600;color:var(--accen
 footer{margin-top:30px;font-size:.78rem;color:var(--muted)}
 /* v2: top bar, session cards, tests */
 .topbar{position:sticky;top:0;z-index:20;background:var(--paper);border-bottom:1px solid var(--line)}
-.topbar-in{max-width:980px;margin:0 auto;padding:10px 18px;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.topbar-in{max-width:980px;margin:0 auto;padding:8px 14px;display:flex;gap:4px;align-items:center;overflow-x:auto;white-space:nowrap;scrollbar-width:none}
+.topbar-in::-webkit-scrollbar{display:none}
+@media(max-width:600px){.topbar .nav{padding:8px 9px;font-size:.92rem}.topbar .who{max-width:110px;overflow:hidden;text-overflow:ellipsis}}
 .topbar .nav{border:0;background:none;padding:8px 12px;border-radius:8px;font-weight:600;color:var(--muted)}
 .topbar .nav.on{color:var(--ink);background:var(--card)}
 .topbar .who{margin-left:auto;font-size:.8rem;color:var(--muted);border:0;background:none;padding:6px 8px;text-decoration:underline}
@@ -153,6 +155,8 @@ footer{margin-top:30px;font-size:.78rem;color:var(--muted)}
 .res li{margin:4px 0}.res .ok{color:var(--ok)}.res .no{color:var(--rec)}.res .h{display:block;font-size:.84rem;color:var(--warn)}
 .nowplaying{font-size:.9rem;color:var(--muted)}
 body.wide .wrap{max-width:1180px}
+.readjump{position:sticky;top:64px;z-index:5}
+@media(min-width:900px){.readjump{display:none}}
 </style>
 </head>
 <body>
@@ -171,7 +175,7 @@ body.wide .wrap{max-width:1180px}
   <button class="nav" data-go="home">Homework</button>
   <button class="nav" data-go="lib">Library</button>
   <button class="nav" data-go="fb">Feedback</button>
-  <button class="nav" data-go="words">Word lists</button>
+  <button class="nav" data-go="words">Words</button>
   <button class="who" id="tb-who"></button>
 </div></div>
 
@@ -253,6 +257,7 @@ body.wide .wrap{max-width:1180px}
 <!-- ===== READING TEST ===== -->
 <section id="scr-read" hidden style="padding-block:20px">
   <div class="row" style="align-items:center"><div class="ptabs" id="re-tabs"></div><button id="re-submit" class="primary" style="margin-left:auto">Hand in reading</button></div>
+  <div class="row readjump" style="margin-top:10px"><button onclick="document.getElementById('re-passage').scrollIntoView({behavior:'smooth'})">↑ Text</button><button onclick="document.getElementById('re-qs').scrollIntoView({behavior:'smooth'})">↓ Questions</button></div>
   <div class="readwrap" style="margin-top:12px">
     <article class="card passage noselect" id="re-passage"></article>
     <div class="card qs noselect" id="re-qs"></div>
@@ -319,7 +324,7 @@ body.wide .wrap{max-width:1180px}
 
 <!-- ===== WRITING ===== -->
 <section id="scr-w-intro" class="stack" hidden style="padding-block:34px">
-  <div><div class="eyebrow">Task 2 of 4</div><h1>Writing</h1>
+  <div><div class="eyebrow">SW homework · part 3</div><h1>Writing test</h1>
     <p class="lede">One hour in total. Task 1 runs for twenty minutes, then Task 2 for forty. The clock does not stop and you cannot return to Task 1 once it ends.</p></div>
   <div class="card"><ul class="rules">
     <li>Pasting is blocked. Everything must be typed here.</li>
@@ -343,7 +348,7 @@ body.wide .wrap{max-width:1180px}
 
 <!-- ===== SPEAKING ===== -->
 <section id="scr-s-intro" class="stack" hidden style="padding-block:34px">
-  <div><div class="eyebrow">Task 3 of 4</div><h1>Speaking</h1>
+  <div><div class="eyebrow">SW homework · part 2</div><h1>Speaking test</h1>
     <p class="lede">A full fifteen minute test in three parts. Questions are read to you, the clock runs on its own, and nothing can be paused or recorded twice.</p></div>
   <div class="card"><ul class="rules">
     <li>Chrome on a laptop, with headphones. Phones and Safari will not record properly.</li>
@@ -1556,9 +1561,13 @@ function home(){
   hideRail(); S.locked = false;
   $("home-who").textContent = S.name + " · " + S.cohort + " · " + S.week;
   $("home-theme").textContent = S.wk.theme;
-  $("tb-who").textContent = S.name + " · " + S.week + " (change)";
+  $("tb-who").textContent = S.name.split(" ").slice(-1)[0] + " · " + S.week + " ⇄";
+  $("tb-who").title = S.name + " · " + S.cohort + " · " + S.week + " (change)";
   ["lr","sw"].forEach(sess => {
     const box = $("sess-" + sess); box.innerHTML = "";
+    const nDone = PARTS[sess].filter(pt => S.sent[pt.k]).length;
+    const h = box.parentElement.querySelector("h2");
+    h.innerHTML = (sess === "lr" ? "LR homework" : "SW homework") + ' <span style="font-size:.8rem;font-weight:600;color:' + (nDone === 3 ? "var(--ok)" : "var(--muted)") + '">· ' + (nDone === 3 ? "all done ✓" : nDone + "/3 done") + '</span>';
     PARTS[sess].forEach((pt, i) => {
       const done = S.sent[pt.k], ready = partReady(pt.k), started = lockInfo(pt.k);
       const b = document.createElement("button");
@@ -1569,7 +1578,7 @@ function home(){
         '</span><br><span class="pd">' + esc(pt.desc) + '</span></span><span class="ps">' + esc(status) + '</span>';
       b.onclick = () => {
         if(!ready){ toast("This part is not ready yet."); return; }
-        if(done && !confirmRedo(pt.name)) return;
+        if(done){ toast(pt.name + " is already handed in. Each part is one attempt."); return; }
         openPart(pt.k);
       };
       box.appendChild(b);
@@ -1706,7 +1715,7 @@ function showResult(title, lede, res, extraStats){
   $("rs-title").textContent = title; $("rs-lede").textContent = lede;
   $("rs-stats").innerHTML = [["Correct", right + "/" + res.length]].concat(extraStats || []).map(([k,v]) => '<div class="stat"><b>' + esc(v) + '</b><span>' + esc(k) + '</span></div>').join("");
   $("rs-list").innerHTML = res.map(r => '<li value="' + r.n + '"><span class="' + (r.ok ? "ok" : "no") + '">' + (r.ok ? "✓ " : "✗ ") + esc(r.given || "(blank)") + '</span>' +
-    (!r.ok && r.hint ? '<span class="h">Gợi ý: ' + esc(r.hint) + '</span>' : "") + '</li>').join("");
+    (!r.ok && r.hint ? '<span class="h">' + (/^Đáp án/.test(r.hint) ? "" : "Gợi ý: ") + esc(r.hint) + '</span>' : "") + '</li>').join("");
   show("scr-result");
 }
 $("rs-home").addEventListener("click", home);
