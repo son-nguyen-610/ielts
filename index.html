@@ -239,9 +239,15 @@ body.wide .wrap{max-width:1180px}
   <div class="eyebrow" id="li-part"></div>
   <h2 id="li-title" style="font-size:1.3rem;margin-top:4px"></h2>
   <p class="hint" id="li-context"></p>
+  <div class="card" id="li-count" style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:8px 0">
+    <div class="clock" id="li-count-n" style="font-size:2.2rem">0:20</div>
+    <div class="grow"><b id="li-count-t">Read the questions now. The recording starts automatically.</b><div class="bar" style="margin-top:8px"><i id="li-count-bar" style="width:100%"></i></div></div>
+    <button id="li-skip" class="primary">Start recording now</button>
+  </div>
   <div class="nowplaying" id="li-now"></div>
   <div id="li-qs" class="noselect"></div>
-  <div class="row" style="margin-top:14px"><button id="li-next" class="primary" hidden>Next part</button></div>
+  <div class="row" style="margin-top:14px"><button id="li-next" class="primary" hidden>Next part</button>
+    <button id="li-quit" style="margin-left:auto">Quit listening test</button></div>
 </section>
 
 <!-- ===== READING TEST ===== -->
@@ -1530,10 +1536,10 @@ function isBusy(){
 document.addEventListener("paste", e => { if(S.locked || isBusy()){ e.preventDefault(); S.integrity.pasted++; } }, true);
 
 const PARTS = {
-  lr: [ {k:"lr-v", name:"Vocabulary quiz", desc:"20 phrases from this week's listening and reading", min:"8 min"},
+  lr: [ {k:"lr-v", name:"Vocabulary quiz", desc:"20 phrases from this week's listening and reading", min:"up to 27 min"},
         {k:"lr-l", name:"Listening test", desc:"4 parts, 40 questions, you hear it once", min:"35 min"},
         {k:"lr-r", name:"Reading test", desc:"2 passages, about 27 questions", min:"40 min"} ],
-  sw: [ {k:"sw-v", name:"Vocabulary quiz", desc:"20 useful words for this week's topics", min:"8 min"},
+  sw: [ {k:"sw-v", name:"Vocabulary quiz", desc:"20 useful words for this week's topics", min:"up to 27 min"},
         {k:"s",    name:"Speaking test", desc:"Full test, Parts 1, 2 and 3, recorded", min:"15 min"},
         {k:"w",    name:"Writing test", desc:"Task 1 (20 min) and Task 2 (40 min)", min:"60 min"} ]
 };
@@ -1584,9 +1590,9 @@ function openPart(k){
     "lr-r": ["LR homework · part 3", "Reading test", "Two passages. Answer every question, then hand in.",
              ["40 minutes in total, about 20 per passage.", "Switch passages with the tabs at the top.", "Answers save as you type. When the clock ends your answers are handed in automatically."]],
     "lr-v": ["LR homework · part 1", "Vocabulary quiz", "20 phrases from this week's listening and reading. Fill the gap in each sentence.",
-             ["20 seconds per phrase.", "The first letters are shown.", "Small spelling slips are accepted."]],
+             ["80 seconds per phrase.", "The first letters are shown.", "Small spelling slips are accepted."]],
     "sw-v": ["SW homework · part 1", "Vocabulary quiz", "20 useful words and phrases for this week's speaking and writing. Fill the gap in each sentence.",
-             ["20 seconds per item.", "The first letters are shown.", "Small spelling slips are accepted."]]
+             ["80 seconds per item.", "The first letters are shown.", "Small spelling slips are accepted."]]
   }[k];
   $("ti-eyebrow").textContent = I[0]; $("ti-title").textContent = I[1]; $("ti-lede").textContent = I[2];
   $("ti-rules").innerHTML = I[3].map(r => "<li>" + esc(r) + "</li>").join("");
@@ -1759,10 +1765,12 @@ async function runPart(){
     el.addEventListener("change", () => { Object.assign(S.li.ans, collect("listening", part.groups)); saveAns("lr-l", S.li.ans); }); });
   $("li-next").hidden = true;
   show("scr-listen");
-  $("li-now").textContent = "Read the questions. The recording starts in 20 seconds.";
-  await wait(20000);
-  if(!S.locked) return;
-  $("li-now").textContent = "▶ Playing…";
+  $("li-now").textContent = "";
+  const me = S.li.p;
+  await countdown(20);
+  if(!S.locked || S.li.p !== me) return;
+  $("li-count").style.display = "none";
+  $("li-now").innerHTML = '<b style="color:var(--accent)">▶ Recording playing.</b> Answer as you listen.';
   const v = part.voices || {A:"female", B:"male"};
   const vA = voiceFor(v.A || "female", S.li.p), vB = voiceFor(v.B || "male", S.li.p + 1);
   for(const line of part.script){ if(!S.locked) return; await speakLine(line.t, line.v === "B" ? vB : vA); }
@@ -1778,8 +1786,26 @@ async function runPart(){
   await wait(30000); go();
 }
 const FAST = /[?&]fast\b/.test(location.search);   // test hook: shortens the listening pauses
+/* Visible countdown before each recording, so nobody thinks the audio is broken; can be skipped. */
+function countdown(sec){
+  return new Promise(res => {
+    $("li-count").style.display = "flex"; let left = sec, done = false;
+    const end = () => { if(done) return; done = true; clearInterval(t); $("li-count").style.display = "none"; res(); };
+    const paintC = () => { $("li-count-n").textContent = fmt(left); $("li-count-bar").style.width = (left/sec*100) + "%"; };
+    paintC();
+    const t = setInterval(() => { left--; paintC(); if(left <= 0 || !S.locked) end(); }, FAST ? 5 : 1000);
+    $("li-skip").onclick = end;
+  });
+}
+$("li-quit").addEventListener("click", () => {
+  if(!window.confirm("Quit the listening test?\n\nYour answers so far are handed in now and marked. You cannot come back into this test.")) return;
+  const part = S.test.lr.listening.parts[S.li.p];
+  Object.assign(S.li.ans, collect("listening", part.groups)); saveAns("lr-l", S.li.ans);
+  finishListening();
+});
 function wait(ms){ return new Promise(r => setTimeout(r, FAST ? ms/200 : ms)); }
 async function finishListening(resumed){
+  if(S.li && S.li.done) return; if(S.li) S.li.done = true;
   if(window.speechSynthesis) speechSynthesis.cancel();
   const L = S.test.lr.listening;
   const ans = resumed ? loadAns("lr-l") : Object.assign(loadAns("lr-l"), (S.li && S.li.ans) || {});
@@ -1862,7 +1888,7 @@ function quizStep(){
   let closed = false;
   const done = () => { if(closed) return; closed = true; stopClock();
     q.ans.push({ en:w.en, given:$("vq-input").value.trim() }); saveAns(q.k, { ans:q.ans }); q.i++; quizStep(); };
-  startClock(20, done);
+  startClock(80, done);
   $("vq-next").onclick = done;
   $("vq-input").onkeydown = e => { if(e.key === "Enter"){ e.preventDefault(); done(); } };
 }
