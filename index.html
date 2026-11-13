@@ -703,8 +703,7 @@ function openFeedback(){
         head.textContent = [it.week, it.task, String(it.at || "").slice(0,10)].filter(Boolean).join(" · ");
         const body = document.createElement("div");
         body.style.marginTop = "10px";
-        body.style.whiteSpace = "pre-wrap";
-        body.textContent = it.body || "";
+        body.classList.add("md"); body.innerHTML = md(it.body || "");   /* corrections arrive as Markdown */
         card.append(head, body);
         $("fb-list").appendChild(card);
       });
