@@ -858,13 +858,13 @@ function sendScreen(title, text){
   show("scr-send");
 }
 function sendOK(taskKey, stats){
-  markSent(taskKey);
+  markSent(taskKey); clearLock(taskKey);
   $("send-eyebrow").textContent = "Handed in";
   $("send-title").textContent = "Your work has been sent";
   $("send-text").textContent = "Nothing else to do for this task.";
   $("send-bar").style.width = "100%";
   $("send-stats").innerHTML = (stats||[]).map(([k,v]) => '<div class="stat"><b>'+esc(v)+'</b><span>'+esc(k)+'</span></div>').join("");
-  const b = document.createElement("button"); b.className="primary big"; b.textContent="Back to my tasks"; b.onclick = menu;
+  const b = document.createElement("button"); b.className="primary big"; b.textContent="Back to this week"; b.onclick = () => menu();
   $("send-acts").innerHTML = ""; $("send-acts").appendChild(b);
 }
 function sendFailed(files, stats){
@@ -879,7 +879,7 @@ function sendFailed(files, stats){
     a.className = "dl"; a.textContent = label; a.href = URL.createObjectURL(blob); a.download = filename;
     $("send-links").appendChild(a);
   });
-  const b = document.createElement("button"); b.textContent="Back to my tasks"; b.onclick = menu;
+  const b = document.createElement("button"); b.textContent="Back to this week"; b.onclick = () => menu();
   $("send-acts").innerHTML = ""; $("send-acts").appendChild(b);
 }
 function base(){ return { student:S.name, cohort:S.cohort, week:S.week, at:new Date().toISOString(), integrity:integrityOut() }; }
@@ -1027,7 +1027,7 @@ $("w-text").addEventListener("input", () => {
   el.classList.toggle("short", n < min);
   store("hw.draft." + S.week + "." + S.w.stage, $("w-text").value);
 });
-$("w-start").addEventListener("click", () => { S.w.stage = 0; nextWriting(); });
+$("w-start").addEventListener("click", () => { setLock("w"); S.w.stage = 0; nextWriting(); });
 function nextWriting(){
   S.w.stage++;
   if(S.w.stage > 2){ finishWriting(); return; }
@@ -1182,6 +1182,7 @@ function startMeter(){
 }
 $("btn-sgo").addEventListener("click", () => {
   if(S.meterStop) S.meterStop();
+  setLock("s");
   S.plan = buildPlan(S.wk.speaking); S.i = 0; S.repeats = 1; S.segments = []; S.started = new Date();
   partIntro(1);
 });
@@ -1566,6 +1567,7 @@ function home(){
 menu = home;   // every old "back to my tasks" now lands on the new home
 function openPart(k){
   resetIntegrity();
+  if((k === "s" || k === "w") && lockInfo(k) && !S.sent[k]){ resumeSW(k); return; }
   if(k === "s"){ hideRail(); show("scr-s-intro"); return; }
   if(k === "w"){ hideRail(); show("scr-w-intro"); return; }
   if(lockInfo(k) && !S.sent[k]){ resumeLocked(k); return; }
@@ -1598,6 +1600,20 @@ function resumeLocked(k){
   if(k === "lr-l") finishListening(true);
   else if(k === "lr-r") finishReading(true);
   else finishQuiz(k, true);
+}
+/* Writing / speaking left mid-way: hand in what exists, no restart. */
+function resumeSW(k){
+  toast("This part was already started, so it is handed in as it was left.");
+  S.locked = true;
+  if(k === "w"){
+    S.w.task1 = recall("hw.draft." + S.week + ".1") || ""; S.w.task2 = recall("hw.draft." + S.week + ".2") || "";
+    S.w.s1 = []; S.w.s2 = []; finishWriting();
+  } else {
+    const payload = Object.assign(base(), { task:"s", notes:"LEFT MID-TEST (page closed or reloaded)", segments:[], metrics:{},
+      repeatsUsed:0, transcriptAvailable:false, missingAudio:[1,2,3], audio:{} });
+    sendScreen("Handing in your speaking", "This takes a moment.");
+    postJSON(payload).then(() => sendOK("s", [["Status", "left mid-test"]])).catch(() => { markSent("s"); clearLock("s"); home(); });
+  }
 }
 function startPart(k){
   setLock(k);
