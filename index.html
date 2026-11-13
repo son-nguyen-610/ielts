@@ -410,7 +410,7 @@ body.wide .wrap{max-width:1180px}
 <!-- ===== WORD LIST ===== -->
 <section id="scr-words" class="stack" hidden style="padding-block:28px">
   <div><div class="eyebrow" id="words-week"></div><h1>Word list</h1>
-    <p class="lede">The vocabulary test uses exactly these words. Learn the English word for each meaning.</p></div>
+    <p class="lede">Every week's lists stay here, so you can revise old weeks. The quizzes use exactly these words.</p></div>
   <div class="card"><table class="wl" id="words-table"></table></div>
   <div class="row"><button class="back">Back</button></div>
 </section>
@@ -1944,16 +1944,30 @@ $("tc-load").addEventListener("click", loadTeacher);
 if(/[?&]teacher\b/.test(location.search)) setTimeout(teacherPage, 0);
 
 /* ----- word lists screen shows both lists ----- */
+/* Word lists build up week by week: every week up to the current one, never replaced. */
+const TEST_CACHE = {};
+function getTest(w){
+  if(TEST_CACHE[w]) return Promise.resolve(TEST_CACHE[w]);
+  return fetch("tests/" + w + ".json?v=" + Date.now()).then(r => r.ok ? r.json() : null).catch(() => null).then(j => (TEST_CACHE[w] = j));
+}
 openWords = function(){
   hideRail();
-  $("words-week").textContent = S.week + " · " + S.wk.theme;
-  const v = (S.test && S.test.vocab) || {};
-  const tbl = (title, list) => '<tr><td colspan="3" style="padding-top:18px"><b>' + esc(title) + '</b></td></tr>' +
-    (list && list.length ? list.map(w => '<tr><td>' + esc(w.vi) + '</td><td class="en">' + esc(w.en) + '</td><td class="p">' + esc(w.pos || "") + '</td></tr>').join("")
-      : '<tr><td colspan="3" class="hint">Not ready yet.</td></tr>');
-  $("words-table").innerHTML = tbl("LR list: phrases from this week's listening and reading", v.lr) + tbl("SW list: useful words for speaking and writing", v.sw);
+  const weeks = Object.keys(WEEKS).filter(w => w <= S.week);
+  $("words-week").textContent = "All weeks so far · " + weeks[0] + " to " + S.week;
+  $("words-table").innerHTML = '<tr><td class="hint">Loading…</td></tr>';
   show("scr-words");
+  Promise.all(weeks.map(getTest)).then(tests => {
+    const rows = list => list && list.length ? list.map(w => '<tr><td>' + esc(w.vi) + '</td><td class="en">' + esc(w.en) + '</td><td class="p">' + esc(w.pos || "") + '</td></tr>').join("")
+      : '<tr><td colspan="3" class="hint">Not ready yet.</td></tr>';
+    $("words-table").innerHTML = weeks.map((w, i) => {
+      const v = (tests[i] && tests[i].vocab) || {};
+      return '<tr><td colspan="3" style="padding-top:22px"><h2 style="font-size:1.25rem">' + esc(w) + ' · ' + esc(WEEKS[w].theme) + '</h2></td></tr>' +
+        '<tr><td colspan="3"><b>LR list</b> <span class="hint">phrases from the listening and reading</span></td></tr>' + rows(v.lr) +
+        '<tr><td colspan="3" style="padding-top:14px"><b>SW list</b> <span class="hint">useful words for speaking and writing</span></td></tr>' + rows(v.sw);
+    }).join("");
+  });
 };
+
 
 /* ===== leaving mid-task ===== */
 window.addEventListener("beforeunload", e => {
