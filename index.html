@@ -123,6 +123,36 @@ textarea.essay{min-height:340px}
 pre{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px;overflow-x:auto;font-size:.8rem;line-height:1.5;max-height:300px;white-space:pre-wrap}
 a.dl{display:inline-block;text-decoration:none;font-weight:600;color:var(--accent);border:1px solid var(--accent);border-radius:8px;padding:9px 15px}
 footer{margin-top:30px;font-size:.78rem;color:var(--muted)}
+/* v2: top bar, session cards, tests */
+.topbar{position:sticky;top:0;z-index:20;background:var(--paper);border-bottom:1px solid var(--line)}
+.topbar-in{max-width:980px;margin:0 auto;padding:10px 18px;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.topbar .nav{border:0;background:none;padding:8px 12px;border-radius:8px;font-weight:600;color:var(--muted)}
+.topbar .nav.on{color:var(--ink);background:var(--card)}
+.topbar .who{margin-left:auto;font-size:.8rem;color:var(--muted);border:0;background:none;padding:6px 8px;text-decoration:underline}
+.sess{border-radius:14px}
+.sess h2{font-size:1.15rem}
+.sess .when{font-size:.84rem;color:var(--muted);margin-top:2px}
+.part{display:flex;align-items:center;gap:12px;width:100%;text-align:left;margin-top:10px;padding:14px;border-radius:10px;border:1px solid var(--line);background:var(--paper)}
+.part .pn{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-weight:700;background:var(--accent-soft);color:var(--accent);flex:0 0 30px}
+.part .pt{font-weight:600}.part .pd{font-size:.82rem;color:var(--muted)}
+.part .ps{margin-left:auto;font-size:.74rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.part.done .pn{background:var(--ok);color:#fff}.part.done .ps{color:var(--ok)}
+.part.na{opacity:.55}
+.quick{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.noselect{-webkit-user-select:none;user-select:none}
+.tq{margin:12px 0}.tq .qt{font-weight:500;margin-bottom:6px}.tq .qn{font-weight:700;color:var(--accent);margin-right:6px}
+.tq input{max-width:320px}.tq select{max-width:320px}
+.opts{display:flex;flex-direction:column;gap:6px}.opts label{display:flex;gap:8px;align-items:flex-start;font-weight:400;color:var(--ink);font-size:.95rem;margin:0}
+.opts input{width:auto;margin-top:4px}
+.grp-i{font-size:.86rem;color:var(--muted);margin:16px 0 4px;font-style:italic}
+.optbox{border:1px dashed var(--line);border-radius:8px;padding:8px 12px;font-size:.88rem;margin:6px 0}
+.readwrap{display:grid;grid-template-columns:1fr;gap:16px}
+@media(min-width:900px){.readwrap{grid-template-columns:1.1fr 1fr}.readwrap .passage{max-height:72vh;overflow:auto}.readwrap .qs{max-height:72vh;overflow:auto}}
+.passage h2{font-size:1.2rem}.passage p{margin:.7em 0;line-height:1.7}.passage .pl{font-weight:700;margin-right:6px;color:var(--accent)}
+.ptabs{display:flex;gap:8px;flex-wrap:wrap}.ptabs button.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.res li{margin:4px 0}.res .ok{color:var(--ok)}.res .no{color:var(--rec)}.res .h{display:block;font-size:.84rem;color:var(--warn)}
+.nowplaying{font-size:.9rem;color:var(--muted)}
+body.wide .wrap{max-width:1180px}
 </style>
 </head>
 <body>
@@ -136,6 +166,14 @@ footer{margin-top:30px;font-size:.78rem;color:var(--muted)}
   <div class="bar" style="margin-bottom:10px"><i id="barfill"></i></div>
 </div>
 
+<div class="topbar" id="topbar" hidden><div class="topbar-in">
+  <button class="nav" data-go="home">Homework</button>
+  <button class="nav" data-go="lib">Library</button>
+  <button class="nav" data-go="fb">Feedback</button>
+  <button class="nav" data-go="words">Word lists</button>
+  <button class="who" id="tb-who"></button>
+</div></div>
+
 <div class="wrap">
 
 <!-- ===== IDENTITY ===== -->
@@ -143,7 +181,7 @@ footer{margin-top:30px;font-size:.78rem;color:var(--muted)}
   <div>
     <div class="eyebrow">Weekly homework</div>
     <h1>IELTS Homework</h1>
-    <p class="lede">Everything is handed in here. Save this one link. You can do the four tasks on different days, but each one is a single attempt with a clock.</p>
+    <p class="lede">Save this one link. Each week has two homework sessions, LR and SW, with three parts each. Every part is one attempt with a clock.</p>
   </div>
   <div class="card stack">
     <div class="row">
@@ -165,6 +203,60 @@ footer{margin-top:30px;font-size:.78rem;color:var(--muted)}
   </div>
   <div class="tiles" id="tiles"></div>
   <div class="row"><button id="btn-switch" class="hint" style="border:0;background:none;padding:0;text-decoration:underline">Not you, or wrong week?</button></div>
+</section>
+
+<!-- ===== HOME (v2) ===== -->
+<section id="scr-home" class="stack" hidden style="padding-block:28px">
+  <div><div class="eyebrow" id="home-who"></div><h1>This week</h1><p class="lede" id="home-theme"></p></div>
+  <div class="hint">Two homework sessions. Do the three parts of each in any order. Each part is one attempt with a clock: once you start, finish it.</div>
+  <div class="card sess"><h2>LR homework</h2><div class="when">After your Listening and Reading class</div><div id="sess-lr"></div></div>
+  <div class="card sess"><h2>SW homework</h2><div class="when">After your Speaking and Writing class</div><div id="sess-sw"></div></div>
+</section>
+
+<!-- ===== TEST PART INTRO (listening / reading / vocab quiz) ===== -->
+<section id="scr-tintro" class="stack" hidden style="padding-block:34px">
+  <div><div class="eyebrow" id="ti-eyebrow"></div><h1 id="ti-title"></h1><p class="lede" id="ti-lede"></p></div>
+  <div class="card"><ul class="rules" id="ti-rules"></ul></div>
+  <div class="warnbox">Once you press Start you cannot leave and restart this part. Copying and pasting are switched off.</div>
+  <div class="row"><button id="ti-start" class="primary big">Start</button><button class="back">Back</button></div>
+</section>
+
+<!-- ===== LISTENING TEST ===== -->
+<section id="scr-listen" hidden style="padding-block:20px">
+  <div class="eyebrow" id="li-part"></div>
+  <h2 id="li-title" style="font-size:1.3rem;margin-top:4px"></h2>
+  <p class="hint" id="li-context"></p>
+  <div class="nowplaying" id="li-now"></div>
+  <div id="li-qs" class="noselect"></div>
+  <div class="row" style="margin-top:14px"><button id="li-next" class="primary" hidden>Next part</button></div>
+</section>
+
+<!-- ===== READING TEST ===== -->
+<section id="scr-read" hidden style="padding-block:20px">
+  <div class="row" style="align-items:center"><div class="ptabs" id="re-tabs"></div><button id="re-submit" class="primary" style="margin-left:auto">Hand in reading</button></div>
+  <div class="readwrap" style="margin-top:12px">
+    <article class="card passage noselect" id="re-passage"></article>
+    <div class="card qs noselect" id="re-qs"></div>
+  </div>
+</section>
+
+<!-- ===== VOCAB QUIZ ===== -->
+<section id="scr-vq" hidden style="padding-block:26px">
+  <div class="qnum" id="vq-label"></div>
+  <div class="vi" id="vq-vi">—</div>
+  <div class="pos" id="vq-pos"></div>
+  <p class="noselect" id="vq-ex" style="margin-top:14px;font-size:1.05rem;line-height:1.6"></p>
+  <div class="vhint" id="vq-hint"></div>
+  <div style="margin-top:16px;max-width:460px"><input id="vq-input" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Type the missing phrase"></div>
+  <div class="row" style="margin-top:12px"><button id="vq-next" class="primary">Next</button></div>
+</section>
+
+<!-- ===== RESULT (auto-marked parts) ===== -->
+<section id="scr-result" class="stack" hidden style="padding-block:30px">
+  <div><div class="eyebrow" id="rs-eyebrow">Handed in</div><h1 id="rs-title"></h1><p class="lede" id="rs-lede"></p></div>
+  <div class="grid" id="rs-stats"></div>
+  <div class="card"><ol class="res" id="rs-list"></ol></div>
+  <div class="row"><button class="primary big" id="rs-home">Back to this week</button></div>
 </section>
 
 <!-- ===== FEEDBACK ===== -->
@@ -498,7 +590,7 @@ const TASKS = [
 
 /* ===== helpers ===== */
 const $ = id => document.getElementById(id);
-const SCREENS = ["scr-id","scr-menu","scr-fb","scr-words","scr-lib","scr-lr","scr-w-intro","scr-write","scr-s-intro","scr-part","scr-q","scr-prep","scr-talk","scr-v-intro","scr-v-recall","scr-v-use","scr-send"];
+const SCREENS = ["scr-id","scr-home","scr-tintro","scr-listen","scr-read","scr-vq","scr-result","scr-menu","scr-fb","scr-words","scr-lib","scr-lr","scr-w-intro","scr-write","scr-s-intro","scr-part","scr-q","scr-prep","scr-talk","scr-v-intro","scr-v-recall","scr-v-use","scr-send"];
 function show(n){ SCREENS.forEach(s => $(s).hidden = (s !== n)); window.scrollTo(0,0); }
 function esc(s){ return String(s).replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c])); }
 function words(s){ return (s||"").trim() ? s.trim().split(/\s+/).filter(Boolean).length : 0; }
@@ -556,14 +648,14 @@ CONFIG.cohorts.forEach(c => { const o=document.createElement("option"); o.textCo
 Object.keys(WEEKS).forEach(w => { const o=document.createElement("option"); o.textContent=w; $("f-week").appendChild(o); });
 $("f-name").value = recall("hw.name") || "";
 if(recall("hw.cohort")) $("f-cohort").value = recall("hw.cohort");
-if(recall("hw.week")) $("f-week").value = recall("hw.week");
+$("f-week").value = (typeof currentWeek === "function") ? currentWeek() : (recall("hw.week") || "W01");
 
 $("btn-id").addEventListener("click", () => {
   const n = $("f-name").value.trim();
   if(n.length < 2){ $("id-msg").textContent = "Type your full name first."; $("f-name").focus(); return; }
   S.name = n; S.cohort = $("f-cohort").value; S.week = $("f-week").value; S.wk = WEEKS[S.week];
   store("hw.name", n); store("hw.cohort", S.cohort); store("hw.week", S.week);
-  loadSent(); menu();
+  loadSent(); loadTest().then(home);
 });
 $("btn-switch").addEventListener("click", () => show("scr-id"));
 
@@ -719,7 +811,7 @@ function openTask(k){
   if(k === "s"){ hideRail(); show("scr-s-intro"); }
   if(k === "v"){ hideRail(); show("scr-v-intro"); }
 }
-document.querySelectorAll("button.back").forEach(b => b.addEventListener("click", menu));
+document.querySelectorAll("button.back").forEach(b => b.addEventListener("click", () => menu()));
 
 /* ===== submission ===== */
 function postJSON(obj){
@@ -1360,9 +1452,414 @@ function finishVocab(){
     .catch(() => { sendFailed([["Download your answers", new Blob([JSON.stringify(payload,null,2)],{type:"text/plain"}), slug(S.name)+"_"+S.week+"_vocab.txt"]], stats); after(); });
 }
 
+/* ===================== v2: weeks, navigation, home ===================== */
+function currentWeek(){
+  const start = new Date(2026, 10, 16).getTime();   // Monday 16 Nov 2026 = W01
+  const n = Math.floor((Date.now() - start) / (7*864e5)) + 1;
+  const keys = Object.keys(WEEKS);
+  const w = "W" + String(Math.min(Math.max(n,1), keys.length)).padStart(2,"0");
+  return keys.includes(w) ? w : keys[0];
+}
+S.test = null; S.locked = false;
+function loadTest(){
+  S.test = null;
+  return fetch("tests/" + S.week + ".json?v=" + Date.now()).then(r => r.ok ? r.json() : null).then(j => { S.test = j; }).catch(() => {});
+}
+/* History: every screen change is a history entry, so the browser Back button moves between screens.
+   While a timed part is running, Back is refused (the part cannot be left). */
+let navFromPop = false;
+const _show = show;
+show = function(n){
+  _show(n);
+  const inApp = n !== "scr-id";
+  const testing = ["scr-listen","scr-read","scr-vq","scr-write","scr-q","scr-prep","scr-talk","scr-part"].includes(n);
+  $("topbar").hidden = !inApp || testing;
+  document.body.classList.toggle("wide", n === "scr-read");
+  document.querySelectorAll(".topbar .nav").forEach(b => b.classList.toggle("on",
+    (b.dataset.go === "home" && n === "scr-home") || (b.dataset.go === "lib" && n === "scr-lib") ||
+    (b.dataset.go === "fb" && n === "scr-fb") || (b.dataset.go === "words" && n === "scr-words")));
+  if(!navFromPop) try{ history.pushState({scr:n}, ""); }catch(e){}
+  navFromPop = false;
+};
+window.addEventListener("popstate", e => {
+  if(S.locked || isBusy()){ try{ history.pushState({scr:"locked"}, ""); }catch(_){} toast("Finish this part first. It cannot be left once started."); return; }
+  const n = (e.state && e.state.scr) || (S.name ? "scr-home" : "scr-id");
+  navFromPop = true;
+  if(n === "scr-home") home(); else if(n === "scr-lib") openLibrary(); else if(n === "scr-fb") openFeedback();
+  else if(n === "scr-words") openWords(); else { navFromPop = true; show(S.name ? "scr-home" : "scr-id"); }
+});
+function toast(t){
+  let el = document.getElementById("toast");
+  if(!el){ el = document.createElement("div"); el.id = "toast";
+    el.style.cssText = "position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:10px;font-size:.9rem;z-index:50;max-width:90vw";
+    document.body.appendChild(el); }
+  el.textContent = t; el.hidden = false; clearTimeout(el._t); el._t = setTimeout(() => el.hidden = true, 3500);
+}
+document.querySelectorAll(".topbar .nav").forEach(b => b.addEventListener("click", () => {
+  if(S.locked || isBusy()){ toast("Finish this part first."); return; }
+  ({home, lib:openLibrary, fb:openFeedback, words:openWords})[b.dataset.go]();
+}));
+$("tb-who").addEventListener("click", () => { if(S.locked || isBusy()){ toast("Finish this part first."); return; } show("scr-id"); });
+function isBusy(){
+  return !$("scr-write").hidden || !$("scr-q").hidden || !$("scr-talk").hidden || !$("scr-prep").hidden || !$("scr-part").hidden;
+}
+/* No copying anywhere inside tasks or test material. */
+["copy","cut","contextmenu"].forEach(ev => document.addEventListener(ev, e => {
+  if(S.name && (S.locked || isBusy() || e.target.closest(".noselect"))){ e.preventDefault(); }
+}));
+document.addEventListener("paste", e => { if(S.locked || isBusy()){ e.preventDefault(); S.integrity.pasted++; } }, true);
+
+const PARTS = {
+  lr: [ {k:"lr-v", name:"Vocabulary quiz", desc:"20 phrases from this week's listening and reading", min:"8 min"},
+        {k:"lr-l", name:"Listening test", desc:"4 parts, 40 questions, you hear it once", min:"35 min"},
+        {k:"lr-r", name:"Reading test", desc:"2 passages, about 27 questions", min:"40 min"} ],
+  sw: [ {k:"sw-v", name:"Vocabulary quiz", desc:"20 useful words for this week's topics", min:"8 min"},
+        {k:"s",    name:"Speaking test", desc:"Full test, Parts 1, 2 and 3, recorded", min:"15 min"},
+        {k:"w",    name:"Writing test", desc:"Task 1 (20 min) and Task 2 (40 min)", min:"60 min"} ]
+};
+function partReady(k){
+  if(k === "s" || k === "w") return true;
+  if(!S.test) return false;
+  if(k === "lr-l") return !!(S.test.lr && S.test.lr.listening);
+  if(k === "lr-r") return !!(S.test.lr && S.test.lr.reading);
+  if(k === "lr-v") return !!(S.test.vocab && S.test.vocab.lr && S.test.vocab.lr.length);
+  if(k === "sw-v") return !!(S.test.vocab && S.test.vocab.sw && S.test.vocab.sw.length);
+  return false;
+}
+function home(){
+  hideRail(); S.locked = false;
+  $("home-who").textContent = S.name + " · " + S.cohort + " · " + S.week;
+  $("home-theme").textContent = S.wk.theme;
+  $("tb-who").textContent = S.name + " · " + S.week + " (change)";
+  ["lr","sw"].forEach(sess => {
+    const box = $("sess-" + sess); box.innerHTML = "";
+    PARTS[sess].forEach((pt, i) => {
+      const done = S.sent[pt.k], ready = partReady(pt.k), started = lockInfo(pt.k);
+      const b = document.createElement("button");
+      b.className = "part" + (done ? " done" : "") + (ready ? "" : " na");
+      const status = done ? "Done " + new Date(done).toLocaleString([], {weekday:"short", hour:"2-digit", minute:"2-digit"})
+                   : started ? "Started" : ready ? pt.min : "Not ready yet";
+      b.innerHTML = '<span class="pn">' + (done ? "✓" : (i+1)) + '</span><span><span class="pt">' + esc(pt.name) +
+        '</span><br><span class="pd">' + esc(pt.desc) + '</span></span><span class="ps">' + esc(status) + '</span>';
+      b.onclick = () => {
+        if(!ready){ toast("This part is not ready yet."); return; }
+        if(done && !confirmRedo(pt.name)) return;
+        openPart(pt.k);
+      };
+      box.appendChild(b);
+    });
+  });
+  show("scr-home");
+}
+menu = home;   // every old "back to my tasks" now lands on the new home
+function openPart(k){
+  resetIntegrity();
+  if(k === "s"){ hideRail(); show("scr-s-intro"); return; }
+  if(k === "w"){ hideRail(); show("scr-w-intro"); return; }
+  if(lockInfo(k) && !S.sent[k]){ resumeLocked(k); return; }
+  const I = {
+    "lr-l": ["LR homework · part 2", "Listening test", "Four parts, 40 questions. Each recording plays once, like the real test. Type your answers while you listen.",
+             ["Use headphones and turn the sound on before you start.", "Read the questions in the short pause before each recording.", "After each part you get 30 seconds to check, then the next part starts.", "Spelling counts."]],
+    "lr-r": ["LR homework · part 3", "Reading test", "Two passages. Answer every question, then hand in.",
+             ["40 minutes in total, about 20 per passage.", "Switch passages with the tabs at the top.", "Answers save as you type. When the clock ends your answers are handed in automatically."]],
+    "lr-v": ["LR homework · part 1", "Vocabulary quiz", "20 phrases from this week's listening and reading. Fill the gap in each sentence.",
+             ["20 seconds per phrase.", "The first letters are shown.", "Small spelling slips are accepted."]],
+    "sw-v": ["SW homework · part 1", "Vocabulary quiz", "20 useful words and phrases for this week's speaking and writing. Fill the gap in each sentence.",
+             ["20 seconds per item.", "The first letters are shown.", "Small spelling slips are accepted."]]
+  }[k];
+  $("ti-eyebrow").textContent = I[0]; $("ti-title").textContent = I[1]; $("ti-lede").textContent = I[2];
+  $("ti-rules").innerHTML = I[3].map(r => "<li>" + esc(r) + "</li>").join("");
+  $("ti-start").onclick = () => startPart(k);
+  hideRail(); show("scr-tintro");
+}
+
+/* ----- commit lock: a started part cannot be restarted; answers autosave and are handed in as they are ----- */
+function lockKey(k){ return "hw.lock." + slug(S.name) + "." + S.week + "." + k; }
+function ansKey(k){ return "hw.ans." + slug(S.name) + "." + S.week + "." + k; }
+function lockInfo(k){ return recall(lockKey(k)); }
+function setLock(k){ store(lockKey(k), new Date().toISOString()); S.locked = true; S.part = k; }
+function saveAns(k, obj){ store(ansKey(k), JSON.stringify(obj)); }
+function loadAns(k){ try{ return JSON.parse(recall(ansKey(k)) || "{}"); }catch(e){ return {}; } }
+function clearLock(k){ store(lockKey(k)); store(ansKey(k)); S.locked = false; }
+function resumeLocked(k){
+  toast("This part was already started, so it is handed in as it was left.");
+  if(k === "lr-l") finishListening(true);
+  else if(k === "lr-r") finishReading(true);
+  else finishQuiz(k, true);
+}
+function startPart(k){
+  setLock(k);
+  if(k === "lr-l") startListening();
+  else if(k === "lr-r") startReading();
+  else startQuiz(k);
+}
+
+/* ----- shared question rendering + marking (hashed keys) ----- */
+function qInput(sec, q, type, opts){
+  const id = "t-" + sec + "-" + q.n;
+  if(type === "mc"){
+    return '<div class="opts">' + q.options.map(o => { const L = o.trim()[0];
+      return '<label><input type="radio" name="' + id + '" value="' + L + '"> ' + esc(o) + '</label>'; }).join("") + '</div>';
+  }
+  if(type === "multi2"){
+    return '<div class="opts">' + q.options.map(o => { const L = o.trim()[0];
+      return '<label><input type="checkbox" name="' + id + '" value="' + L + '"> ' + esc(o) + '</label>'; }).join("") + '</div>';
+  }
+  if(type === "tfng" || type === "ynng"){
+    const v = type === "tfng" ? ["TRUE","FALSE","NOT GIVEN"] : ["YES","NO","NOT GIVEN"];
+    return '<select id="' + id + '"><option value="">Choose</option>' + v.map(x => '<option>' + x + '</option>').join("") + '</select>';
+  }
+  if(type === "match"){
+    return '<select id="' + id + '"><option value="">Choose</option>' + (opts||[]).map(o => { const L = o.trim().split(/[\s.)]/)[0];
+      return '<option value="' + esc(L) + '">' + esc(o.length > 70 ? o.slice(0,70) + "…" : o) + '</option>'; }).join("") + '</select>';
+  }
+  return '<input id="' + id + '" autocomplete="off" autocapitalize="off" spellcheck="false">';
+}
+function renderGroups(sec, groups){
+  return groups.map(g => '<div class="grp-i">' + esc(g.instructions || "") + '</div>' +
+    (g.type === "match" && g.options ? '<div class="optbox">' + g.options.map(esc).join("<br>") + '</div>' : "") +
+    g.questions.map(q => '<div class="tq"><div class="qt"><span class="qn">' + q.n + (q.n2 ? "–" + q.n2 : "") + '</span>' + esc(q.text || "") + '</div>' +
+      qInput(sec, q, g.type, g.options) + '</div>').join("")).join("");
+}
+function collect(sec, groups){
+  const out = {};
+  groups.forEach(g => g.questions.forEach(q => {
+    const id = "t-" + sec + "-" + q.n;
+    if(g.type === "mc"){ const c = document.querySelector('input[name="' + id + '"]:checked'); out[q.n] = c ? c.value : ""; }
+    else if(g.type === "multi2"){ const c = [...document.querySelectorAll('input[name="' + id + '"]:checked')].map(x => x.value);
+      out[q.n] = c[0] || ""; out[q.n2] = c[1] || ""; }
+    else { const el = $(id); out[q.n] = el ? el.value.trim() : ""; }
+  }));
+  return out;
+}
+function restore(sec, groups, saved){
+  groups.forEach(g => g.questions.forEach(q => {
+    const id = "t-" + sec + "-" + q.n;
+    if(g.type === "mc"){ const v = saved[q.n]; if(v){ const r = document.querySelector('input[name="' + id + '"][value="' + v + '"]'); if(r) r.checked = true; } }
+    else if(g.type === "multi2"){ [saved[q.n], saved[q.n2]].forEach(v => { if(v){ const r = document.querySelector('input[name="' + id + '"][value="' + v + '"]'); if(r) r.checked = true; } }); }
+    else { const el = $(id); if(el && saved[q.n]) el.value = saved[q.n]; }
+  }));
+}
+function limitTwo(container){
+  container.querySelectorAll('input[type=checkbox]').forEach(cb => cb.addEventListener("change", () => {
+    const all = container.querySelectorAll('input[name="' + cb.name + '"]:checked');
+    if(all.length > 2) cb.checked = false;
+  }));
+}
+async function markSection(sec, answers){
+  const K = (S.test.keys || {})[sec] || {}, salt = (S.test.keys || {}).salt || "";
+  const res = [], seen = {};
+  for(const n of Object.keys(answers).map(Number).sort((a,b) => a-b)){
+    const given = answers[n] || "", k = K[n];
+    let ok = false;
+    if(k && given){
+      ok = k.h.includes(await sha(salt + "|" + S.week + "|" + sec + "|" + n + "|" + normAns(given)));
+      if(ok && k.grp){ const g = k.grp + "|" + normAns(given); if(seen[g]) ok = false; seen[g] = true; }
+    }
+    res.push({ n, given, ok, hint: k ? k.hint : "" });
+  }
+  return res;
+}
+function showResult(title, lede, res, extraStats){
+  const right = res.filter(r => r.ok).length;
+  $("rs-title").textContent = title; $("rs-lede").textContent = lede;
+  $("rs-stats").innerHTML = [["Correct", right + "/" + res.length]].concat(extraStats || []).map(([k,v]) => '<div class="stat"><b>' + esc(v) + '</b><span>' + esc(k) + '</span></div>').join("");
+  $("rs-list").innerHTML = res.map(r => '<li value="' + r.n + '"><span class="' + (r.ok ? "ok" : "no") + '">' + (r.ok ? "✓ " : "✗ ") + esc(r.given || "(blank)") + '</span>' +
+    (!r.ok && r.hint ? '<span class="h">Gợi ý: ' + esc(r.hint) + '</span>' : "") + '</li>').join("");
+  show("scr-result");
+}
+$("rs-home").addEventListener("click", home);
+function summaryText(label, res){
+  return label + " · score " + res.filter(r => r.ok).length + "/" + res.length + "\n" + res.map(r => r.n + " " + (r.given || "-") + (r.ok ? " ✓" : " ✗")).join("\n");
+}
+function handIn(k, payload, res, title){
+  S.locked = false;
+  return postJSON(payload).then(() => { markSent(k); clearLock(k); })
+    .catch(() => { markSent(k); clearLock(k); toast("Saved on this device. The server could not be reached; tell your teacher."); })
+    .then(() => showResult(title, "Handed in. Read the hints for the ones you missed.", res, [["Tab leaves", S.integrity.blur]]));
+}
+
+/* ----- LISTENING: the browser reads the script aloud, once ----- */
+const LV = { voices: [] };
+function loadVoices(){ LV.voices = (window.speechSynthesis ? speechSynthesis.getVoices() : []).filter(v => /^en(-|_)/i.test(v.lang)); }
+if(window.speechSynthesis){ loadVoices(); speechSynthesis.onvoiceschanged = loadVoices; }
+function voiceFor(kind, idx){
+  const pool = LV.voices; if(!pool.length) return null;
+  const fem = pool.filter(v => /female|samantha|victoria|karen|moira|tessa|serena|libby|sonia|hazel|susan|zira|aria|jenny|google uk english female|google us english/i.test(v.name));
+  const mal = pool.filter(v => /male|daniel|alex|fred|oliver|george|ryan|guy|david|mark|james|google uk english male/i.test(v.name) && !/female/i.test(v.name));
+  const list = kind === "male" ? (mal.length ? mal : pool) : (fem.length ? fem : pool);
+  return list[idx % list.length];
+}
+function speakLine(text, voice){
+  return new Promise(res => {
+    if(!window.speechSynthesis){ setTimeout(res, 50); return; }
+    const parts = text.match(/[^.!?]+[.!?]*\s*/g) || [text];   // short chunks: Chrome cuts long utterances
+    let i = 0;
+    const next = () => {
+      if(i >= parts.length || !S.locked){ res(); return; }
+      const u = new SpeechSynthesisUtterance(parts[i++].trim());
+      if(voice){ u.voice = voice; u.lang = voice.lang; } else u.lang = "en-GB";
+      u.rate = 0.95;
+      let done = false; const fin = () => { if(!done){ done = true; next(); } };
+      u.onend = fin; u.onerror = fin;
+      setTimeout(fin, 1200 + parts[i-1].length * 85);   // safety if onend never fires
+      try{ speechSynthesis.speak(u); }catch(e){ fin(); }
+    };
+    next();
+  });
+}
+function startListening(){
+  const L = S.test.lr.listening; S.li = { p:0, ans: loadAns("lr-l") };
+  startClock(45*60, () => finishListening());
+  $("stage").textContent = "Listening test";
+  runPart();
+}
+async function runPart(){
+  const L = S.test.lr.listening, part = L.parts[S.li.p];
+  $("li-part").textContent = "Part " + (S.li.p+1) + " of " + L.parts.length;
+  $("li-title").textContent = part.title || ""; $("li-context").textContent = part.context || "";
+  $("li-qs").innerHTML = renderGroups("listening", part.groups);
+  restore("listening", part.groups, S.li.ans); limitTwo($("li-qs"));
+  $("li-qs").querySelectorAll("input,select").forEach(el => { noPaste(el); el.addEventListener("input", () => { Object.assign(S.li.ans, collect("listening", part.groups)); saveAns("lr-l", S.li.ans); });
+    el.addEventListener("change", () => { Object.assign(S.li.ans, collect("listening", part.groups)); saveAns("lr-l", S.li.ans); }); });
+  $("li-next").hidden = true;
+  show("scr-listen");
+  $("li-now").textContent = "Read the questions. The recording starts in 20 seconds.";
+  await wait(20000);
+  if(!S.locked) return;
+  $("li-now").textContent = "▶ Playing…";
+  const v = part.voices || {A:"female", B:"male"};
+  const vA = voiceFor(v.A || "female", S.li.p), vB = voiceFor(v.B || "male", S.li.p + 1);
+  for(const line of part.script){ if(!S.locked) return; await speakLine(line.t, line.v === "B" ? vB : vA); }
+  if(!S.locked) return;
+  $("li-now").textContent = "Recording finished. 30 seconds to check your answers.";
+  Object.assign(S.li.ans, collect("listening", part.groups)); saveAns("lr-l", S.li.ans);
+  const last = S.li.p >= L.parts.length - 1;
+  $("li-next").hidden = false; $("li-next").textContent = last ? "Hand in listening" : "Next part";
+  let moved = false;
+  const go = () => { if(moved) return; moved = true; Object.assign(S.li.ans, collect("listening", part.groups)); saveAns("lr-l", S.li.ans);
+    if(last) finishListening(); else { S.li.p++; runPart(); } };
+  $("li-next").onclick = go;
+  await wait(30000); go();
+}
+const FAST = /[?&]fast\b/.test(location.search);   // test hook: shortens the listening pauses
+function wait(ms){ return new Promise(r => setTimeout(r, FAST ? ms/200 : ms)); }
+async function finishListening(resumed){
+  if(window.speechSynthesis) speechSynthesis.cancel();
+  const L = S.test.lr.listening;
+  const ans = resumed ? loadAns("lr-l") : Object.assign(loadAns("lr-l"), (S.li && S.li.ans) || {});
+  const all = {}; L.parts.forEach(p => p.groups.forEach(g => g.questions.forEach(q => { all[q.n] = ans[q.n] || ""; if(q.n2) all[q.n2] = ans[q.n2] || ""; })));
+  S.locked = false; hideRail();
+  const res = await markSection("listening", all);
+  const payload = Object.assign(base(), { task:"lr", answers: summaryText("LISTENING", res), dictation:"", evidence:"", unknown:"", timeTaken:"", plays:"once",
+    measures:{ answerLines: res.length } });
+  handIn("lr-l", payload, res, "Listening: " + res.filter(r => r.ok).length + "/" + res.length);
+}
+
+/* ----- READING ----- */
+function startReading(){
+  const R = S.test.lr.reading; S.re = { p:0, ans: loadAns("lr-r") };
+  $("re-tabs").innerHTML = R.passages.map((p,i) => '<button data-i="' + i + '">Passage ' + (i+1) + '</button>').join("");
+  $("re-tabs").querySelectorAll("button").forEach(b => b.onclick = () => { saveRead(); S.re.p = +b.dataset.i; paintPassage(); });
+  startClock(40*60, () => finishReading());
+  $("stage").textContent = "Reading test";
+  paintPassage(); show("scr-read");
+}
+function paintPassage(){
+  const R = S.test.lr.reading, P = R.passages[S.re.p];
+  $("re-tabs").querySelectorAll("button").forEach(b => b.classList.toggle("on", +b.dataset.i === S.re.p));
+  $("re-passage").innerHTML = '<h2>' + esc(P.title) + '</h2>' + (P.subtitle ? '<p class="hint">' + esc(P.subtitle) + '</p>' : "") +
+    P.paragraphs.map(x => '<p>' + (x.label ? '<span class="pl">' + esc(x.label) + '</span>' : "") + esc(x.text) + '</p>').join("");
+  $("re-qs").innerHTML = renderGroups("reading", P.groups);
+  restore("reading", P.groups, S.re.ans); limitTwo($("re-qs"));
+  $("re-qs").querySelectorAll("input,select").forEach(el => { noPaste(el); el.addEventListener("input", saveRead); el.addEventListener("change", saveRead); });
+  $("re-passage").scrollTop = 0; $("re-qs").scrollTop = 0;
+}
+function saveRead(){ const P = S.test.lr.reading.passages[S.re.p]; Object.assign(S.re.ans, collect("reading", P.groups)); saveAns("lr-r", S.re.ans); }
+$("re-submit").addEventListener("click", () => {
+  saveRead();
+  const R = S.test.lr.reading; let blank = 0;
+  R.passages.forEach(p => p.groups.forEach(g => g.questions.forEach(q => { if(!S.re.ans[q.n]) blank++; })));
+  if(blank && !window.confirm(blank + " questions are still blank. Hand in anyway?")) return;
+  finishReading();
+});
+async function finishReading(resumed){
+  const R = S.test.lr.reading;
+  if(!resumed && S.re) saveRead();
+  const ans = loadAns("lr-r");
+  const all = {}; R.passages.forEach(p => p.groups.forEach(g => g.questions.forEach(q => { all[q.n] = ans[q.n] || ""; if(q.n2) all[q.n2] = ans[q.n2] || ""; })));
+  S.locked = false; hideRail();
+  const res = await markSection("reading", all);
+  const payload = Object.assign(base(), { task:"lr", answers: summaryText("READING", res), dictation:"", evidence:"", unknown:"", timeTaken:"", plays:"",
+    measures:{ answerLines: res.length } });
+  handIn("lr-r", payload, res, "Reading: " + res.filter(r => r.ok).length + "/" + res.length);
+}
+
+/* ----- VOCAB QUIZ (lr / sw lists): gap in a real sentence, first letters shown, typo-tolerant ----- */
+function blankIn(ex, en){
+  const i = ex.toLowerCase().indexOf(en.toLowerCase());
+  return i < 0 ? ex + "  (___)" : ex.slice(0, i) + "_____" + ex.slice(i + en.length);
+}
+function closeEnough(given, en){
+  const g = norm(given), ok = variants(en);
+  if(!g) return "blank";
+  if(ok.includes(g)) return "right";
+  const t = norm(en), tol = t.length >= 9 ? 2 : t.length >= 5 ? 1 : 0;
+  return ok.some(v => editDistance(g, v) <= tol) ? "right" : (editDistance(g, t) <= tol + 1 ? "near" : "wrong");
+}
+function startQuiz(k){
+  const list = S.test.vocab[k === "lr-v" ? "lr" : "sw"];
+  S.q = { k, list, i:0, ans: loadAns(k).ans || [] };
+  S.q.i = S.q.ans.length;
+  quizStep();
+}
+function quizStep(){
+  const q = S.q;
+  if(q.i >= q.list.length){ finishQuiz(q.k); return; }
+  const w = q.list[q.i];
+  $("vq-label").textContent = (q.k === "lr-v" ? "LR" : "SW") + " vocabulary · " + (q.i+1) + " of " + q.list.length;
+  $("vq-vi").textContent = w.vi; $("vq-pos").textContent = w.pos || "";
+  $("vq-ex").textContent = w.ex ? blankIn(w.ex, w.en) : "";
+  $("vq-hint").textContent = letterHint(w.en);
+  $("vq-input").value = ""; noPaste($("vq-input"));
+  $("stage").textContent = "Vocabulary quiz";
+  show("scr-vq"); $("vq-input").focus();
+  let closed = false;
+  const done = () => { if(closed) return; closed = true; stopClock();
+    q.ans.push({ en:w.en, given:$("vq-input").value.trim() }); saveAns(q.k, { ans:q.ans }); q.i++; quizStep(); };
+  startClock(20, done);
+  $("vq-next").onclick = done;
+  $("vq-input").onkeydown = e => { if(e.key === "Enter"){ e.preventDefault(); done(); } };
+}
+function finishQuiz(k, resumed){
+  const list = S.test.vocab[k === "lr-v" ? "lr" : "sw"];
+  const ans = (loadAns(k).ans) || (S.q && S.q.ans) || [];
+  hideRail(); S.locked = false;
+  const res = list.map((w, i) => { const a = ans[i] || { given:"" }; const v = closeEnough(a.given, w.en);
+    return { n:i+1, given:a.given, ok: v === "right", verdict:v, en:w.en, hint: w.en + " = " + w.vi }; });
+  const right = res.filter(r => r.ok).length, near = res.filter(r => r.verdict === "near").length;
+  const payload = Object.assign(base(), { task:"v", measures:{ right, near, wrong: res.length - right - near, total: res.length, ownSentences: 0 },
+    answers: "[" + (k === "lr-v" ? "LR" : "SW") + " list]\n" + res.map(r => r.en + " <- " + (r.given || "-") + " [" + r.verdict + "]").join("\n"), sentences: "", list: k });
+  /* wrong items show the answer straight away: the point of the quiz is to learn the list */
+  res.forEach(r => { if(!r.ok) r.hint = "Đáp án: " + r.hint; });
+  handIn(k, payload, res, "Vocabulary: " + right + "/" + res.length);
+}
+
+/* ----- word lists screen shows both lists ----- */
+openWords = function(){
+  hideRail();
+  $("words-week").textContent = S.week + " · " + S.wk.theme;
+  const v = (S.test && S.test.vocab) || {};
+  const tbl = (title, list) => '<tr><td colspan="3" style="padding-top:18px"><b>' + esc(title) + '</b></td></tr>' +
+    (list && list.length ? list.map(w => '<tr><td>' + esc(w.vi) + '</td><td class="en">' + esc(w.en) + '</td><td class="p">' + esc(w.pos || "") + '</td></tr>').join("")
+      : '<tr><td colspan="3" class="hint">Not ready yet.</td></tr>');
+  $("words-table").innerHTML = tbl("LR list: phrases from this week's listening and reading", v.lr) + tbl("SW list: useful words for speaking and writing", v.sw);
+  show("scr-words");
+};
+
 /* ===== leaving mid-task ===== */
 window.addEventListener("beforeunload", e => {
-  const busy = !$("scr-write").hidden || !$("scr-q").hidden || !$("scr-talk").hidden
+  const busy = S.locked || !$("scr-write").hidden || !$("scr-q").hidden || !$("scr-talk").hidden
             || !$("scr-prep").hidden || !$("scr-v-recall").hidden || !$("scr-v-use").hidden
             || ($("send-eyebrow").textContent === "Sending" && !$("scr-send").hidden);
   if(busy){ e.preventDefault(); e.returnValue = ""; }
